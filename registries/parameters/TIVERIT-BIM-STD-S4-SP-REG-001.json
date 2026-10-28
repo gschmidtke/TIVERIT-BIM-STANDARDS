@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-BIM-STD-S4-SP-REG-001",
+  "legacy_ids": [
+    "TAIT-BIM-STD-S4-SP-REG-001",
+    "TAIT-BIM-STD-S4-SP-REG-CIT-001",
+    "SPR-CORE"
+  ],
+  "type": "registry",
+  "title": "Central Shared Parameter Registry — First Citizen Set",
+  "status": "migration_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S4", "S8"],
+  "scope": {
+    "view": "Citizen + Active subset",
+    "identity_key": "GUID",
+    "source_note": "Only rows with explicit GUIDs are represented as registry entries in this migration candidate. Rows whose Confluence source contains '(from CSV)' remain unresolved migration items."
+  },
+  "entries": [
+    {"id":"f16eb500-0976-4c80-b5d1-082470821ef8","name":"Classification.Uniclass.Ss.Number","status":"active","group_id":"1","group_name":"Default Group","data_type":"TEXT","data_category":"Uniclass","lane":"Citizen","source_files":["Uniclass"]},
+    {"id":"53e1dbb9-9434-44ad-abcc-51bca479123d","name":"Classification.Uniclass.Ss.Description","status":"active","group_id":"1","group_name":"Default Group","data_type":"TEXT","data_category":"Uniclass","lane":"Citizen","source_files":["Uniclass"]},
+    {"id":"d440faa7-622e-4ee1-9f4e-22a5bedd7074","name":"Classification.Uniclass.EF.Number","status":"active","group_id":"1","group_name":"Default Group","data_type":"TEXT","data_category":"Uniclass","lane":"Citizen","source_files":["Uniclass"]},
+    {"id":"bcc0bfdd-95e3-4f0f-85b1-ea2260840393","name":"Classification.Uniclass.EF.Description","status":"active","group_id":"1","group_name":"Default Group","data_type":"TEXT","data_category":"Uniclass","lane":"Citizen","source_files":["Uniclass"]},
+    {"id":"8212e2e8-d020-4127-bada-a9cc7f5f4dcc","name":"Classification.Uniclass.Pr.Number","status":"active","group_id":"1","group_name":"Default Group","data_type":"TEXT","data_category":"Uniclass","lane":"Citizen","source_files":["Uniclass"]},
+    {"id":"d47f96f3-7191-43b2-afc4-db4b5e4a8859","name":"Classification.Uniclass.Pr.Description","status":"active","group_id":"1","group_name":"Default Group","data_type":"TEXT","data_category":"Uniclass","lane":"Citizen","source_files":["Uniclass"]},
+    {"id":"c7439a2e-f504-4486-86b5-15c4eaac594f","name":"RACK #","status":"active","group_id":"14","group_name":"AVLC Parameters","data_type":"TEXT","data_category":"AVL","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"4427821f-02f3-4ace-abe3-702f1c48b0c9","name":"MOUNTING TYPE","status":"active","group_id":"14","group_name":"AVLC Parameters","data_type":"TEXT","data_category":"AVL","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"0af144ad-3f60-406a-bca7-822326439a29","name":"FOCUS","status":"active","group_id":"14","group_name":"AVLC Parameters","data_type":"TEXT","data_category":"AVL","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"63111962-962b-4553-b82f-2514bdea8543","name":"DEVICE NUMBER","status":"active","group_id":"14","group_name":"AVLC Parameters","data_type":"TEXT","data_category":"AVL","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"7782d582-a162-4ed8-8e70-8adde804b005","name":"DEVICE NAME","status":"active","group_id":"14","group_name":"AVLC Parameters","data_type":"TEXT","data_category":"AVL","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"fac606de-1d0e-442c-a083-aa6bff4608c2","name":"DEVICE TYPE ID","status":"active","group_id":"14","group_name":"AVLC Parameters","data_type":"TEXT","data_category":"AVL","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"7913ab50-3e96-4048-b2fa-1f633c58034d","name":"PURPOSE","status":"active","group_id":"14","group_name":"AVLC Parameters","data_type":"TEXT","data_category":"AVL","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"d92d4d5a-53dd-4a81-af58-67538a84947a","name":"HEIGHT","status":"active","group_id":"4","group_name":"Dimensions","data_type":"LENGTH","data_category":"Geometry","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"962acfa5-132b-4cab-ac6f-9f5b7dabf6f1","name":"LENGTH","status":"active","group_id":"4","group_name":"Dimensions","data_type":"LENGTH","data_category":"Geometry","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"c9437e97-3786-4644-9c3f-9ef1843d335a","name":"WIDTH","status":"active","group_id":"4","group_name":"Dimensions","data_type":"LENGTH","data_category":"Geometry","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"0b61d07b-d7d3-4413-baff-d9f5c1a3dd27","name":"DEPTH","status":"active","group_id":"4","group_name":"Dimensions","data_type":"LENGTH","data_category":"Geometry","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"d16ef95c-cb3f-4d8d-bec0-bcb94d7b00d0","name":"ELEMENT AREA/ZONE","status":"active","group_id":"8","group_name":"Data","data_type":"TEXT","data_category":"Zone","lane":"Citizen","source_files":["WBEXPN","TAIT"]},
+    {"id":"cdca6aac-f46f-4ce8-8c5a-cbd925c78204","name":"DESCRIPTION","status":"active","group_id":"3","group_name":"General","data_type":"TEXT","data_category":"General","lane":"Citizen","source_files":["WBEXPN","TAIT"]}
+  ],
+  "unresolved_entries": [
+    {"name":"SHEET NUMBER","reason":"Source GUID is '(from CSV)'"},
+    {"name":"SHEET NAME","reason":"Source GUID is '(from CSV)'"},
+    {"name":"SHEET DISCIPLINE","reason":"Source GUID is '(from CSV)'"},
+    {"name":"SHEET ISSUE DESCRIPTION","reason":"Source GUID is '(from CSV)'"},
+    {"name":"SHEET ISSUE DATE","reason":"Source GUID is '(from CSV)'"},
+    {"name":"PROJECT NAME","reason":"Source GUID is '(from CSV)'"},
+    {"name":"PROJECT NUMBER","reason":"Source GUID is '(from CSV)'"},
+    {"name":"PROJECT PHASE","reason":"Source GUID is '(from CSV)'"},
+    {"name":"CLIENT NAME","reason":"Source GUID is '(from CSV)'"},
+    {"name":"PROJECT LOCATION","reason":"Source GUID is '(from CSV)'"}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001"],
+    "workflows": ["TIVERIT-SP-REGISTRY-001"],
+    "instructions": ["TIVERIT-BIM-STD-L6-SP-GEN-REG-001", "TIVERIT-BIM-STD-L6-SP-GEN-TXT-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7241788",
+    "source_version": 1,
+    "source_title": "TAIT Central Shared Parameter Registry - First Citizen Set",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241788/TAIT+Central+Shared+Parameter+Registry+-+First+Citizen+Set",
+    "migration_note": "TAIT branding converted to TIVERIT in canonical identifiers. Ten source rows remain unresolved because the Confluence table contains '(from CSV)' rather than GUID values."
+  }
+}
