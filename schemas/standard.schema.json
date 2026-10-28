@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/standard.schema.json",
+  "title": "TIVERIT BIM Standard",
+  "allOf": [
+    {"$ref": "./base-object.schema.json"},
+    {
+      "type": "object",
+      "required": ["requirements"],
+      "properties": {
+        "type": {"const": "standard"},
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "authority", "statement"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "authority": {"type": "string", "enum": ["shall", "shall_not", "should", "may", "informative"]},
+              "statement": {"type": "string", "minLength": 1},
+              "verification_class": {"type": "string", "enum": ["machine_executable", "machine_checkable", "machine_assisted", "human_verifiable", "informational"]},
+              "scope": {"type": "object"},
+              "exceptions": {"type": "array", "items": {"type": "object"}}
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  ]
+}
