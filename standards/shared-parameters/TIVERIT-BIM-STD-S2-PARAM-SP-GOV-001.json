@@ -1,0 +1,78 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001",
+  "legacy_ids": [
+    "TAIT-BIM-STD-S2-PARAM-SP-GOV-001",
+    "TAIT-BIM-STD-S4-SHARED-PARAM-001"
+  ],
+  "type": "standard",
+  "title": "Shared Parameters Governance (GUID-First, Citizen vs Visitor)",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S2"],
+  "scope": {
+    "applies_to": [
+      "All TIVERIT Revit projects using shared parameters",
+      "Project setup and ongoing parameter management",
+      "Automation datasets and parameter snapshots"
+    ],
+    "excludes": [
+      "Tool-specific click instructions",
+      "Project-specific BEP contract language",
+      "One-off temporary parameters unless promoted"
+    ]
+  },
+  "definitions": [
+    {"term": "Shared Parameter (SP)", "definition": "A parameter whose identity is defined by a GUID and intended for reuse across contexts."},
+    {"term": "GUID", "definition": "The authoritative identity of a shared parameter. Names are labels only."},
+    {"term": "Citizen Parameter", "definition": "Registered, governed shared parameter approved for cross-project use and distributed via official releases."},
+    {"term": "Visitor Parameter", "definition": "Shared parameter observed in project reality but not registered or approved for cross-project governance."},
+    {"term": "Registry", "definition": "Authoritative, versioned record of citizen parameters, GUID-first and independent of projects."},
+    {"term": "Distribution Package", "definition": "Generated implementation artifact derived from the registry, such as a Revit shared parameter TXT release."},
+    {"term": "Project Snapshot", "definition": "Periodic observational capture of parameters present in a project model."},
+    {"term": "Delta Report", "definition": "Comparison output between a Project Snapshot and the Registry showing differences, collisions, and risks."}
+  ],
+  "requirements": [
+    {"id": "SP-GOV-001", "authority": "shall", "statement": "Shared parameter identity is GUID-first: if the GUID does not match, it is not the same parameter, even if the name matches.", "verification_class": "machine_checkable"},
+    {"id": "SP-GOV-002", "authority": "shall", "statement": "The Shared Parameter Registry is the authoritative source for shared parameter identity and semantics.", "verification_class": "human_verifiable"},
+    {"id": "SP-GOV-003", "authority": "shall_not", "statement": "Revit shared parameter TXT files shall not be treated as sources of truth; they are derived implementation artifacts.", "verification_class": "human_verifiable"},
+    {"id": "SP-GOV-004", "authority": "shall", "statement": "Citizen parameter meaning and identity may only be changed through registry versioning and governance approval.", "verification_class": "human_verifiable"},
+    {"id": "SP-GOV-005", "authority": "shall", "statement": "Any parameter promoted to Citizen shall be issued through a registry-derived release.", "verification_class": "machine_assisted"},
+    {"id": "SP-GOV-006", "authority": "shall", "statement": "Visitor or provisional parameters shall be clearly identified as project or provisional parameters.", "verification_class": "machine_assisted"},
+    {"id": "SP-GOV-007", "authority": "shall_not", "statement": "Visitor or provisional parameters shall not impersonate Citizen parameter names or intentionally create name collisions.", "verification_class": "machine_checkable"},
+    {"id": "SP-GOV-008", "authority": "shall_not", "statement": "Visitor or provisional parameters shall not silently propagate beyond project boundaries.", "verification_class": "human_verifiable"},
+    {"id": "SP-GOV-009", "authority": "shall", "statement": "Promotion to Citizen status requires stabilized semantics, ownership assignment, registry entry, versioning, and governance approval.", "verification_class": "human_verifiable"},
+    {"id": "SP-GOV-010", "authority": "shall", "statement": "Projects shall produce periodic Project Parameter Snapshots for governance monitoring.", "verification_class": "machine_executable"},
+    {"id": "SP-GOV-011", "authority": "shall", "statement": "A Delta Engine shall compare Project Parameter Snapshots against the Registry and classify differences.", "verification_class": "machine_executable"},
+    {"id": "SP-GOV-012", "authority": "shall", "statement": "Delta classification shall include unknown parameters, name collisions with differing GUIDs, deprecated parameters still in use, missing required Citizen parameters, and usage escalation signals.", "verification_class": "machine_executable"},
+    {"id": "SP-GOV-013", "authority": "shall_not", "statement": "Built-in Revit parameters shall not be stored in the Shared Parameter Registry.", "verification_class": "machine_checkable"},
+    {"id": "SP-GOV-014", "authority": "shall", "statement": "Migration or repair actions shall preserve traceability and shall not silently rewrite parameter meaning.", "verification_class": "human_verifiable"},
+    {"id": "SP-GOV-015", "authority": "shall_not", "statement": "Retired GUID identities shall not be reused without an explicit governance decision.", "verification_class": "machine_assisted"}
+  ],
+  "parameter_lanes": [
+    {"lane_id": "A", "name": "Governed Core", "classification": "CITIZEN"},
+    {"lane_id": "B", "name": "Provisional / Project", "classification": "VISITOR"},
+    {"lane_id": "C", "name": "Promotion Path", "classification": "TRANSITION"}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "workflows": ["TIVERIT-SP-REGISTRY-001"],
+    "instructions": ["TIVERIT-BIM-STD-L6-SP-GEN-REG-001", "TIVERIT-BIM-STD-L6-SP-GEN-TXT-001"],
+    "registries": ["TIVERIT-BIM-STD-S4-SP-REG-001"],
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001"]
+  },
+  "migration_notes": [
+    "The Confluence source contains a dual-surface module classification: the machine-readable JSON declares S2 while its narrative counterpart declares S4. This candidate preserves the machine-readable S2 declaration and records the S4 identifier as a legacy equivalent pending curator review.",
+    "Canonical text replaces TAIT branding with TIVERIT. Original TAIT wording remains available through provenance."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "3702785",
+    "source_version": 1,
+    "source_title": "JSON - Shared Parameters Governance",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3702785/JSON+-+Shared+Parameters+Governance",
+    "migration_note": "Primary machine-readable source. Narrative equivalent: page 3670017."
+  }
+}
