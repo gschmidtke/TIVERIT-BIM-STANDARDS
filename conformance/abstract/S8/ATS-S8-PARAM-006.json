@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-S8-PARAM-006",
+  "type": "abstract_test",
+  "title": "Uncontrolled parameter creation is not permitted",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "requirement_id": "REQ-S8-006",
+  "test_intent": "Determine whether parameters introduced into the governed scope are either approved governed parameters or explicitly identified permitted non-governed parameters, with no uncontrolled parameter creation treated as governed information.",
+  "applicability": {
+    "applies_when": "The tested model, template, family, or deliverable contains parameters that can affect governed BIM information.",
+    "not_applicable_when": "The tested subject contains no parameters within the governed S8 scope."
+  },
+  "required_evidence": [
+    "complete observed parameter inventory for the tested scope",
+    "applicable governed parameter registry or approved parameter definitions",
+    "declared classification of non-governed or visitor parameters where such parameters are permitted",
+    "change or approval reference for newly governed parameters where applicable"
+  ],
+  "result_logic": {
+    "pass": "Every parameter affecting governed information resolves to an applicable governed definition or is explicitly classified as permitted non-governed information and does not masquerade as governed semantic authority.",
+    "fail": "One or more parameters affecting governed information have no applicable governed definition, approved change reference, or explicit permitted non-governed classification.",
+    "not_applicable": "No parameters within governed S8 scope are present in the tested subject.",
+    "indeterminate": "The observed parameter inventory or applicable governance/registry context is incomplete, preventing a reliable controlled-versus-uncontrolled determination."
+  },
+  "permitted_implementation_classes": ["api_checker", "registry_checker", "model_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "REQ-S8-006",
+    "migration_note": "First S8 conformance pilot ATS. The test distinguishes governed, permitted non-governed, and uncontrolled parameter creation without assuming a tool-specific implementation."
+  }
+}
