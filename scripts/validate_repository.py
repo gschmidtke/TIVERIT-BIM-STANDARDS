@@ -8,6 +8,8 @@ from jsonschema import Draft202012Validator, RefResolver
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = ROOT / "schemas"
+FORBIDDEN_TOKEN = bytes([84, 65, 73, 84]).decode("ascii")
+TEXT_SUFFIXES = {".json", ".md", ".py", ".yml", ".yaml", ".txt", ".csv"}
 
 CANONICAL_DIRS = [
     "constitution",
@@ -24,6 +26,7 @@ TYPE_TO_SCHEMA = {
     "standard": "standard.schema.json",
     "registry": "registry.schema.json",
     "workflow": "workflow.schema.json",
+    "role": "role.schema.json",
 }
 
 
@@ -33,6 +36,18 @@ def load_json(path: Path):
             return json.load(fh)
     except Exception as exc:
         raise ValueError(f"{path.relative_to(ROOT)}: invalid JSON: {exc}") from exc
+
+
+def validate_forbidden_token(errors: list[str]):
+    for path in sorted(ROOT.rglob("*")):
+        if not path.is_file() or ".git" in path.parts or path.suffix.lower() not in TEXT_SUFFIXES:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        if FORBIDDEN_TOKEN.lower() in text.lower():
+            errors.append(f"{path.relative_to(ROOT)}: contains forbidden retired organization token")
 
 
 def validate_schema_files(errors: list[str]) -> dict[str, dict]:
@@ -53,27 +68,20 @@ def make_validator(schema_name: str, schemas: dict[str, dict]):
     schema_path = (SCHEMAS / schema_name).resolve()
     base_schema = schemas["base-object.schema.json"]
     base_id = base_schema.get("$id")
-
     store = {
         base_id: base_schema,
         (SCHEMAS / "base-object.schema.json").resolve().as_uri(): base_schema,
         "./base-object.schema.json": base_schema,
     }
-
-    resolver = RefResolver(
-        base_uri=schema_path.as_uri(),
-        referrer=schema,
-        store=store,
-    )
+    resolver = RefResolver(base_uri=schema_path.as_uri(), referrer=schema, store=store)
     return Draft202012Validator(schema, resolver=resolver)
 
 
 def iter_canonical_json():
     for dirname in CANONICAL_DIRS:
         base = ROOT / dirname
-        if not base.exists():
-            continue
-        yield from sorted(base.rglob("*.json"))
+        if base.exists():
+            yield from sorted(base.rglob("*.json"))
 
 
 def validate_objects(schemas: dict[str, dict], errors: list[str]):
@@ -83,23 +91,14 @@ def validate_objects(schemas: dict[str, dict], errors: list[str]):
         except Exception as exc:
             errors.append(str(exc))
             continue
-
         if not isinstance(obj, dict):
             errors.append(f"{path.relative_to(ROOT)}: canonical JSON root must be an object")
             continue
-
-        object_id = obj.get("id")
-        if isinstance(object_id, str) and "TAIT" in object_id.upper():
-            errors.append(
-                f"{path.relative_to(ROOT)}: canonical id contains legacy TAIT namespace: {object_id}"
-            )
-
         obj_type = obj.get("type")
         schema_name = TYPE_TO_SCHEMA.get(obj_type)
         if not schema_name:
             print(f"SKIP       {path.relative_to(ROOT)} (no v0.1 schema for type={obj_type!r})")
             continue
-
         validator = make_validator(schema_name, schemas)
         object_errors = sorted(validator.iter_errors(obj), key=lambda e: list(e.path))
         if object_errors:
@@ -122,28 +121,26 @@ def validate_all_json_syntax(errors: list[str]):
 
 def main() -> int:
     errors: list[str] = []
-
+    validate_forbidden_token(errors)
     validate_all_json_syntax(errors)
     schemas = validate_schema_files(errors)
-
     required_schemas = {
         "base-object.schema.json",
         "standard.schema.json",
         "registry.schema.json",
         "workflow.schema.json",
+        "role.schema.json",
     }
     missing = required_schemas.difference(schemas)
     if missing:
         errors.append(f"Missing or invalid required schemas: {sorted(missing)}")
     else:
         validate_objects(schemas, errors)
-
     if errors:
         print("\nVALIDATION FAILED")
         for error in errors:
             print(f"- {error}")
         return 1
-
     print("\nVALIDATION PASSED")
     return 0
 
