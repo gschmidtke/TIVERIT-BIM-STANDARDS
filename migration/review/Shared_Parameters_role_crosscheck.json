@@ -1,0 +1,34 @@
+{
+  "id": "MIG-SP-ROLE-XREF-001",
+  "title": "Shared Parameters Role Registry Cross-Check",
+  "status": "migration_candidate",
+  "checked_registry": "REG-ROLE-001",
+  "checked_objects": [
+    "TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001",
+    "TIVERIT-SP-REGISTRY-001",
+    "TIVERIT-BIM-STD-S4-SP-REG-001"
+  ],
+  "resolved": [
+    {"source_name":"Project BIM Manager","role_id":"ROLE-PROJECT-BIM-MANAGER-001","resolution":"exact","use":"project-level parameter governance"},
+    {"source_name":"Discipline Lead","role_id":"ROLE-DISCIPLINE-LEAD-001","resolution":"exact_base_role","use":"discipline semantic ownership and review"},
+    {"source_name":"BIM Standards Governance","role_id":"ROLE-BIM-STANDARDS-MGR-001","resolution":"accepted_alias","use":"standards governance"},
+    {"source_name":"BIM Standards Manager / Custodian","role_id":"ROLE-BIM-STANDARDS-MGR-001","resolution":"exact","use":"registry custody and Citizen promotion"}
+  ],
+  "unresolved": [
+    {"source_name":"AVLC Lead","resolution":"unresolved","reason":"No governed role ID exists; do not map automatically to Technical Director or a discipline-lead cluster."},
+    {"source_name":"FM Lead","resolution":"unresolved","reason":"No governed role ID exists; internal-vs-external ownership is undefined."}
+  ],
+  "canonical_object_check": {
+    "standard_role_ids": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-BIM-STANDARDS-MGR-001"],
+    "standard_role_ids_resolve": true,
+    "workflow_role_ids": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-BIM-STANDARDS-MGR-001"],
+    "workflow_role_ids_resolve": true,
+    "parameter_registry_has_explicit_role_ids": false
+  },
+  "result": "PASS_WITH_UNRESOLVED_SOURCE_ROLES",
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_ids": ["3670017", "3702785", "3768321", "7241788", "8126500"]
+  }
+}
