@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-PARAMETERS-001",
+  "type": "instruction",
+  "title": "Revit Parameter Implementation",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S8"],
+  "purpose": "Implement S8-governed parameter structures in Revit using the central Shared Parameter Registry as authority, with stable GUID identity and controlled instance/type/category application.",
+  "preconditions": ["The applicable S8 parameter requirements are known.", "The central Shared Parameter Registry is available for governed shared-parameter identities.", "Any required parameter bindings/categories for the project scope are defined or explicitly unresolved."],
+  "steps": [
+    {"id":"PAR-01","name":"Resolve parameter identity from the governed source","actions":["Before creating or binding a shared parameter, resolve its GUID, name, data type, status, and applicable scope from the central registry.","Do not use copied project TXT files or locally created parameters as authority."],"validation":["Each governed shared parameter resolves to one central registry identity.","No conflicting GUID/name pair is introduced."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"PAR-02","name":"Apply the correct Revit parameter behavior","actions":["Use instance or type behavior according to the applicable governed requirement/registry entry.","Bind the parameter only to the required categories/scope.","Place project information parameters in the appropriate Revit information context where governed."],"validation":["Parameter behavior and binding match the governing requirement.","No broader local binding is introduced without an approved reason."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"PAR-03","name":"Control new or project-local parameters","actions":["Do not create a new governed shared parameter without the applicable approval/registry process.","Treat source tables explicitly marked EXAMPLE ONLY as scaffolds rather than approved parameter sets.","Where a visitor/project-local parameter is permitted, mark and manage it according to S8 governance rather than silently promoting it to citizen status."],"validation":["New governed parameter identities have a traceable approval/registry record.","Visitors/local parameters are distinguishable from governed citizens."],"automation_readiness":"ASSISTED"},
+    {"id":"PAR-04","name":"Verify deployed parameters against the registry","actions":["Compare deployed parameter GUIDs, names, and data definitions against the central registry.","Record missing, conflicting, deprecated, and unresolved identities for remediation."],"validation":["Applicable governed parameters match the central registry.","Conflicts and unresolved source rows do not silently pass compliance."],"automation_readiness":"AUTOMATABLE"}
+  ],
+  "outputs": ["Revit parameter deployment aligned with S8 governance and the central Shared Parameter Registry"],
+  "evidence": ["Parameter inventory with GUID/name/type", "Binding/category report", "Registry comparison/delta report"],
+  "relationships": {"registries":["TIVERIT-BIM-STD-S8-SP-REG-001"],"instructions":["TIVERIT-BIM-STD-L6-SP-GEN-REG-001","TIVERIT-BIM-STD-L6-SP-GEN-TXT-001"]},
+  "future_dependencies": ["Resolution of source rows whose GUID remains unavailable", "Complete governed binding/category data where required"],
+  "governance_notes": ["The central registry is authoritative for governed shared-parameter identity; TXT/project copies are derived carriers or observations.", "Discipline-specific parameter sets shown as examples in source are not promoted unless separately governed."],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"6422556","source_version":1,"source_title":"Parameter Standards – Instructions, Definitions, Workflows","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6422556","migration_note":"Normalized beneath canonical S8 parameter governance. Source example parameter sets are retained only as noncanonical scaffolding."}
+}
