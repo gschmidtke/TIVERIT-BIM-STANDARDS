@@ -16,7 +16,11 @@
     {"id":"S3-REQ-005","authority":"shall_not","statement":"Informal collaboration, chat, markup, and visibility do not constitute approval or acceptance."},
     {"id":"S3-REQ-006","authority":"shall","statement":"Working outputs and formally issued deliverables shall remain distinct; formal exchange must bind to S2 information requirements and permitted-use constraints."},
     {"id":"S3-REQ-007","authority":"shall","statement":"S1 overrules S3 on organizational authority, S2 overrules S3 on information requirements, and CDE procedural execution is delegated to governed implementation workflows."},
-    {"id":"S3-REQ-008","authority":"shall_not","statement":"S3 governs the internal production ecosystem and shall not assert authority over external consultant systems, client environments, or contractual liabilities beyond project-defined interfaces."}
+    {"id":"S3-REQ-008","authority":"shall_not","statement":"S3 governs the internal production ecosystem and shall not assert authority over external consultant systems, client environments, or contractual liabilities beyond project-defined interfaces."},
+    {"id":"S3-REQ-009","authority":"shall_not","statement":"The existence, availability, or visual completeness of a production output shall not by itself make that output a deliverable or authorize reliance on it."},
+    {"id":"S3-REQ-010","authority":"shall","statement":"Production outputs intended for governed use shall have an explicitly declared maturity or information state appropriate to their purpose; apparent detail shall not substitute for that declaration."},
+    {"id":"S3-REQ-011","authority":"shall_not","statement":"The communication channel used for collaboration shall not alter the governance status, authority, or permitted use of the information communicated."},
+    {"id":"S3-REQ-012","authority":"shall_not","statement":"Uploading, downloading, synchronizing, linking, attaching, or otherwise moving information within or between production systems shall not by itself constitute formal delivery or transfer authority."}
   ],
   "relationships": {
     "governed_by": ["ISO-19650"],
@@ -28,6 +32,6 @@
     "source_system": "confluence",
     "space": "BST",
     "source_pages": ["2425298","2621496","3964929","3899424","2425347","2457722","2457714","3735560","2818203","4292609"],
-    "migration_note": "Canonical S3 parent assembled from the source production-environment doctrine. Raw source-page titles and URLs were not retained where retired naming appeared; neutral page IDs preserve provenance."
+    "migration_note": "Canonical S3 parent assembled from the source production-environment doctrine and enriched with explicit collaboration, output-maturity, and transmission boundaries. Raw source-page titles and URLs were not retained where retired naming appeared; neutral page IDs preserve provenance."
   }
 }
