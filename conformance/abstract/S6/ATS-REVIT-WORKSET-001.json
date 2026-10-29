@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-WORKSET-001",
+  "type": "abstract_test",
+  "title": "Revit governed workset assignment and containment",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6", "S4"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-WORKSHARING-001",
+  "governing_clause": "RVT-WS-02",
+  "test_intent": "Determine whether Revit worksets implement the governed S4 naming structure and S6 containment intent, including link placement, datum/reference containment, and prohibition of personal or uncontrolled production worksets.",
+  "applicability": {
+    "applies_when": "The tested Revit model is workshared and uses worksets for governed containment or ownership.",
+    "not_applicable_when": "The tested Revit model is not workshared and no governed workset rule applies."
+  },
+  "required_evidence": [
+    "workset inventory and names",
+    "element-to-workset assignment inventory for links, datum/reference elements, and physical modeled elements",
+    "applicable governed workset naming syntax and project workset strategy",
+    "approved workset exceptions where applicable"
+  ],
+  "result_logic": {
+    "pass": "Applicable worksets conform to the available governed naming/containment rules, linked models reside on governed link worksets, datum/reference-only worksets contain no physical modeled geometry, and no personal or uncontrolled production workset is present.",
+    "fail": "A positive violation is found against an available governed rule, including a personal/uncontrolled workset, an incorrectly assigned link, or physical modeled geometry on a datum/reference-only workset.",
+    "not_applicable": "The model is not workshared and no governed workset rule applies.",
+    "indeterminate": "The project workset strategy, naming syntax, or classification needed to distinguish governed workset purposes is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-WORKSHARING-001",
+    "migration_note": "Appendix E ATS. Source example workset names are not used as authority; evaluation depends on the governed project/S4 strategy."
+  }
+}
