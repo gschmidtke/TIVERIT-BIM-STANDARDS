@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-TEMPLATE-CONTENT-001",
+  "type": "abstract_test",
+  "title": "Revit governed project-template content",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S3", "S4", "S8"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-TEMPLATES-001",
+  "governing_clause": "TPL-02",
+  "test_intent": "Determine whether an applicable governed Revit project template contains or references the required governed content for its intended use and whether obsolete or locally substituted content is identified instead of silently accepted.",
+  "applicability": {
+    "applies_when": "A Revit project template or project aligned to a governed template release is being validated for project startup or standards maintenance.",
+    "not_applicable_when": "No governed Revit template is designated for the tested project or discipline context."
+  },
+  "required_evidence": [
+    "identity or release context of the tested Revit template",
+    "applicable governed template-content manifest or validation ruleset",
+    "inventory of titleblocks, view templates, annotation styles, object/line styles, materials, phases, worksets, and governed parameters present or referenced",
+    "recorded approved exceptions or missing-content findings"
+  ],
+  "result_logic": {
+    "pass": "The tested template matches the complete applicable governed content manifest and no obsolete, missing, or unauthorized substitute content is found.",
+    "fail": "The applicable governed content manifest is available and one or more required items are missing, obsolete, or replaced by unauthorized local content.",
+    "not_applicable": "No governed Revit template applies to the tested context.",
+    "indeterminate": "A complete governed Template Catalogue/content manifest or validation ruleset is not yet available for the tested template context."
+  },
+  "permitted_implementation_classes": ["api_checker", "registry_checker", "model_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-TEMPLATES-001",
+    "migration_note": "Appendix E ATS. It intentionally remains indeterminate until the governed Template Catalogue and validation manifest exist; source placeholder template names are not substituted."
+  }
+}
