@@ -2,23 +2,34 @@
 
 ## Purpose
 
-This guide explains how a human or AI should use the governed BEP interview workflow when a user asks to create, complete, or review a project BIM Execution Plan.
+This guide explains how a human or AI should use the governed BEP interview workflow when a user asks to create, complete, review, or update a project BIM Execution Plan.
 
 The governing procedural object is:
 
 `workflows/BEP/TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001.json`
 
-The interview is not a fixed questionnaire to be replayed from the beginning. It is a **gap-driven interaction protocol**.
+The machine-readable task trigger is:
+
+`TASK-ROUTE-BEP-ASSEMBLY-001` in `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
+
+The interview is not a fixed questionnaire to be replayed from the beginning. It is a **gap-driven interaction protocol** and a **guided assembly process**.
+
+It helps the user supply project facts and map them to governed objects. It does not approve the BEP, create contractual obligations, modify standards, or create project authority.
 
 ## Trigger
 
 Use this protocol when the user asks for a task such as:
 
 - create a BEP;
+- create a BEP with me using the TIVERIT BIM Standards repository;
+- write, prepare, or draft a BIM Execution Plan;
+- help fill out a BEP;
 - prepare a pre-appointment BEP;
 - prepare or complete a post-appointment BEP;
-- review a BEP and fill its missing project data;
+- review or update a BEP and resolve missing project data;
 - generate a BEP from project documents, contract material, EIR/AIR/PIR information, schedules, model lists, or related project sources.
+
+When the trigger is detected, prefer this governed interview workflow over free-form BEP drafting.
 
 ## Required startup sequence
 
@@ -31,6 +42,8 @@ Before asking the user project questions:
 5. Extract supported project facts from those sources.
 6. Compare the known project state with the data required for the requested BEP type and maturity.
 7. Ask only for unresolved, contradictory, or insufficiently evidenced project information.
+
+Do not generate a full BEP first and then back-fill questions. The interview exists to establish a sufficiently explicit project state before assembly.
 
 ## Core interaction rule
 
@@ -93,7 +106,7 @@ Keep these classes separate during the interview:
 4. **Deviation candidate** — a proposed departure from a governed standard.
 5. **Unresolved item** — required information not yet supplied or supported.
 
-Never convert a proposal or unresolved item into a confirmed project fact merely to complete the document.
+Never convert a proposal, deviation candidate, or unresolved item into a confirmed project fact merely to complete the document.
 
 ## Question-to-output contract
 
