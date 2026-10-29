@@ -1,0 +1,12 @@
+{
+  "$schema":"../../schemas/standard.schema.json","id":"TIVERIT-BIM-STD-S5-MILESTONE-VS-EXCHANGE-EP001","type":"standard","title":"Milestone vs Exchange","status":"migration_candidate","authority":"normative","layer":"L4","modules":["S5","S7"],
+  "requirements":[
+    {"id":"REQ-S7-014","authority":"shall","statement":"Every S5 coordination sign-off shall be treated as an internal milestone by default.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-015","authority":"shall","statement":"A coordination sign-off becomes an information exchange only when explicitly identified as such in S7, the BEP deliverable schedule, or a governing MIDP/TIDP entry.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-016","authority":"shall","statement":"When a milestone is also an exchange, completion of the S5 coordination sign-off is a prerequisite gate for initiating the S7 formal transmittal.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-017","authority":"shall","statement":"Milestone sign-off confirms coordination readiness; exchange transmittal confirms delivery to external stakeholders.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-018","authority":"shall_not","statement":"Internal milestones shall not be transmitted externally without completing the formal exchange packaging defined in S7.","verification_class":"machine_assisted"}
+  ],
+  "relationships":{"standards":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"gates":["GATE-COORD-SIGN-OFF","GATE-FORMAL-EXCHANGE"]},
+  "provenance":{"source_system":"confluence","space":"BST","page_id":"4882433","source_version":1,"source_title":"S5 – Coordination, Review & Sign-Off Micro-Standard","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4882433"}
+}

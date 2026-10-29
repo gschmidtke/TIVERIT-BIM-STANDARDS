@@ -1,0 +1,12 @@
+{
+  "$schema":"../../schemas/standard.schema.json","id":"TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001","type":"standard","title":"ACC / BIM 360 Deliverable Exchange Standard","status":"migration_candidate","authority":"normative","layer":"L4","modules":["S5","S7"],
+  "requirements":[
+    {"id":"REQ-S7-019","authority":"shall","statement":"Project deliverables shall be exchanged through the governed CDE using governed folders, formal reviews, or transmittals.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-020","authority":"shall_not","statement":"Ad-hoc sharing links or email attachments shall not be used for deliverables requiring traceability.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-021","authority":"shall","statement":"The governed transmittal mechanism shall be used for formal issues to external parties when a permanent issue record is required.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-022","authority":"shall","statement":"Deliverable files shall comply with the governed project naming convention before formal issue.","verification_class":"machine_checkable"}
+  ],
+  "issue_states":["WIP","Shared","For Review / Comment","For Construction","As Built"],
+  "relationships":{"standards":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001"]},
+  "provenance":{"source_system":"confluence","space":"BST","page_id":"8060929","source_version":1,"source_title":"ACC / BIM 360 Deliverable Exchange Standard","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8060929"}
+}
