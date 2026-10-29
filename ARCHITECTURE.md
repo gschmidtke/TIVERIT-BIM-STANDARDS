@@ -52,6 +52,8 @@ PASS / FAIL / NOT_APPLICABLE / INDETERMINATE
 
 An abstract test defines the evidence and pass/fail logic without depending on a specific application. Executable tests bind an abstract test to a concrete implementation such as Revit/ZEN, IFC, Solibri, ACC APIs, scripts, or a governed human verification procedure.
 
+`FIX-*` fixture objects sit beside, not inside, the execution chain. They define controlled positive, negative, not-applicable, and indeterminate cases used to prove that an ETS implementation produces the expected result and evidence behavior.
+
 Tool-specific executable logic must not be embedded into L4 normative standards merely because the requirement is machine-checkable.
 
 ### 3. Interoperability plane
@@ -80,7 +82,7 @@ Folder location may express a primary function, but it does not replace metadata
 
 ## Layer model
 
-The L1-L7 layer is a governance coordinate carried by each object. It is not merely a folder location.
+The L1-L7 layer is a governance coordinate carried by normative-plane objects. Conformance, interoperability, and publication artifacts use their own system-role contracts rather than pretending to occupy a normative governance layer.
 
 ## Module model
 
@@ -104,6 +106,9 @@ ATS-S6-COORD-003
 
 ETS-S6-COORD-003-REVIT
   binds the ATS to a Revit/ZEN implementation
+
+FIX-S6-COORD-003-PASS / FAIL / INDETERMINATE
+  verify that the implementation behaves as specified
 ```
 
 A second ETS may implement the same ATS for IFC or another platform without changing the normative requirement.
@@ -138,9 +143,25 @@ An ETS should define, at minimum:
 - execution method or callable implementation reference
 - evidence output contract
 - failure/error behavior
+- implementation state
 - provenance and lifecycle metadata
 
+An ETS may exist in `specified_not_implemented` state. Such an ETS defines the executable contract but must not be represented as operational until its callable implementation and fixture verification exist.
+
 Executable implementations may inspect or enforce governed requirements but may not create new authority or silently modify the meaning of the referenced requirement.
+
+### Conformance fixtures
+
+A fixture is a controlled regression case for an ETS. Fixtures must reference a real ETS and define an expected result plus the evidence assertions that must be observed.
+
+Fixture classes are:
+
+- `positive` — expected `pass`
+- `negative` — expected `fail`
+- `not_applicable` — expected `not_applicable`
+- `indeterminate` — expected `indeterminate`
+
+Synthetic fixtures define expected behavior but are not production evidence. Real model files or other binary test assets may later be associated with fixture objects where needed.
 
 ### Evidence
 
@@ -209,15 +230,17 @@ The roadmap uses a maturity scale to describe how far a requirement has progress
 - `M1` — structured requirement with stable ID
 - `M2` — machine-readable relationships and semantics
 - `M3` — abstract conformance test exists
-- `M4` — at least one executable verification exists
+- `M4` — at least one executable verification is implemented and fixture-verified
 - `M5` — interoperability projection exists where appropriate
 - `M6` — automated evidence-producing governance is operational
+
+A specified-but-not-implemented ETS does not by itself advance a requirement to M4.
 
 Not every requirement is expected to reach M6. Some governance and professional-judgment requirements may appropriately remain human-verifiable.
 
 ## Canonical object envelope
 
-Canonical JSON objects share a common envelope defined by `schemas/base-object.schema.json`:
+Canonical normative JSON objects share a common envelope defined by `schemas/base-object.schema.json`:
 
 - `id`
 - `legacy_ids`
@@ -238,9 +261,11 @@ Canonical JSON objects share a common envelope defined by `schemas/base-object.s
 
 Object identity and object version are separate dimensions. The stable `id` persists across governed revisions. `version` records the governed content revision, while `effective_date` records when that revision becomes authoritative. Migration candidates and drafts may omit those lifecycle values while source reconciliation is incomplete; an object cannot be promoted to `active` unless both `version` and `effective_date` are present and valid.
 
+Non-normative planes use dedicated schemas that preserve lifecycle, domain, provenance, and reference integrity without falsely assigning L1-L7 normative authority.
+
 ## Identifier namespaces
 
-Repository identity is governed by a controlled namespace taxonomy rather than by one literal prefix. `TIVERIT-*` remains the primary repository namespace. Typed families such as `ROLE-*`, `REG-*`, `REQ-*`, `GAP-*`, `REL-*`, `LNK-*`, `AUT-*`, and `MIG-*` are permitted only for their declared semantic object classes. `ATS-*` and `ETS-*` are reserved for abstract and executable conformance specifications. `BIM-STD-*` is retained only for explicitly curator-approved specialist standard identities. `W-*` is a migration/source workflow namespace pending normalization and is not preferred for new canonical workflows.
+Repository identity is governed by a controlled namespace taxonomy rather than by one literal prefix. `TIVERIT-*` remains the primary repository namespace. Typed families such as `ROLE-*`, `REG-*`, `REQ-*`, `GAP-*`, `REL-*`, `LNK-*`, `AUT-*`, and `MIG-*` are permitted only for their declared semantic object classes. `ATS-*` and `ETS-*` are reserved for abstract and executable conformance specifications. `FIX-*` is reserved for governed conformance regression fixtures. `BIM-STD-*` is retained only for explicitly curator-approved specialist standard identities. `W-*` is a migration/source workflow namespace pending normalization and is not preferred for new canonical workflows.
 
 New namespace families require curator approval and validator registration.
 
@@ -249,6 +274,8 @@ New namespace families require curator approval and validator registration.
 Canonical cross-references are validated against IDs present in the repository. References to governed objects that are not yet migrated must be declared individually in `migration/reference-forward-declarations.json` with a rationale. Wildcard exemptions are not permitted. When a referenced object is migrated or a stale source reference is repaired, its forward declaration must be removed.
 
 Reference fields also reject structured identifier-like values whose namespace is not governed. This prevents a misspelled or invented prefix from bypassing referential validation merely because it fails the known-prefix matcher.
+
+Conformance-specific references are also validated directly: ATS objects must resolve to real requirements, ETS objects must resolve to real ATS objects, and FIX objects must resolve to real ETS objects.
 
 ## Migration rule
 
