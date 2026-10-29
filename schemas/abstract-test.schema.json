@@ -10,7 +10,6 @@
     "status",
     "system_role",
     "modules",
-    "requirement_id",
     "test_intent",
     "applicability",
     "required_evidence",
@@ -34,6 +33,8 @@
       "uniqueItems": true
     },
     "requirement_id": {"type": "string", "minLength": 1},
+    "governing_object_id": {"type": "string", "minLength": 1},
+    "governing_clause": {"type": "string", "minLength": 1},
     "test_intent": {"type": "string", "minLength": 1},
     "applicability": {
       "type": "object",
@@ -78,6 +79,10 @@
       "additionalProperties": true
     }
   },
+  "oneOf": [
+    {"required": ["requirement_id"], "not": {"required": ["governing_object_id"]}},
+    {"required": ["governing_object_id"], "not": {"required": ["requirement_id"]}}
+  ],
   "allOf": [
     {
       "if": {"properties": {"status": {"const": "active"}}, "required": ["status"]},
