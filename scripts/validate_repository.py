@@ -41,8 +41,23 @@ REFERENCE_KEYS = {
     "specializations",
 }
 
+# Controlled repository namespaces. New namespace families require curator approval
+# and must be registered here before references using them can validate.
 CANONICAL_REFERENCE_PATTERN = re.compile(
     r"^(?:TIVERIT-|ROLE-|REG-|REQ-|W-|BIM-STD-|GAP-|REL-|LNK-|AUT-|MIG-)"
+)
+
+# Detect structured repository-ID-like values that would otherwise escape the known
+# namespace matcher. Requiring at least three hyphen-delimited segments avoids
+# treating simple external references such as ISO-19650 as repository object IDs.
+IDENTIFIER_LIKE_PATTERN = re.compile(
+    r"^[A-Z][A-Z0-9]*(?:-[A-Z0-9][A-Z0-9.]*){2,}$"
+)
+
+# These are deliberate conceptual labels used in relationship fields, not repository
+# object identities. They remain exempt until/unless promoted into governed objects.
+REFERENCE_LITERAL_EXEMPT_PATTERNS = (
+    re.compile(r"^GATE-[A-Z0-9-]+$"),
 )
 
 
@@ -161,6 +176,10 @@ def iter_reference_values(obj):
             yield key, values
 
 
+def is_exempt_reference_literal(value: str) -> bool:
+    return any(pattern.fullmatch(value) for pattern in REFERENCE_LITERAL_EXEMPT_PATTERNS)
+
+
 def load_forward_references(errors: list[str]) -> set[str]:
     if not FORWARD_REFERENCE_REGISTER.exists():
         errors.append(
@@ -192,6 +211,12 @@ def load_forward_references(errors: list[str]) -> set[str]:
         if not isinstance(ref_id, str) or not ref_id:
             errors.append(
                 f"migration/reference-forward-declarations.json:forward_references.{index}: missing id"
+            )
+            continue
+        if not CANONICAL_REFERENCE_PATTERN.match(ref_id):
+            errors.append(
+                f"migration/reference-forward-declarations.json:forward_references.{index}: "
+                f"unrecognized governed namespace for {ref_id!r}"
             )
             continue
         if not isinstance(reason, str) or not reason.strip():
@@ -238,6 +263,11 @@ def validate_referential_integrity(errors: list[str]):
     for path, obj in objects:
         for field, target in iter_reference_values(obj):
             if not CANONICAL_REFERENCE_PATTERN.match(target):
+                if IDENTIFIER_LIKE_PATTERN.fullmatch(target) and not is_exempt_reference_literal(target):
+                    errors.append(
+                        f"{path.relative_to(ROOT)}:{field}: structured reference {target!r} uses an "
+                        "unrecognized namespace; correct the identifier or register the namespace through governance"
+                    )
                 continue
             if target in known_ids:
                 continue
