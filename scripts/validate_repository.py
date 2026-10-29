@@ -33,6 +33,7 @@ TYPE_TO_SCHEMA = {
     "workflow": "workflow.schema.json",
     "role": "role.schema.json",
     "abstract_test": "abstract-test.schema.json",
+    "executable_test": "executable-test.schema.json",
 }
 
 REFERENCE_KEYS = {
@@ -270,6 +271,13 @@ def validate_referential_integrity(errors: list[str]):
                     f"{path.relative_to(ROOT)}:requirement_id: unresolved requirement reference {requirement_id!r}"
                 )
 
+        if obj.get("type") == "executable_test":
+            ats_id = obj.get("ats_id")
+            if isinstance(ats_id, str) and ats_id not in known_ids:
+                errors.append(
+                    f"{path.relative_to(ROOT)}:ats_id: unresolved abstract test reference {ats_id!r}"
+                )
+
         for field, target in iter_reference_values(obj):
             if not CANONICAL_REFERENCE_PATTERN.match(target):
                 if IDENTIFIER_LIKE_PATTERN.fullmatch(target) and not is_exempt_reference_literal(target):
@@ -318,6 +326,8 @@ def main() -> int:
         "workflow.schema.json",
         "role.schema.json",
         "abstract-test.schema.json",
+        "executable-test.schema.json",
+        "conformance-result.schema.json",
     }
     missing = required_schemas.difference(schemas)
     if missing:
