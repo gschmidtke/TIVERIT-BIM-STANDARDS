@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../schemas/executable-test.schema.json",
+  "id": "ETS-S6-COORD-003-REVIT",
+  "type": "executable_test",
+  "title": "Revit/ZEN check for physical modeled elements in the Standalone Coordination File",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6"],
+  "ats_id": "ATS-S6-COORD-003",
+  "implementation_binding": {
+    "platform": "Autodesk Revit",
+    "executor": "ZEN",
+    "implementation_class": "api_checker",
+    "supported_versions": ["2024", "2025", "2026", "2027"],
+    "callable_reference": null
+  },
+  "implementation_state": "specified_not_implemented",
+  "input_contract": {
+    "subject": "The currently inspected Revit document must be identified as the governed Standalone Coordination File for the project.",
+    "required_governance_inputs": [
+      "governed coordination-file identity",
+      "governed rule or classification distinguishing permitted spatial-authority content from physical building elements"
+    ],
+    "preconditions": [
+      "The Revit document is readable through an approved Revit API execution context.",
+      "The tested document identity can be resolved to the governed Standalone Coordination File.",
+      "The permitted-versus-prohibited element classification is available and unambiguous."
+    ]
+  },
+  "execution_contract": {
+    "steps": [
+      "Confirm that the tested Revit document is the governed Standalone Coordination File.",
+      "Enumerate non-type model elements in the document through the Revit API.",
+      "Classify each relevant element as permitted spatial-authority content, prohibited physical building content, or unresolved.",
+      "Record all prohibited and unresolved findings with stable Revit element identifiers and category/type context.",
+      "Map the observations to the ATS result states without changing the normative requirement."
+    ],
+    "safety_boundary": "The checker is read-only. It shall not delete, modify, relocate, reclassify, or otherwise repair model elements as part of conformance evaluation.",
+    "authority_boundary": "The executable check produces evidence only. It does not approve the model, accept a deliverable, or alter S6/S5/S7 authority."
+  },
+  "evidence_output_contract": {
+    "schema": "schemas/conformance-result.schema.json",
+    "required_observations": [
+      "tested Revit document identity",
+      "total inspected non-type model element count",
+      "count of permitted spatial-authority elements",
+      "count of prohibited physical building elements",
+      "count of unresolved elements",
+      "finding records for each prohibited or unresolved element including element id, category and type where available"
+    ],
+    "retained_artifacts": [
+      "machine-readable conformance result",
+      "finding list when prohibited or unresolved elements exist"
+    ]
+  },
+  "result_mapping": {
+    "pass": "The document is confirmed as the governed Standalone Coordination File, the element classification is complete, and zero prohibited physical building elements are found.",
+    "fail": "One or more elements are positively classified as prohibited physical building elements in the governed Standalone Coordination File.",
+    "not_applicable": "The tested document is not the governed Standalone Coordination File.",
+    "indeterminate": "Document identity cannot be governedly resolved, element enumeration is incomplete, or one or more relevant elements cannot be reliably classified as permitted or prohibited."
+  },
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "ATS-S6-COORD-003",
+    "migration_note": "First ETS contract in the repository. It defines the Revit/ZEN execution and evidence behavior but does not claim an implemented callable. Promotion beyond specified_not_implemented requires an actual executor binding plus verification against governed fixtures."
+  }
+}
