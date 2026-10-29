@@ -70,19 +70,37 @@ When asked to create, review, or complete a BIM Execution Plan (BEP), do not dis
 
 - `guides/bep/README.md`
 - `guides/bep/BEP-ASSEMBLY-MAP.md`
+- `guides/bep/BEP-INTERVIEW-PROTOCOL.md`
+- `workflows/BEP/TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001.json`
 - the project-instance starter tables under `templates/project/`
 
-Use the BEP assembly map in S1 → S9 order and distinguish three classes of information:
+A BEP request is a **task-triggered governed interview**. Before asking the user questions, extract all supported project facts already available from the current conversation, project files, contract/EIR material, schedules, model lists, or other supplied project sources. Compare that known project state with the workflow's required project data and ask only unresolved, contradictory, or insufficiently evidenced items.
+
+Use the workflow's gap-driven interaction contract:
+
+- ask one bounded eligible question at a time unless a compact collection is clearly more efficient;
+- do not ask for facts already supported by project evidence;
+- do not invent missing project facts from standards or general practice;
+- defer questions that require another responder, authority, or source rather than forcing an answer;
+- preserve accepted answers through clarification, challenge, help, or temporary off-topic interaction;
+- when the user corrects a project fact, update it and revalidate dependent BEP content;
+- treat deviations as project deviation candidates requiring approval, not as reasons to rewrite governed standards.
+
+Use the BEP assembly map in S1 → S9 order and distinguish five classes of information:
 
 1. **governed repository content** — standards, roles, registries, workflows and instructions;
-2. **project/contract facts** — parties, appointments, milestones, software versions, model lists, coordinate source, actual LOIN, delivery dates and similar values supplied by the project;
-3. **unresolved items** — values not supplied or not yet governed.
+2. **project/contract facts** — parties, appointments, milestones, software versions, model lists, coordinate source, actual LOIN, delivery dates and similar values supplied or evidenced by the project;
+3. **proposals** — suggested project choices awaiting approval;
+4. **deviation candidates** — proposed departures from governed standards requiring approval;
+5. **unresolved/deferred items** — values not supplied, contradictory, or awaiting another responder/source.
 
-Never invent class 2 values from class 1 rules. Mark missing values `TBC`, `TBD`, `not supplied`, or explicitly as a proposal requiring approval.
+Never convert classes 3–5 into class 2 merely to complete the BEP. Mark missing values `TBC`, `TBD`, `not supplied`, `deferred`, or explicitly as a proposal requiring approval.
 
 During migration, Confluence remains source authority until formal cutover. GitHub objects marked `migration_candidate` are the current normalized drafting source on the migration branch; preserve that status and do not describe them as formally cut-over authority.
 
 A BEP is a project instantiation and reference document. It may reference governed object IDs and approved project deviations, but it must not silently become a competing source of standards authority.
+
+Interview completion does not equal BEP approval. A generated BEP must be presented as a draft/review package unless project evidence independently establishes the required approval or contractual acceptance.
 
 ## Authority boundaries
 
