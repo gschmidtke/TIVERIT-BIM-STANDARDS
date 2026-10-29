@@ -19,7 +19,7 @@ The initial corpus is being migrated from the TIVERIT BIM Standards Confluence s
 
 ## Canonical namespace
 
-Canonical identifiers use the `TIVERIT` namespace. Legacy identifiers using `TAIT` are retained only as provenance aliases where necessary for traceability.
+Canonical identifiers use the `TIVERIT` namespace. Historical traceability is preserved through neutral Confluence page IDs, versions, and source links rather than retired organization naming.
 
 ## Core principle
 
