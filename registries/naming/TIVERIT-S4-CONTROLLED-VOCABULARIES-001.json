@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-CONTROLLED-VOCABULARIES-001",
+  "type": "registry",
+  "title": "S4 Controlled Vocabularies",
+  "status": "migration_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S4"],
+  "entries": [
+    {"id":"VOCAB-DISCIPLINE-CODES-001","name":"Discipline Codes","status":"source_conflict","classification":"enterprise_canonical_with_local_draft_variations","values":["ARC","STR","MEP","ELE","MEC","AV","AVLC","RIG","STG","SFX","CTRL","CIV","LND"],"conflict":"Revit Appendix E uses single-letter discipline codes while CDE sources use 3-4 letter codes."},
+    {"id":"VOCAB-ISO-CONTAINER-TYPE-001","name":"ISO 19650 Container Type Codes","status":"source_candidate","classification":"external_reference_derived","values":["M3","M2","DR","SH","VS","RP","CO","CR"]},
+    {"id":"VOCAB-ISO-ROLE-CODES-001","name":"ISO 19650 Role Codes","status":"source_candidate","classification":"external_reference_derived","values":["A","S","M","E","C","K","Z"]},
+    {"id":"VOCAB-SUITABILITY-CODES-001","name":"Suitability / Status Codes","status":"source_candidate","classification":"enterprise_canonical","values":["S0","S1","S2","S3","S4","A1","A2","B1"]},
+    {"id":"VOCAB-PURPOSE-CODES-001","name":"Purpose Codes","status":"draft_incomplete","values":["Coord","Review","Presentation","Fabrication"]},
+    {"id":"VOCAB-LEVEL-CODES-001","name":"Level Datum Codes","status":"incomplete_examples","values":["L00","L01","L02","RF","ZZ","XX"]},
+    {"id":"VOCAB-SHEET-SERIES-001","name":"Sheet Series Codes","status":"draft_mixed","values":["G","0","1","2","3","4","5","6","D"]}
+  ],
+  "gaps": [
+    {"id":"GAP-S4-001","topic":"missing_machine_readable_vocabularies","missing":["zone/volume code registry","purpose code registry","authoritative level abbreviation registry"]},
+    {"id":"CONF-S4-002","topic":"discipline_code_namespace","status":"curator_review_required"}
+  ],
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7241811","11042817","6651935","6357066","6684703","7241762"]}
+}
