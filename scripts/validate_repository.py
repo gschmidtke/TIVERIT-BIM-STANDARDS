@@ -42,7 +42,7 @@ REFERENCE_KEYS = {
 }
 
 CANONICAL_REFERENCE_PATTERN = re.compile(
-    r"^(?:TIVERIT-|ROLE-|REG-|REQ-|W-|BIM-STD-|GAP-|REL-|LNK-|AUT-|MIG-|S[1-9]-)"
+    r"^(?:TIVERIT-|ROLE-|REG-|REQ-|W-|BIM-STD-|GAP-|REL-|LNK-|AUT-|MIG-)"
 )
 
 
@@ -125,16 +125,16 @@ def validate_objects(schemas: dict[str, dict], errors: list[str]):
             print(f"OBJECT OK  {path.relative_to(ROOT)}")
 
 
-def collect_ids(value, path: Path, id_locations: dict[str, list[str]]):
+def collect_all_ids(value, ids: set[str]):
     if isinstance(value, dict):
         object_id = value.get("id")
         if isinstance(object_id, str) and object_id:
-            id_locations.setdefault(object_id, []).append(str(path.relative_to(ROOT)))
+            ids.add(object_id)
         for child in value.values():
-            collect_ids(child, path, id_locations)
+            collect_all_ids(child, ids)
     elif isinstance(value, list):
         for child in value:
-            collect_ids(child, path, id_locations)
+            collect_all_ids(child, ids)
 
 
 def iter_reference_values(obj):
@@ -210,24 +210,28 @@ def load_forward_references(errors: list[str]) -> set[str]:
 
 def validate_referential_integrity(errors: list[str]):
     objects: list[tuple[Path, dict]] = []
-    id_locations: dict[str, list[str]] = {}
+    known_ids: set[str] = set()
+    top_level_locations: dict[str, list[str]] = {}
 
     for path in iter_canonical_json():
         try:
             obj = load_json(path)
         except Exception:
             continue
-        if isinstance(obj, dict):
-            objects.append((path, obj))
-            collect_ids(obj, path, id_locations)
+        if not isinstance(obj, dict):
+            continue
+        objects.append((path, obj))
+        collect_all_ids(obj, known_ids)
+        top_level_id = obj.get("id")
+        if isinstance(top_level_id, str) and top_level_id:
+            top_level_locations.setdefault(top_level_id, []).append(str(path.relative_to(ROOT)))
 
-    for object_id, locations in sorted(id_locations.items()):
+    for object_id, locations in sorted(top_level_locations.items()):
         if len(locations) > 1:
             errors.append(
-                f"duplicate id {object_id!r} declared in: {', '.join(sorted(locations))}"
+                f"duplicate top-level object id {object_id!r} declared in: {', '.join(sorted(locations))}"
             )
 
-    known_ids = set(id_locations)
     forward_references = load_forward_references(errors)
     used_forward_references: set[str] = set()
 
