@@ -20,7 +20,9 @@
     {"id":"REQ-S1-GOV-005","authority":"shall","statement":"Governed BIM information shall be produced and managed so that its reliability and permitted use can be determined from declared requirements, lifecycle state, review evidence, and acceptance context.","verification_class":"human_verifiable"},
     {"id":"REQ-S1-GOV-006","authority":"shall","statement":"Model and data outputs shall remain traceable to governed information requirements, authoritative semantic structures, controlled production environments, coordination evidence, and formal exchange states as applicable.","verification_class":"machine_assisted"},
     {"id":"REQ-S1-GOV-007","authority":"shall","statement":"Changes to governed authority assignments shall be versioned, reviewable, and communicated through governed change control.","verification_class":"human_verifiable"},
-    {"id":"REQ-S1-GOV-008","authority":"shall","statement":"Project-specific variations to default role or authority assignments shall be explicitly declared and approved within the permitted governance boundary rather than applied implicitly.","verification_class":"human_verifiable"}
+    {"id":"REQ-S1-GOV-008","authority":"shall","statement":"Project-specific variations to default role or authority assignments shall be explicitly declared and approved within the permitted governance boundary rather than applied implicitly.","verification_class":"human_verifiable"},
+    {"id":"REQ-S1-GOV-009","authority":"shall_not","statement":"Discussion, collaboration, review activity, comments, markups, meetings, or informal agreement shall not by themselves constitute approval, acceptance, or authorization for reliance.","verification_class":"human_verifiable"},
+    {"id":"REQ-S1-GOV-010","authority":"shall_not","statement":"Access, visibility, participation, or responsiveness shall not by themselves expand a person's governed responsibility or decision authority beyond the assigned role and scope.","verification_class":"human_verifiable"}
   ],
   "relationships": {
     "standards": [
@@ -53,6 +55,7 @@
     "source_version": "1",
     "source_title": "JSON - Core BIM Standards & Governance — S1",
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2818160",
-    "migration_note": "Normalized from the S1 machine-readable source. Organization-specific wording was generalized to the current governed repository. Contractual precedence remains unresolved; downstream source gaps are closed only where existing migrated standards provide explicit governing coverage."
+    "supporting_page_ids": ["2425347"],
+    "migration_note": "Normalized from the S1 machine-readable source and enriched from source collaboration/authority doctrine. Organization-specific wording was generalized to the current governed repository. Contractual precedence remains unresolved; downstream source gaps are closed only where existing migrated standards provide explicit governing coverage."
   }
 }
