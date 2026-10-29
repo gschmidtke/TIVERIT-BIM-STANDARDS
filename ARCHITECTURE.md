@@ -50,4 +50,4 @@ Canonical JSON objects share a common envelope defined by `schemas/base-object.s
 
 Confluence remains source authority during migration. GitHub objects are `migration_candidate` until reviewed and promoted.
 
-Canonical identifiers use `TIVERIT`. Source identifiers using `TAIT` are retained under `legacy_ids` when needed for traceability.
+Canonical identifiers use `TIVERIT` exclusively. Historical traceability is retained through neutral source metadata such as Confluence page IDs, versions, and source links.
