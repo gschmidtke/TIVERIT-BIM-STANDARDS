@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/abstract-test.schema.json",
+  "title": "TIVERIT Abstract Test Specification",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "title",
+    "status",
+    "system_role",
+    "modules",
+    "requirement_id",
+    "test_intent",
+    "applicability",
+    "required_evidence",
+    "result_logic",
+    "permitted_implementation_classes",
+    "provenance"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^ATS-[A-Z0-9-]+$"},
+    "type": {"const": "abstract_test"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "enum": ["migration_candidate", "draft", "active", "deprecated", "historical", "superseded"]},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"},
+    "effective_date": {"type": ["string", "null"], "format": "date"},
+    "system_role": {"const": "conformance"},
+    "modules": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^S[1-9]$"},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "requirement_id": {"type": "string", "minLength": 1},
+    "test_intent": {"type": "string", "minLength": 1},
+    "applicability": {
+      "type": "object",
+      "required": ["applies_when"],
+      "properties": {
+        "applies_when": {"type": "string", "minLength": 1},
+        "not_applicable_when": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "required_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "result_logic": {
+      "type": "object",
+      "required": ["pass", "fail", "indeterminate"],
+      "properties": {
+        "pass": {"type": "string", "minLength": 1},
+        "fail": {"type": "string", "minLength": 1},
+        "not_applicable": {"type": "string"},
+        "indeterminate": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "permitted_implementation_classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "enum": ["api_checker", "model_checker", "registry_checker", "file_checker", "human_verification", "hybrid"]},
+      "uniqueItems": true
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_system", "derived_from"],
+      "properties": {
+        "source_system": {"type": "string"},
+        "derived_from": {"type": "string", "minLength": 1},
+        "migration_note": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "active"}}, "required": ["status"]},
+      "then": {
+        "required": ["version", "effective_date"],
+        "properties": {"effective_date": {"type": "string", "format": "date"}}
+      }
+    }
+  ],
+  "additionalProperties": false
+}
