@@ -39,6 +39,12 @@
       "notes": "Graphics guidance exists. A similarly named Revit definition appears as an Instruction Page Agent example, not as an identified source page. Exact-title CQL returned no matching concrete page."
     },
     {
+      "asset": "Family Library standard or registry",
+      "resolution": "explicit_future_gap",
+      "evidence_pages": ["4489217", "7733249", "7503875"],
+      "notes": "The S4 family-naming source explicitly calls the Family Library a future standard module. Project-template/modeling sources refer to controlled families and libraries, but exact-title CQL found no standalone Family Library page."
+    },
+    {
       "asset": "Revit Template Catalogue Registry",
       "resolution": "explicit_future_gap",
       "evidence_pages": ["7700489", "6127632"],
@@ -104,17 +110,22 @@
       "page_id": "7307286",
       "classification": "authoring_agent_configuration",
       "notes": "Specifies how an agent should consolidate Revit L6 source material; it is not itself the consolidated instruction corpus."
+    },
+    {
+      "page_id": "4489217",
+      "classification": "existing_S4_family_naming_source",
+      "notes": "Defines L4 family-name principles and explicitly defers library inventory/content-authoring implementation to future library standards/registries and L6 execution content."
     }
   ],
   "search_method": {
-    "semantic": "Targeted Rovo/Confluence searches for registries, presets, exact instruction IDs, model-health and QA assets.",
-    "exact_title": "CQL title searches for datum/workset management, sheet registry, view templates, export preset, model health, object styles, line weights, PDF export, IFC export and QA/QC checklist returned no matching standalone pages."
+    "semantic": "Targeted Rovo/Confluence searches for registries, presets, exact instruction IDs, model-health, QA, family-library and content-governance assets.",
+    "exact_title": "CQL title searches for datum/workset management, sheet registry, view templates, export preset, model health, object styles, line weights, PDF export, IFC export, QA/QC checklist and Family Library returned no matching standalone pages."
   },
-  "migration_rule": "Absence of a concrete source asset must remain a gap; do not manufacture the referenced registry, preset, or instruction during extraction.",
+  "migration_rule": "Absence of a concrete source asset must remain a gap; do not manufacture the referenced registry, preset, library standard, or instruction during extraction.",
   "provenance": {
     "source_system": "confluence",
     "space": "BST",
-    "source_pages": ["3014705", "6127632", "7340051", "2326593", "6357020", "6357066", "10846209", "7241762", "7798793", "7503875", "6193190", "7700489", "8093711", "8159247", "7438366", "6422564", "3735560", "3899424", "7307286"],
+    "source_pages": ["3014705", "6127632", "7340051", "2326593", "6357020", "6357066", "10846209", "7241762", "7798793", "7503875", "6193190", "7700489", "8093711", "8159247", "7438366", "6422564", "3735560", "3899424", "7307286", "4489217", "7733249"],
     "migration_note": "Direct source-resolution review only; not canonical authority."
   }
 }
