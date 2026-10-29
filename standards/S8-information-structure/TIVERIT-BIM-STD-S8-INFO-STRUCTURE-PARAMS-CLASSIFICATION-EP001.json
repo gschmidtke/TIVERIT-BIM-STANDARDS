@@ -42,7 +42,7 @@
   "relationships": {
     "standards": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001", "TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001", "TIVERIT-BIM-STD-S2-PIR-001", "TIVERIT-BIM-STD-S2-AIR-001", "TIVERIT-BIM-STD-S2-LOD-LOI-001", "TIVERIT-BIM-STD-S2-SEL-GOV-001"],
     "workflows": ["TIVERIT-SP-REGISTRY-001"],
-    "registries": ["TIVERIT-BIM-STD-S4-SP-REG-001", "TIVERIT-S8-SEMANTIC-DOMAINS-001"],
+    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001", "TIVERIT-S8-SEMANTIC-DOMAINS-001"],
     "roles": ["ROLE-BIM-STANDARDS-MGR-001", "ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-QAQC-AUTHORITY-001", "ROLE-TOOL-AUTHORITY-001"]
   },
   "information_demand_boundary": "S8 structures and carries information demand governed by S2; it does not redefine the requirement, timing, or permitted use locally.",
