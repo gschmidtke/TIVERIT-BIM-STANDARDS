@@ -33,6 +33,18 @@ Public repositories:
 
 An AI or human inquiry should be routed to the repository that owns the question. If an inquiry spans layers, use the order **purpose → normative constraint → operational precedent → technical capability → execution → validation**. See `AGENTS.md`, `constitution/architecture/REASONING-STACK-ROUTING.md`, and `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
 
+## BEP assembly entry point
+
+For creating or reviewing a BIM Execution Plan (BEP), do not reverse-engineer the repository from S1–S9 manually. Start with:
+
+- `guides/bep/README.md` — BEP consumption rules and migration-status handling;
+- `guides/bep/BEP-ASSEMBLY-MAP.md` — deterministic S1→S9 read order and BEP section packing map;
+- `templates/project/` — non-normative starter tables for project inputs, LOIN, RACI, MIDP, software/version lock, and federation/coordinates.
+
+The BEP consumption layer separates **governed rules** from **project/contract facts**. Missing project values must remain `TBC`, `TBD`, `not supplied`, or an explicitly labeled proposal requiring approval; they must not be inferred from a standard.
+
+During migration, Confluence remains source authority until formal cutover. GitHub objects marked `migration_candidate` are the current normalized drafting source on the migration branch and should be used for drafting with that status preserved.
+
 ## Standards ecosystem
 
 The S1–S9 backbone is the normative plane of a larger standards ecosystem. The repository is intended to distinguish four system roles:
