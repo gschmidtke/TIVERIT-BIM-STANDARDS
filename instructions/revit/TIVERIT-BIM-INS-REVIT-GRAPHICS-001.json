@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-GRAPHICS-001",
+  "type": "instruction",
+  "title": "Revit Category and Subcategory Graphics",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S4", "S5"],
+  "purpose": "Apply category/subcategory graphics through governed Object Styles, view templates, and rule-based filters while minimizing uncontrolled per-view or per-element overrides.",
+  "preconditions": ["The project is aligned to the governed Revit template and approved category/subcategory definitions.", "Applicable view templates are available for the intended documentation or coordination purpose."],
+  "steps": [
+    {"id":"GFX-01","name":"Use Object Styles as the baseline source","actions":["Use Object Styles for baseline category and subcategory line weight, line pattern, color, and material-driven display where applicable.","Do not redefine baseline category graphics independently in individual views."],"validation":["Project Object Styles align with the governed template/source.","Baseline graphics do not depend on undocumented per-view overrides."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"GFX-02","name":"Control scoped display through view templates and filters","actions":["Apply approved view templates for view-specific category visibility and graphics.","Use rule-based filters for recurring parameter-driven exceptions.","If a recurring manual override is needed, route it into governed template/filter logic instead of repeating it ad hoc."],"validation":["Recurring display logic is reproducible through templates/filters.","Uncontrolled per-element overrides are absent or recorded as explicit exceptions."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"GFX-03","name":"Use only approved subcategories in detail/content families","actions":["Verify detail items and families use governed subcategories where such subcategories exist.","Treat proposed numeric lineweights, pattern scales, or example subcategory names from source tables as noncanonical unless separately governed."],"validation":["No unapproved subcategory proliferation is introduced.","Family/detail graphics resolve through governed subcategory definitions."],"automation_readiness":"ASSISTED"}
+  ],
+  "outputs": ["Consistent category/subcategory graphics controlled by templates, Object Styles, and governed filters"],
+  "evidence": ["Object Styles inventory", "View-template and filter inventory", "Override/subcategory QA report"],
+  "future_dependencies": ["Concrete governed Object Styles/Line Weights registry", "Complete governed subcategory catalogue where required"],
+  "governance_notes": ["Object Styles are the baseline source; view templates and filters provide scoped display behavior.", "Source numeric graphics values and example pattern names remain unconfirmed and are not promoted."],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"6193190","source_version":1,"source_title":"Category & Subcategory Graphics Standards and Guidelines","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6193190","migration_note":"Migrated durable graphics-control hierarchy; numeric/example values remain noncanonical."}
+}
