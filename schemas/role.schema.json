@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/role.schema.json",
+  "title": "TIVERIT BIM Governed Role",
+  "allOf": [
+    {"$ref": "./base-object.schema.json"},
+    {
+      "type": "object",
+      "required": ["purpose", "authority_statements", "responsibilities", "accountabilities"],
+      "properties": {
+        "type": {"const": "role"},
+        "purpose": {"type": "string"},
+        "authority_statements": {"type": "array", "items": {"type": "string"}},
+        "responsibilities": {"type": "array", "items": {"type": "string"}},
+        "accountabilities": {"type": "array", "items": {"type": "string"}},
+        "approvals": {"type": "array", "items": {"type": "string"}},
+        "inputs": {"type": "array", "items": {"type": "string"}},
+        "outputs": {"type": "array", "items": {"type": "string"}},
+        "interfaces_with_roles": {"type": "array", "items": {"type": "string"}},
+        "referenced_standards": {"type": "array", "items": {"type": "string"}},
+        "referenced_workflows": {"type": "array", "items": {"type": "string"}},
+        "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "conflict_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "authority_evidence": {"type": "array", "items": {"type": "object"}}
+      },
+      "additionalProperties": true
+    }
+  ]
+}
