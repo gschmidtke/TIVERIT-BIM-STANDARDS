@@ -1,0 +1,178 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001",
+  "legacy_ids": ["IS-W6-NAVIS-EXPORT"],
+  "type": "instruction",
+  "title": "Revit to Navisworks Export Instruction",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S5", "S6", "S7", "S9"],
+  "purpose": "Provide repeatable Revit export actions for producing traceable Navisworks coordination artifacts while preserving governed model identity, spatial alignment, required properties, and export evidence.",
+  "applies_to": {
+    "tool": "Revit",
+    "output": "Navisworks-readable coordination export",
+    "roles": ["Project BIM Manager", "Project BIM Coordinator"],
+    "model_scope": ["authoritative discipline models", "coordination/container models where explicitly applicable"]
+  },
+  "preconditions": [
+    "The model identity has been declared and validated.",
+    "The model has reached the applicable coordination-ready state.",
+    "The governing shared-coordinate method has been established and validated where spatial federation applies.",
+    "Required governed properties and parameters are available for the intended coordination use.",
+    "An approved export configuration exists or the project has an explicitly governed manual configuration basis."
+  ],
+  "steps": [
+    {
+      "id": "NAVIS-01",
+      "name": "Select the governed Navisworks export configuration",
+      "purpose": "Prevent ad-hoc or inconsistent export settings.",
+      "preconditions": ["Model identity is valid.", "Model is coordination-ready."],
+      "actions": [
+        "Open the applicable Navisworks export settings in Revit.",
+        "Select the approved export preset when a governed preset exists; otherwise configure only from the applicable governed project standard.",
+        "Confirm and record the exporter version used."
+      ],
+      "validation": [
+        "Export settings match the applicable governed configuration basis.",
+        "Exporter version is recorded in the export evidence."
+      ],
+      "failure_modes": [
+        "Incorrect or unsupported exporter version.",
+        "User-defined settings are used without governed authorization.",
+        "An outdated preset is used."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "NAVIS-02",
+      "name": "Configure geometry and element conversion",
+      "purpose": "Preserve required coordination geometry without unnecessary duplication or weight.",
+      "preconditions": ["Applicable export configuration has been selected."],
+      "actions": [
+        "Configure element conversion according to the applicable governed coordination scope.",
+        "Exclude element categories only where the governing coordination requirement permits exclusion.",
+        "Apply the governed tessellation and detail settings when those settings are explicitly defined."
+      ],
+      "validation": [
+        "A test open or equivalent inspection confirms required geometry is present.",
+        "No unintended element loss or duplication is observed."
+      ],
+      "failure_modes": [
+        "Required elements are missing.",
+        "Export geometry is unnecessarily heavy for the declared coordination use.",
+        "Duplicate element instances are produced."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "NAVIS-03",
+      "name": "Configure governed coordinates and positioning",
+      "purpose": "Preserve spatial alignment across federated coordination models.",
+      "preconditions": ["The project shared-coordinate system is established and validated."],
+      "actions": [
+        "Configure the export to use the governed shared-coordinate basis.",
+        "Do not substitute an alternate local-origin or base-point method where S6 shared coordinates govern federation.",
+        "Record the coordinate method used in the export evidence."
+      ],
+      "validation": [
+        "The exported model aligns with the governed project spatial framework.",
+        "No unexplained translation or rotation is observed during federation."
+      ],
+      "failure_modes": [
+        "Model offset.",
+        "Rotation error.",
+        "Mixed or undeclared coordinate systems."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "NAVIS-04",
+      "name": "Configure property and data export",
+      "purpose": "Expose the governed information needed for coordination and issue management without exporting uncontrolled data by default.",
+      "preconditions": ["Required governed parameters are defined and populated for the intended coordination use."],
+      "actions": [
+        "Enable export of properties required by the applicable coordination and information requirements.",
+        "Exclude redundant or non-governed property groups only where that exclusion does not remove required information.",
+        "Verify required property visibility in a test export or equivalent inspection."
+      ],
+      "validation": [
+        "Required governed properties are visible in the exported coordination artifact.",
+        "No required information is silently omitted.",
+        "Information outside the declared coordination need is not exposed solely by convenience where restrictions apply."
+      ],
+      "failure_modes": [
+        "Required parameters are missing.",
+        "Export contains excessive uncontrolled data clutter.",
+        "Restricted information is exposed contrary to project governance."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "NAVIS-05",
+      "name": "Execute export and record evidence",
+      "purpose": "Produce a traceable coordination artifact and auditable export record.",
+      "preconditions": ["Applicable export settings have been validated."],
+      "actions": [
+        "Execute the Navisworks export.",
+        "Name the exported artifact using the applicable governed identity rule.",
+        "Record export date, exporter version, coordinate method, and configuration or preset identity where available.",
+        "Open or validate the exported artifact before coordination use."
+      ],
+      "validation": [
+        "The exported artifact opens successfully in the intended coordination environment.",
+        "A traceable export record exists.",
+        "The exported artifact identity can be related back to its governed source container."
+      ],
+      "failure_modes": [
+        "Export execution fails.",
+        "Exported artifact identity is non-compliant.",
+        "Required audit record is missing."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    }
+  ],
+  "outputs": [
+    "A Navisworks-readable coordination artifact suitable for the declared coordination use.",
+    "A traceable export record containing the applicable exporter, coordinate, and configuration context.",
+    "A validated relationship between the exported artifact and its governed source model identity."
+  ],
+  "evidence": [
+    "Navisworks-readable export artifact.",
+    "Export configuration or settings snapshot where available.",
+    "Export log or equivalent audit record.",
+    "Federation or test-open evidence demonstrating geometry and coordinate alignment where applicable."
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
+      "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
+      "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001"
+    ],
+    "roles": [
+      "ROLE-PROJECT-BIM-MANAGER-001",
+      "ROLE-PROJECT-BIM-COORDINATOR-001",
+      "ROLE-QAQC-AUTHORITY-001"
+    ]
+  },
+  "future_dependencies": [
+    "A concrete governed Export Preset Registry is not yet migrated; the source explicitly treats it as future work.",
+    "Exact exporter option values must not be invented from the higher-level narrative source and should be added only from a governed configuration source."
+  ],
+  "governance_notes": [
+    "Navisworks exports are coordination artifacts and do not become contractual deliverables merely because they exist; formal exchange status remains governed by S7.",
+    "This instruction executes S5/S6/S7/S8 requirements and does not redefine coordinate, semantic, acceptance, or tool authority."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "8093711",
+    "source_version": 1,
+    "source_title": "JSON - Navisworks Export Settings",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8093711",
+    "migration_note": "Normalized from the source machine-readable instruction set. Source workflow labels are retained only through provenance context; future preset-registry dependencies remain unresolved and no exact export values were invented."
+  }
+}
