@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S2-PIR-001",
+  "type": "standard",
+  "title": "Project Information Requirements (PIR)",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S2"],
+  "scope": {"purpose":"Define project information needed to support key decision gates, reliance boundaries, and downstream delivery planning."},
+  "requirements": [
+    {"id":"PIR-REQ-001","authority":"shall","statement":"Reliance is permitted only when explicitly declared in a PIR.","verification_class":"human_verifiable"},
+    {"id":"PIR-REQ-002","authority":"shall","statement":"Information delivered prior to the designated milestone gate shall be classified as Informational only.","verification_class":"machine_assisted"},
+    {"id":"PIR-REQ-003","authority":"shall","statement":"Project Information Requirements shall be reviewed and baselined prior to the commencement of Detail Design.","verification_class":"human_verifiable"},
+    {"id":"PIR-REQ-004","authority":"shall_not","statement":"Teams shall not rely on undocumented geometric assumptions for coordination decisions.","verification_class":"human_verifiable"}
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S2-MIDP-001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-DIRECTOR-001"]},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"3309569","source_version":1,"source_title":"PIR — Project Information Requirements","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3309569","migration_note":"Standalone L4 S2 production standard migrated as a candidate."}
+}
