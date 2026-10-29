@@ -7,20 +7,12 @@
     {"id":"DEP-S2-S8-001","from":"TIVERIT-BIM-STD-S2-INF-REQ-EP001","to":"TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001","topic":"Demand vs Structure","resolution":"resolved"},
     {"id":"DEP-S2-S8-002","from":"TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001","to":"GAP-S8-01","topic":"Shared Parameter policy vs registry carrier","resolution":"resolved"},
     {"id":"DEP-S2-S8-003","from":"TIVERIT-BIM-STD-S2-AIR-001","to":"GAP-S8-03","topic":"Asset information demand vs asset schema","resolution":"resolved_with_missing_artifact"},
-    {"id":"DEP-S2-S8-004","from":"TIVERIT-BIM-STD-S2-LOD-LOI-001","to":"TIVERIT-BIM-STD-S4-SP-REG-001","topic":"LOI classification demand vs Uniclass carriers","resolution":"resolved_with_namespace_review"},
-    {"id":"DEP-S2-S8-005","from":"TIVERIT-BIM-STD-S2-PIR-001","to":"TIVERIT-BIM-STD-S4-SP-REG-001","topic":"PIR project metadata demand vs Project Info parameters","resolution":"partial_due_to_unresolved_parameter_guids"},
+    {"id":"DEP-S2-S8-004","from":"TIVERIT-BIM-STD-S2-LOD-LOI-001","to":"TIVERIT-BIM-STD-S8-SP-REG-001","topic":"LOI classification demand vs Uniclass carriers","resolution":"resolved"},
+    {"id":"DEP-S2-S8-005","from":"TIVERIT-BIM-STD-S2-PIR-001","to":"TIVERIT-BIM-STD-S8-SP-REG-001","topic":"PIR project metadata demand vs Project Info parameters","resolution":"partial_due_to_unresolved_parameter_guids"},
     {"id":"DEP-S2-S8-006","from":"TIVERIT-BIM-STD-S2-SEL-GOV-001","to":"TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001","topic":"SEL instance identity vs parameter binding","resolution":"resolved"}
   ],
-  "role_crosscheck": {
-    "resolved": ["ROLE-PROJECT-BIM-MANAGER-001","ROLE-MODEL-AUTHOR-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-DISCIPLINE-LEAD-001","ROLE-BIM-STANDARDS-MGR-001","ROLE-BIM-DIRECTOR-001","ROLE-PROJECT-DIRECTOR-001"],
-    "unresolved": ["Client / Owner","FM Lead / FM Function"]
-  },
-  "remaining_source_gaps": [
-    "Standalone OIR standard is missing",
-    "EIR is distributed across BEP/delivery-core assets rather than a standalone L4 standard",
-    "Concrete asset/lifecycle schema registry is missing",
-    "Ten Shared Parameter rows remain without authoritative GUID source data",
-    "Shared Parameter Registry namespace remains under curator review"
-  ],
-  "provenance": {"source_system":"confluence","source_pages":["3047569","3702785","3538945","2425330","3309569","3637249","2883653","5177345","4161550","7241788"]}
+  "role_crosscheck":{"resolved":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-MODEL-AUTHOR-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-DISCIPLINE-LEAD-001","ROLE-BIM-STANDARDS-MGR-001","ROLE-BIM-DIRECTOR-001","ROLE-PROJECT-DIRECTOR-001"],"unresolved":["Client / Owner","FM Lead / FM Function"]},
+  "remaining_source_gaps":["Standalone OIR standard is missing","EIR is distributed across BEP/delivery-core assets rather than a standalone L4 standard","Concrete asset/lifecycle schema registry is missing","Ten Shared Parameter rows remain without authoritative GUID source data"],
+  "curator_decisions":["D-01 Shared Parameter Registry identifier aligned to S8 namespace"],
+  "provenance":{"source_system":"confluence","source_pages":["3047569","3702785","3538945","2425330","3309569","3637249","2883653","5177345","4161550","7241788"]}
 }
