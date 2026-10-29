@@ -34,6 +34,7 @@ TYPE_TO_SCHEMA = {
     "role": "role.schema.json",
     "abstract_test": "abstract-test.schema.json",
     "executable_test": "executable-test.schema.json",
+    "conformance_fixture": "conformance-fixture.schema.json",
 }
 
 REFERENCE_KEYS = {
@@ -47,7 +48,7 @@ REFERENCE_KEYS = {
 # Controlled repository namespaces. New namespace families require curator approval
 # and must be registered here before references using them can validate.
 CANONICAL_REFERENCE_PATTERN = re.compile(
-    r"^(?:TIVERIT-|ROLE-|REG-|REQ-|W-|BIM-STD-|GAP-|REL-|LNK-|AUT-|MIG-|ATS-|ETS-)"
+    r"^(?:TIVERIT-|ROLE-|REG-|REQ-|W-|BIM-STD-|GAP-|REL-|LNK-|AUT-|MIG-|ATS-|ETS-|FIX-)"
 )
 
 # Detect structured repository-ID-like values that would otherwise escape the known
@@ -264,18 +265,24 @@ def validate_referential_integrity(errors: list[str]):
     used_forward_references: set[str] = set()
 
     for path, obj in objects:
-        if obj.get("type") == "abstract_test":
+        obj_type = obj.get("type")
+        if obj_type == "abstract_test":
             requirement_id = obj.get("requirement_id")
             if isinstance(requirement_id, str) and requirement_id not in known_ids:
                 errors.append(
                     f"{path.relative_to(ROOT)}:requirement_id: unresolved requirement reference {requirement_id!r}"
                 )
-
-        if obj.get("type") == "executable_test":
+        elif obj_type == "executable_test":
             ats_id = obj.get("ats_id")
             if isinstance(ats_id, str) and ats_id not in known_ids:
                 errors.append(
-                    f"{path.relative_to(ROOT)}:ats_id: unresolved abstract test reference {ats_id!r}"
+                    f"{path.relative_to(ROOT)}:ats_id: unresolved ATS reference {ats_id!r}"
+                )
+        elif obj_type == "conformance_fixture":
+            ets_id = obj.get("ets_id")
+            if isinstance(ets_id, str) and ets_id not in known_ids:
+                errors.append(
+                    f"{path.relative_to(ROOT)}:ets_id: unresolved ETS reference {ets_id!r}"
                 )
 
         for field, target in iter_reference_values(obj):
@@ -327,6 +334,7 @@ def main() -> int:
         "role.schema.json",
         "abstract-test.schema.json",
         "executable-test.schema.json",
+        "conformance-fixture.schema.json",
         "conformance-result.schema.json",
     }
     missing = required_schemas.difference(schemas)
