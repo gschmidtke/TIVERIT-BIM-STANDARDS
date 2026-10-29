@@ -38,13 +38,9 @@ Only curator sessions should modify or promote content in these areas once the r
 
 ## Namespace policy
 
-Canonical identifiers use `TIVERIT`.
+Canonical identifiers use `TIVERIT` exclusively.
 
-Legacy `TAIT` identifiers are preserved only as provenance aliases when necessary for traceability.
-
-Example:
-
-`TAIT-BIM-STD-S4-FAM-001` -> `TIVERIT-BIM-STD-S4-FAM-001`
+Historical traceability is preserved through neutral source metadata such as Confluence page IDs, versions, and source links. Retired organization naming is not stored in repository content.
 
 ## L1-L7 governance layers
 
