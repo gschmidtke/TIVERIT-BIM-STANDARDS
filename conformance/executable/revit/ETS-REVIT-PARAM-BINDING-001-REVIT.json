@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/executable-test.schema.json",
+  "id": "ETS-REVIT-PARAM-BINDING-001-REVIT",
+  "type": "executable_test",
+  "title": "Revit/ZEN governed parameter identity and binding check",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "ats_id": "ATS-REVIT-PARAM-BINDING-001",
+  "implementation_binding": {
+    "platform": "Autodesk Revit",
+    "executor": "ZEN",
+    "implementation_class": "api_checker",
+    "supported_versions": ["2024", "2025", "2026", "2027"],
+    "callable_reference": null
+  },
+  "implementation_state": "specified_not_implemented",
+  "input_contract": {
+    "subject": "Governed shared/project parameters and bindings in the tested Revit document.",
+    "required_governance_inputs": ["applicable Shared Parameter Registry rows", "governed instance/type behavior", "governed category bindings where available", "approved exceptions"],
+    "preconditions": ["The document is readable through an approved Revit API execution context.", "Registry identities required for the tested scope can be resolved or explicitly marked unresolved."]
+  },
+  "execution_contract": {
+    "steps": ["Enumerate governed Revit parameter definitions and bindings in scope.", "Record GUID, name, data type/specification, instance/type behavior, bound categories, and relevant status where accessible.", "Resolve each parameter to its central governed registry entry.", "Compare observed identity and binding behavior to the governed definition.", "Record conflicts, missing definitions, over-broad bindings, deprecated use, and unresolved governance inputs.", "Map findings to ATS result states."],
+    "safety_boundary": "Read-only. The checker shall not create, delete, bind, rebind, or rename parameters.",
+    "authority_boundary": "The ETS verifies deployed parameter state against S8 authority; it cannot create or promote a parameter identity."
+  },
+  "evidence_output_contract": {
+    "schema": "schemas/conformance-result.schema.json",
+    "required_observations": ["tested document identity", "governed parameter count", "identity mismatch count", "binding mismatch count", "deprecated/unknown parameter count", "unresolved governance count", "finding records with GUID/name and observed versus expected behavior"],
+    "retained_artifacts": ["machine-readable parameter conformance result", "parameter delta/binding finding inventory"]
+  },
+  "result_mapping": {
+    "pass": "All applicable governed parameters match complete available identity and binding rules.",
+    "fail": "At least one governed parameter positively conflicts with an available registry identity or binding rule.",
+    "not_applicable": "No governed parameter applies to the tested scope.",
+    "indeterminate": "Required registry identity or binding/category governance is missing or unresolved for one or more applicable parameters."
+  },
+  "provenance": {"source_system":"repository_curator","derived_from":"ATS-REVIT-PARAM-BINDING-001","migration_note":"Appendix E Revit/ZEN ETS contract. It extends parameter conformance to Revit binding behavior without inventing missing source binding data."}
+}
