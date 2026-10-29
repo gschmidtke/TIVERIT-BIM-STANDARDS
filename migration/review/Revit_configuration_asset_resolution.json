@@ -1,0 +1,120 @@
+{
+  "id": "MIG-REV-REVIT-CONFIG-RESOLUTION-001",
+  "type": "migration_review",
+  "title": "Revit Configuration Asset Source Resolution",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S3", "S4", "S5", "S6", "S7", "S8"],
+  "purpose": "Record whether exact Revit implementation registries and presets referenced by Appendix E and the workflow catalogue exist as concrete Confluence assets, source scaffolds, or future gaps.",
+  "assets": [
+    {
+      "asset": "Workset Registry",
+      "resolution": "not_found_as_concrete_asset",
+      "evidence_pages": ["3014705", "6127632", "7340051", "2326593"],
+      "notes": "Workset rules and inventory captures exist, and the workflow catalogue refers to a Workset Registry, but targeted semantic search plus exact-title CQL found no standalone registry page."
+    },
+    {
+      "asset": "Datum Workset instruction",
+      "resolution": "not_found_as_standalone_instruction",
+      "evidence_pages": ["3014705", "6357020", "2326593"],
+      "notes": "The source inventory contains a datum-workset topic and S6 defines datum-workset purpose. The Instruction Page Agent uses a datum-workset instruction only as a page-naming example; targeted search found no concrete standalone instruction page."
+    },
+    {
+      "asset": "Sheet Registry",
+      "resolution": "not_found_as_concrete_asset",
+      "evidence_pages": ["6127632", "6357066", "10846209"],
+      "notes": "W6.1 references a Sheet Registry and the parent/titleblock instruction defines sheet rules, but exact-title and semantic searches found no concrete registry."
+    },
+    {
+      "asset": "View Template Registry",
+      "resolution": "not_found_as_concrete_asset",
+      "evidence_pages": ["7241762", "7798793", "7503875"],
+      "notes": "View-template rules and generic examples exist. Exact template names remain TODO/example-level; no standalone registry or controlled exact template catalogue was found."
+    },
+    {
+      "asset": "Object Styles and Line Weights registry",
+      "resolution": "not_found_as_concrete_asset",
+      "evidence_pages": ["6193190", "6357020"],
+      "notes": "Graphics guidance exists. A similarly named Revit definition appears as an Instruction Page Agent example, not as an identified source page. Exact-title CQL returned no matching concrete page."
+    },
+    {
+      "asset": "Revit Template Catalogue Registry",
+      "resolution": "explicit_future_gap",
+      "evidence_pages": ["7700489", "6127632"],
+      "notes": "Template governance explicitly calls for a concrete catalogue/registry but marks its filename and implementation as TODO/future."
+    },
+    {
+      "asset": "Template Release Pipeline",
+      "resolution": "explicit_future_gap",
+      "evidence_pages": ["7700489"],
+      "notes": "Lifecycle gates are described, but the concrete workflow artifact is explicitly TODO."
+    },
+    {
+      "asset": "Template Validation Ruleset",
+      "resolution": "explicit_future_gap",
+      "evidence_pages": ["7700489"],
+      "notes": "Validation categories are described, but the concrete ruleset artifact is explicitly TODO."
+    },
+    {
+      "asset": "Navisworks export instruction set",
+      "resolution": "concrete_source_asset",
+      "evidence_pages": ["8093711", "8159247"],
+      "source_identifier": "IS-W6-NAVIS-EXPORT",
+      "notes": "Machine-readable instructions exist for configuration selection, geometry conversion, shared-coordinate positioning, property export, execution and evidence."
+    },
+    {
+      "asset": "Export Preset Registry",
+      "resolution": "explicit_future_gap",
+      "evidence_pages": ["8093711", "6127632"],
+      "notes": "The concrete Navisworks instruction set refers to an Export Preset Registry as future. No generic PDF/IFC preset registry was found."
+    },
+    {
+      "asset": "PDF export preset",
+      "resolution": "draft_guidance_only",
+      "evidence_pages": ["7438366"],
+      "notes": "Documentation/export source contains naming and partial settings, but the standard settings section is incomplete and no standalone preset artifact was found."
+    },
+    {
+      "asset": "IFC export preset",
+      "resolution": "draft_guidance_only",
+      "evidence_pages": ["7438366"],
+      "notes": "IFC version/MVD and exact defaults remain TODO/client-dependent; no standalone preset artifact was found."
+    },
+    {
+      "asset": "QA/QC Checklist Registry",
+      "resolution": "explicit_future_gap",
+      "evidence_pages": ["6127632", "6422564", "3735560"],
+      "notes": "Substantive QA guidance exists, but the workflow catalogue marks the registry as future and no concrete registry page was found."
+    },
+    {
+      "asset": "Model Health Report",
+      "resolution": "explicit_future_gap",
+      "evidence_pages": ["6127632", "3899424"],
+      "notes": "Health-check functions are described, but the workflow catalogue explicitly marks the Model Health Report as future."
+    }
+  ],
+  "supplementary_sources": [
+    {
+      "page_id": "7798793",
+      "classification": "corroborating_L6_view_guidance",
+      "notes": "Secondary Revit view/workflow guidance reinforces purpose-driven View Templates, filter governance, logged exceptions, and QA but does not provide authoritative exact registry values."
+    },
+    {
+      "page_id": "7307286",
+      "classification": "authoring_agent_configuration",
+      "notes": "Specifies how an agent should consolidate Revit L6 source material; it is not itself the consolidated instruction corpus."
+    }
+  ],
+  "search_method": {
+    "semantic": "Targeted Rovo/Confluence searches for registries, presets, exact instruction IDs, model-health and QA assets.",
+    "exact_title": "CQL title searches for datum/workset management, sheet registry, view templates, export preset, model health, object styles, line weights, PDF export, IFC export and QA/QC checklist returned no matching standalone pages."
+  },
+  "migration_rule": "Absence of a concrete source asset must remain a gap; do not manufacture the referenced registry, preset, or instruction during extraction.",
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["3014705", "6127632", "7340051", "2326593", "6357020", "6357066", "10846209", "7241762", "7798793", "7503875", "6193190", "7700489", "8093711", "8159247", "7438366", "6422564", "3735560", "3899424", "7307286"],
+    "migration_note": "Direct source-resolution review only; not canonical authority."
+  }
+}
