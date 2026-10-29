@@ -16,13 +16,15 @@ evidence
 PASS / FAIL / NOT_APPLICABLE / INDETERMINATE
 ```
 
+`FIX-*` objects sit beside this chain as governed regression fixtures. They test whether an ETS implementation produces the expected result and evidence behavior for controlled cases.
+
 ## Directory contract
 
 ```text
 conformance/
   abstract/       tool-neutral abstract test specifications (ATS)
   executable/     tool/platform implementation bindings (ETS)
-  fixtures/       governed test inputs and expected outcomes
+  fixtures/       governed regression cases and expected outcomes
   evidence/       evidence schemas and result contracts
 ```
 
@@ -32,7 +34,8 @@ Directories should be created when their first governed artifact is added; empty
 
 - Normative requirements remain owned by `standards/` or other normative-plane objects.
 - ATS objects define how a requirement can be proven without depending on one software implementation.
-- ETS objects implement an ATS for a specific tool or capability.
+- ETS objects bind an ATS to a specific tool or capability.
+- FIX objects test ETS behavior but are not production evidence.
 - Evidence records observations and result states.
 - Evidence is not approval or acceptance by itself.
 - S1/S5/S7 continue to govern authority, review, acceptance, reliance, and sign-off.
@@ -68,9 +71,25 @@ An ETS should contain at least:
 - execution/callable reference
 - evidence output contract
 - error and indeterminate behavior
+- implementation state
 - lifecycle/provenance information
 
 Multiple ETS implementations may satisfy the same ATS. For example, one ATS may have a Revit/ZEN implementation and an IFC implementation.
+
+An ETS may be `specified_not_implemented`. In that state it is an executable contract, not proof that production code exists. A requirement reaches executable maturity only when a callable implementation exists and passes its governed fixtures.
+
+## Conformance fixtures
+
+A fixture uses the `FIX-*` namespace and references one ETS. It defines a controlled subject profile, simulated or real observations, an expected result, and expected evidence assertions.
+
+Fixture classes are:
+
+- `positive` → expected `pass`
+- `negative` → expected `fail`
+- `not_applicable` → expected `not_applicable`
+- `indeterminate` → expected `indeterminate`
+
+Synthetic fixtures are specification-level regression cases. They do not replace future real model fixtures or production evidence where those are required.
 
 ## Evidence contract
 
@@ -97,6 +116,24 @@ Baseline result states are:
 
 ## First pilot
 
-The first conformance pilot should use a small set of source-backed, already-migrated requirements rather than attempt full-corpus automation. Candidate domains are S4 identity/naming, S6 linking/shared coordinates, and S8 parameters/semantics.
+The first pilot spans S4 identity/naming, S6 linking/shared coordinates, and S8 parameters/semantics. Seven ATS objects are present. The first ETS is `ETS-S6-COORD-003-REVIT`, currently specified but not implemented, with positive, negative, and indeterminate fixtures.
 
-No pilot ATS or ETS is canonical until its referenced requirement, evidence logic, and implementation behavior have been reviewed under repository governance.
+The pilot sequence is:
+
+```text
+REQ-S6-COORD-003
+  ↓
+ATS-S6-COORD-003
+  ↓
+ETS-S6-COORD-003-REVIT
+  ↓
+FIX-S6-COORD-003-PASS
+FIX-S6-COORD-003-FAIL
+FIX-S6-COORD-003-INDETERMINATE
+  ↓
+future callable implementation
+  ↓
+conformance-result.schema.json evidence record
+```
+
+No pilot ATS, ETS, or fixture creates approval authority. Production acceptance remains governed by the normative standards and designated roles.
