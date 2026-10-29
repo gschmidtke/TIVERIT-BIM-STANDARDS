@@ -46,11 +46,13 @@ During the repository build and migration phase, the repository remains public s
 
 ## Source migration
 
-The initial corpus is being migrated from the TIVERIT BIM Standards Confluence space. The migration inventory covers 284 pages and preserves the existing S1–S9 modular framework, L1–L7 governance architecture, role definitions, workflows, registries, machine-readable assets, and BEP automation components.
+The initial corpus is being migrated from the TIVERIT BIM Standards Confluence space. The migration inventory preserves the existing S1–S9 modular framework, the repository L1–L7 governance architecture, role definitions, workflows, registries, machine-readable assets, and BEP automation components.
 
-## Canonical namespace
+## Canonical namespaces
 
-Canonical identifiers use the `TIVERIT` namespace. Historical traceability is preserved through neutral Confluence page IDs, versions, and source links rather than retired organization naming.
+Canonical repository-owned identifiers use a controlled namespace taxonomy. `TIVERIT-*` is the primary namespace; typed semantic families such as `ROLE-*`, `REG-*`, `REQ-*`, and other explicitly governed prefixes are permitted for their defined object classes. New namespace families require curator approval and validator registration. See `GOVERNANCE.md` for the authoritative namespace policy.
+
+Historical traceability is preserved through neutral Confluence page IDs, versions, and source links.
 
 ## Core principle
 
