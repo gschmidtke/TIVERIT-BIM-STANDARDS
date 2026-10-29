@@ -18,4 +18,7 @@ Open curator conflicts:
 Provenance hygiene:
 S3_source_pages.json was not committed because raw titles, URLs, and breadcrumbs contain retired naming. Canonical objects use neutral page-ID provenance only.
 
-No new S3 curator decision has been accepted yet. The Shared Parameter Registry namespace decision remains parked separately.
+Curator decision log:
+- No new S3 curator decisions have been accepted yet.
+- Pending S3 decisions are the system-of-record scope split, folder hierarchy precedence, and Project Administrator capability model.
+- The Shared Parameter Registry namespace decision remains parked separately.
