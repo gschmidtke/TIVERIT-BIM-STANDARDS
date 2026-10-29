@@ -1,0 +1,10 @@
+{
+  "$schema":"../../schemas/registry.schema.json","id":"TIVERIT-S7-DELIVERY-STATES-001","type":"registry","title":"S7 Delivery and Acceptance States","status":"migration_candidate","authority":"informational","layer":"L7","modules":["S5","S7"],
+  "entries":[
+    {"id":"iso19650_cde","name":"ISO 19650 Core CDE States","states":["Work in Progress (WIP)","Shared","Published","Archived"],"source_page_id":"3047539"},
+    {"id":"acc_issue_states","name":"ACC CDE Deliverable Issue States","states":["WIP","Shared","For Review / Comment","For Construction","As Built"],"source_page_id":"8060929"},
+    {"id":"coordination_gateway_states","name":"Coordination Sign-Off & Gateway States","states":["Informational","Coordinated","Validated","Accepted","Rejected","Superseded"],"source_page_id":"4423696"}
+  ],
+  "relationships":{"standards":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001"]},
+  "provenance":{"source_system":"confluence","space":"BST","source_pages":["3047539","8060929","4423696"]}
+}

@@ -1,0 +1,18 @@
+{
+  "id": "MIG-S8-SP-CROSSCHECK-001",
+  "title": "S8 to Shared Parameters Dependency Cross-Check",
+  "status": "migration_candidate",
+  "result": "pass_with_unresolved_source_dependencies",
+  "parent_standard": "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
+  "checked_objects": [
+    {"id":"TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001","relationship":"operationalizes S8.3 parameter and shared-parameter governance","resolution":"resolved"},
+    {"id":"TIVERIT-SP-REGISTRY-001","relationship":"implements the governed Shared Parameter Registry workflow required by S8.3 / GAP-S8-01","resolution":"resolved"},
+    {"id":"TIVERIT-BIM-STD-S8-SP-REG-001","relationship":"instantiates the first Citizen parameter dataset and carries S8.4 Uniclass classification parameters","resolution":"resolved"},
+    {"id":"TIVERIT-S8-SEMANTIC-DOMAINS-001","relationship":"resolves semantic-domain ownership used by the Shared Parameter workflow","resolution":"resolved_with_two_unresolved_owner_functions"}
+  ],
+  "classification_carriers_verified":["Classification.Uniclass.Ss.Number","Classification.Uniclass.Ss.Description","Classification.Uniclass.EF.Number","Classification.Uniclass.EF.Description","Classification.Uniclass.Pr.Number","Classification.Uniclass.Pr.Description"],
+  "role_resolution":{"resolved":["ROLE-DISCIPLINE-LEAD-001","ROLE-QAQC-AUTHORITY-001","ROLE-TOOL-AUTHORITY-001","ROLE-BIM-STANDARDS-MGR-001","ROLE-PROJECT-BIM-MANAGER-001"],"unresolved_owner_functions":["AVLC Lead","FM Lead"]},
+  "unresolved_source_dependencies":["authoritative SPR-CORE master source","CLS-SYS classification registry","CLS-MAP classification mapping registry","concrete asset/lifecycle schema registry"],
+  "curator_decisions":[{"id":"D-01","decision":"Shared Parameter Registry identifier is aligned to the S8 namespace as TIVERIT-BIM-STD-S8-SP-REG-001."}],
+  "provenance":{"source_system":"confluence","source_pages":["2883653","2785403","5177345","3768321","7241788","4423719","4161550"]}
+}

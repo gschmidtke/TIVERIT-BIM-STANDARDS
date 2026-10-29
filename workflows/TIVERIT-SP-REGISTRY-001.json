@@ -1,0 +1,53 @@
+{
+  "$schema": "../schemas/workflow.schema.json",
+  "id": "TIVERIT-SP-REGISTRY-001",
+  "type": "workflow",
+  "title": "Shared Parameter Registry Governance (GUID-first)",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S2", "S8"],
+  "scope": {
+    "includes": ["Revit shared parameter TXT imports", "CSV-based Shared Parameter Registry", "Citizen vs Visitor governance", "Delta analysis between projects and registry", "TXT generation for projects from registry"],
+    "excludes": ["Tool-specific UI steps", "Per-project BEP language", "Built-in Revit parameters without GUIDs"]
+  },
+  "artifacts": [
+    {"id":"registry_master","authority":"authoritative","format":"csv","canonical_file_pattern":"Registry/TIVERIT_Shared_Parameter_Registry_v*.csv"},
+    {"id":"project_import_raw","authority":"evidence","format":"csv","file_pattern":"Incoming/Projects/{project_key}/*Import*.csv"},
+    {"id":"project_import_curated","authority":"working","format":"csv","file_pattern":"Incoming-Curated/{project_key}/*Curated*.csv"},
+    {"id":"citizen_txt","authority":"derived","format":"txt","canonical_file_pattern":"Project Dispatch/TIVERIT_SharedParameters_CITIZENS_v*.txt"},
+    {"id":"project_delta_report","authority":"evidence","format":"csv","file_pattern":"Incoming/Projects/{project_key}/*Delta*.csv"}
+  ],
+  "rules": {
+    "identity": {"primary_key": "parameter_guid", "built_in_exclusion": "Exclude any row where parameter_guid is null, empty, or contains non-GUID markers such as BUILTIN or BUILT_IN."},
+    "citizenship": {"default": "VISITOR", "promotion_requires_governance": true}
+  },
+  "steps": [
+    {"id":"import_project_shared_parameters","action":"Import a project shared parameter TXT into a CSV snapshot for analysis, parse groups and PARAM rows, and exclude rows without valid GUIDs.","inputs":["project_shared_parameter_txt"],"outputs":["project_import_raw"],"verification":{"class":"machine_executable"}},
+    {"id":"curate_project_import","action":"Create a curated working copy, normalize names without changing identity, optionally assign semantic domain and owner role, and require human review of citizenship and lifecycle state.","inputs":["project_import_raw"],"outputs":["project_import_curated"],"verification":{"class":"human_verifiable"}},
+    {"id":"merge_into_registry_v1","action":"Merge curated project parameters into a proposed next registry version without overwriting existing GUID records. New GUIDs must remain proposed/visitor until explicit governance approval promotes them to Citizen.","inputs":["registry_master","project_import_curated"],"outputs":["registry_master_vNext"],"verification":{"class":"human_verifiable"},"migration_note":"The source contains conflicting promotion behavior. This migration candidate disables automatic promotion pending curator resolution."},
+    {"id":"generate_citizen_txt","action":"Generate a Revit shared parameter TXT from registry entries that are explicitly approved as Citizen and Active, with deterministic grouping and exact GUID preservation.","inputs":["registry_master"],"outputs":["citizen_txt"],"verification":{"class":"machine_executable"}},
+    {"id":"compute_project_delta","action":"Compare a project import against the master registry using GUID as primary identity and canonical name as collision evidence, then emit a delta report for review.","inputs":["registry_master","project_import_raw"],"outputs":["project_delta_report"],"verification":{"class":"machine_executable"}}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001", "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001"],
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-BIM-STANDARDS-MGR-001"]
+  },
+  "unresolved_role_hooks": [
+    {"observed_name":"AVLC Lead","use":"semantic owner for AVLC parameters","resolution":"unresolved"},
+    {"observed_name":"FM Lead","use":"semantic owner for facility/asset parameters","resolution":"unresolved"}
+  ],
+  "conflicts": [
+    {"id":"MIG-SP-CONFLICT-001","topic":"automatic_citizen_promotion","source_rule":"One source rule says a previously unseen GUID is added directly as CITIZEN with active state unless explicitly set otherwise.","conflicting_rule":"The same governance source states that promotion from VISITOR to CITIZEN is an explicit governance act and no project can silently promote a parameter.","resolution_status":"curator_review_required"}
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "3768321",
+    "source_version": 1,
+    "source_title": "JSON - Shared Parameter Registry Governance Workflow",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3768321",
+    "migration_note": "Role cross-check resolves standards governance to ROLE-BIM-STANDARDS-MGR-001; AVLC Lead and FM Lead remain unresolved semantic-owner hooks. Registry namespace aligned to S8 by curator decision D-01."
+  }
+}

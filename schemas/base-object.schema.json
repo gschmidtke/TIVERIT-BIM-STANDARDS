@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/base-object.schema.json",
+  "title": "TIVERIT BIM Standards Base Object",
+  "type": "object",
+  "required": ["id", "type", "title", "status", "layer", "modules", "provenance"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "legacy_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "type": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "enum": ["migration_candidate", "draft", "active", "deprecated", "historical", "superseded"]},
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$",
+      "description": "Governed object version. Stable object identity remains in id; version does not redefine identity."
+    },
+    "effective_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date on which the governed version takes effect. May be null before promotion to active authority."
+    },
+    "supersedes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "superseded_by": {"type": ["string", "null"]},
+    "authority": {"type": "string", "enum": ["external", "doctrine", "architectural", "normative", "procedural", "instructional", "configuration", "informational"]},
+    "layer": {"type": "string", "pattern": "^L[1-7]$"},
+    "modules": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^S[1-9]$"},
+      "uniqueItems": true
+    },
+    "scope": {"type": "object"},
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "standards": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "workflows": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "instructions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "registries": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "roles": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "configurations": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": true
+    },
+    "verification": {"type": "object"},
+    "provenance": {
+      "type": "object",
+      "required": ["source_system"],
+      "properties": {
+        "source_system": {"type": "string"},
+        "space": {"type": "string"},
+        "page_id": {"type": "string"},
+        "source_version": {"type": ["integer", "string"]},
+        "source_title": {"type": "string"},
+        "source_url": {"type": "string"},
+        "migration_note": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "active"}},
+        "required": ["status"]
+      },
+      "then": {
+        "required": ["version", "effective_date"],
+        "properties": {
+          "effective_date": {"type": "string", "format": "date"}
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

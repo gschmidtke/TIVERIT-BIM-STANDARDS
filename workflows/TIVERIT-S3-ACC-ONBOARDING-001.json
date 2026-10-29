@@ -1,0 +1,19 @@
+{
+  "$schema": "../schemas/workflow.schema.json",
+  "id": "TIVERIT-S3-ACC-ONBOARDING-001",
+  "type": "workflow",
+  "title": "S3 ACC Project Onboarding",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L5",
+  "modules": ["S3"],
+  "trigger": "New project CDE setup",
+  "steps": [
+    {"id":"01","action":"Create project from governed ACC template.","actor_role":"ROLE-CDE-MANAGER-001"},
+    {"id":"02","action":"Create governed folder structure and platform services required by the project.","actor_role":"ROLE-CDE-MANAGER-001"},
+    {"id":"03","action":"Apply role groups and least-privilege permissions.","actor_role":"ROLE-CDE-MANAGER-001"},
+    {"id":"04","action":"Configure collaboration, coordination, issue, review, transmittal, naming, and status settings required by the BEP.","actor_role":"ROLE-CDE-MANAGER-001"},
+    {"id":"05","action":"Review configured environment against project information requirements before production use.","actor_role":"ROLE-PROJECT-BIM-MANAGER-001"}
+  ],
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["8060937","6848513"]}
+}

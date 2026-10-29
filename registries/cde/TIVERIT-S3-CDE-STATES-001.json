@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S3-CDE-STATES-001",
+  "type": "registry",
+  "title": "S3 CDE and Information Container State Systems",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S3"],
+  "entries": [
+    {"id":"CDE-WIP","name":"Work in Progress","code":"WIP","system":"iso19650_information_state","meaning":"Active authoring and internal QA/QC; no cross-discipline reliance.","acc_mapping":"/02_Design_and_Coordination/10_WIP/<Discipline>"},
+    {"id":"CDE-SHARED","name":"Shared","code":"S","system":"iso19650_information_state","meaning":"Verified for interdisciplinary coordination and consultation.","acc_mapping":"/02_Design_and_Coordination/20_Shared"},
+    {"id":"CDE-PUBLISHED","name":"Published","code":"P","system":"iso19650_information_state","meaning":"Authorized information package suitable for the permitted use stated by S2/S7.","acc_mapping":"/02_Design_and_Coordination/30_Published"},
+    {"id":"CDE-ARCHIVED","name":"Archived","code":"A","system":"iso19650_information_state","meaning":"Frozen write-locked record snapshot.","acc_mapping":"/04_Records_and_Archive"},
+    {"id":"DELIV-WIP","name":"Work in Progress","code":"WIP","system":"deliverable_issue_state","permitted_use":"Internal discipline drafting only."},
+    {"id":"DELIV-REVIEW","name":"Shared / For Review","code":"S_REV","system":"deliverable_issue_state","permitted_use":"Coordination/review only; not construction reliance."},
+    {"id":"DELIV-FORMAL","name":"For Construction / Formal Submission","code":"FC_SUB","system":"deliverable_issue_state","permitted_use":"Contractual/statutory/construction reliance per transmittal terms."},
+    {"id":"DELIV-ASBUILT","name":"As Built","code":"AB","system":"deliverable_issue_state","permitted_use":"FM, handover, and operations reliance."}
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7700514","8060929","6848571","4423696"],"migration_note":"State systems remain distinct. ACC issue lifecycle is governed separately under S5 and is not merged into CDE container-state semantics."}
+}

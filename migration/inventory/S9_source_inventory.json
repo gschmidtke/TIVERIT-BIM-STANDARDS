@@ -1,0 +1,111 @@
+{
+  "id": "MIG-INV-S9-001",
+  "type": "migration_inventory",
+  "title": "S9 Toolchain Authority and Automation Source Inventory",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S9"],
+  "source_system": "confluence",
+  "space": "BST",
+  "primary_sources": [
+    {
+      "page_id": "2228282",
+      "classification": "structured_source_json",
+      "source_status": "draft_structured",
+      "notes": "Primary S9 source defining tool authority, primary authoring domains, automation/interoperability, constrained documentation tools, and toolchain stability."
+    },
+    {
+      "page_id": "2719840",
+      "classification": "self_source",
+      "source_status": "current",
+      "notes": "Human-readable structural companion to the primary S9 source."
+    },
+    {
+      "page_id": "4489234",
+      "classification": "binder_summary",
+      "source_status": "under_review",
+      "notes": "Binder summary useful for traceability and source grouping, not independent authority."
+    },
+    {
+      "page_id": "5308417",
+      "classification": "automation_registry_governance_scaffold",
+      "source_status": "draft",
+      "notes": "Defines conceptual fields and governance rules for an Automation Registry, including registration, ownership, version/status, risk/impact, approval reference and evidence/logging. It explicitly does not enumerate automation assets."
+    },
+    {
+      "page_id": "4554779",
+      "classification": "tool_authority_matrix_governance_scaffold",
+      "source_status": "draft",
+      "notes": "Defines the conceptual schema and governance rules for a Tool Authority Matrix. It explicitly does not contain concrete tool/domain matrix entries."
+    },
+    {
+      "page_id": "6127640",
+      "classification": "inventor_vault_specialization",
+      "source_status": "current",
+      "notes": "S9 specialization for manufacturing authoring and controlled repository authority."
+    },
+    {
+      "page_id": "6127650",
+      "classification": "inventor_content_lifecycle_specialization",
+      "source_status": "current",
+      "notes": "Lifecycle and normalization governance for manufacturing content; inherits S9/S1 authority boundaries."
+    },
+    {
+      "page_id": "6750227",
+      "classification": "inventor_identity_specialization",
+      "source_status": "current",
+      "notes": "Tool-specific identity/naming specialization aligned with cross-tool governance."
+    },
+    {
+      "page_id": "7241747",
+      "classification": "cross_tool_exchange_governance",
+      "source_status": "draft",
+      "notes": "Governance for manufacturing-to-BIM exchange; paired with concrete W6.3 workflow and IS-W6.3 instruction sources already inventoried separately."
+    }
+  ],
+  "source_sections": [
+    "S9.1 Purpose and relationship to ISO 19650",
+    "S9.2 Digital ecosystem and tool authority",
+    "S9.3 Primary BIM authoring environment",
+    "S9.4 Manufacturing and mechanical authoring",
+    "S9.5 Electrical and controls authoring",
+    "S9.6 Automation and interoperability",
+    "S9.7 Documentation and constrained tools",
+    "S9.8 Toolchain stability and governance"
+  ],
+  "core_principles": [
+    "Tools serve governance; tools do not define governance.",
+    "Each tool/domain must have explicit authority boundaries.",
+    "Automation is an execution layer, not an authority layer.",
+    "Automation must be documented, repeatable, auditable and aligned with standards and registries.",
+    "New tools require declared authority, governed integration and preserved information integrity.",
+    "Non-authoritative tools may consume or transform information but may not silently become sources of truth."
+  ],
+  "confirmed_gaps": [
+    {
+      "gap_id": "GAP-S9-01",
+      "asset": "Automation Registry",
+      "state": "governance_scaffold_exists_but_concrete_registry_missing",
+      "source_page": "5308417"
+    },
+    {
+      "gap_id": "GAP-S9-02",
+      "asset": "Tool Authority Matrix",
+      "state": "governance_scaffold_exists_but_concrete_matrix_missing",
+      "source_page": "4554779"
+    }
+  ],
+  "migration_observations": [
+    "S9 should remain tool-aware but not tool-instructional; exact execution belongs in workflows/instructions/configuration.",
+    "The Automation Registry and Tool Authority Matrix are real governance requirements but not yet concrete source data sets.",
+    "Existing repository role ROLE-TOOL-AUTHORITY-001 and downstream automation references can consume S9 but do not replace the missing S9 parent standard.",
+    "Cross-tool specializations should inherit S9 authority rather than become independent competing authority models."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["2228282", "2719840", "4489234", "5308417", "4554779", "6127640", "6127650", "6750227", "7241747"],
+    "migration_note": "Direct source inventory only; no canonical S9 content promoted by this file."
+  }
+}

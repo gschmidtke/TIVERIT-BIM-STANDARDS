@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S3-PLATFORM-PERMISSIONS-001",
+  "type": "registry",
+  "title": "S3 ACC Platform Roles and Permission Boundaries",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S3"],
+  "entries": [
+    {"id":"PERM-INFO-MGR","name":"Information Manager","role_id":"ROLE-INFORMATION-MANAGER-001","platform_role":"Project Administrator","boundary":"Overall CDE architecture, information security, archive write-lock enforcement, contractual submission validation."},
+    {"id":"PERM-PBIM-MGR","name":"Project BIM Manager","role_id":"ROLE-PROJECT-BIM-MANAGER-001","platform_role":"Project Administrator","boundary":"Operational coordination governance, Gate E sign-off, model promotion and /02 administration."},
+    {"id":"PERM-CDE-MGR","name":"CDE Manager","role_id":"ROLE-CDE-MANAGER-001","platform_role":"Project Administrator","boundary":"Technical provisioning, onboarding, group assignment, permission audits, and platform configuration."},
+    {"id":"PERM-PBIM-COORD","name":"Project BIM Coordinator","role_id":"ROLE-PROJECT-BIM-COORDINATOR-001","platform_role":"Member","boundary":"Coordination spaces, issue creation/assignment, clash verification."},
+    {"id":"PERM-DISCIPLINE-LEAD","name":"Discipline Lead","role_id":"ROLE-DISCIPLINE-LEAD-001","platform_role":"Member","boundary":"Own-discipline WIP administration and controlled package sharing."},
+    {"id":"PERM-MODEL-AUTHOR","name":"Model Author","role_id":"ROLE-MODEL-AUTHOR-001","platform_role":"Member","boundary":"Own-discipline WIP authoring only."},
+    {"id":"PERM-CONTRACTOR","name":"Main Contractor Representative","role_id":"ROLE-MAIN-CONTRACTOR-REP-001","platform_role":"Member / External","boundary":"Published consumption plus submittal/RFI interfaces per BEP."},
+    {"id":"PERM-CLIENT","name":"Client Representative","role_id":"ROLE-CLIENT-REP-001","platform_role":"Viewer / External","boundary":"Published/transmittal review and record access per BEP."}
+  ],
+  "relationships": {"role_registry":["REG-ROLE-001"],"standards":["TIVERIT-BIM-STD-S3-PROD-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["6651950"],"migration_note":"Three distinct governed functions retain Project Administrator capability. Capability overlap is preserved and does not imply role equivalence. Programmatic separation of privileges remains under curator review."}
+}

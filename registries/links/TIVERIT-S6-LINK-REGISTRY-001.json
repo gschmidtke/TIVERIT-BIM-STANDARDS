@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S6-LINK-REGISTRY-001",
+  "type": "registry",
+  "title": "S6 Governed Link Registry",
+  "status": "migration_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S6"],
+  "scope": {
+    "purpose": "Record authoritative model-to-model reference relationships prior to coordination intake.",
+    "source_gap": "GAP-S6-01",
+    "runtime_status": "migration_candidate_only; source registry framework remains an open gap and is not promoted to active authority"
+  },
+  "entries": [],
+  "record_schema": {
+    "evidenced_required_fields": ["link_id","host_container_root","linked_container_root","link_intent","source_discipline","host_discipline","workset_name","coordinate_alignment_basis","lifecycle_status","responsible_role"],
+    "evidenced_optional_fields": ["source_tool"],
+    "link_intent_values": ["authoring_background","coordination_check","reference_only"],
+    "source_lifecycle_values": ["imported","neutralized","customized","approved","deprecated"]
+  },
+  "unresolved_fields": [
+    {"name":"overlay_vs_attachment_mode","gap_id":"GAP-S6-03","status":"unresolved","note":"Overlay is evidenced as the normal circular-link prevention rule, but exceptions permitting Attachment are not governed."},
+    {"name":"room_bounding_toggle","gap_id":"GAP-S6-04","status":"unresolved","note":"No governed discipline-by-discipline Room Bounding rule exists."},
+    {"name":"default_loaded_state","status":"unresolved","note":"Default load behavior is not fully governed in the source."},
+    {"name":"phase_mapping_matrix","status":"unresolved","note":"Cross-phase mapping across links is not formalized."},
+    {"name":"cloud_urn_persistence","gap_id":"GAP-S6-05","status":"unresolved","note":"Persistent cloud-link identity mechanics are not formally specified."}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001","TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001","TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-COORDINATION-EP001"],
+    "roles": ["ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-PROJECT-BIM-MANAGER-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "4882441",
+    "source_title": "Link Registry Governance Framework",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4882441",
+    "migration_note": "Only fields evidenced in source are represented as governed candidate fields. Proposed defaults for unresolved link behavior were intentionally not promoted."
+  }
+}

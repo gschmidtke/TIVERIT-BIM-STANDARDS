@@ -1,0 +1,23 @@
+{
+  "id": "S5-S2-S7-S8-CROSSCHECK-001",
+  "status": "pass_with_source_conflicts_retained",
+  "S2": [
+    {"dependency":"MIDP/TIDP","use":"Sets timing, cadence, and content expected at intake and milestone gates."},
+    {"dependency":"LOD/LOI","use":"Sets maturity/fidelity criteria for coordination checks."},
+    {"dependency":"Declared purpose/permitted reliance","use":"Limits what S5 sign-off proves."}
+  ],
+  "S7": [
+    {"dependency":"GATE-COORD-SIGN-OFF → GATE-FORMAL-EXCHANGE","use":"S5 readiness is prerequisite evidence for S7 packaging; it is not itself an external exchange."},
+    {"dependency":"Acceptance-to-CDE status","use":"S5 sign-off must map to governed CDE status advancement before S7 formal exchange."}
+  ],
+  "S8": [
+    {"dependency":"Citizen / Visitor state","use":"Pre-publish QA verifies semantic entity status before coordination intake."},
+    {"dependency":"mandatory shared parameters","use":"Pre-publish QA checks required parameter completeness."},
+    {"dependency":"naming and metadata integrity","use":"Coordination filters and search sets rely on governed semantic metadata."}
+  ],
+  "roles": {
+    "resolved": ["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-BIM-DETAILER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-DESIGN-LEAD-001","ROLE-PROJECT-DIRECTOR-001","ROLE-MODEL-AUTHOR-001","ROLE-QAQC-AUTHORITY-001"],
+    "workflow_functions": ["Issue Owner","Responsible Party"]
+  },
+  "source_pages": ["3014761","4784129","7241803","6881343","4423696","4882433","6881361","5898258"]
+}

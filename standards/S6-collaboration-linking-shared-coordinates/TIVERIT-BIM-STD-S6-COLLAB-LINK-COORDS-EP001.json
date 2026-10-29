@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001",
+  "type": "standard",
+  "title": "Collaboration, Linking & Shared Coordinates",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S6"],
+  "scope": {
+    "purpose": "Govern multi-model collaboration, reference relationships, shared spatial coordination, and worksharing boundaries while preserving container ownership and downstream coordination integrity.",
+    "tool_neutral_boundary": "L4 defines required outcomes and authority boundaries. Revit Central/Local mechanics, worksets, and specific shared-coordinate commands remain L6 implementation guidance.",
+    "curator_decisions": ["D-14", "D-15", "D-16", "D-17"]
+  },
+  "requirements": [
+    {"id":"REQ-S6-COLLAB-001","authority":"shall","statement":"Collaboration across models shall preserve model ownership, predictable interactions, and stable reference relationships between separately identified containers.","verification_class":"human_verifiable"},
+    {"id":"REQ-S6-COLLAB-002","authority":"shall","statement":"Discipline authoring models shall serve as the single source of truth for their modeled content and scope.","verification_class":"human_verifiable"},
+    {"id":"REQ-S6-COLLAB-003","authority":"shall","statement":"Changes in referenced models shall propagate through controlled container updates via CDE Shared state rather than ad-hoc file replacement.","verification_class":"machine_assisted"},
+    {"id":"REQ-S6-COLLAB-004","authority":"shall_not","statement":"Collaboration discussions, notifications, or conversational agreements shall not be construed as governance approval, sign-off, or acceptance.","verification_class":"human_verifiable"},
+    {"id":"REQ-S6-LINK-001","authority":"shall","statement":"Linked models shall function as read-only references; host authoring sessions shall not modify or borrow elements of a linked model.","verification_class":"machine_checkable"},
+    {"id":"REQ-S6-LINK-002","authority":"shall","statement":"All model links shall be recorded in the governed Link Registry prior to coordination intake.","verification_class":"machine_checkable"},
+    {"id":"REQ-S6-COORD-001","authority":"shall","statement":"Each project shall maintain a single, unambiguous shared spatial coordinate system across all participating disciplines.","verification_class":"machine_checkable"},
+    {"id":"REQ-S6-COORD-002","authority":"shall","statement":"The Standalone Coordination File BIM-STD-CF-001 shall be established and maintained by the Project BIM Manager as the sole authority for shared coordinates, levels, and grids.","verification_class":"human_verifiable"},
+    {"id":"REQ-S6-COORD-003","authority":"shall_not","statement":"The Standalone Coordination File shall not contain modeled physical building elements.","verification_class":"machine_checkable"},
+    {"id":"REQ-S6-COORD-004","authority":"shall","statement":"All discipline models shall reference the Standalone Coordination File and consume its approved spatial framework during initial model setup.","verification_class":"machine_checkable","scope":{"implementation_note":"For Revit implementation, discipline models acquire coordinates from BIM-STD-CF-001; peer-to-peer coordinate publication is not an equivalent authority path."}},
+    {"id":"REQ-S6-COORD-005","authority":"shall_not","statement":"Internal-origin alignment shall not be used as the governing basis for multi-model federation where a governed shared coordinate system exists.","verification_class":"machine_checkable"},
+    {"id":"REQ-S6-WS-001","authority":"shall","statement":"Multi-user authoring environments shall enforce clear worksharing protocols to prevent concurrency collisions and unauthorized modifications.","verification_class":"machine_assisted"}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001","TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001","BIM-STD-CF-001"],
+    "registries": ["TIVERIT-S6-LINK-REGISTRY-001"],
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-CDE-MANAGER-001","ROLE-INFORMATION-MANAGER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-MODEL-AUTHOR-001","ROLE-QAQC-AUTHORITY-001"]
+  },
+  "open_gaps": ["GAP-S6-01","GAP-S6-02","GAP-S6-03","GAP-S6-04","GAP-S6-05"],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "2457695",
+    "source_title": "JSON - Collaboration, Linking & Shared Coordinates",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2457695",
+    "migration_note": "L4 S6 module migrated with curator decisions D-14 through D-17. Tool-specific Revit mechanics remain implementation-layer material and unresolved source gaps remain explicitly open."
+  }
+}

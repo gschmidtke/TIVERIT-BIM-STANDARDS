@@ -1,0 +1,12 @@
+{
+  "$schema":"../../schemas/standard.schema.json","id":"TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","type":"standard","title":"Acceptance and Information Status Link","status":"migration_candidate","authority":"normative","layer":"L4","modules":["S5","S7"],
+  "requirements":[
+    {"id":"REQ-S7-009","authority":"shall","statement":"Every formal acceptance decision shall be associated with a corresponding governed CDE container status change.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-010","authority":"shall","statement":"When coordination sign-off or milestone approval occurs, the information container status shall be updated in the CDE to reflect the accepted state.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-011","authority":"shall","statement":"The CDE status of every container shall be traceable to a specific review record, sign-off event, or deviation approval.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-012","authority":"shall_not","statement":"Acceptance decisions recorded only in informal channels without a governed CDE status update shall not constitute governed acceptance.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-013","authority":"shall","statement":"If sign-off occurs outside the CDE, the Project BIM Manager or designated CDE lead shall execute the corresponding CDE status transition within 24 hours.","verification_class":"machine_checkable"}
+  ],
+  "relationships":{"standards":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-CDE-MANAGER-001"]},
+  "provenance":{"source_system":"confluence","space":"BST","page_id":"4423696","source_version":1,"source_title":"Acceptance and Information Status Link","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4423696"}
+}

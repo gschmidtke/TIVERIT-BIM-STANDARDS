@@ -1,0 +1,84 @@
+{
+  "id": "REG-ROLE-RESOLUTION-001",
+  "title": "Role Resolution and Inheritance Map",
+  "status": "migration_candidate",
+  "authority": "curator_decision",
+  "layer": "L4",
+  "modules": ["S1"],
+  "accepted_on": "2026-10-28",
+  "superseded_ids": [
+    {
+      "from": "ROLE-BIM-COORDINATOR-001",
+      "to": "ROLE-PROJECT-BIM-COORDINATOR-001",
+      "reason": "Project-scoped dedicated definition supersedes the earlier scaffold identifier."
+    },
+    {
+      "from": "ROLE-BIM-MANAGER-001",
+      "to": "ROLE-PROJECT-BIM-MANAGER-001",
+      "reason": "Project-scoped governed definition replaces the earlier generic scaffold identifier."
+    }
+  ],
+  "distinct_functions": [
+    "ROLE-PROJECT-BIM-MANAGER-001",
+    "ROLE-INFORMATION-MANAGER-001",
+    "ROLE-CDE-MANAGER-001"
+  ],
+  "inheritance": {
+    "base_role": "ROLE-DISCIPLINE-LEAD-001",
+    "abstract": true,
+    "specializations": [
+      "ROLE-DISCIPLINE-LEAD-SHOWSET-001",
+      "ROLE-DISCIPLINE-LEAD-AUDIO-001",
+      "ROLE-DISCIPLINE-LEAD-VIDEO-001",
+      "ROLE-DISCIPLINE-LEAD-CONTROLS-001",
+      "ROLE-DISCIPLINE-LEAD-SFX-001",
+      "ROLE-DISCIPLINE-LEAD-LIGHTING-001",
+      "ROLE-DISCIPLINE-LEAD-MECHANICAL-001",
+      "ROLE-DISCIPLINE-LEAD-ELECTRICAL-001"
+    ]
+  },
+  "issue_lifecycle": {
+    "governance_owner": "ROLE-PROJECT-BIM-MANAGER-001",
+    "routine_closure_delegate": "ROLE-PROJECT-BIM-COORDINATOR-001",
+    "administrative_tracking_concept": "Issue Owner",
+    "technical_fix_concept": "Responsible Party",
+    "escalation_required_for": [
+      "governance exceptions",
+      "disputed closures",
+      "milestone-critical issues",
+      "items outside delegated thresholds"
+    ]
+  },
+  "delivery_approval_separation": {
+    "discipline_readiness": "ROLE-DISCIPLINE-LEAD-001",
+    "design_package_approval": "ROLE-DESIGN-LEAD-001",
+    "contractual_acceptance": "project leadership"
+  },
+  "pre_publish_gate": {
+    "criteria_owner": "ROLE-QAQC-AUTHORITY-001",
+    "check_executor": "ROLE-BIM-DETAILER-001",
+    "workflow_validator": "ROLE-PROJECT-BIM-COORDINATOR-001",
+    "governance_owner": "ROLE-PROJECT-BIM-MANAGER-001"
+  },
+  "unresolved_role_names": [
+    "Technical PM",
+    "Production Manager",
+    "AVLC Lead",
+    "FM Lead",
+    "IT / Network Lead"
+  ],
+  "source_decisions": [
+    "CONF-ROLE-001",
+    "CONF-ROLE-002",
+    "CONF-ROLE-005",
+    "CONF-ROLE-006",
+    "CONF-ROLE-007",
+    "CONF-ROLE-008",
+    "CONF-ROLE-009"
+  ],
+  "deferred_conflicts": [
+    "CONF-ROLE-003",
+    "CONF-ROLE-004",
+    "CONF-ROLE-010"
+  ]
+}

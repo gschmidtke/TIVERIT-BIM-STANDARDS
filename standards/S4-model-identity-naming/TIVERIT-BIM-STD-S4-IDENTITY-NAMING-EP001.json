@@ -1,0 +1,48 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+  "type": "standard",
+  "title": "S4 Model Identity, Naming & Structure",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S4"],
+  "scope": {
+    "purpose": "Govern stable information-container identity, deterministic naming, model and container segmentation, and identity propagation across authoring, coordination, CDE, exchange, and handover workflows.",
+    "governs": ["information container identity", "project/model/file naming principles", "model breakdown and segmentation", "family identity principles", "identity persistence and uniqueness", "cross-module identity propagation"],
+    "non_goals": ["shared-parameter semantic ownership", "CDE folder architecture", "coordination issue lifecycle", "contractual acceptance authority", "tool-specific click procedures"]
+  },
+  "requirements": [
+    {"id":"S4-REQ-001","authority":"shall","statement":"Every governed information container shall carry a clear, unique identity that remains stable regardless of file location, authoring tool, production phase, or exchange format.","verification_class":"machine_assisted"},
+    {"id":"S4-REQ-002","authority":"shall","statement":"Project code or project number shall provide the root project identity anchor for downstream naming structures.","verification_class":"machine_checkable"},
+    {"id":"S4-REQ-003","authority":"shall","statement":"Model and container naming shall define identity and shall remain conceptually distinct from suitability, reliance, revision state, CDE state, and S5 issue state.","verification_class":"human_verifiable"},
+    {"id":"S4-REQ-004","authority":"shall","statement":"Model breakdown shall be driven by information requirements, coordination scope, ownership boundaries, contractual/package structure, and performance constraints rather than author convenience alone.","verification_class":"human_verifiable"},
+    {"id":"S4-REQ-005","authority":"shall_not","statement":"Model segmentation shall not create duplicate authoring, obscure ownership, or create unmanaged temporary container splits.","verification_class":"human_verifiable"},
+    {"id":"S4-REQ-006","authority":"shall","statement":"Governed family names shall remain unique, stable, human-readable, semantically meaningful, and suitable for discoverability and QA/QC automation.","verification_class":"machine_assisted"},
+    {"id":"S4-REQ-007","authority":"shall","statement":"Dynamic physical or parameter states shall remain in governed type/instance data rather than being indefinitely concatenated into family identity.","verification_class":"human_verifiable"},
+    {"id":"S4-REQ-008","authority":"shall","statement":"S4 identity and naming shall propagate into S3 container validation, S5 coordination attribution, and S7 exchange and handover records without redefining those modules' authority.","verification_class":"human_verifiable"},
+    {"id":"S4-REQ-009","authority":"shall","statement":"The canonical cross-platform information-container identity grammar shall use the seven-token hyphen-delimited pattern {proj}-{originator}-{volume/system}-{level/location}-{type}-{role}-{number}.{ext}; platform-specific filename schemes may map to this identity but shall not create an independent canonical identity grammar.","verification_class":"machine_assisted"},
+    {"id":"S4-REQ-010","authority":"shall","statement":"Enterprise and CDE container identity shall use the governed 3–4 letter discipline-code namespace; compact or single-letter discipline codes may be used only within explicitly governed tool-internal naming instructions.","verification_class":"machine_assisted"},
+    {"id":"S4-REQ-011","authority":"shall_not","statement":"Suitability/status or revision shall not form part of the canonical root container identity. They shall be carried as governed mutable metadata or revision dimensions associated with the stable identity.","verification_class":"machine_checkable"}
+  ],
+  "canonical_identity": {
+    "grammar": "{proj}-{originator}-{volume/system}-{level/location}-{type}-{role}-{number}.{ext}",
+    "delimiter": "-",
+    "decision": "D-11",
+    "mutable_dimensions_excluded_from_root_identity": ["revision", "suitability/status", "CDE state", "S5 issue state"],
+    "discipline_namespace_rule": "Enterprise/container identity uses 3-4 letter codes; tool-local compact codes require explicit local instruction.",
+    "decisions": ["D-11", "D-12", "D-13"]
+  },
+  "relationships": {
+    "upstream": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001"],
+    "semantic_dependency": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001", "TIVERIT-BIM-STD-S8-SP-REG-001"],
+    "downstream": ["TIVERIT-BIM-STD-S3-PROD-EP001", "TIVERIT-BIM-STD-S5-COORDINATION-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-PROJECT-BIM-COORDINATOR-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-MODEL-AUTHOR-001", "ROLE-BIM-STANDARDS-MGR-001", "ROLE-CDE-MANAGER-001", "ROLE-TOOL-AUTHORITY-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["2588789", "2719832", "4587521", "4489217", "11042817", "7241811"],
+    "migration_note": "Primary S4 L4 source pair plus family-naming and container-breakdown micro-standards. Curator decisions D-11 through D-13 establish canonical cross-platform identity grammar, scoped discipline-code namespaces, and separation of root identity from mutable revision/status dimensions."
+  }
+}

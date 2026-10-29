@@ -2,6 +2,37 @@
 
 TIVERIT BIM Standards is a governed, machine-readable BIM standards repository for human use, automation, validation, AI-assisted workflows, Revit, Autodesk Construction Cloud, and related BIM systems.
 
+## Position in the reasoning stack
+
+This repository is the **normative governance layer** between resolved purpose and operational production logic.
+
+```text
+USG
+Problem / purpose / required resolution
+    ↓
+TIVERIT BIM Standards
+Normative requirements / authority / compliance evidence
+    ↓
+ARPL
+Operational precedent / Revit production logic / failure memory
+    ↓
+Capability lookup / tool API
+    ↓
+Execution
+    ↓
+Observed evidence
+    ↓
+Validation against purpose + standard
+```
+
+Public repositories:
+
+- USG — https://github.com/gschmidtke/USG — resolves what must be achieved and why before tool selection.
+- TIVERIT BIM Standards — https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS — defines what is required or permitted, who has authority, and what evidence proves compliance.
+- ARPL — https://github.com/gschmidtke/ARPL — records how professional Revit production tasks have been executed, what failed, and how successful results were verified.
+
+An AI or human inquiry should be routed to the repository that owns the question. If an inquiry spans layers, use the order **purpose → normative constraint → operational precedent → technical capability → execution → validation**. See `AGENTS.md`, `constitution/architecture/REASONING-STACK-ROUTING.md`, and `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
+
 ## Governance model
 
 This repository separates public contribution from canonical authority.

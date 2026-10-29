@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S3-FOLDER-ARCHITECTURE-001",
+  "type": "registry",
+  "title": "S3 CDE Folder and Information Container Architecture",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S3"],
+  "entries": [
+    {"id":"ROOT-01","name":"/01_Contract_and_Admin","category":"enterprise-standard","purpose":"Commercial, contractual, project-management, and information-management administration."},
+    {"id":"ROOT-02","name":"/02_Design_and_Coordination","category":"enterprise-standard","purpose":"Operational BIM/design environment containing Admin, WIP, Shared, Published, and Coordination spaces.","children":["00_Admin","10_WIP","20_Shared","30_Published","40_Coordination"]},
+    {"id":"ROOT-03","name":"/03_Construction_and_Fabrication","category":"enterprise-standard","purpose":"Submittals, RFIs, shop drawings, and fabrication information."},
+    {"id":"ROOT-04","name":"/04_Records_and_Archive","category":"enterprise-standard","purpose":"Immutable milestone records, as-builts, handover packages, and audit evidence."},
+    {"id":"ROOT-SHARED","name":"/_Shared_Tech_and_Templates","category":"enterprise-standard","purpose":"Read-only governed templates, shared-parameter files, keynote/material resources."},
+    {"id":"ROOT-02-WIP","name":"/02_Design_and_Coordination/10_WIP/<Discipline>","category":"tool-configuration","purpose":"Discipline-isolated authoring container."},
+    {"id":"ROOT-02-SHARED","name":"/02_Design_and_Coordination/20_Shared","category":"enterprise-standard","purpose":"Interdisciplinary shared information."},
+    {"id":"ROOT-02-PUBLISHED","name":"/02_Design_and_Coordination/30_Published","category":"enterprise-standard","purpose":"Authorized submission staging area."},
+    {"id":"ROOT-02-COORD","name":"/02_Design_and_Coordination/40_Coordination","category":"enterprise-standard","purpose":"Model coordination spaces and issue exports."}
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S3-PROD-EP001"],"workflows":["TIVERIT-BIM-STD-S5-COORDINATION-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["6422580","7700514"],"migration_note":"The later 00/10/20/30/40 hierarchy is captured as the migration-candidate implementation. The earlier three-subfolder structure remains an unresolved source conflict and is not marked superseded without curator approval."}
+}

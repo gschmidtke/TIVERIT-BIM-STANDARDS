@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S5-ISSUE-LIFECYCLE-001",
+  "type": "registry",
+  "title": "S5 Coordination Issue Lifecycle",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S5"],
+  "entries": [
+    {"id":"OPEN","name":"Open","owner":"ROLE-PROJECT-BIM-COORDINATOR-001","responsible":"ROLE-DISCIPLINE-LEAD-001","meaning":"Confirmed coordination defect assigned for action."},
+    {"id":"IN_PROGRESS","name":"In Progress","owner":"ROLE-PROJECT-BIM-COORDINATOR-001","responsible":"ROLE-MODEL-AUTHOR-001","meaning":"Responsible discipline is actively implementing remediation."},
+    {"id":"RESOLVED","name":"Resolved","owner":"ROLE-PROJECT-BIM-COORDINATOR-001","responsible":"ROLE-DISCIPLINE-LEAD-001","meaning":"Author/discipline asserts that remediation is complete and republished."},
+    {"id":"VERIFIED","name":"Verified","owner":"ROLE-PROJECT-BIM-COORDINATOR-001","responsible":"ROLE-PROJECT-BIM-COORDINATOR-001","meaning":"Independent re-test confirms physical resolution; pending governance closure."},
+    {"id":"CLOSED","name":"Closed","owner":"ROLE-PROJECT-BIM-MANAGER-001","responsible":"ROLE-PROJECT-BIM-MANAGER-001","meaning":"Governance closure recorded with audit linkage."},
+    {"id":"WAIVED","name":"Accepted Condition / Waived","owner":"ROLE-PROJECT-BIM-MANAGER-001","responsible":"ROLE-DESIGN-LEAD-001","meaning":"Collision accepted by joint documented approval rather than geometric removal."},
+    {"id":"RETURNED_WIP","name":"Rejected / Returned to WIP","owner":"ROLE-PROJECT-BIM-COORDINATOR-001","responsible":"ROLE-DISCIPLINE-LEAD-001","meaning":"Proposed fix failed verification or introduced non-conformance."}
+  ],
+  "conflict_note": "Core doctrine contains an illustrative four-state progression, while ACC implementation uses the more detailed lifecycle above. This registry records the extracted implementation lifecycle without declaring the source conflict fully resolved.",
+  "relationships": {"standards":["TIVERIT-BIM-STD-S5-COORDINATION-EP001"],"roles":["ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-PROJECT-BIM-MANAGER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-MODEL-AUTHOR-001","ROLE-DESIGN-LEAD-001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["6881343","7798804","3014761"]}
+}

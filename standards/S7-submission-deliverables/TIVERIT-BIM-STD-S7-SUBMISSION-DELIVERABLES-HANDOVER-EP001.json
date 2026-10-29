@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+  "type": "standard",
+  "title": "Submission, Deliverables & Handover",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S7"],
+  "scope": {"purpose":"Define how project information becomes a formal submission, a declared deliverable, and an accepted handover asset suitable for a stated purpose.","sections":["S7.1 Purpose & Relationship to ISO 19650","S7.2 Information States & CDE Lifecycle","S7.3 Deliverables Definition & Scope","S7.4 LOD / LOI and Permitted Reliance","S7.5 Review, Acceptance & Sign-Off","S7.6 Handover & Lifecycle Readiness"]},
+  "requirements": [
+    {"id":"REQ-S7-001","authority":"shall","statement":"Only Published information may be relied upon for declared uses.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-002","authority":"shall","statement":"Submission does not imply acceptance; acceptance must be recorded through controlled review and sign-off.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-003","authority":"shall","statement":"Every submission shall declare intended use, deliverable scope, LOD/LOI level, and target milestone.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-004","authority":"shall","statement":"Information containers submitted for formal exchange shall pass internal discipline quality verification and coordination checks before issue.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-005","authority":"shall_not","statement":"Information shall not be used beyond its declared governed purpose.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-006","authority":"shall","statement":"Handover deliverables shall include certified as-built models, record drawings, asset registers, and operations/maintenance information.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-007","authority":"shall","statement":"Asset data delivered at handover shall conform to governed asset/lifecycle schemas.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-008","authority":"shall","statement":"All formal exchanges and handover submissions shall be registered and tracked in the project transmittal registry.","verification_class":"machine_checkable"}
+  ],
+  "relationships": {"upstream_standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"implementation_standards":["TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S5-MILESTONE-VS-EXCHANGE-EP001","TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001","TIVERIT-BIM-STD-S5-ACC-RECORDS-001"],"roles":["ROLE-MODEL-AUTHOR-001","ROLE-BIM-DETAILER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-PROJECT-BIM-MANAGER-001","ROLE-DESIGN-LEAD-001","ROLE-PROJECT-DIRECTOR-001"]},
+  "implementation_gaps": ["GAP-S7-01","GAP-S7-02"],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"3047539","source_version":1,"source_title":"JSON - Submission, Deliverables & Handover","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3047539","migration_note":"Primary machine-readable L4 S7 source. Narrative counterpart page 2883643 is empty; review binder page 4292626 is retained as supporting evidence."}
+}

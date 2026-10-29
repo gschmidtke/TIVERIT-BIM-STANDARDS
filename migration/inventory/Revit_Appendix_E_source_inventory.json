@@ -1,0 +1,126 @@
+{
+  "id": "MIG-INV-REVIT-APP-E-001",
+  "type": "migration_inventory",
+  "title": "Revit Appendix E Source Inventory",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"],
+  "source_system": "confluence",
+  "space": "BST",
+  "checklist_page_id": "7831553",
+  "topics": [
+    {"topic":"Revit Project Templates","page_id":"7503875","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"View Standards","page_id":"7241762","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Sheet & Titleblock Standards","page_id":"6357066","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Annotation Standards","page_id":"5799975","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Category & Subcategory Graphics","page_id":"6193190","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Object Naming Standards","page_id":"6651935","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Parameter Standards","page_id":"6422556","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Materials & Appearance Standards","page_id":"7700481","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Levels, Grids & Reference Standards","page_id":"6684703","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Modeling Standards","page_id":"7733249","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Worksharing & Collaboration Style","page_id":"7340051","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Documentation & Export Style","page_id":"7438366","source_status":"draft","working_layer":"L6","extracted":true},
+    {"topic":"QA / Review Checklists","page_id":"6422564","source_status":"draft","working_layer":"L6","extracted":true}
+  ],
+  "child_assets": [
+    {
+      "title": "Titleblock Standards — Instruction Set",
+      "page_id": "10846209",
+      "source_status": "draft_v0.1.0",
+      "working_layer": "L6",
+      "asset_kind": "instruction_set",
+      "source_identifier": "INS-REVIT-TITLEBLOCK-01",
+      "classification": "substantive_executable_instruction",
+      "notes": "Atomic/testable instructions for controlled titleblock families, project information, sheet creation, numbering/naming, required titleblock parameters, Revit revision system, and pre-issue QA. Parent sheet numbering syntax remains governed by the parent source and is not promoted here."
+    },
+    {
+      "title": "Workflow & Instruction Catalogue Overview",
+      "page_id": "6127632",
+      "source_status": "draft_0.1.0",
+      "working_layer": "L5_L6",
+      "asset_kind": "catalogue_json",
+      "source_identifier": "SOURCE-CATALOGUE-PAGE-6127632",
+      "classification": "substantive_catalogue",
+      "notes": "Defines workflow domains W0-W8, atomic instruction model, automation readiness, and explicit future registries. Includes W1.1 model setup, W2.2 workset management, W3 linking, W6.1 sheet setup, W7.2 QA/QC, and W8.1 exchange export. Future registries remain future, not existing assets."
+    },
+    {
+      "title": "Navisworks Export Settings",
+      "page_id": "8093711",
+      "source_status": "current_source_json",
+      "working_layer": "L6",
+      "asset_kind": "instruction_set_json",
+      "source_identifier": "IS-W6-NAVIS-EXPORT",
+      "classification": "substantive_machine_readable_instruction",
+      "notes": "Defines five instructions covering approved export configuration, geometry conversion, shared-coordinate positioning, property/data export, execution and evidence. Export Preset Registry is explicitly future."
+    },
+    {
+      "title": "Revit Template Workflows JSON Governance",
+      "page_id": "7700489",
+      "source_status": "current_governance_manual",
+      "working_layer": "L5",
+      "asset_kind": "workflow_governance_scaffold",
+      "classification": "governance_with_unimplemented_assets",
+      "notes": "Defines intended template taxonomy, minimum registry fields, lifecycle gates, validation categories, distribution and audit concepts. Concrete Template Catalogue registry, Template Release Pipeline and validation ruleset are explicitly TODO and therefore do not yet exist as source authority."
+    },
+    {
+      "title": "Shared Parameter Registry Governance Workflow",
+      "page_id": "3768321",
+      "source_status": "current_source_json",
+      "working_layer": "L5_L6",
+      "asset_kind": "governance_json",
+      "classification": "already_migrated_related_asset",
+      "notes": "Machine-readable shared-parameter governance source; already represented in the repository shared-parameter slice."
+    },
+    {
+      "title": "Central Shared Parameter Registry — First Citizen Set",
+      "page_id": "7241788",
+      "source_status": "draft_v0.1",
+      "working_layer": "L7",
+      "asset_kind": "parameter_registry",
+      "classification": "already_migrated_related_asset",
+      "notes": "GUID-first registry source already represented in the repository shared-parameter slice; TXT is derived, registry is authority."
+    },
+    {
+      "title": "Build Central Shared Parameter Registry",
+      "page_id": "7733257",
+      "source_status": "draft_v0.1",
+      "working_layer": "L6",
+      "asset_kind": "instruction_set",
+      "classification": "related_parameter_instruction",
+      "notes": "Instruction for constructing the governed GUID-first registry from existing shared-parameter TXT sources."
+    },
+    {
+      "title": "Generate Shared Parameter TXT from Registry",
+      "page_id": "7700497",
+      "source_status": "draft_v0.1",
+      "working_layer": "L6",
+      "asset_kind": "instruction_set",
+      "classification": "related_parameter_instruction",
+      "notes": "Instruction for generating controlled Revit shared-parameter TXT releases from the registry rather than treating TXT as authority."
+    }
+  ],
+  "confirmed_nonexistent_or_future_assets": [
+    "Revit Template Catalogue Registry — named as required/future but no concrete JSON filename or canonical artifact identified in source",
+    "Template Release Pipeline — named as required/future but no concrete workflow artifact identified in source",
+    "Template Validation Ruleset — named as required/future but no concrete ruleset artifact identified in source",
+    "Export Preset Registry — explicitly marked future in workflow/export JSON",
+    "Sheet Registry — referenced by workflow catalogue but not identified as an existing concrete source asset in this extraction pass",
+    "QAQC Checklist Registry — referenced as future in workflow catalogue"
+  ],
+  "migration_rules": [
+    "Preserve source TODO, example, proposed, draft, and placeholder status.",
+    "Do not promote example codes, file patterns, role placeholders, numerical defaults, or tool settings into canonical authority without curator review.",
+    "Separate tool-independent normative requirements from Revit-specific implementation instructions.",
+    "Map Revit implementation rules back to governing S-standards rather than creating a competing authority hierarchy.",
+    "Do not create a registry or workflow merely because a governance page says it should exist; only migrate concrete source assets or create new canonical content through explicit curator action."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7831553",
+    "source_version": 1,
+    "migration_note": "Inventory created and expanded from direct Confluence extraction. This file records source coverage only and is not normative authority."
+  }
+}

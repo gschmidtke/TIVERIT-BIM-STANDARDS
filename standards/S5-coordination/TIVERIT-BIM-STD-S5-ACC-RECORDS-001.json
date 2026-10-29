@@ -1,0 +1,12 @@
+{
+  "$schema":"../../schemas/standard.schema.json","id":"TIVERIT-BIM-STD-S5-ACC-RECORDS-001","type":"standard","title":"ACC / BIM 360 Records & Archiving Rules","status":"migration_candidate","authority":"normative","layer":"L4","modules":["S5","S7"],
+  "requirements":[
+    {"id":"REQ-S7-023","authority":"shall","statement":"Final project deliverables, record models, as-built documentation, and decision evidence shall be archived in the governed records/archive location.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-024","authority":"shall","statement":"The archive shall be locked against modification except for designated archive administrators adding governed post-handover records.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-025","authority":"shall","statement":"Archived records are immutable; post-archive changes require versioned addenda with a new evidence trail.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-026","authority":"shall","statement":"Project closeout shall produce an export package containing as-built models, record drawings, O&M documentation, final coordination/QA reports, and decision evidence.","verification_class":"machine_checkable"}
+  ],
+  "record_classes":["As-Built Models","Record Drawings & Documents","O&M and Handover","Decision Evidence","Commercial and Contractual"],
+  "relationships":{"standards":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001"]},
+  "provenance":{"source_system":"confluence","space":"BST","page_id":"6848571","source_version":1,"source_title":"ACC / BIM 360 Records & Archiving Rules","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6848571"}
+}

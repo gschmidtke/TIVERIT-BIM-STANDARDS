@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S3-PROD-EP001",
+  "type": "standard",
+  "title": "S3 Production Environment & CDE Governance",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S3"],
+  "purpose": "Govern the internal production ecosystem, CDE platform authority, collaboration boundaries, output handling, and procedural interfaces to S2, S5, S7, S8, and the CDE implementation branch.",
+  "requirements": [
+    {"id":"S3-REQ-001","authority":"shall","statement":"ACC Docs shall serve as the primary governed internal cloud environment for TIVERIT project collaboration and information-container management, subject to project contractual precedence."},
+    {"id":"S3-REQ-002","authority":"shall","statement":"Authoring tools are authoritative only within their declared scope; governed reliance begins only when information is placed in the appropriate governed platform/container."},
+    {"id":"S3-REQ-003","authority":"shall","statement":"Software versions are project-governed through the BEP; enterprise standards govern tool roles and authority boundaries rather than fixed releases."},
+    {"id":"S3-REQ-004","authority":"shall_not","statement":"Monitoring tools, scripts, and automation do not create authority, grant approval, or confer legal reliance."},
+    {"id":"S3-REQ-005","authority":"shall_not","statement":"Informal collaboration, chat, markup, and visibility do not constitute approval or acceptance."},
+    {"id":"S3-REQ-006","authority":"shall","statement":"Working outputs and formally issued deliverables shall remain distinct; formal exchange must bind to S2 information requirements and permitted-use constraints."},
+    {"id":"S3-REQ-007","authority":"shall","statement":"S1 overrules S3 on organizational authority, S2 overrules S3 on information requirements, and CDE procedural execution is delegated to governed implementation workflows."},
+    {"id":"S3-REQ-008","authority":"shall_not","statement":"S3 governs the internal production ecosystem and shall not assert authority over external consultant systems, client environments, or contractual liabilities beyond project-defined interfaces."}
+  ],
+  "relationships": {
+    "governed_by": ["ISO-19650"],
+    "upstream": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001", "REG-ROLE-001"],
+    "downstream": ["TIVERIT-BIM-STD-S5-COORDINATION-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "semantic_dependency": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["2425298","2621496","3964929","3899424","2425347","2457722","2457714","3735560","2818203","4292609"],
+    "migration_note": "Canonical S3 parent assembled from the source production-environment doctrine. Raw source-page titles and URLs were not retained where retired naming appeared; neutral page IDs preserve provenance."
+  }
+}

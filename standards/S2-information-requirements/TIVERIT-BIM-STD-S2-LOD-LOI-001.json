@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S2-LOD-LOI-001",
+  "type": "standard",
+  "title": "LOD & LOI — Level of Development and Level of Information",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S2"],
+  "scope": {"purpose":"Define paired geometric and non-graphical information expectations and permitted reliance across model progression."},
+  "requirements": [
+    {"id":"LOD-REQ-001","authority":"shall_not","statement":"Visual completeness shall not imply coordination, fabrication readiness, or engineering approval.","verification_class":"human_verifiable"},
+    {"id":"LOD-REQ-002","authority":"shall","statement":"Level of Information requirements shall be paired with Level of Development definitions for every modeled element category.","verification_class":"machine_assisted"},
+    {"id":"LOD-REQ-003","authority":"shall","statement":"LOD 400 fabrication elements shall be validated against vendor shop drawings prior to construction issuance.","verification_class":"human_verifiable"}
+  ],
+  "showset_permitted_use": {
+    "LOD100":"Narrative alignment and early spatial exploration; not for fabrication or clearance sign-off.",
+    "LOD200":"Thematic coordination and initial interfaces; not for final clearances or pricing commitments.",
+    "LOD300":"Clash detection, coordinated drawings basis, and design intent documentation; not fabrication-ready.",
+    "LOD350":"Detailed clash resolution and interface/penetration coordination; not final shop model.",
+    "LOD400":"Fabrication planning and shop/CNC derivation subject to QA/QC.",
+    "LOD500":"Field-verified operations reference and retrofit planning."
+  },
+  "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-MODEL-AUTHOR-001"]},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"2425330","source_version":1,"source_title":"LOD & LOI — Level of Development and Level of Information","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2425330","migration_note":"Core L4 LOD/LOI source. Showset/Theming interpretation is supported by pages 10387457 and 10453000 and remains a draft specialization."}
+}

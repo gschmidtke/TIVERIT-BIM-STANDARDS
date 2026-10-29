@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/workflow.schema.json",
+  "title": "TIVERIT BIM Workflow",
+  "allOf": [
+    {"$ref": "./base-object.schema.json"},
+    {
+      "type": "object",
+      "required": ["steps"],
+      "properties": {
+        "type": {"const": "workflow"},
+        "trigger": {"type": ["string", "object"]},
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "action"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "action": {"type": "string", "minLength": 1},
+              "actor_role": {"type": "string"},
+              "inputs": {"type": "array", "items": {"type": "string"}},
+              "outputs": {"type": "array", "items": {"type": "string"}},
+              "verification": {"type": "object"}
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  ]
+}
