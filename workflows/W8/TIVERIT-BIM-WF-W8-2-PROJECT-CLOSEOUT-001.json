@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-W8-2-PROJECT-CLOSEOUT-001",
+  "legacy_ids": ["W8.2"],
+  "type": "workflow",
+  "title": "Project Closeout Workflow",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S3", "S7"],
+  "trigger": "Project completion or handover milestone",
+  "automation_readiness": "ASSISTED",
+  "steps": [
+    {"id":"I8.2.001","action":"Archive models and freeze permissions as required by the governed closeout state."},
+    {"id":"I8.2.002","action":"Package deliverables and associated logs."},
+    {"id":"I8.2.003","action":"Publish the closeout record and index."}
+  ],
+  "outputs": [
+    "Archived project information containers",
+    "Packaged deliverables and logs",
+    "Published closeout record and index"
+  ],
+  "governance_notes": [
+    "The source identifies future Handover Index and Archive Register assets.",
+    "Closeout packaging does not itself establish contractual acceptance; S7 acceptance and reliance rules remain authoritative."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6127632",
+    "source_version": 1,
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632",
+    "migration_note": "Source workflow W8.2 migrated from the workflow catalogue. Future handover-index and archive-register assets remain unresolved."
+  }
+}
