@@ -1,0 +1,107 @@
+{
+  "id": "MIG-REV-REVIT-WORKFLOW-RESOLUTION-001",
+  "type": "migration_review",
+  "title": "Revit Workflow and Instruction Source Resolution Map",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S3", "S4", "S5", "S6", "S7", "S8"],
+  "source_catalogue": {
+    "page_id": "6127632",
+    "catalogue_id": "TAIT-BIM-PROTO-CAT",
+    "source_status": "draft_0.1.0"
+  },
+  "resolution_rule": "A workflow or instruction named in the catalogue is not treated as an existing standalone source asset unless a concrete source page or machine-readable artifact was found. Catalogue-only entries remain source-planned capability slots.",
+  "workflows": [
+    {
+      "workflow_id": "W1.1",
+      "name": "Project Model Setup Workflow",
+      "catalogue_instructions": ["I1.1.001", "I1.1.002", "I1.1.003", "I1.1.004", "I1.1.005", "I1.1.006"],
+      "standalone_instruction_pages_found": false,
+      "supporting_sources": ["7503875", "7340051", "2326593"],
+      "classification": "catalogue_slots_with_parent_guidance",
+      "notes": "Project-template, worksharing, and S6 sources contain implementation guidance, but no standalone pages matching the six instruction IDs were identified in the targeted search."
+    },
+    {
+      "workflow_id": "W2.2",
+      "name": "Workset Management Workflow",
+      "catalogue_instructions": ["I2.2.001", "I2.2.002", "I2.2.003", "I2.2.004"],
+      "standalone_instruction_pages_found": false,
+      "supporting_sources": ["7340051", "3014705", "2326593"],
+      "classification": "catalogue_slots_with_parent_guidance",
+      "notes": "Worksharing source and inventory captures support the topic. No concrete standalone instruction pages for the four catalogue IDs were identified. A governed Workset Registry is referenced conceptually but no concrete registry artifact was identified in this pass."
+    },
+    {
+      "workflow_id": "W3.1_W3.2",
+      "name": "Link Creation and Link Update/Maintenance",
+      "catalogue_instructions": ["I3.1.001", "I3.1.002", "I3.1.003", "I3.1.004", "I3.1.005", "I3.1.006", "I3.2.001", "I3.2.002", "I3.2.003", "I3.2.004"],
+      "standalone_instruction_pages_found": false,
+      "supporting_sources": ["2326593", "2457695", "2719766", "7340051"],
+      "classification": "catalogue_slots_with_S6_source",
+      "notes": "The Revit Link inventory explicitly reports that no standalone pages titled for Revit Link were identified. S6 and Worksharing are the substantive source authorities."
+    },
+    {
+      "workflow_id": "W6.1",
+      "name": "Sheet Setup Workflow",
+      "catalogue_instructions": ["I6.1.001", "I6.1.002", "I6.1.003", "I6.1.004"],
+      "standalone_instruction_pages_found": "partial",
+      "supporting_sources": ["6357066", "10846209", "7241762"],
+      "classification": "catalogue_slots_with_concrete_titleblock_instruction",
+      "notes": "The dedicated Titleblock Instruction Set is a concrete executable child asset and covers substantial parts of titleblock assignment, metadata, sheet identity, revisions, and QA. No standalone Sheet Registry was identified."
+    },
+    {
+      "workflow_id": "W7.1_W7.2",
+      "name": "Model Health and QA/QC Validation",
+      "catalogue_instructions": ["I7.1.001", "I7.1.002", "I7.1.003", "I7.1.004", "I7.2.001", "I7.2.002", "I7.2.003"],
+      "standalone_instruction_pages_found": false,
+      "supporting_sources": ["6422564", "3735560"],
+      "classification": "catalogue_slots_with_QA_scaffolds",
+      "notes": "The Appendix E QA checklist and S3.7 QA/QC source provide substantive guidance, but the targeted instruction IDs were not found as standalone instruction assets. QA/QC Checklist Registry and Model Health Report are catalogue-future concepts."
+    },
+    {
+      "workflow_id": "W8.1",
+      "name": "IFC / Exchange Export Workflow",
+      "catalogue_instructions": ["I8.1.001", "I8.1.002", "I8.1.003"],
+      "standalone_instruction_pages_found": "partial",
+      "supporting_sources": ["7438366", "8093711", "8159247"],
+      "classification": "catalogue_slots_with_concrete_Navisworks_export_instruction",
+      "notes": "Documentation & Export Style is draft. Navisworks Export Settings JSON is a concrete machine-readable instruction set for coordination exports, but an Export Preset Registry remains explicitly future. No concrete generic W8.1 export-preset registry was identified."
+    }
+  ],
+  "other_concrete_assets": [
+    {
+      "page_id": "7307286",
+      "title": "Revit Instructions Definitions Workflows Consolidated",
+      "classification": "authoring_agent_configuration",
+      "notes": "This is an agent/page-authoring specification for consolidating L6 Revit content, not the consolidated instruction corpus itself. It explicitly forbids inventing new guidance or rewriting L4/L5 governance."
+    },
+    {
+      "page_id": "8093711",
+      "title": "Navisworks Export Settings",
+      "classification": "machine_readable_instruction_set",
+      "source_identifier": "IS-W6-NAVIS-EXPORT"
+    },
+    {
+      "page_id": "10846209",
+      "title": "Titleblock Standards",
+      "classification": "executable_instruction_set",
+      "source_identifier": "INS-REVIT-TITLEBLOCK-01"
+    }
+  ],
+  "gaps_confirmed": [
+    "Concrete Workset Registry not identified in targeted source search",
+    "Concrete Sheet Registry not identified in targeted source search",
+    "Concrete Revit Template Catalogue Registry explicitly remains TODO",
+    "Concrete Template Release Pipeline explicitly remains TODO",
+    "Concrete Template Validation Ruleset explicitly remains TODO",
+    "Concrete Export Preset Registry explicitly remains future",
+    "Concrete QA/QC Checklist Registry explicitly remains future",
+    "Concrete Model Health Report registry/object remains future"
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["6127632", "7503875", "7340051", "2326593", "3014705", "2457695", "2719766", "6357066", "10846209", "7241762", "6422564", "3735560", "7438366", "8093711", "8159247", "7307286"],
+    "migration_note": "Created from direct Confluence/Rovo targeted source resolution. This file distinguishes catalogue-planned instruction IDs from concrete source assets and is not normative authority."
+  }
+}
