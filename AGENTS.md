@@ -47,6 +47,23 @@ For inquiries that span more than one layer, reason in this order:
 4. **Tool/API/executor** — determine capability and perform the action.
 5. **Validation** — compare observed results against both the resolved purpose and the governing standard.
 
+## Content classification before authoring
+
+Before creating or modifying governed content, classify the content using `constitution/architecture/CONTENT-CLASSIFICATION-DOCTRINE.md`.
+
+Use these boundaries:
+
+- **Standard** — defines obligation, prohibition, permission, authority, acceptance, or reusable governance constraint.
+- **Workflow (L5)** — coordinates roles, states, order, decisions, gates, escalation, or handoffs.
+- **Instruction (L6)** — defines a bounded executable action with preconditions and a verifiable outcome.
+- **Process** — explains how work usually happens and is informational rather than enforceable.
+
+Do not blend these classes merely because a source page blends them. When migrating mixed source material, split governed meaning into the correct authoritative homes and preserve explanatory narrative as informative content.
+
+A governed object must not be both Workflow and Instruction. Instructions must not introduce policy or orchestration. Workflows must not create normative requirements. Processes must not be treated as enforceable authority.
+
+Prefer extension by object addition or relationship enrichment over repository restructuring. If new content cannot be represented faithfully by the existing governed classes, stop and route the architecture question to the curator rather than inventing a new top-level structure.
+
 ## BEP assembly tasks
 
 When asked to create, review, or complete a BIM Execution Plan (BEP), do not discover the repository ad hoc. Start with:
