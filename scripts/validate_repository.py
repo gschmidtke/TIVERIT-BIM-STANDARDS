@@ -270,10 +270,11 @@ def validate_referential_integrity(errors: list[str]):
     for path, obj in objects:
         obj_type = obj.get("type")
         if obj_type == "abstract_test":
-            requirement_id = obj.get("requirement_id")
-            if isinstance(requirement_id, str) and requirement_id not in known_ids:
+            target_field = "requirement_id" if isinstance(obj.get("requirement_id"), str) else "governing_object_id"
+            target_id = obj.get(target_field)
+            if isinstance(target_id, str) and target_id not in known_ids:
                 errors.append(
-                    f"{path.relative_to(ROOT)}:requirement_id: unresolved requirement reference {requirement_id!r}"
+                    f"{path.relative_to(ROOT)}:{target_field}: unresolved governing object reference {target_id!r}"
                 )
         elif obj_type == "executable_test":
             ats_id = obj.get("ats_id")
