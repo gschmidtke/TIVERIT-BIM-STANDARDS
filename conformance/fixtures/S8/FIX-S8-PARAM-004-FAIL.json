@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schemas/conformance-fixture.schema.json",
+  "id": "FIX-S8-PARAM-004-FAIL",
+  "type": "conformance_fixture",
+  "title": "S8 shared parameter definition conflicts with central registry",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "ets_id": "ETS-S8-PARAM-004-PYTHON",
+  "fixture_kind": "negative",
+  "expected_result": "fail",
+  "subject_profile": {
+    "subject_type": "synthetic shared-parameter inventory",
+    "governed_registry": "TIVERIT-BIM-STD-S8-SP-REG-001"
+  },
+  "simulated_observations": [
+    {"guid":"d92d4d5a-53dd-4a81-af58-67538a84947a","name":"HEIGHT","data_type":"TEXT"}
+  ],
+  "expected_evidence_assertions": [
+    "observed GUID resolves to a governed registry entry",
+    "observed data type conflicts with the governed LENGTH definition",
+    "conflict detail is retained in evidence",
+    "result is fail"
+  ],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "ETS-S8-PARAM-004-PYTHON",
+    "migration_note": "Synthetic negative regression fixture proving that a structural conflict for a known governed GUID must fail."
+  }
+}
