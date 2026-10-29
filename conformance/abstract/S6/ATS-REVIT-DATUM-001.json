@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-DATUM-001",
+  "type": "abstract_test",
+  "title": "Revit governed level and grid alignment",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6", "S4"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-LEVELS-GRIDS-001",
+  "governing_clause": "DATUM-01 and DATUM-02",
+  "test_intent": "Determine whether Revit levels and grids match the approved project datum/grid source in identity and spatial position, without unexplained local offsets or competing datum systems.",
+  "applicability": {
+    "applies_when": "The tested Revit model contains governed levels or grids and an approved project datum/grid source applies.",
+    "not_applicable_when": "The tested model contains no governed levels/grids or no datum/grid rule applies to its scope."
+  },
+  "required_evidence": [
+    "approved project level/grid source or coordination authority data",
+    "Revit level inventory including name and elevation",
+    "Revit grid inventory including identity and position/geometry",
+    "approved datum/grid exceptions where applicable"
+  ],
+  "result_logic": {
+    "pass": "Every applicable tested level and grid matches the approved source within the governed identity/spatial rule and no unexplained duplicate, offset, or competing datum system is present.",
+    "fail": "An applicable level or grid positively conflicts with the approved governed source in identity or spatial position, or an unauthorized competing datum system is present.",
+    "not_applicable": "No governed level/grid rule applies to the tested model.",
+    "indeterminate": "The approved datum/grid source, coordinate transform, or comparison tolerance required for evaluation is unavailable or ambiguous."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-LEVELS-GRIDS-001",
+    "migration_note": "Appendix E ATS subordinate to S6 spatial authority. It does not promote source naming examples or invent spatial tolerances."
+  }
+}
