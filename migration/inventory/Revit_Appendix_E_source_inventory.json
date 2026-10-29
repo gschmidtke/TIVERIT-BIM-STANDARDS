@@ -41,7 +41,7 @@
       "source_status": "draft_0.1.0",
       "working_layer": "L5_L6",
       "asset_kind": "catalogue_json",
-      "source_identifier": "TAIT-BIM-PROTO-CAT",
+      "source_identifier": "SOURCE-CATALOGUE-PAGE-6127632",
       "classification": "substantive_catalogue",
       "notes": "Defines workflow domains W0-W8, atomic instruction model, automation readiness, and explicit future registries. Includes W1.1 model setup, W2.2 workset management, W3 linking, W6.1 sheet setup, W7.2 QA/QC, and W8.1 exchange export. Future registries remain future, not existing assets."
     },
