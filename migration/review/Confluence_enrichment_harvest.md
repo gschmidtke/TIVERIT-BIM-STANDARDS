@@ -276,9 +276,162 @@ The preferred outcome is A. B is acceptable where the refinement is generic and 
 
 **Fit:** **DEFER/A** depending on whether Inventor/library governance is inside the intended migration scope for cutover.
 
+---
+
+### 12. Issue admissibility and metric integrity
+
+**Source page ID:** `2326562`
+
+**Source maturity:** foundational narrative under review; contains normative candidate concepts mixed with broader narrative material.
+
+**Unique substance:**
+
+- An issue implies obligation and therefore requires governance, not merely observation.
+- Findings from routine progress/WIP outputs should not automatically become enforceable issues.
+- Issue admissibility depends on due scope/context, authorized origin, and explicit obligation context.
+- Observations that fail admissibility remain observations and should not contaminate overdue/performance metrics.
+- Issue dashboards are meaningful only when they report on admissible issues aligned with declared delivery states.
+
+**Existing repository coverage:** S5 already has issue lifecycle and closure governance, but admissibility before issue creation is not yet strongly isolated.
+
+**Proposed landing zone:** S5 issue governance / issue registry semantics, with S2/S7 dependency on declared due state and permitted use.
+
+**Fit:** **A**.
+
+---
+
+### 13. Contextual QA/QC layers
+
+**Source page ID:** `2326562`
+
+**Source maturity:** foundational narrative under review.
+
+**Unique substance:**
+
+- QA/QC should first ask whether information is valid for evaluation in its current phase/context, then whether it meets declared expectations.
+- Continuous QA/QC produces readiness/health signals rather than acceptance judgments.
+- Expectation-based QA/QC compares reality only against formally declared expectations.
+- Milestone QA/QC verifies readiness for formal issue/use and is the appropriate place for consequential review outcomes.
+- External review should be limited to declared outputs, phase, and explicit expectations.
+- Findings outside declared role authority remain observations rather than authoritative QA/QC outcomes.
+
+**Existing repository coverage:** S5 gates and QA/review authority cover parts of this, but the three-layer distinction could sharpen the boundary between monitoring, validation, and acceptance.
+
+**Proposed landing zone:** S5 QA/review doctrine and conformance guidance; do not create a separate QA plane.
+
+**Fit:** **A**.
+
+---
+
+### 14. Interoperability as decodability
+
+**Source page ID:** `2326562`
+
+**Source maturity:** foundational narrative under review.
+
+**Unique substance:**
+
+- Successful technical transfer is not sufficient for interoperability.
+- Information crossing a boundary must preserve decodable purpose, status, phase context, limitations, intended use, and responsible recipients.
+- Sender responsibility includes encoding intent; receiver responsibility is bounded by declared meaning and should not require inference.
+- Incoming requirements are also exchange artifacts and must be decodable before they can safely become executable obligations.
+- Material exchange assumptions should be re-declared when phase, context, or responsible party changes.
+
+**Existing repository coverage:** interoperability plane currently focuses on external representations/mappings; this source adds a normative semantic boundary that belongs upstream of those bridges.
+
+**Proposed landing zone:** S7 exchange governance and interoperability architecture doctrine.
+
+**Fit:** **A**.
+
+---
+
+### 15. Handover acceptance and finite defect scope
+
+**Source page ID:** `2326562`
+
+**Source maturity:** foundational narrative under review.
+
+**Unique substance:**
+
+- Handover is a declared exchange/state-transition event, not a gradual fade-out.
+- Acceptance is assessed against fitness for declared purpose rather than absolute perfection.
+- Acceptance may coexist with a finite, explicit defect list where remaining defects do not invalidate declared purpose.
+- Post-handover correction scope should not silently expand into new requirements or reopen production.
+- Persistence of information after handover does not imply continued responsibility or continued validity.
+
+**Existing repository coverage:** S7 closeout and acceptance exist, but finite defect-scope and post-handover responsibility boundaries are not yet strongly expressed.
+
+**Proposed landing zone:** S7 handover/closeout requirements and W8.2 workflow enrichment.
+
+**Fit:** **A**.
+
+---
+
+### 16. Automation readiness as governability
+
+**Source page ID:** `2326562`
+
+**Source maturity:** foundational narrative under review.
+
+**Unique substance:**
+
+- Automation readiness depends on explicit, deterministic, machine-legible meaning rather than automation availability.
+- Execution-layer volatility should not be mistaken for governed truth.
+- Automation should distinguish read from modify authority, remain repeatable/auditable, and preserve human accountability.
+- Leadership-facing automated outputs should expose governed signals, not raw execution volatility.
+- Information dependent on tribal knowledge or implied context is not automation-ready.
+
+**Existing repository coverage:** strong overlap with S9, conformance, ZEN authority boundaries, and the four-plane architecture; this source provides useful language for readiness criteria.
+
+**Proposed landing zone:** S9 automation governance and maturity/readiness guidance.
+
+**Fit:** **A**.
+
+---
+
+### 17. Training and onboarding as participation readiness
+
+**Source page ID:** `2326562`
+
+**Source maturity:** foundational narrative under review.
+
+**Unique substance:**
+
+- Training is proactive readiness; support is reactive troubleshooting.
+- Participation in a governed environment is conditional on suitable readiness, not merely system access or software skill.
+- Project-specific induction applies across role/seniority levels.
+- Enforcement responsibility belongs with project leadership where staffing/participation authority resides; BIM governance defines readiness requirements but should not silently inherit staffing authority.
+- Knowledge should be retrievable and refreshable rather than dependent on memory.
+
+**Existing repository coverage:** role/onboarding mechanics exist, but this broader readiness doctrine is thin.
+
+**Proposed landing zone:** S1 governance/role enablement plus project onboarding workflow; potentially project-facing rather than a new normative standard family.
+
+**Fit:** **A/DEFER** depending on cutover scope.
+
+---
+
+### 18. Information classification by determinism and authority role
+
+**Source page ID:** `2326562`
+
+**Source maturity:** foundational narrative under review; contains a conceptual classification matrix.
+
+**Unique substance:**
+
+- Information categories differ by determinism, authority, expected storage location, and whether they should exist in authoritative models.
+- Governing information, contractual information, geometric/spatial information, transient information, exploratory content, reference/context, approval/status, responsibility/ownership, lifecycle, and derived information have different governance behavior.
+- “One source of truth” should not mean forcing all information into the model; deterministic information should live where it remains stable and reusable.
+
+**Existing repository coverage:** S8 governs semantic structure and S3/S7 govern locations/states, but no unified information-category matrix currently joins determinism, authority, carrier, and lifecycle behavior.
+
+**Proposed landing zone:** S8 information-structure enrichment, potentially as a governed classification registry after curator review.
+
+**Fit:** **B**. The concept fits, but converting the source matrix into a canonical registry would be a curator design decision rather than a mechanical migration.
+
 ## Consolidated harvest themes
 
-The strongest unique source material clusters into six reusable concepts:
+The strongest unique source material now clusters into ten reusable concepts:
 
 1. **Authority is not created by collaboration, visibility, output creation, or file movement.**
 2. **Formal exchange is an intentional, purpose-bound governance event distinct from transmission.**
@@ -286,6 +439,10 @@ The strongest unique source material clusters into six reusable concepts:
 4. **Standard / workflow / instruction / process classes require strict non-overlapping governance boundaries.**
 5. **Lifecycle, supersession, provenance, and derivative-output authority should be explicit and traceable.**
 6. **Migration gaps should have one authoritative home, a resolution route, owner/status/evidence, and explicit deferral when unresolved.**
+7. **Issues and QA/QC outcomes require admissibility, declared context, and role authority before they become obligations or metrics.**
+8. **Interoperability requires semantic decodability, not merely successful file transfer.**
+9. **Handover is a governed state transition with bounded acceptance and finite post-handover correction scope.**
+10. **Automation and participation both require readiness conditions; access or technical capability alone is not authority or readiness.**
 
 These themes fit the existing repository architecture without introducing a new S-domain, layer, authority plane, or top-level object family.
 
@@ -293,9 +450,9 @@ These themes fit the existing repository architecture without introducing a new 
 
 Current result from this harvest sample:
 
-- **A — fits directly:** 6 candidates
-- **A/B — fits with possible generic refinement:** 2 candidates
-- **DEFER:** 3 candidates
+- **A / A-dominant:** 12 candidates
+- **A/B or B:** 4 candidates
+- **DEFER / DEFER-dominant:** 2 candidates
 - **C — architecture redesign required:** 0 candidates
 
 This is positive evidence that the current framework can absorb new substantive standards content primarily by object addition, relationship enrichment, and limited generic schema/governance refinement rather than structural remodeling.
@@ -304,11 +461,15 @@ This is positive evidence that the current framework can absorb new substantive 
 
 1. Formal exchange versus transmission (`2457714`).
 2. Collaboration versus authority (`2425347`) and output versus deliverable (`2457722`) as a coordinated S1/S3/S7 enrichment pass.
-3. Instruction/workflow/process boundary standard (`2818184`).
-4. Model progression / authorized-use principles (`10551299`).
-5. Navisworks federation/coordinate durable rules (`10944513`).
-6. Lifecycle/governance and gap-closure refinements (`3014740`, `2883661`) during final migration/cutover hardening.
-7. Defer BEP/data-engine and tool-library architecture material until normative migration is closed.
+3. Issue admissibility and contextual QA/QC (`2326562`) as an S5 enrichment pass.
+4. Instruction/workflow/process boundary standard (`2818184`).
+5. Model progression / authorized-use principles (`10551299`).
+6. Interoperability decodability and handover acceptance boundaries (`2326562`) as S7 enrichment.
+7. Navisworks federation/coordinate durable rules (`10944513`).
+8. Automation-readiness language (`2326562`) into S9 where it adds requirements rather than narrative duplication.
+9. Lifecycle/governance and gap-closure refinements (`3014740`, `2883661`) during final migration/cutover hardening.
+10. Consider the information-determinism matrix (`2326562`) separately as a potential S8 registry design decision.
+11. Defer BEP/data-engine, broader training-library, and tool-library architecture material until normative migration is closed unless required by an unresolved forward reference.
 
 ## Source hygiene
 
