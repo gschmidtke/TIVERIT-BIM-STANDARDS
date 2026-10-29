@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S1-ROLES-001",
+  "type": "standard",
+  "title": "Role and Authority Governance",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S1"],
+  "scope": {
+    "purpose": "Define organization-wide principles for assigning authority to governed roles and for specializing those assignments at project level without allowing execution mechanisms to create authority.",
+    "non_goals": [
+      "No personal names or HR data",
+      "No tool UI or platform configuration procedures",
+      "No duplication of downstream coordination, acceptance, semantic, or toolchain procedures"
+    ]
+  },
+  "requirements": [
+    {"id":"REQ-S1-ROLE-001","authority":"shall","statement":"Authority shall be assigned to governed roles and bounded by authority domain, governance layer, scope, information state, and declared purpose.","verification_class":"human_verifiable"},
+    {"id":"REQ-S1-ROLE-002","authority":"shall_not","statement":"Execution responsibility, platform permission, workflow participation, or automation capability shall not imply acceptance or decision authority unless that authority is explicitly assigned to the governed role for the relevant scope.","verification_class":"machine_assisted"},
+    {"id":"REQ-S1-ROLE-003","authority":"shall","statement":"Acceptance or decision rights shall be exercised only by roles whose governed definition grants those rights for the relevant purpose and information state.","verification_class":"machine_assisted"},
+    {"id":"REQ-S1-ROLE-004","authority":"shall","statement":"Changes to role authority mappings shall follow governed change control and preserve versioned traceability.","verification_class":"human_verifiable"},
+    {"id":"REQ-S1-ROLE-005","authority":"shall","statement":"Project BEPs shall reference governed role definitions and explicitly declare any approved project-specific specialization or variation of authority.","verification_class":"human_verifiable"},
+    {"id":"REQ-S1-ROLE-006","authority":"shall_not","statement":"Automation and CDE state transitions shall not assign, transfer, or imply professional, governance, or contractual authority by technical side effect.","verification_class":"machine_assisted"}
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S1-CORE-GOV-EP001",
+      "TIVERIT-BIM-STD-S2-INF-REQ-EP001",
+      "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
+      "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001"
+    ],
+    "registries": ["REG-ROLE-001"]
+  },
+  "open_gaps": ["GAP-S1-ROLE-AUTHORITY-COVERAGE-01"],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "2785415",
+    "source_version": "1",
+    "source_title": "GAP-S1-A2 Role and Authority Governance Framework",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2785415",
+    "migration_note": "Source scaffold normalized against the existing governed role registry. Placeholder roles from the source were not promoted; current role definitions remain the machine-readable role authority source. Full cross-role authority/RACI coverage remains a validation gap."
+  }
+}
