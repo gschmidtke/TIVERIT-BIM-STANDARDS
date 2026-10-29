@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/interoperability-mapping.schema.json",
+  "title": "TIVERIT Interoperability Mapping",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "type",
+    "title",
+    "status",
+    "system_role",
+    "modules",
+    "source_requirement_id",
+    "target_standard",
+    "expressiveness",
+    "mapping_contract",
+    "limitations",
+    "provenance"
+  ],
+  "properties": {
+    "$schema": {"type": "string", "minLength": 1},
+    "id": {"type": "string", "pattern": "^TIVERIT-BRIDGE-[A-Z0-9-]+$"},
+    "type": {"const": "interoperability_mapping"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "enum": ["migration_candidate", "draft", "active", "deprecated", "historical", "superseded"]},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"},
+    "effective_date": {"type": ["string", "null"], "format": "date"},
+    "system_role": {"const": "interoperability"},
+    "modules": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^S[1-9]$"},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "source_requirement_id": {"type": "string", "minLength": 1},
+    "target_standard": {
+      "type": "object",
+      "required": ["name", "version", "representation"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "representation": {"type": "string", "minLength": 1},
+        "normative_reference": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "expressiveness": {"type": "string", "enum": ["full", "partial", "not_representable"]},
+    "mapping_contract": {"type": "object", "minProperties": 1},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "generation_state": {"type": "string", "enum": ["mapping_only", "generator_specified", "generator_implemented", "verified"]},
+    "provenance": {
+      "type": "object",
+      "required": ["source_system", "derived_from"],
+      "properties": {
+        "source_system": {"type": "string"},
+        "derived_from": {"type": "string", "minLength": 1},
+        "migration_note": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "active"}}, "required": ["status"]},
+      "then": {
+        "required": ["version", "effective_date"],
+        "properties": {"effective_date": {"type": "string", "format": "date"}}
+      }
+    }
+  ],
+  "additionalProperties": false
+}
