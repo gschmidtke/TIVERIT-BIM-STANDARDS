@@ -48,9 +48,12 @@
     "workflows": ["TIVERIT-SP-REGISTRY-001"],
     "instructions": ["TIVERIT-BIM-STD-L6-SP-GEN-REG-001", "TIVERIT-BIM-STD-L6-SP-GEN-TXT-001"],
     "registries": ["TIVERIT-BIM-STD-S4-SP-REG-001"],
-    "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001"]
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-BIM-STANDARDS-MGR-001"]
   },
-  "migration_notes": ["The Confluence source contains a dual-surface module classification: the machine-readable JSON declares S2 while its narrative counterpart declares S4. This candidate preserves S2 as the current migration coordinate pending curator review."],
+  "migration_notes": [
+    "The Confluence source contains a dual-surface module classification: the machine-readable JSON declares S2 while its narrative counterpart declares S4. This candidate preserves S2 as the current migration coordinate pending curator review.",
+    "Role cross-check resolved the standards-governance/custodian references to ROLE-BIM-STANDARDS-MGR-001."
+  ],
   "provenance": {
     "source_system": "confluence",
     "space": "BST",
