@@ -10,6 +10,18 @@
     "type": {"type": "string", "minLength": 1},
     "title": {"type": "string", "minLength": 1},
     "status": {"type": "string", "enum": ["migration_candidate", "draft", "active", "deprecated", "historical", "superseded"]},
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$",
+      "description": "Governed object version. Stable object identity remains in id; version does not redefine identity."
+    },
+    "effective_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date on which the governed version takes effect. May be null before promotion to active authority."
+    },
+    "supersedes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "superseded_by": {"type": ["string", "null"]},
     "authority": {"type": "string", "enum": ["external", "doctrine", "architectural", "normative", "procedural", "instructional", "configuration", "informational"]},
     "layer": {"type": "string", "pattern": "^L[1-7]$"},
     "modules": {
@@ -46,5 +58,19 @@
       "additionalProperties": true
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "active"}},
+        "required": ["status"]
+      },
+      "then": {
+        "required": ["version", "effective_date"],
+        "properties": {
+          "effective_date": {"type": "string", "format": "date"}
+        }
+      }
+    }
+  ],
   "additionalProperties": true
 }
