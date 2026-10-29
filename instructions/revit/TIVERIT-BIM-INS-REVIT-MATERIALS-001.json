@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-MATERIALS-001",
+  "type": "instruction",
+  "title": "Revit Materials and Appearance Implementation",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S4", "S8"],
+  "purpose": "Apply governed Revit material naming, classification, graphic appearance, and render appearance while keeping example material codes and unresolved numeric values noncanonical.",
+  "preconditions": ["Applicable material naming/classification rules are available from governed standards or registries.", "Approved appearance assets or controlled material libraries are available where required."],
+  "steps": [
+    {"id":"MAT-01","name":"Use governed material identity","actions":["Name and classify materials using the applicable governed S4/S8 syntax and classification context.","Do not create project-local material aliases that duplicate an existing governed material without an approved reason."],"validation":["Material names are consistent and unambiguous.","Duplicate or conflicting material identities are identified for remediation."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"MAT-02","name":"Coordinate documentation and render appearance","actions":["Use material graphics for governed cut/surface patterns and colors where applicable.","Use controlled appearance assets for rendered/PBR appearance.","Keep documentation graphics and render appearance coordinated but recognize that they are separate Revit material surfaces."],"validation":["Graphic and appearance assets are assigned consistently for the material's intended use.","No uncontrolled appearance asset path or duplicate asset is introduced where a governed library exists."],"automation_readiness":"ASSISTED"},
+    {"id":"MAT-03","name":"Resolve graphics through governed hierarchy","actions":["Coordinate material-driven hatches and graphics with governed Object Styles, Category/Subcategory Graphics, and View Templates.","Avoid per-element overrides as a substitute for material/category/filter governance."],"validation":["Material-based display does not conflict with the governed graphics hierarchy.","Recurring display exceptions are handled through governed templates/filters/material definitions."],"automation_readiness":"ASSISTED"}
+  ],
+  "outputs": ["Revit materials with governed identity and coordinated documentation/render appearance"],
+  "evidence": ["Material inventory", "Appearance asset/library reference report", "Material graphics QA report"],
+  "future_dependencies": ["Concrete governed Material Registry/Library", "Approved PBR asset locations and lifecycle rules"],
+  "governance_notes": ["Source material naming tables are marked example-only and are not promoted.", "Unconfirmed numeric appearance or pattern values remain unresolved until separately governed."],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"7700481","source_version":1,"source_title":"Materials & Appearance Standards - Revit Guide","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7700481","migration_note":"Migrated durable material-governance practices only; example names and unconfirmed values remain noncanonical."}
+}
