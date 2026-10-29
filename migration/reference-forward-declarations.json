@@ -1,0 +1,14 @@
+{
+  "id": "MIG-REFERENCE-FORWARD-DECLARATIONS-001",
+  "type": "migration_reference_register",
+  "title": "Forward Reference Declarations",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"],
+  "forward_references": [],
+  "provenance": {
+    "source_system": "repository_curator",
+    "migration_note": "Explicit register for canonical-looking references that intentionally target governed objects not yet migrated. Entries must be specific IDs with a rationale; wildcard exemptions are prohibited."
+  }
+}
