@@ -9,11 +9,8 @@
   "forward_references": [
     {"id":"TIVERIT-BIM-STD-L6-SP-GEN-REG-001","reason":"Source-backed L6 Shared Parameter instruction exists in Confluence but has not yet been migrated to the repository."},
     {"id":"TIVERIT-BIM-STD-L6-SP-GEN-TXT-001","reason":"Source-backed L6 Shared Parameter instruction exists in Confluence but has not yet been migrated to the repository."},
-    {"id":"TIVERIT-BIM-STD-S1-ROLES-001","reason":"S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."},
     {"id":"TIVERIT-BIM-STD-CONSTITUTION","reason":"S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."},
-    {"id":"TIVERIT-BIM-STD-S1-CORE-GOV-EP001","reason":"S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."},
     {"id":"TIVERIT-BIM-STD-S7-VALIDATION-DELIVERY-EP001","reason":"Referenced governed standard has not yet been migrated or normalized into the current branch."},
-    {"id":"TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001","reason":"Referenced governed standard has not yet been migrated or normalized into the current branch."},
     {"id":"ROLE-DISCIPLINE-LEAD-ARCH-001","reason":"Observed role specialization is referenced by migrated source content but does not yet have a governed role definition."},
     {"id":"ROLE-DISCIPLINE-LEAD-TECH-001","reason":"Observed role specialization is referenced by migrated source content but does not yet have a governed role definition."},
     {"id":"W-GOVERNED-PRODUCTION-INTAKE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
