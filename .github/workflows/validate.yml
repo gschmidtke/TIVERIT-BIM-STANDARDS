@@ -26,3 +26,6 @@ jobs:
 
       - name: Validate schemas and JSON objects
         run: python scripts/validate_repository.py
+
+      - name: Run executable conformance fixtures
+        run: python scripts/run_conformance_fixtures.py
