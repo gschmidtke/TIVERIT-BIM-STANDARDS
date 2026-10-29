@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-NAMING-SYNTAXES-001",
+  "type": "registry",
+  "title": "S4 Naming Syntax Registry",
+  "status": "migration_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S4"],
+  "entries": [
+    {"id":"SYNTAX-ISO19650-CONTAINER-001","name":"ISO 19650 Information Container Baseline","status":"active_source_candidate","object_type":"information_container_or_model_file","template":"{proj}-{originator}-{volume/system}-{level/location}-{type}-{role}-{number}.{ext}","delimiter":"-","source_page_id":"11042817","source_layer":"L3","source_status":"template_active"},
+    {"id":"SYNTAX-ACC-MODEL-FILE-001","name":"ACC Revit Model File","status":"draft_source_candidate","object_type":"revit_model_file_in_cde","template":"[ProjectCode]_[DisciplineCode]_[ModelRole/Trade]_[StatusCode]_[PurposeCode]_[Rev/Seq].rvt","delimiter":"_","source_page_id":"7241811","source_layer":"L5/L6","source_status":"draft"},
+    {"id":"SYNTAX-REVIT-FAMILY-001","name":"Revit Loadable Family","status":"draft_source_candidate","object_type":"revit_family","template":"<Discipline>-<Category>-<Type/Function>-<Variant/Classification>","delimiter":"-","source_page_ids":["4489217","6651935"]},
+    {"id":"SYNTAX-REVIT-VIEW-001","name":"Revit Plan View","status":"draft_source_candidate","object_type":"revit_plan_view","template":"<Discipline>-PLN-<Level/Area>-<Scope>-<Purpose>","delimiter":"-","source_page_id":"7241762"},
+    {"id":"SYNTAX-REVIT-SHEET-001","name":"Revit Sheet Number","status":"draft_source_candidate","object_type":"revit_sheet_number","template":"{DisciplineCode}{Series}-{Sequence}","delimiter":"-","source_page_id":"6357066"},
+    {"id":"SYNTAX-WF-VIEW-GOV-001","name":"Workflow JSON View","status":"current_source_candidate","object_type":"tool_agnostic_view","template":"[Discipline] · [Space/Scope] · [Purpose] · [Phase/Status] · [Classifier]","delimiter":" · ","source_page_id":"7241772"}
+  ],
+  "conflicts": [
+    {"id":"CONF-S4-001","topic":"external_container_filename_grammar","status":"curator_review_required","competing_entries":["SYNTAX-ISO19650-CONTAINER-001","SYNTAX-ACC-MODEL-FILE-001"]},
+    {"id":"CONF-S4-003","topic":"mutable_status_revision_inside_filename","status":"curator_review_required","affected_entry":"SYNTAX-ACC-MODEL-FILE-001"}
+  ],
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["11042817","7241811","4489217","6651935","7241762","6357066","7241772"]}
+}
