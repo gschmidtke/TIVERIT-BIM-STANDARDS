@@ -47,6 +47,26 @@ For inquiries that span more than one layer, reason in this order:
 4. **Tool/API/executor** — determine capability and perform the action.
 5. **Validation** — compare observed results against both the resolved purpose and the governing standard.
 
+## BEP assembly tasks
+
+When asked to create, review, or complete a BIM Execution Plan (BEP), do not discover the repository ad hoc. Start with:
+
+- `guides/bep/README.md`
+- `guides/bep/BEP-ASSEMBLY-MAP.md`
+- the project-instance starter tables under `templates/project/`
+
+Use the BEP assembly map in S1 → S9 order and distinguish three classes of information:
+
+1. **governed repository content** — standards, roles, registries, workflows and instructions;
+2. **project/contract facts** — parties, appointments, milestones, software versions, model lists, coordinate source, actual LOIN, delivery dates and similar values supplied by the project;
+3. **unresolved items** — values not supplied or not yet governed.
+
+Never invent class 2 values from class 1 rules. Mark missing values `TBC`, `TBD`, `not supplied`, or explicitly as a proposal requiring approval.
+
+During migration, Confluence remains source authority until formal cutover. GitHub objects marked `migration_candidate` are the current normalized drafting source on the migration branch; preserve that status and do not describe them as formally cut-over authority.
+
+A BEP is a project instantiation and reference document. It may reference governed object IDs and approved project deviations, but it must not silently become a competing source of standards authority.
+
 ## Authority boundaries
 
 - USG does not define BIM governance merely because a purpose has been established.
