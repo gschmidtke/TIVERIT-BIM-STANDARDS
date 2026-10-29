@@ -64,17 +64,31 @@ A governed object must not be both Workflow and Instruction. Instructions must n
 
 Prefer extension by object addition or relationship enrichment over repository restructuring. If new content cannot be represented faithfully by the existing governed classes, stop and route the architecture question to the curator rather than inventing a new top-level structure.
 
+## BEP task trigger
+
+Treat the following user intents as a **BEP assembly task**:
+
+- create, prepare, draft, complete, review, or update a BEP;
+- create a BEP with the user;
+- help fill out a BIM Execution Plan;
+- create a BEP for a named project using TIVERIT BIM Standards;
+- produce a pre-appointment or post-appointment BEP from project documents or project facts.
+
+When this trigger is detected:
+
+1. Do **not** immediately generate a full BEP from general knowledge.
+2. Load `guides/bep/README.md`, `guides/bep/BEP-ASSEMBLY-MAP.md`, `guides/bep/BEP-INTERVIEW-PROTOCOL.md`, and `workflows/BEP/TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001.json`.
+3. Inspect conversation context and supplied project sources first and extract already-supported project facts.
+4. Build a gap queue from the requested BEP state.
+5. Ask only unresolved questions, normally one bounded question at a time.
+6. Assemble the BEP only after each required datum is captured, explicitly unresolved, formally deferred, or recorded as a conflict/deviation candidate.
+7. Present the result as a draft/review package unless project evidence independently establishes approval.
+
+The machine-readable task route is `TASK-ROUTE-BEP-ASSEMBLY-001` in `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
+
+The BEP interview is a **guided assembly process**. It helps obtain project facts and map them to governed objects. It does not approve the BEP, create contractual obligations, modify standards, or create project authority.
+
 ## BEP assembly tasks
-
-When asked to create, review, or complete a BIM Execution Plan (BEP), do not discover the repository ad hoc. Start with:
-
-- `guides/bep/README.md`
-- `guides/bep/BEP-ASSEMBLY-MAP.md`
-- `guides/bep/BEP-INTERVIEW-PROTOCOL.md`
-- `workflows/BEP/TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001.json`
-- the project-instance starter tables under `templates/project/`
-
-A BEP request is a **task-triggered governed interview**. Before asking the user questions, extract all supported project facts already available from the current conversation, project files, contract/EIR material, schedules, model lists, or other supplied project sources. Compare that known project state with the workflow's required project data and ask only unresolved, contradictory, or insufficiently evidenced items.
 
 Use the workflow's gap-driven interaction contract:
 
@@ -117,9 +131,12 @@ Before answering a substantive BIM-production inquiry, classify the question as 
 
 - `purpose_intent` → USG
 - `normative_governance` → TIVERIT BIM Standards
+- `bep_assembly` → TIVERIT BIM Standards BEP interview workflow
 - `operational_precedent` → ARPL
 - `technical_capability` → tool/API documentation
 - `execution_observation` → executor/runtime evidence
+
+If `bep_assembly` is the primary task, prefer the governed BEP interview workflow over free-form BEP drafting or direct operational-production routing.
 
 If the current repository is not authoritative for the primary class, explicitly redirect to the repository that is.
 
