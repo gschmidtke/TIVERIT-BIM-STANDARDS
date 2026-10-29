@@ -6,7 +6,7 @@
   "status": "migration_candidate",
   "authority": "procedural",
   "layer": "L5",
-  "modules": ["S2", "S4", "S8"],
+  "modules": ["S2", "S8"],
   "scope": {
     "includes": ["Revit shared parameter TXT imports", "CSV-based Shared Parameter Registry", "Citizen vs Visitor governance", "Delta analysis between projects and registry", "TXT generation for projects from registry"],
     "excludes": ["Tool-specific UI steps", "Per-project BEP language", "Built-in Revit parameters without GUIDs"]
@@ -30,8 +30,8 @@
     {"id":"compute_project_delta","action":"Compare a project import against the master registry using GUID as primary identity and canonical name as collision evidence, then emit a delta report for review.","inputs":["registry_master","project_import_raw"],"outputs":["project_delta_report"],"verification":{"class":"machine_executable"}}
   ],
   "relationships": {
-    "standards": ["TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001"],
-    "registries": ["TIVERIT-BIM-STD-S4-SP-REG-001"],
+    "standards": ["TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001", "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001"],
     "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-BIM-STANDARDS-MGR-001"]
   },
   "unresolved_role_hooks": [
@@ -48,6 +48,6 @@
     "source_version": 1,
     "source_title": "JSON - Shared Parameter Registry Governance Workflow",
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3768321",
-    "migration_note": "Role cross-check resolves standards governance to ROLE-BIM-STANDARDS-MGR-001; AVLC Lead and FM Lead remain unresolved semantic-owner hooks."
+    "migration_note": "Role cross-check resolves standards governance to ROLE-BIM-STANDARDS-MGR-001; AVLC Lead and FM Lead remain unresolved semantic-owner hooks. Registry namespace aligned to S8 by curator decision D-01."
   }
 }
