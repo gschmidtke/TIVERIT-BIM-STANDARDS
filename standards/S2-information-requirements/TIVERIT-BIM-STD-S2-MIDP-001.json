@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S2-MIDP-001",
+  "type": "standard",
+  "title": "Model Information Delivery Plan (MIDP)",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S2"],
+  "scope": {"purpose":"Define the governed master schedule of information deliverables, milestones, states, LOD/LOI, permitted use, responsible roles, and review authority."},
+  "requirements": [
+    {"id":"MIDP-REQ-001","authority":"shall_not","statement":"The authoring party shall not serve as sole approver for a MIDP entry.","verification_class":"machine_assisted"},
+    {"id":"MIDP-REQ-002","authority":"shall","statement":"The Project BIM Manager shall maintain and update the master MIDP across all project milestones.","verification_class":"human_verifiable"},
+    {"id":"MIDP-REQ-003","authority":"shall","statement":"Information deliverables shall be scheduled with unique deliverable identifiers matching the CDE container naming standard.","verification_class":"machine_checkable"},
+    {"id":"MIDP-REQ-004","authority":"shall","statement":"Every MIDP line item shall map directly to at least one constituent TIDP task.","verification_class":"machine_checkable"}
+  ],
+  "canonical_fields": ["ID","Information Requirement","Purpose / Decision Supported","Model / Information Container","Responsible Role","Delivery Milestone","Delivery State","LOD","LOI","Permitted Use","Review Authority","Approval Status"],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S2-PIR-001","TIVERIT-BIM-STD-S2-TIDP-001","TIVERIT-BIM-STD-S2-LOD-LOI-001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001"]},
+  "runtime_note":"The L4 MIDP standard defines governed rules and fields. Runtime MIDP instances in the BEP delivery engine are implementation data, not a replacement for this standard.",
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"3407873","source_version":1,"source_title":"MIDP — Model Information Delivery Plan","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3407873","migration_note":"Standalone L4 S2 production standard; dynamic BEP/runtime representations are treated as downstream implementations."}
+}
