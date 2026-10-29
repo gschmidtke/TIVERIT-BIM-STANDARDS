@@ -1,6 +1,6 @@
 # S4 Model Identity, Naming & Structure — Migration Review
 
-Status: migration candidate review.
+Status: migration candidate review with curator decisions D-11 through D-13 accepted.
 
 ## Source authority
 
@@ -30,37 +30,29 @@ Identity, revision, suitability/status, CDE state, and S5 issue state remain sep
 
 The raw S4 extraction package is not copied into canonical repository content. One retired originator-code example occurred in `S4_identifiers.json`; that value is excluded from migrated objects. Neutral Confluence page IDs preserve traceability.
 
-## Curator decisions required
+## Accepted curator decisions
 
-### CONF-S4-001 — Competing external filename grammars
+### CONF-S4-001 / D-11 — Canonical cross-platform filename grammar
 
-Source A, BEP page `11042817`, uses a seven-token hyphen-delimited ISO 19650-style pattern:
+The seven-token hyphen-delimited BEP/ISO-style pattern is the canonical cross-platform container identity grammar:
 
 `{proj}-{originator}-{volume/system}-{level/location}-{type}-{role}-{number}.{ext}`
 
-Source B, ACC implementation page `7241811`, uses a six-token underscore-delimited pattern:
+The ACC underscore filename scheme remains a downstream implementation/display mapping only. It does not establish an independent canonical root identity.
 
-`[ProjectCode]_[DisciplineCode]_[ModelRole/Trade]_[StatusCode]_[PurposeCode]_[Rev/Seq].rvt`
+Status: `resolved_by_curator`.
 
-Status: `curator_review_required`.
+### CONF-S4-002 / D-12 — Scoped discipline-code namespaces
 
-No precedence is asserted during migration.
+Enterprise and CDE container identity uses the governed 3–4 letter discipline namespace. Compact or single-letter discipline codes may remain valid only for tool-internal naming surfaces where an explicit governing instruction defines them.
 
-### CONF-S4-002 — Discipline-code namespace
+Status: `resolved_by_curator`.
 
-Revit Appendix E evidence uses short/single-letter discipline codes for internal object naming, while CDE implementation sources use 3-4 letter codes such as ARC, STR, MEP and AVLC.
+### CONF-S4-003 / D-13 — Stable root identity versus mutable status/revision
 
-Status: `curator_review_required`.
+Suitability/status and revision are governed mutable dimensions associated with the stable container identity. They do not form part of canonical root identity. Platform-specific labels may display them where necessary without redefining the underlying identity.
 
-Possible scoped coexistence is not treated as source fact until curator-approved.
-
-### CONF-S4-003 — Mutable status/revision embedded in filename
-
-The L4 S4 doctrine states identity remains stable across production phase and that model naming defines identity rather than suitability. The ACC filename pattern embeds `StatusCode` and `Rev/Seq`, which are mutable lifecycle dimensions.
-
-Status: `curator_review_required`.
-
-No migration rule currently authorizes renaming the root container identity whenever status or revision changes.
+Status: `resolved_by_curator`.
 
 ## Source gaps retained
 
@@ -76,4 +68,4 @@ Governed role IDs are retained where explicitly cross-checked. Informal source f
 
 ## Authority status
 
-All S4 objects created by this migration remain `migration_candidate`. No S4 source or implementation pattern is promoted to active authority by this review.
+All S4 objects remain `migration_candidate`. Acceptance of D-11 through D-13 resolves migration treatment but does not promote S4 to active authority before repository cutover.
