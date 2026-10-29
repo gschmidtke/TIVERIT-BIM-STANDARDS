@@ -24,6 +24,7 @@ CANONICAL_DIRS = [
     "registries",
     "modules",
     "engine",
+    "conformance",
 ]
 
 TYPE_TO_SCHEMA = {
@@ -31,6 +32,7 @@ TYPE_TO_SCHEMA = {
     "registry": "registry.schema.json",
     "workflow": "workflow.schema.json",
     "role": "role.schema.json",
+    "abstract_test": "abstract-test.schema.json",
 }
 
 REFERENCE_KEYS = {
@@ -44,7 +46,7 @@ REFERENCE_KEYS = {
 # Controlled repository namespaces. New namespace families require curator approval
 # and must be registered here before references using them can validate.
 CANONICAL_REFERENCE_PATTERN = re.compile(
-    r"^(?:TIVERIT-|ROLE-|REG-|REQ-|W-|BIM-STD-|GAP-|REL-|LNK-|AUT-|MIG-)"
+    r"^(?:TIVERIT-|ROLE-|REG-|REQ-|W-|BIM-STD-|GAP-|REL-|LNK-|AUT-|MIG-|ATS-|ETS-)"
 )
 
 # Detect structured repository-ID-like values that would otherwise escape the known
@@ -261,6 +263,13 @@ def validate_referential_integrity(errors: list[str]):
     used_forward_references: set[str] = set()
 
     for path, obj in objects:
+        if obj.get("type") == "abstract_test":
+            requirement_id = obj.get("requirement_id")
+            if isinstance(requirement_id, str) and requirement_id not in known_ids:
+                errors.append(
+                    f"{path.relative_to(ROOT)}:requirement_id: unresolved requirement reference {requirement_id!r}"
+                )
+
         for field, target in iter_reference_values(obj):
             if not CANONICAL_REFERENCE_PATTERN.match(target):
                 if IDENTIFIER_LIKE_PATTERN.fullmatch(target) and not is_exempt_reference_literal(target):
@@ -308,6 +317,7 @@ def main() -> int:
         "registry.schema.json",
         "workflow.schema.json",
         "role.schema.json",
+        "abstract-test.schema.json",
     }
     missing = required_schemas.difference(schemas)
     if missing:
