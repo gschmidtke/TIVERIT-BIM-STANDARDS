@@ -1,0 +1,19 @@
+{
+  "id": "MIG-CROSSCHECK-S4-S2-S3-S5-S7-S8-001",
+  "type": "migration_crosscheck",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "modules": ["S2","S3","S4","S5","S7","S8"],
+  "result": "pass_with_curator_conflicts",
+  "dependencies": [
+    {"from":"S2","to":"S4","rule":"PIR/EIR/MIDP/TIDP and LOD/LOI determine which containers exist, delivery timing, and segmentation demand; S4 creates deterministic identities for those containers."},
+    {"from":"S8","to":"S4","rule":"S8 supplies semantic parameter definitions and the Shared Parameter Registry; S4 may consume those values as identity carriers without redefining semantic ownership."},
+    {"from":"S4","to":"S3","rule":"S4 governs names and identity of files and containers placed within S3 CDE structures."},
+    {"from":"S4","to":"S5","rule":"S4 discipline, system, zone, and level identity tokens support coordination filters, clash sets, and issue attribution."},
+    {"from":"S4","to":"S7","rule":"S4 container identity, revision, and suitability dimensions propagate into formal transmittal and handover records."}
+  ],
+  "state_separation": ["identity","revision","suitability/status","CDE platform state","S5 issue state"],
+  "curator_conflicts": ["CONF-S4-001","CONF-S4-002","CONF-S4-003"],
+  "source_gaps": ["GAP-S4-001","GAP-S4-002","GAP-S4-003"],
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["2588789","2719832","4587521","4489217","7241811","11042817","7700514","7241772"]}
+}
