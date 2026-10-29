@@ -1,0 +1,64 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001",
+  "type": "standard",
+  "title": "Authoring, Automation & Manufacturing Toolchains",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S9"],
+  "scope": {
+    "purpose": "Govern tool legitimacy, domain authority, interoperability, and automation boundaries across authoring, manufacturing, controls, documentation, and integration environments.",
+    "tool_aware_not_instructional": "S9 defines what a tool or automation may be authoritative for and how it must respect governed information boundaries. Tool configuration, UI procedures, deployment instructions, and execution mechanics remain downstream implementation content.",
+    "non_goals": [
+      "No modeling technique or tool tutorial",
+      "No coordination/clash workflow definition",
+      "No collaboration/linking mechanics",
+      "No submission or acceptance gate definition",
+      "No semantic schema ownership",
+      "No contractual authority creation"
+    ]
+  },
+  "requirements": [
+    {"id":"REQ-S9-AUTH-001","authority":"shall","statement":"Each governed information domain shall have an explicitly declared authoritative tool or environment, with allowed inputs, authoritative outputs, and prohibited authority shifts defined through governed configuration or registry content.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-AUTH-002","authority":"shall_not","statement":"A tool shall not gain governance authority by convenience, prevalence, legacy use, platform access, or technical capability.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-AUTH-003","authority":"shall","statement":"Non-authoritative tools may consume, visualize, transform, or temporarily stage governed information only within declared boundaries and shall not silently become the source of truth for that information domain.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-AUTH-004","authority":"shall","statement":"Tool and platform integrations shall preserve traceability, lifecycle continuity, and upstream governance ownership across information exchanges.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-AUT-001","authority":"shall","statement":"Automation shall operate as an execution layer that applies governed standards, registries, transformations, checks, or repetitive operations without creating independent governance authority.","verification_class":"machine_checkable"},
+    {"id":"REQ-S9-AUT-002","authority":"shall_not","statement":"Automation shall not redefine standards, bypass governed review or acceptance, introduce uncontrolled authoritative data, or transfer authority by technical side effect.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-AUT-003","authority":"shall","statement":"Automation that can affect governed information shall be documented, versioned, repeatable, traceable to its governing rules, and registered before production use.","verification_class":"machine_checkable"},
+    {"id":"REQ-S9-AUT-004","authority":"shall","statement":"Changes to automation logic, scope, target data, or write behavior shall trigger governed reassessment and registry update before the changed automation is used in production.","verification_class":"machine_checkable"},
+    {"id":"REQ-S9-STAB-001","authority":"shall","statement":"Changes to tools, tool authority assignments, integrations, or automation shall preserve governed information continuity and shall follow controlled change management.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-STAB-002","authority":"shall","statement":"New tools may enter the governed ecosystem only when their authority boundaries, integration behavior, information-domain impacts, and change ownership are explicitly defined.","verification_class":"human_verifiable"}
+  ],
+  "source_domain_candidates": [
+    {"domain":"primary BIM authoring","source_environment":"Revit","migration_treatment":"candidate mapping only; governance authority remains defined by S1-S8 and the Tool Authority Registry"},
+    {"domain":"manufacturing and mechanical authoring","source_environment":"Inventor / Vault","migration_treatment":"candidate mapping only; detailed implementation remains tool-specific"},
+    {"domain":"electrical and controls authoring","source_environment":"EPLAN","migration_treatment":"candidate mapping only; spatial BIM authority is not transferred"},
+    {"domain":"constrained documentation/output","source_environment":"AutoCAD","migration_treatment":"candidate mapping only; not treated as primary BIM authoring authority"}
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S1-CORE-GOV-EP001",
+      "TIVERIT-BIM-STD-S2-INF-REQ-EP001",
+      "TIVERIT-BIM-STD-S3-PROD-EP001",
+      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
+      "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"
+    ],
+    "registries": ["REG-S9-AUTOMATION-001","REG-S9-TOOL-AUTHORITY-001"],
+    "roles": ["ROLE-TOOL-AUTHORITY-001","ROLE-BIM-STANDARDS-MANAGER-001","ROLE-PROJECT-BIM-MANAGER-001","ROLE-QAQC-AUTHORITY-001"]
+  },
+  "open_gaps": ["GAP-S9-01","GAP-S9-02"],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "2228282",
+    "source_version": "1",
+    "source_title": "JSON - Authoring, Automation & Manufacturing Toolchains",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2228282",
+    "migration_note": "Normalized from the S9 machine-readable source. Product-specific source statements are retained as candidate domain mappings rather than elevated into independent governance authority. Automation remains explicitly subordinate to S1-S8 normative governance."
+  }
+}
