@@ -29,6 +29,9 @@ The following areas are curator-controlled:
 - `modules/`
 - `engine/`
 - `schemas/`
+- `conformance/`
+- `bridges/`
+- `render/`
 - `provenance/`
 - `migration/`
 - `archive/`
@@ -52,6 +55,9 @@ Recognized namespace families include:
 - `LNK-*` — governed link/reference-domain identities where used.
 - `AUT-*` — governed automation-asset identities where used.
 - `MIG-*` — migration-only records that never become normative merely by existing.
+- `ATS-*` — abstract conformance test specifications that define tool-neutral proof logic for requirements.
+- `ETS-*` — executable conformance test specifications that bind an ATS to a concrete implementation or tool capability.
+- `FIX-*` — governed conformance fixtures used to regression-test ATS/ETS behavior and expected evidence outcomes.
 - `BIM-STD-*` — narrowly retained governed standard identifiers only where explicitly accepted by curator decision; this prefix is not a general namespace for new objects.
 - `W-*` — source/forward workflow identifiers retained during migration until normalized into governed workflow objects; they are not a preferred namespace for new canonical workflows.
 
