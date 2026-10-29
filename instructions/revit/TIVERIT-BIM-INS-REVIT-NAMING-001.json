@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-NAMING-001",
+  "type": "instruction",
+  "title": "Revit Object Naming Implementation",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S4"],
+  "purpose": "Implement governed S4 naming objectives for Revit families, types, worksets, views, and sheets without promoting source example strings into canonical naming vocabularies.",
+  "preconditions": ["The relevant S4 naming standard and controlled vocabulary are available for the object being named.", "Tool-local naming is used only where the governing S4 rule explicitly permits it."],
+  "steps": [
+    {"id":"NAME-01","name":"Classify the object before naming","actions":["Identify whether the object is a family, family type, workset, view, sheet, or other governed Revit object.","Select the applicable S4 syntax/namespace rather than deriving a new local convention."],"validation":["The object is mapped to a governed naming class.","No competing canonical syntax is created inside Revit."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"NAME-02","name":"Apply the governed naming structure","actions":["Construct the object name using the applicable governed tokens, order, delimiter, and controlled vocabulary.","For worksets, apply the curator-approved discipline/function/scope structure where applicable.","Use dedicated View and Sheet standards for their detailed naming surfaces."],"validation":["Names are stable, searchable, and consistent with the governing S4 syntax.","Names do not embed mutable status/revision into root identity unless the governing tool-local surface explicitly permits display metadata."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"NAME-03","name":"Control renames and duplicates","actions":["Avoid creating near-duplicate family/type names for cosmetic or project-local reasons.","Route governed renames, deprecation, and library changes through the applicable change process.","Do not treat source tables marked EXAMPLE ONLY as approved code lists."],"validation":["Duplicate/ambiguous names are identified for remediation.","Renames affecting governed identity are traceable."],"automation_readiness":"ASSISTED"}
+  ],
+  "outputs": ["Revit objects named according to S4-governed syntax and scope"],
+  "evidence": ["Object-name inventory", "Naming validation report", "Rename/deprecation record where applicable"],
+  "relationships": {"registries":["TIVERIT-S4-NAMING-SYNTAXES-001","TIVERIT-S4-CONTROLLED-VOCABULARIES-001"]},
+  "future_dependencies": ["Concrete governed Family Library catalogue"],
+  "governance_notes": ["Source family/type/workset/view/sheet naming tables contain examples and proposed patterns; they are implementation evidence, not higher authority than S4.", "Detailed view and sheet naming remains delegated to their specific instructions and governing registries."],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"6651935","source_version":1,"source_title":"Object Naming Standards for Revit","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6651935","migration_note":"Normalized beneath accepted S4 naming decisions; example-only source strings are not canonicalized."}
+}
