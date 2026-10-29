@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S2-AIR-001",
+  "type": "standard",
+  "title": "Asset Information Requirements (AIR)",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S2"],
+  "scope": {"purpose":"Define operational, maintenance, and facility-management information required for maintainable assets through commissioning and handover."},
+  "requirements": [
+    {"id":"AIR-REQ-001","authority":"shall","statement":"Asset Information Requirements shall apply to all maintainable equipment and architectural components designated in the asset breakdown structure.","verification_class":"machine_assisted"},
+    {"id":"AIR-REQ-002","authority":"shall","statement":"Asset parameters specified in the AIR shall be populated prior to Handover milestone sign-off.","verification_class":"machine_assisted"},
+    {"id":"AIR-REQ-003","authority":"shall_not","statement":"Model authors shall not substitute proprietary classification systems for the mandated asset classification standard.","verification_class":"machine_assisted"},
+    {"id":"AIR-REQ-004","authority":"may","statement":"Operating and maintenance manuals may be referenced via validated external document URLs in parameter fields.","verification_class":"machine_assisted"}
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"roles":["ROLE-DISCIPLINE-LEAD-001","ROLE-MODEL-AUTHOR-001"]},
+  "unresolved_role_hooks":[{"observed_name":"FM Lead / FM Function","resolution":"unresolved"},{"observed_name":"Client / Owner","resolution":"unresolved"}],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"3538945","source_version":1,"source_title":"AIR — Asset Information Requirements","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3538945","migration_note":"Feeds S8 asset/lifecycle schema requirements. FM and Client/Owner role references remain unresolved."}
+}
