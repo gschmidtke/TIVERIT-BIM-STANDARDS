@@ -39,6 +39,26 @@ This log records accepted curator decisions that alter migration treatment or ca
 
 **Rationale:** Identity must persist across lifecycle transitions. Treating mutable revision or suitability as root identity would fragment history and risk broken references.
 
+### D-14 — Standalone Coordination File belongs to S6
+**Decision:** `BIM-STD-CF-001` is canonically owned by S6. S5 consumes its verified spatial output for coordination intake but does not own the spatial-authority standard.
+
+**Rationale:** The artifact's primary function is governance of shared coordinates, master datums, and model onboarding alignment, which is core S6 scope.
+
+### D-15 — Coordinate authority flows outward from the coordination file
+**Decision:** Discipline models consume/acquire the approved spatial framework from `BIM-STD-CF-001`. Peer-to-peer coordinate publication is not treated as an equivalent governance path.
+
+**Rationale:** A single directional authority path prevents circular coordinate authority and uncontrolled spatial drift.
+
+### D-16 — Tool-neutral S6 doctrine; tool-specific mechanics remain implementation-layer
+**Decision:** S6 L4 remains tool-neutral. Revit Central/Local mechanics, worksets, and specific shared-coordinate commands are retained as L6 implementation instructions rather than universal L4 requirements.
+
+**Rationale:** Tool-independent governance must define required outcomes and authority boundaries without making one authoring application's mechanics universal.
+
+### D-17 — Federation responsibilities split by governance owner
+**Decision:** S6 owns spatial alignment, link relationships, and federation prerequisites. S5 owns clash/review/sign-off activity. S3 owns CDE storage, folder state, and platform administration.
+
+**Rationale:** Federation-related source material crosses several governance domains; separating responsibilities prevents duplicated or conflicting authority.
+
 ## Earlier accepted role decisions
 
 Role-specific curator decisions remain recorded in `migration/review/Roles_curator_decision_proposal.md` and continue to govern role migration.
