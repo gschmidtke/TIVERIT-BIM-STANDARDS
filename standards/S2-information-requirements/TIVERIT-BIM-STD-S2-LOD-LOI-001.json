@@ -7,12 +7,34 @@
   "authority": "normative",
   "layer": "L4",
   "modules": ["S2"],
-  "scope": {"purpose":"Define paired geometric and non-graphical information expectations and permitted reliance across model progression."},
+  "scope": {
+    "purpose": "Define paired geometric and non-graphical information expectations, model progression, milestone readiness, and permitted reliance across the lifecycle of governed model information.",
+    "boundary": "This standard governs progression and authorized-use principles. Project-specific stage names, discipline mappings, detailed element expectations, and milestone criteria belong in governed project requirements and BEP instruments unless separately curated as reusable standards."
+  },
   "requirements": [
-    {"id":"LOD-REQ-001","authority":"shall_not","statement":"Visual completeness shall not imply coordination, fabrication readiness, or engineering approval.","verification_class":"human_verifiable"},
+    {"id":"LOD-REQ-001","authority":"shall_not","statement":"Visual completeness shall not imply coordination, fabrication readiness, engineering approval, contractual authority, or permission for downstream use.","verification_class":"human_verifiable"},
     {"id":"LOD-REQ-002","authority":"shall","statement":"Level of Information requirements shall be paired with Level of Development definitions for every modeled element category.","verification_class":"machine_assisted"},
-    {"id":"LOD-REQ-003","authority":"shall","statement":"LOD 400 fabrication elements shall be validated against vendor shop drawings prior to construction issuance.","verification_class":"human_verifiable"}
+    {"id":"LOD-REQ-003","authority":"shall","statement":"LOD 400 fabrication elements shall be validated against vendor shop drawings prior to construction issuance.","verification_class":"human_verifiable"},
+    {"id":"LOD-REQ-004","authority":"shall","statement":"Model progression shall be governed by declared purpose, authorized use, geometric and non-geometric information expectations, and responsible scope rather than by visual appearance alone.","verification_class":"human_verifiable"},
+    {"id":"LOD-REQ-005","authority":"shall_not","statement":"Model information shall not be relied upon beyond its declared progression state, permitted use, or stated information maturity without an explicitly governed change in authorization.","verification_class":"human_verifiable"},
+    {"id":"LOD-REQ-006","authority":"shall","statement":"Each governed information milestone shall define the criteria by which the applicable model scope or deliverable package is assessed for its declared purpose and downstream use.","verification_class":"machine_assisted"},
+    {"id":"LOD-REQ-007","authority":"shall","statement":"Progression criteria shall identify the information author or responsible scope and the receiving or relying party where those distinctions affect readiness, permitted use, or handoff.","verification_class":"human_verifiable"},
+    {"id":"LOD-REQ-008","authority":"shall","statement":"Project BEPs and information requirements may refine progression stages and discipline-specific criteria, but such refinements shall preserve explicit purpose, permitted-use boundaries, and traceability to governed information requirements.","verification_class":"human_verifiable"},
+    {"id":"LOD-REQ-009","authority":"shall","statement":"Progression and maturity may vary by element, system, discipline, or scope; readiness shall therefore be assessed against the declared requirements for the relevant scope rather than assumed to be uniform across an entire model.","verification_class":"human_verifiable"}
   ],
+  "progression_principles": {
+    "purpose_bound": true,
+    "authorized_use_explicit": true,
+    "information_milestone_required_for_reliance_change": true,
+    "responsibility_context_required": true,
+    "non_uniform_progression_permitted": true,
+    "visual_appearance_is_not_readiness_evidence": true
+  },
+  "source_stage_examples": {
+    "status": "informative_source_examples_not_canonical_taxonomy",
+    "stages": ["Concept", "Design Development", "Coordination", "Fabrication", "As-Built"],
+    "note": "The supporting source presents these stages schematically and permits project BEPs to refine them. They are retained as source evidence only and are not promoted here as a mandatory enterprise stage vocabulary."
+  },
   "showset_permitted_use": {
     "LOD100":"Narrative alignment and early spatial exploration; not for fabrication or clearance sign-off.",
     "LOD200":"Thematic coordination and initial interfaces; not for final clearances or pricing commitments.",
@@ -21,6 +43,18 @@
     "LOD400":"Fabrication planning and shop/CNC derivation subject to QA/QC.",
     "LOD500":"Field-verified operations reference and retrofit planning."
   },
-  "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-MODEL-AUTHOR-001"]},
-  "provenance": {"source_system":"confluence","space":"BST","page_id":"2425330","source_version":1,"source_title":"LOD & LOI — Level of Development and Level of Information","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2425330","migration_note":"Core L4 LOD/LOI source. Showset/Theming interpretation is supported by pages 10387457 and 10453000 and remains a draft specialization."}
+  "relationships": {
+    "standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-MODEL-AUTHOR-001"]
+  },
+  "provenance": {
+    "source_system":"confluence",
+    "space":"BST",
+    "page_id":"2425330",
+    "source_version":1,
+    "source_title":"LOD & LOI — Level of Development and Level of Information",
+    "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2425330",
+    "supporting_page_ids":["10387457","10453000","10551299"],
+    "migration_note":"Core L4 LOD/LOI source enriched from the model-progression source. Durable progression, authorized-use, milestone, responsibility, and non-uniform-maturity principles were normalized into requirements. Source stage names remain informative because the supporting progression page is draft and explicitly allows project refinement."
+  }
 }
