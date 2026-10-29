@@ -4,6 +4,20 @@ This guide is the project-deliverable consumption layer for assembling a BIM Exe
 
 It does **not** create new standards, project facts, appointments, contractual requirements, or acceptance authority. It tells a human or AI which governed objects to consult, which project facts must be supplied externally, and which project-instance tables must be completed rather than invented.
 
+## How to start with an AI
+
+A user may simply say something like:
+
+> Create a BEP with me using the TIVERIT BIM Standards repository.
+
+That request should trigger the governed BEP interview workflow rather than immediate free-form drafting.
+
+The AI should first inspect the conversation and supplied project sources, reuse already-supported facts, then guide the user through only the remaining project-data gaps. The interview normally proceeds one bounded question at a time until the required information is captured, explicitly unresolved, formally deferred, or recorded as a conflict/deviation candidate.
+
+The interview is a guide for assembling a BEP. It does not approve the BEP, create contractual obligations, alter standards, or create project authority. The resulting BEP remains a draft/review package unless approval is independently evidenced.
+
+For the machine-readable task route, see `TASK-ROUTE-BEP-ASSEMBLY-001` in `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
+
 ## Purpose
 
 Use this guide when the task is:
