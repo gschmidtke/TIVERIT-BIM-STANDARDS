@@ -1,0 +1,99 @@
+{
+  "id": "MIG-REV-S1-S9-GAPS-001",
+  "type": "migration_review",
+  "title": "S1 and S9 Source Gap Reconciliation",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S1", "S9"],
+  "S1": {
+    "source_pages": ["2326578", "2818168", "7700534", "4456460"],
+    "historical_gap_reconciliation": [
+      {
+        "gap_id": "GAP-A1-01",
+        "topic": "Contractual precedence",
+        "state": "resolved_in_later_source",
+        "evidence_page": "2818168",
+        "notes": "Later S1 source adds an explicit order-of-precedence rule and formal escalation requirement. Migration still requires curator review of wording before canonical promotion."
+      },
+      {
+        "gap_id": "GAP-A1-02",
+        "topic": "Unauthorized use and permitted reliance",
+        "state": "resolved_at_constitutional_level_and_delegated_downstream",
+        "evidence_page": "2818168",
+        "repository_dependencies": ["S2", "S5", "S7"],
+        "notes": "Later S1 source states that availability does not grant reliance and delegates detailed suitability/reliance rules to information-requirement and validation/delivery standards."
+      },
+      {
+        "gap_id": "GAP-A2-01",
+        "topic": "Role matrix and explicit responsibilities",
+        "state": "resolved_by_dedicated_registry_architecture",
+        "evidence_pages": ["2818168", "7700534"],
+        "repository_dependencies": ["registries/roles/REG-ROLE-001.json", "registries/roles/definitions/"],
+        "notes": "S1 intentionally declares authority principles without enumerating all assignments. The dedicated role registry/definitions now provide the operational role layer. A future machine-checkable RACI/function/authority matrix may still improve completeness but is not required to make S1 internally complete."
+      },
+      {
+        "gap_id": "GAP-A3-01",
+        "topic": "Information reliability, suitability and permitted reliance",
+        "state": "delegated_and_substantially_migrated",
+        "evidence_page": "2818168",
+        "repository_dependencies": ["S2", "S5", "S7"],
+        "notes": "S1 declares the principle and explicitly delegates detailed reliability/suitability/LOD-LOI/reliance rules. These downstream domains are substantially present in the migration branch."
+      },
+      {
+        "gap_id": "GAP-A3-02",
+        "topic": "Required versus optional model uses by phase and stakeholder",
+        "state": "open",
+        "notes": "No dedicated governed model-use taxonomy was identified in the current repository or the reviewed S1 source set. Do not invent one during migration."
+      }
+    ],
+    "repository_architecture_conflict": {
+      "state": "requires_normalization_not_source_copy",
+      "notes": "The Confluence layer-governance source uses a legacy L1-L7 model in which L1 is the constitution and L7 is validation/evidence. The GitHub repository already adopted a different governed layer model: L1 external authority, L2 doctrine, L3 architecture, L4 standards, L5 workflows, L6 instructions, L7 configurations. Source concepts should be preserved but remapped to the repository layer architecture rather than copied literally."
+    },
+    "recommended_next_migration_object": "S1 parent constitutional/doctrine object plus references to existing role and downstream standards; no new role enumeration inside S1."
+  },
+  "S9": {
+    "source_pages": ["2228282", "5308417", "4554779"],
+    "gap_reconciliation": [
+      {
+        "gap_id": "GAP-S9-01",
+        "topic": "Automation Registry",
+        "state": "open_concrete_asset_missing",
+        "governance_scaffold": "5308417",
+        "notes": "A detailed governance scaffold exists, but it explicitly contains no real automation entries. The source defines expected fields and production rules; a concrete registry must be created only through curator action."
+      },
+      {
+        "gap_id": "GAP-S9-02",
+        "topic": "Tool Authority Matrix",
+        "state": "open_concrete_asset_missing",
+        "governance_scaffold": "4554779",
+        "notes": "A detailed conceptual schema and governance scaffold exists, but it explicitly contains no concrete tool/domain rows."
+      }
+    ],
+    "existing_repository_support": [
+      {
+        "path": "registries/roles/definitions/ROLE-TOOL-AUTHORITY-001.json",
+        "relationship": "role_authority_support",
+        "notes": "Defines approval/responsibility for tools and automation and references a future S9 parent. It does not replace the missing S9 standard or the concrete registries."
+      },
+      {
+        "relationship": "downstream_tool_rules",
+        "notes": "S3, S5, S6, S7 and the Revit/interoperability extraction already contain rules that consume tool/automation authority. These should reference S9 once the parent is migrated."
+      }
+    ],
+    "recommended_next_migration_object": "Migrate the S9 parent standard first. Keep Automation Registry and Tool Authority Matrix as explicitly unresolved governed assets until curator-approved concrete content exists."
+  },
+  "curator_boundary": [
+    "Do not create concrete automation entries from examples, scripts or products merely because the scaffold defines fields.",
+    "Do not populate a Tool Authority Matrix by inference from common industry practice; only source-supported or explicitly curated assignments may become governed rows.",
+    "Do not reproduce the legacy source layer numbering as canonical GitHub architecture where it conflicts with the repository's accepted layer model."
+  ],
+  "provenance": {
+    "source_system": "confluence_and_repository_crosscheck",
+    "space": "BST",
+    "source_pages": ["2326578", "2818168", "7700534", "4456460", "2228282", "5308417", "4554779"],
+    "repository_files": ["GOVERNANCE.md", "ARCHITECTURE.md", "registries/roles/definitions/ROLE-TOOL-AUTHORITY-001.json"],
+    "migration_note": "Gap reconciliation only; no canonical S1 or S9 content promoted by this file."
+  }
+}
