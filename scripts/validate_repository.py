@@ -13,7 +13,7 @@ FORWARD_REFERENCE_REGISTER = ROOT / "migration" / "reference-forward-declaration
 
 # Deliberately assembled at runtime so the retired token itself never appears in repository text.
 FORBIDDEN_TOKEN = bytes([84, 65, 73, 84]).decode("ascii")
-TEXT_SUFFIXES = {".json", ".md", ".py", ".yml", ".yaml", ".txt", ".csv"}
+TEXT_SUFFIXES = {".json", ".md", ".py", ".yml", ".yaml", ".txt", ".csv", ".xml", ".ids"}
 
 CANONICAL_DIRS = [
     "constitution",
@@ -25,6 +25,7 @@ CANONICAL_DIRS = [
     "modules",
     "engine",
     "conformance",
+    "bridges",
 ]
 
 TYPE_TO_SCHEMA = {
@@ -35,6 +36,7 @@ TYPE_TO_SCHEMA = {
     "abstract_test": "abstract-test.schema.json",
     "executable_test": "executable-test.schema.json",
     "conformance_fixture": "conformance-fixture.schema.json",
+    "interoperability_mapping": "interoperability-mapping.schema.json",
 }
 
 REFERENCE_KEYS = {
@@ -284,6 +286,12 @@ def validate_referential_integrity(errors: list[str]):
                 errors.append(
                     f"{path.relative_to(ROOT)}:ets_id: unresolved ETS reference {ets_id!r}"
                 )
+        elif obj_type == "interoperability_mapping":
+            requirement_id = obj.get("source_requirement_id")
+            if isinstance(requirement_id, str) and requirement_id not in known_ids:
+                errors.append(
+                    f"{path.relative_to(ROOT)}:source_requirement_id: unresolved requirement reference {requirement_id!r}"
+                )
 
         for field, target in iter_reference_values(obj):
             if not CANONICAL_REFERENCE_PATTERN.match(target):
@@ -336,6 +344,7 @@ def main() -> int:
         "executable-test.schema.json",
         "conformance-fixture.schema.json",
         "conformance-result.schema.json",
+        "interoperability-mapping.schema.json",
     }
     missing = required_schemas.difference(schemas)
     if missing:
