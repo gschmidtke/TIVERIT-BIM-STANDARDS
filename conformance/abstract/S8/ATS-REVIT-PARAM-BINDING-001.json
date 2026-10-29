@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-PARAM-BINDING-001",
+  "type": "abstract_test",
+  "title": "Revit governed parameter identity and binding",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-PARAMETERS-001",
+  "governing_clause": "PAR-01, PAR-02, and PAR-04",
+  "test_intent": "Determine whether governed Revit parameters resolve to the central registry identity and whether their instance/type behavior and category binding match the applicable governed definition.",
+  "applicability": {
+    "applies_when": "The tested Revit model contains parameters governed by S8 and the central Shared Parameter Registry.",
+    "not_applicable_when": "No governed parameter applies to the tested model or tested category scope."
+  },
+  "required_evidence": [
+    "applicable central registry rows including GUID, name, data definition, status, and governed binding data where available",
+    "Revit parameter inventory including GUID/name/data type",
+    "observed instance/type behavior and category binding",
+    "approved exceptions or unresolved binding records where applicable"
+  ],
+  "result_logic": {
+    "pass": "Every applicable governed parameter matches the central identity and all available governed behavior/binding rules, with no conflicting or broader unauthorized binding.",
+    "fail": "An applicable governed parameter has a conflicting GUID/name/data definition or violates an available governed instance/type/category binding rule.",
+    "not_applicable": "No governed parameter applies to the tested scope.",
+    "indeterminate": "Registry identity or governed binding/category data required for evaluation is unavailable or explicitly unresolved."
+  },
+  "permitted_implementation_classes": ["api_checker", "registry_checker", "model_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-PARAMETERS-001",
+    "migration_note": "Appendix E ATS extends the existing S8 identity pilot into Revit-specific binding and behavior without inventing missing binding data."
+  }
+}
