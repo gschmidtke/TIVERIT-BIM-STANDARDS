@@ -38,7 +38,24 @@ Only curator sessions should modify or promote content in these areas once the r
 
 ## Namespace policy
 
-Canonical identifiers use `TIVERIT` exclusively.
+Canonical repository-owned identifiers use a **controlled namespace taxonomy**. `TIVERIT-*` is the primary repository namespace, while typed semantic object families may use shorter governed namespaces where the object type itself is part of the identity model.
+
+Recognized namespace families include:
+
+- `TIVERIT-BIM-STD-*` — governed standard objects.
+- `TIVERIT-BIM-WF-*` and other explicitly governed `TIVERIT-*` IDs — workflows, registries, architecture objects, and configurations.
+- `ROLE-*` — governed role identities.
+- `REG-*` — registry/resolution indexes.
+- `REQ-*` — normative requirement identities.
+- `GAP-*` — explicit unresolved governance gaps.
+- `REL-*` — governed relationship identities where used.
+- `LNK-*` — governed link/reference-domain identities where used.
+- `AUT-*` — governed automation-asset identities where used.
+- `MIG-*` — migration-only records that never become normative merely by existing.
+- `BIM-STD-*` — narrowly retained governed standard identifiers only where explicitly accepted by curator decision; this prefix is not a general namespace for new objects.
+- `W-*` — source/forward workflow identifiers retained during migration until normalized into governed workflow objects; they are not a preferred namespace for new canonical workflows.
+
+New namespace families require curator approval and validator registration. Structured identifier-like references using an unrecognized namespace are invalid rather than silently ignored.
 
 Historical traceability is preserved through neutral source metadata such as Confluence page IDs, versions, and source links. Retired organization naming is not stored in repository content.
 
