@@ -8,7 +8,7 @@
   "modules": ["S3", "S4", "S5", "S6", "S7", "S8"],
   "source_catalogue": {
     "page_id": "6127632",
-    "catalogue_id": "TAIT-BIM-PROTO-CAT",
+    "catalogue_id": "SOURCE-CATALOGUE-PAGE-6127632",
     "source_status": "draft_0.1.0"
   },
   "resolution_rule": "A workflow or instruction named in the catalogue is not treated as an existing standalone source asset unless a concrete source page or machine-readable artifact was found. Catalogue-only entries remain source-planned capability slots.",
