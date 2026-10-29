@@ -20,5 +20,5 @@ S3_source_pages.json was not committed because raw titles, URLs, and breadcrumbs
 
 Curator decision log:
 - No new S3 curator decisions have been accepted yet.
-- Pending S3 decisions are the system-of-record scope split, folder hierarchy precedence, and Project Administrator capability model.
-- The Shared Parameter Registry namespace decision remains parked separately.
+- Pending S3 decisions: system-of-record scope split; folder-hierarchy precedence; Project Administrator capability model.
+- Shared Parameter Registry namespace decision remains parked.
