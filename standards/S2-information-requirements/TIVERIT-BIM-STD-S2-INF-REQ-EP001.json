@@ -12,6 +12,7 @@
     "governs": ["PIR", "AIR", "EIR interfaces", "OIR interfaces", "MIDP", "TIDP", "LOD and LOI", "SEL", "shared parameter demand", "information delivery milestones", "permitted use"],
     "boundary": "S2 governs information demand and timing. S8 governs semantic structures, parameter/classification carriers, and asset schemas used to implement that demand."
   },
+  "requirements": [],
   "child_standards": [
     "TIVERIT-BIM-STD-S2-PIR-001",
     "TIVERIT-BIM-STD-S2-AIR-001",
@@ -36,6 +37,6 @@
     "source_version": 1,
     "source_title": "JSON - Information Requirements",
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2818143",
-    "migration_note": "Primary machine-readable S2 baseline. Narrative baseline: page 2719824. Mature consolidated working specification: page 2588809. Standalone production standards are migrated as separate L4 child objects."
+    "migration_note": "Primary machine-readable S2 baseline. Narrative baseline: page 2719824. Mature consolidated working specification: page 2588809. Standalone production standards are migrated as separate L4 child objects. The parent source is primarily structural, so no normative requirements are synthesized at this level."
   }
 }
