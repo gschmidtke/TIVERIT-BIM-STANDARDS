@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S9-INVENTOR-REVIT-EXCHANGE-001",
+  "type": "standard",
+  "title": "Inventor to Revit Data Exchange Governance",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S9", "S6", "S7"],
+  "scope": {
+    "purpose": "Govern the exchange of Inventor design data into Revit and coordination environments, including purpose, fidelity, acceptance, traceability, ownership, change, and downstream reliance.",
+    "boundary": "This standard defines exchange governance and acceptance boundaries. Detailed execution mechanics remain in the governed workflow and instruction set."
+  },
+  "requirements": [
+    {"id":"REQ-S9-IRX-001","authority":"shall","statement":"Each Inventor-to-Revit exchange shall declare its intended downstream purpose and the required geometric and information fidelity before export.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-IRX-002","authority":"shall","statement":"Inventor shall remain authoritative for source mechanical fabrication geometry while Revit remains authoritative for the governed project BIM context; the CDE shall govern published accepted exchange packages according to project information-management rules.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-IRX-003","authority":"shall","statement":"Exchange models shall preserve traceability to the Inventor source and shall meet declared acceptance criteria for naming, fidelity, performance, placement or coordinates, and dependency hygiene before downstream reliance.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-IRX-004","authority":"shall","statement":"Accepted exchange packages shall be published through the governed project information environment and registered or recorded with sufficient identity and lifecycle context for downstream consumers.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-IRX-005","authority":"shall","statement":"Source changes that affect an exchanged representation shall trigger governed re-export, revalidation, register update, and communication of downstream impact.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-IRX-006","authority":"shall_not","statement":"An exchange representation shall not transfer fabrication-authoring authority from Inventor to Revit or project-publication authority from the CDE back to the authoring source.","verification_class":"human_verifiable"}
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001",
+      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"
+    ],
+    "workflows": ["TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001"],
+    "instructions": ["TIVERIT-BIM-INS-S9-INVENTOR-REVIT-EXPORT-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7241747",
+    "source_version": "1",
+    "source_title": "S9 – Inventor to Revit Data Exchange Governance",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241747",
+    "migration_note": "Normalized the durable exchange-governance rules. The source labels itself a working draft; migration_candidate status preserves that maturity and does not imply formal cutover."
+  }
+}
