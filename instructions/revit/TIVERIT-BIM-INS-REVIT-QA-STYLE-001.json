@@ -1,0 +1,127 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-QA-STYLE-001",
+  "type": "instruction",
+  "title": "Revit Pre-Issue Style QA Review",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S4", "S5", "S7"],
+  "purpose": "Perform repeatable pre-issue style checks for Revit views and sheets covering graphics, view/sheet consistency, annotation, metadata, and print legibility without conflating style QA with technical coordination or formal acceptance.",
+  "applies_to": {
+    "tools": ["Revit"],
+    "roles": ["Model Author", "Sheet Editor", "Project BIM Coordinator", "Discipline Lead"],
+    "scope": "Views and sheets intended for formal issue or major internal review"
+  },
+  "preconditions": [
+    "The applicable view, sheet, naming, parameter, and titleblock standards are available.",
+    "The issue/review scope has been identified.",
+    "Technical coordination and formal acceptance remain governed separately by S5/S7."
+  ],
+  "steps": [
+    {
+      "id": "RVT-QA-01",
+      "name": "Check issue-view graphics",
+      "actions": [
+        "Confirm the governed View Template is applied to every issue view.",
+        "Check for unintended temporary or local graphics overrides.",
+        "Verify lineweights, patterns, halftones, category visibility, linked-model visibility, datum heads, crops, and material/hatch display at representative print scales.",
+        "Use detail lines, filled regions, masking regions, and imported/custom patterns only where allowed by their governing instruction."
+      ],
+      "validation": [
+        "Issue views display consistently with the applicable governed templates and remain legible at issue scale.",
+        "Ad-hoc graphics overrides are absent or explicitly governed."
+      ],
+      "failure_modes": [
+        "Temporary view state or local overrides remain in an issue view.",
+        "Graphics become illegible or misleading at the intended output scale."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-QA-02",
+      "name": "Check sheet and view consistency",
+      "actions": [
+        "Confirm approved titleblocks are used and required project/sheet metadata is populated.",
+        "Check sheet number/name uniqueness and conformance to the governed naming source.",
+        "Check view naming, references, callouts, placement, margins, legends, schedules, north arrows, and scale indicators where required.",
+        "Verify revision schedules, clouds, and tags correspond to the current issue state."
+      ],
+      "validation": [
+        "Sheets and placed views are internally consistent and reference the governed naming/titleblock structures.",
+        "No duplicate sheet number or unresolved orphaned callout is present in the reviewed scope."
+      ],
+      "failure_modes": [
+        "A sheet uses a non-governed titleblock or incomplete metadata.",
+        "Duplicate or inconsistent sheet/view identity exists.",
+        "Issue/revision graphics do not match the intended issue state."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-QA-03",
+      "name": "Check annotation and notation",
+      "actions": [
+        "Use approved text, tag, symbol, leader, arrowhead, unit, and notation styles.",
+        "Run spelling review on issue sheets and verify project abbreviations/technical terms against the applicable governed glossary where one exists.",
+        "Confirm tags are driven by governed parameters rather than exploded or disconnected drafting substitutes."
+      ],
+      "validation": [
+        "Annotation is legible, consistent, and connected to governed data where applicable.",
+        "No unsupported manual style override is used in the reviewed scope."
+      ],
+      "failure_modes": [
+        "Unapproved text/tag styles or disconnected drafting substitutes are used.",
+        "Units or symbols render incorrectly in the intended output."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-QA-04",
+      "name": "Record pre-issue QA evidence",
+      "actions": [
+        "Record the reviewed sheets/views and observed deviations.",
+        "Correct style defects before issue or route unresolved deviations through the governed exception path.",
+        "Retain representative test output where print/PDF appearance is part of the check."
+      ],
+      "validation": [
+        "The review scope and unresolved findings are traceable.",
+        "A style QA result is not represented as technical coordination sign-off or formal acceptance."
+      ],
+      "failure_modes": [
+        "QA findings are not recorded.",
+        "A style review is used as evidence of coordination closure or contractual acceptance."
+      ],
+      "automation_readiness": "ASSISTED"
+    }
+  ],
+  "outputs": [
+    "Pre-issue style QA record",
+    "Corrected Revit views/sheets or logged deviations",
+    "Representative output evidence where required"
+  ],
+  "evidence": [
+    "Reviewed view/sheet list",
+    "QA checklist or issue record",
+    "Representative PDF/test print",
+    "Exception/deviation record where applicable"
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001", "TIVERIT-BIM-STD-S5-COORDINATION-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "companion_instructions": ["TIVERIT-BIM-INS-REVIT-TITLEBLOCK-001", "TIVERIT-BIM-INS-REVIT-DOC-EXPORT-001"]
+  },
+  "governance_notes": [
+    "This source is explicitly draft and style-focused; it does not establish technical coordination approval, exchange acceptance, or contractual reliance.",
+    "Source example scales, roles, and glossary references remain project/source context unless separately governed.",
+    "QA evidence is consumed by higher-level readiness/acceptance gates; it does not create those gates."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6422564",
+    "source_version": 1,
+    "source_title": "Revit Style Guide - QA / Review Checklists",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6422564",
+    "migration_note": "Draft L6 style QA source migrated conservatively. Technical coordination and formal acceptance boundaries remain with S5/S7."
+  }
+}
