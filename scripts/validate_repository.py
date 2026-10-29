@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
-from jsonschema import Draft202012Validator, RefResolver
+from jsonschema import Draft202012Validator, FormatChecker, RefResolver
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = ROOT / "schemas"
+FORWARD_REFERENCE_REGISTER = ROOT / "migration" / "reference-forward-declarations.json"
+
+# Deliberately assembled at runtime so the retired token itself never appears in repository text.
 FORBIDDEN_TOKEN = bytes([84, 65, 73, 84]).decode("ascii")
 TEXT_SUFFIXES = {".json", ".md", ".py", ".yml", ".yaml", ".txt", ".csv"}
 
@@ -28,6 +32,18 @@ TYPE_TO_SCHEMA = {
     "workflow": "workflow.schema.json",
     "role": "role.schema.json",
 }
+
+REFERENCE_KEYS = {
+    "referenced_standards",
+    "referenced_workflows",
+    "interfaces_with_roles",
+    "parent_role",
+    "specializations",
+}
+
+CANONICAL_REFERENCE_PATTERN = re.compile(
+    r"^(?:TIVERIT-|ROLE-|REG-|REQ-|W-|BIM-STD-|GAP-|REL-|LNK-|AUT-|MIG-|S[1-9]-)"
+)
 
 
 def load_json(path: Path):
@@ -74,7 +90,7 @@ def make_validator(schema_name: str, schemas: dict[str, dict]):
         "./base-object.schema.json": base_schema,
     }
     resolver = RefResolver(base_uri=schema_path.as_uri(), referrer=schema, store=store)
-    return Draft202012Validator(schema, resolver=resolver)
+    return Draft202012Validator(schema, resolver=resolver, format_checker=FormatChecker())
 
 
 def iter_canonical_json():
@@ -109,6 +125,134 @@ def validate_objects(schemas: dict[str, dict], errors: list[str]):
             print(f"OBJECT OK  {path.relative_to(ROOT)}")
 
 
+def collect_ids(value, path: Path, id_locations: dict[str, list[str]]):
+    if isinstance(value, dict):
+        object_id = value.get("id")
+        if isinstance(object_id, str) and object_id:
+            id_locations.setdefault(object_id, []).append(str(path.relative_to(ROOT)))
+        for child in value.values():
+            collect_ids(child, path, id_locations)
+    elif isinstance(value, list):
+        for child in value:
+            collect_ids(child, path, id_locations)
+
+
+def iter_reference_values(obj):
+    if not isinstance(obj, dict):
+        return
+
+    relationships = obj.get("relationships")
+    if isinstance(relationships, dict):
+        for relation_type, values in relationships.items():
+            if isinstance(values, list):
+                for value in values:
+                    if isinstance(value, str):
+                        yield f"relationships.{relation_type}", value
+            elif isinstance(values, str):
+                yield f"relationships.{relation_type}", values
+
+    for key in REFERENCE_KEYS:
+        values = obj.get(key)
+        if isinstance(values, list):
+            for value in values:
+                if isinstance(value, str):
+                    yield key, value
+        elif isinstance(values, str):
+            yield key, values
+
+
+def load_forward_references(errors: list[str]) -> set[str]:
+    if not FORWARD_REFERENCE_REGISTER.exists():
+        errors.append(
+            "migration/reference-forward-declarations.json: missing explicit forward reference register"
+        )
+        return set()
+    try:
+        register = load_json(FORWARD_REFERENCE_REGISTER)
+    except Exception as exc:
+        errors.append(str(exc))
+        return set()
+
+    entries = register.get("forward_references", [])
+    if not isinstance(entries, list):
+        errors.append(
+            "migration/reference-forward-declarations.json: forward_references must be an array"
+        )
+        return set()
+
+    declared: set[str] = set()
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            errors.append(
+                f"migration/reference-forward-declarations.json:forward_references.{index}: must be an object"
+            )
+            continue
+        ref_id = entry.get("id")
+        reason = entry.get("reason")
+        if not isinstance(ref_id, str) or not ref_id:
+            errors.append(
+                f"migration/reference-forward-declarations.json:forward_references.{index}: missing id"
+            )
+            continue
+        if not isinstance(reason, str) or not reason.strip():
+            errors.append(
+                f"migration/reference-forward-declarations.json:forward_references.{index}: missing reason for {ref_id}"
+            )
+            continue
+        if ref_id in declared:
+            errors.append(
+                f"migration/reference-forward-declarations.json: duplicate forward reference {ref_id}"
+            )
+            continue
+        declared.add(ref_id)
+    return declared
+
+
+def validate_referential_integrity(errors: list[str]):
+    objects: list[tuple[Path, dict]] = []
+    id_locations: dict[str, list[str]] = {}
+
+    for path in iter_canonical_json():
+        try:
+            obj = load_json(path)
+        except Exception:
+            continue
+        if isinstance(obj, dict):
+            objects.append((path, obj))
+            collect_ids(obj, path, id_locations)
+
+    for object_id, locations in sorted(id_locations.items()):
+        if len(locations) > 1:
+            errors.append(
+                f"duplicate id {object_id!r} declared in: {', '.join(sorted(locations))}"
+            )
+
+    known_ids = set(id_locations)
+    forward_references = load_forward_references(errors)
+    used_forward_references: set[str] = set()
+
+    for path, obj in objects:
+        for field, target in iter_reference_values(obj):
+            if not CANONICAL_REFERENCE_PATTERN.match(target):
+                continue
+            if target in known_ids:
+                continue
+            if target in forward_references:
+                used_forward_references.add(target)
+                print(f"FORWARD OK {path.relative_to(ROOT)}:{field} -> {target}")
+                continue
+            errors.append(
+                f"{path.relative_to(ROOT)}:{field}: unresolved canonical reference {target!r}; "
+                "add the target object or declare the specific ID in migration/reference-forward-declarations.json"
+            )
+
+    unused = sorted(forward_references - used_forward_references)
+    for ref_id in unused:
+        errors.append(
+            f"migration/reference-forward-declarations.json: stale/unused forward reference {ref_id!r}"
+        )
+
+
 def validate_all_json_syntax(errors: list[str]):
     for path in sorted(ROOT.rglob("*.json")):
         if ".git" in path.parts:
@@ -136,6 +280,7 @@ def main() -> int:
         errors.append(f"Missing or invalid required schemas: {sorted(missing)}")
     else:
         validate_objects(schemas, errors)
+        validate_referential_integrity(errors)
     if errors:
         print("\nVALIDATION FAILED")
         for error in errors:
