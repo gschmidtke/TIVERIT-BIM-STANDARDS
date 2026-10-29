@@ -1,8 +1,10 @@
 # Conformance Plane
 
-The `conformance/` tree defines how normative TIVERIT BIM Standards requirements are evaluated. It does not create or modify normative authority.
+The `conformance/` tree defines how governed TIVERIT BIM Standards objects are evaluated. It does not create or modify normative authority.
 
 ## Core chain
+
+For normative requirements:
 
 ```text
 REQ-*  normative requirement
@@ -16,7 +18,21 @@ evidence
 PASS / FAIL / NOT_APPLICABLE / INDETERMINATE
 ```
 
-`FIX-*` objects sit beside this chain as governed regression fixtures. They test whether an ETS implementation produces the expected result and evidence behavior for controlled cases.
+For governed implementation instructions, the same conformance chain may target the instruction explicitly:
+
+```text
+TIVERIT-BIM-INS-*  governed L6 instruction
+  ↓
+ATS-*              abstract proof contract for a stated instruction clause
+  ↓
+ETS-*              tool/platform implementation binding
+  ↓
+evidence
+  ↓
+PASS / FAIL / NOT_APPLICABLE / INDETERMINATE
+```
+
+`FIX-*` objects sit beside these chains as governed regression fixtures. They test whether an ETS implementation produces the expected result and evidence behavior for controlled cases.
 
 ## Directory contract
 
@@ -33,7 +49,8 @@ Directories should be created when their first governed artifact is added; empty
 ## Authority boundary
 
 - Normative requirements remain owned by `standards/` or other normative-plane objects.
-- ATS objects define how a requirement can be proven without depending on one software implementation.
+- L6 instructions remain implementation authority only within their governed scope; testing an instruction does not promote it above its parent standards.
+- ATS objects define how a governed requirement or explicit instruction clause can be proven without depending on one software implementation.
 - ETS objects bind an ATS to a specific tool or capability.
 - FIX objects test ETS behavior but are not production evidence.
 - Evidence records observations and result states.
@@ -46,7 +63,8 @@ Directories should be created when their first governed artifact is added; empty
 An ATS should contain at least:
 
 - stable `ATS-*` ID
-- referenced `REQ-*` ID
+- exactly one governing target: `requirement_id` for a normative requirement or `governing_object_id` for another governed object such as an L6 instruction
+- optional `governing_clause` when only a bounded step/clause of the target object is tested
 - test intent
 - applicability criteria
 - required evidence
@@ -57,7 +75,7 @@ An ATS should contain at least:
 - permitted implementation classes
 - lifecycle/provenance information
 
-An ATS should be tool-neutral unless the requirement being tested is itself explicitly tool-specific.
+An ATS should be tool-neutral unless the governed target being tested is itself explicitly tool-specific.
 
 ## Executable Test Specification (ETS)
 
@@ -76,7 +94,7 @@ An ETS should contain at least:
 
 Multiple ETS implementations may satisfy the same ATS. For example, one ATS may have a Revit/ZEN implementation and an IFC implementation.
 
-An ETS may be `specified_not_implemented`. In that state it is an executable contract, not proof that production code exists. A requirement reaches executable maturity only when a callable implementation exists and passes its governed fixtures.
+An ETS may be `specified_not_implemented`. In that state it is an executable contract, not proof that production code exists. A governed target reaches executable maturity only when a callable implementation exists and passes its governed fixtures.
 
 ## Conformance fixtures
 
@@ -95,7 +113,8 @@ Synthetic fixtures are specification-level regression cases. They do not replace
 
 Conformance evidence should preserve, at minimum:
 
-- normative requirement ID
+- governing requirement or object ID
+- governing clause where applicable
 - ATS ID
 - ETS ID or governed human verification method
 - tested subject/container identity
@@ -114,11 +133,11 @@ Baseline result states are:
 
 `indeterminate` must never be silently treated as `pass`.
 
-## First pilot
+## First normative pilot
 
 The first pilot spans S4 identity/naming, S6 linking/shared coordinates, and S8 parameters/semantics. Seven ATS objects are present.
 
-Two executable paths now demonstrate different maturity states:
+Two executable paths demonstrate different maturity states:
 
 ```text
 REQ-S6-COORD-003
@@ -150,4 +169,19 @@ verified
 
 `REQ-S8-004` is the first requirement to reach **M4** under the repository maturity model. The Python ETS compares observed shared-parameter identities and structural fields against the governed central Shared Parameter Registry. The CI fixture runner executes governed positive, negative, and unresolved-source cases and fails if implementation behavior diverges from their expected results.
 
-No pilot ATS, ETS, or fixture creates approval authority. Production acceptance remains governed by the normative standards and designated roles.
+## Appendix E conformance wave
+
+The first Appendix E implementation-conformance wave adds ATS/ETS coverage for six high-value Revit surfaces:
+
+| Surface | ATS | Revit/ZEN ETS | Current state |
+| --- | --- | --- | --- |
+| Object naming | `ATS-REVIT-NAMING-001` | `ETS-REVIT-NAMING-001-REVIT` | specified, not implemented |
+| View templates / display state | `ATS-REVIT-VIEW-TEMPLATE-001` | `ETS-REVIT-VIEW-TEMPLATE-001-REVIT` | specified, not implemented |
+| Parameter identity / binding | `ATS-REVIT-PARAM-BINDING-001` | `ETS-REVIT-PARAM-BINDING-001-REVIT` | specified, not implemented |
+| Worksets / containment | `ATS-REVIT-WORKSET-001` | `ETS-REVIT-WORKSET-001-REVIT` | specified, not implemented |
+| Project-template content | `ATS-REVIT-TEMPLATE-CONTENT-001` | `ETS-REVIT-TEMPLATE-CONTENT-001-REVIT` | specified, not implemented |
+| Levels / grids | `ATS-REVIT-DATUM-001` | `ETS-REVIT-DATUM-001-REVIT` | specified, not implemented |
+
+These tests deliberately preserve unresolved governance dependencies. Missing View Template, Template Catalogue, workset-purpose, binding/category, naming-vocabulary, datum-source, transform, or tolerance data produces `indeterminate` rather than an assumed PASS.
+
+No ATS, ETS, or fixture creates approval authority. Production acceptance remains governed by the normative standards and designated roles.
