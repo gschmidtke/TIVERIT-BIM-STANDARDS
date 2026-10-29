@@ -28,6 +28,7 @@
     "standards": [
       "TIVERIT-BIM-STD-S1-ROLES-001",
       "TIVERIT-BIM-STD-S2-INF-REQ-EP001",
+      "TIVERIT-BIM-STD-S2-LOD-LOI-001",
       "TIVERIT-BIM-STD-S3-PROD-EP001",
       "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
       "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
@@ -46,7 +47,8 @@
   "gap_treatment": {
     "source_gap_A1_02": "Addressed by linkage to migrated S2 permitted-use and suitability governance; retained for cross-check until final cutover.",
     "source_gap_A3_01": "Addressed by migrated S2/S7 lifecycle, permitted-use, exchange, and acceptance governance; retained for cross-check until final cutover.",
-    "source_gap_A2_01": "Partially addressed by the governed role registry and S1 role-authority standard; cross-role RACI/authority coverage remains subject to validation."
+    "source_gap_A2_01": "Partially addressed by the governed role registry and S1 role-authority standard; cross-role RACI/authority coverage remains subject to validation.",
+    "GAP-S1-MODEL-USE-TAXONOMY-01": "Substantially narrowed by TIVERIT-BIM-STD-S2-LOD-LOI-001, which now governs model progression, declared purpose, authorized use, milestone readiness, responsible scope, and non-uniform maturity. The gap remains open only for curator approval of any reusable enterprise stage/use vocabulary; source stage names are draft examples and are not promoted automatically."
   },
   "provenance": {
     "source_system": "confluence",
@@ -55,7 +57,7 @@
     "source_version": "1",
     "source_title": "JSON - Core BIM Standards & Governance — S1",
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2818160",
-    "supporting_page_ids": ["2425347"],
-    "migration_note": "Normalized from the S1 machine-readable source and enriched from source collaboration/authority doctrine. Organization-specific wording was generalized to the current governed repository. Contractual precedence remains unresolved; downstream source gaps are closed only where existing migrated standards provide explicit governing coverage."
+    "supporting_page_ids": ["2425347","10551299"],
+    "migration_note": "Normalized from the S1 machine-readable source and enriched from source collaboration/authority and model-progression doctrine. Organization-specific wording was generalized to the current governed repository. Contractual precedence remains unresolved; downstream source gaps are closed only where existing migrated standards provide explicit governing coverage."
   }
 }
