@@ -5,334 +5,80 @@
   "status": "migration_candidate",
   "authority": "informational",
   "layer": "L7",
-  "modules": [
-    "S1",
-    "S2",
-    "S3",
-    "S4",
-    "S5",
-    "S6",
-    "S7",
-    "S8",
-    "S9"
-  ],
+  "modules": ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"],
   "forward_references": [
-    {
-      "id": "TIVERIT-BIM-STD-L6-SP-GEN-REG-001",
-      "reason": "Source-backed L6 Shared Parameter instruction exists in Confluence but has not yet been migrated to the repository."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-L6-SP-GEN-TXT-001",
-      "reason": "Source-backed L6 Shared Parameter instruction exists in Confluence but has not yet been migrated to the repository."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S1-ROLES-001",
-      "reason": "S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-CONSTITUTION",
-      "reason": "S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S1-CORE-GOV-EP001",
-      "reason": "S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S3-PRODUCTION",
-      "reason": "Legacy/source reference does not yet match the normalized repository identifier; retain explicitly until cross-reference repair is completed."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S4-IDENTITY",
-      "reason": "Legacy/source reference does not yet match the normalized repository identifier; retain explicitly until cross-reference repair is completed."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S5-ACC-PERM-001",
-      "reason": "Legacy/source reference does not yet match the normalized repository identifier; retain explicitly until cross-reference repair is completed."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S5-ACC-STRUCT-001",
-      "reason": "Legacy/source reference does not yet match the normalized repository identifier; retain explicitly until cross-reference repair is completed."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S5-ACC-FOLDERS-001",
-      "reason": "Legacy/source reference does not yet match the normalized repository identifier; retain explicitly until cross-reference repair is completed."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S2-INFO-REQ-EP001",
-      "reason": "Legacy/source reference does not yet match the normalized repository identifier; retain explicitly until cross-reference repair is completed."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S5-ACC-MC-001",
-      "reason": "Legacy/source reference does not yet match the normalized repository identifier; retain explicitly until cross-reference repair is completed."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S7-VALIDATION-DELIVERY-EP001",
-      "reason": "Referenced governed standard has not yet been migrated or normalized into the current branch."
-    },
-    {
-      "id": "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001",
-      "reason": "Referenced governed standard has not yet been migrated or normalized into the current branch."
-    },
-    {
-      "id": "ROLE-DISCIPLINE-LEAD-ARCH-001",
-      "reason": "Observed role specialization is referenced by migrated source content but does not yet have a governed role definition."
-    },
-    {
-      "id": "ROLE-DISCIPLINE-LEAD-TECH-001",
-      "reason": "Observed role specialization is referenced by migrated source content but does not yet have a governed role definition."
-    },
-    {
-      "id": "W-GOVERNED-PRODUCTION-INTAKE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-INTEROPERABILITY-EXCHANGE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-PARAMETER-OPERATIONS",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-PRE-PUBLISH-QA",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-POOLED-CAPACITY-DISPATCH",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-STANDARDS-EVOLUTION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-GOVERNANCE-ARBITRATION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-REGISTRY-GOVERNANCE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-MODELING-CRAFT",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-COORDINATION-RESOLUTION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-VIEW-SHEET-SETUP",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-STANDARDS-REVIEW-PIPELINE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-SP-REGISTRY-MERGE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CITIZEN-TXT-GENERATION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-MEMBER-ONBOARDING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-FOLDER-PROVISIONING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CDE-MAINTENANCE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CLIENT-REVIEW-ACCEPTANCE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-DELIVERABLE-HANDOVER",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-DESIGN-REVIEW",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-SUBMITTAL-APPROVAL",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-DISCIPLINE-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-TIDP-DELIVERY",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-DOCUMENTATION-APPROVAL",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-AUDIO-BIM-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CONTROLS-BIM-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-ELECTRICAL-BIM-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-LIGHTING-BIM-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-MECHANICAL-BIM-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-SFX-BIM-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-SHOWSET-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-VIDEO-BIM-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CDE-SETUP",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-PERMISSIONS-MANAGEMENT",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-INFORMATION-EXCHANGE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-ZONE-FEDERATED-REVIEW",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-ZONE-SCOPE-GATEKEEPING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-ZONE-SHOWSET-PACKAGE-RELEASE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CONTRACTOR-INFORMATION-EXCHANGE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CONSTRUCTABILITY-REVIEW",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-MODEL-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CLASH-RESOLUTION-EDIT",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-COORDINATION-ROUTINE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CLASH-DETECTION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-ISSUE-LIFECYCLE-MANAGEMENT",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-PRE-PUBLISH-VALIDATION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-BEP-AUTHORING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-MIDP-MANAGEMENT",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-MODEL-VALIDATION-ACCEPTANCE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-CDE-GOVERNANCE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-PROJECT-SETUP",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-GOVERNANCE-ESCALATION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-GATE-ACCEPTANCE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-PROJECT-DELIVERY-PLANNING",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-SCHEDULE-ALIGNMENT",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-STAGE-GATES",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-QAQC-AUDIT",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-GATE-VERIFICATION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-TECH-PORTFOLIO-COORDINATION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-TECH-FEDERATED-REVIEW",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-TECH-MILESTONE-RELEASE",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-TOOL-VALIDATION",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    },
-    {
-      "id": "W-AUTOMATION-APPROVAL",
-      "reason": "Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."
-    }
+    {"id":"TIVERIT-BIM-STD-L6-SP-GEN-REG-001","reason":"Source-backed L6 Shared Parameter instruction exists in Confluence but has not yet been migrated to the repository."},
+    {"id":"TIVERIT-BIM-STD-L6-SP-GEN-TXT-001","reason":"Source-backed L6 Shared Parameter instruction exists in Confluence but has not yet been migrated to the repository."},
+    {"id":"TIVERIT-BIM-STD-S1-ROLES-001","reason":"S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."},
+    {"id":"TIVERIT-BIM-STD-CONSTITUTION","reason":"S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."},
+    {"id":"TIVERIT-BIM-STD-S1-CORE-GOV-EP001","reason":"S1/constitutional authority reference retained from migrated role source; corresponding governed object has not yet been migrated."},
+    {"id":"TIVERIT-BIM-STD-S7-VALIDATION-DELIVERY-EP001","reason":"Referenced governed standard has not yet been migrated or normalized into the current branch."},
+    {"id":"TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001","reason":"Referenced governed standard has not yet been migrated or normalized into the current branch."},
+    {"id":"ROLE-DISCIPLINE-LEAD-ARCH-001","reason":"Observed role specialization is referenced by migrated source content but does not yet have a governed role definition."},
+    {"id":"ROLE-DISCIPLINE-LEAD-TECH-001","reason":"Observed role specialization is referenced by migrated source content but does not yet have a governed role definition."},
+    {"id":"W-GOVERNED-PRODUCTION-INTAKE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-INTEROPERABILITY-EXCHANGE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-PARAMETER-OPERATIONS","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-PRE-PUBLISH-QA","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-POOLED-CAPACITY-DISPATCH","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-STANDARDS-EVOLUTION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-GOVERNANCE-ARBITRATION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-REGISTRY-GOVERNANCE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-MODELING-CRAFT","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-COORDINATION-RESOLUTION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-VIEW-SHEET-SETUP","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-STANDARDS-REVIEW-PIPELINE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-SP-REGISTRY-MERGE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CITIZEN-TXT-GENERATION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-MEMBER-ONBOARDING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-FOLDER-PROVISIONING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CDE-MAINTENANCE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CLIENT-REVIEW-ACCEPTANCE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-DELIVERABLE-HANDOVER","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-DESIGN-REVIEW","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-SUBMITTAL-APPROVAL","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-DISCIPLINE-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-TIDP-DELIVERY","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-DOCUMENTATION-APPROVAL","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-AUDIO-BIM-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CONTROLS-BIM-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-ELECTRICAL-BIM-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-LIGHTING-BIM-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-MECHANICAL-BIM-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-SFX-BIM-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-SHOWSET-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-VIDEO-BIM-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CDE-SETUP","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-PERMISSIONS-MANAGEMENT","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-INFORMATION-EXCHANGE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-ZONE-FEDERATED-REVIEW","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-ZONE-SCOPE-GATEKEEPING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-ZONE-SHOWSET-PACKAGE-RELEASE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CONTRACTOR-INFORMATION-EXCHANGE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CONSTRUCTABILITY-REVIEW","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-MODEL-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CLASH-RESOLUTION-EDIT","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-COORDINATION-ROUTINE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CLASH-DETECTION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-ISSUE-LIFECYCLE-MANAGEMENT","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-PRE-PUBLISH-VALIDATION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-BEP-AUTHORING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-MIDP-MANAGEMENT","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-MODEL-VALIDATION-ACCEPTANCE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-CDE-GOVERNANCE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-PROJECT-SETUP","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-GOVERNANCE-ESCALATION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-GATE-ACCEPTANCE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-PROJECT-DELIVERY-PLANNING","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-SCHEDULE-ALIGNMENT","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-STAGE-GATES","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-QAQC-AUDIT","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-GATE-VERIFICATION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-TECH-PORTFOLIO-COORDINATION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-TECH-FEDERATED-REVIEW","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-TECH-MILESTONE-RELEASE","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-TOOL-VALIDATION","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."},
+    {"id":"W-AUTOMATION-APPROVAL","reason":"Workflow identifier is present in migrated role source content but the corresponding governed workflow object has not yet been migrated."}
   ],
   "provenance": {
     "source_system": "repository_curator",
