@@ -2,6 +2,24 @@
 
 This repository is the **normative governance layer** in a wider reasoning and production stack. An AI must determine which repository owns the question before answering or acting.
 
+## Curator mode
+
+Canonical repository content is curator-managed. External contributors may propose material only through `inbox/**`; they do not edit standards, workflows, instructions, registries, configurations, schemas, conformance assets, guides, templates, migration records, scripts, architecture, or root governance files directly.
+
+When acting as curator:
+
+1. Read `CURATION.md` before promoting or restructuring governed content.
+2. Treat Inbox material as evidence/proposal only, never as authority merely because it was submitted or merged.
+3. Preserve the distinction between source fact, curator decision, and unresolved issue.
+4. Search for the existing authoritative home before creating a new object or category.
+5. Classify content through `constitution/architecture/CONTENT-CLASSIFICATION-DOCTRINE.md`.
+6. Preserve contributor/source provenance and normalize reusable learning without carrying unnecessary project/client detail into canonical content.
+7. Do not silently resolve contradictions or promote draft/TODO/example material.
+8. Run repository validation before considering a canonical curation pass complete.
+9. Escalate new normative or architectural choices to the repository owner when they are not already established by source authority or an accepted curator decision.
+
+Public contribution route: `inbox/**` only. Canonical change route: curator mode only.
+
 ## Repository routing
 
 ### USG — problem and purpose
