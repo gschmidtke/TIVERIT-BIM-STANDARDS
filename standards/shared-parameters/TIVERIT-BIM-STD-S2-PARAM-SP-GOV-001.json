@@ -1,10 +1,6 @@
 {
   "$schema": "../../schemas/standard.schema.json",
   "id": "TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001",
-  "legacy_ids": [
-    "TAIT-BIM-STD-S2-PARAM-SP-GOV-001",
-    "TAIT-BIM-STD-S4-SHARED-PARAM-001"
-  ],
   "type": "standard",
   "title": "Shared Parameters Governance (GUID-First, Citizen vs Visitor)",
   "status": "migration_candidate",
@@ -12,16 +8,8 @@
   "layer": "L4",
   "modules": ["S2"],
   "scope": {
-    "applies_to": [
-      "All TIVERIT Revit projects using shared parameters",
-      "Project setup and ongoing parameter management",
-      "Automation datasets and parameter snapshots"
-    ],
-    "excludes": [
-      "Tool-specific click instructions",
-      "Project-specific BEP contract language",
-      "One-off temporary parameters unless promoted"
-    ]
+    "applies_to": ["All TIVERIT Revit projects using shared parameters", "Project setup and ongoing parameter management", "Automation datasets and parameter snapshots"],
+    "excludes": ["Tool-specific click instructions", "Project-specific BEP contract language", "One-off temporary parameters unless promoted"]
   },
   "definitions": [
     {"term": "Shared Parameter (SP)", "definition": "A parameter whose identity is defined by a GUID and intended for reuse across contexts."},
@@ -62,17 +50,14 @@
     "registries": ["TIVERIT-BIM-STD-S4-SP-REG-001"],
     "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001"]
   },
-  "migration_notes": [
-    "The Confluence source contains a dual-surface module classification: the machine-readable JSON declares S2 while its narrative counterpart declares S4. This candidate preserves the machine-readable S2 declaration and records the S4 identifier as a legacy equivalent pending curator review.",
-    "Canonical text replaces TAIT branding with TIVERIT. Original TAIT wording remains available through provenance."
-  ],
+  "migration_notes": ["The Confluence source contains a dual-surface module classification: the machine-readable JSON declares S2 while its narrative counterpart declares S4. This candidate preserves S2 as the current migration coordinate pending curator review."],
   "provenance": {
     "source_system": "confluence",
     "space": "BST",
     "page_id": "3702785",
     "source_version": 1,
     "source_title": "JSON - Shared Parameters Governance",
-    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3702785/JSON+-+Shared+Parameters+Governance",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3702785",
     "migration_note": "Primary machine-readable source. Narrative equivalent: page 3670017."
   }
 }
