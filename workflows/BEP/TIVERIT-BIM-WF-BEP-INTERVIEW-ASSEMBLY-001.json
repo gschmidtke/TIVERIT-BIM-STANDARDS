@@ -1,0 +1,292 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001",
+  "type": "workflow",
+  "title": "BEP Interview and Assembly",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"],
+  "scope": {
+    "purpose": "Provide a repository-discoverable interaction protocol that allows a human or AI to gather project-specific facts, validate them against governed BIM standards, expose unresolved gaps or deviations, and assemble a traceable pre-appointment or post-appointment BIM Execution Plan without inventing project facts or normative authority.",
+    "boundary": "This workflow orchestrates BEP intake and assembly. It does not create project facts, appointments, contractual authority, LOIN values, software approvals, acceptance decisions, or new standards. Those remain governed by project sources and the referenced repository objects.",
+    "supported_bep_types": ["pre_appointment", "post_appointment"]
+  },
+  "trigger": {
+    "intent": "create_or_complete_bep",
+    "examples": ["Create a BEP", "Help me prepare the project BEP", "Complete this BEP from the project documents"],
+    "activation_rule": "When a user requests creation, completion, review, or structured preparation of a BEP, the agent shall load the BEP consumption guide and this workflow before drafting substantive project content."
+  },
+  "interaction_contract": {
+    "mode": "gap_driven_single_question",
+    "principles": [
+      "Reuse already-known project facts and do not ask for them again unless contradictory or insufficient.",
+      "Ask one bounded unresolved question at a time unless a compact collection is more efficient and unambiguous.",
+      "Do not infer missing project facts from enterprise standards or general industry practice.",
+      "If a question belongs to another role or authority, defer it and record the dependency rather than forcing an answer.",
+      "Clarification, challenge, correction, and help requests shall not erase previously accepted project facts.",
+      "A correction updates the relevant project fact and re-runs dependent validation.",
+      "A deviation from a governed standard is recorded as a deviation candidate and requires the appropriate project approval; it is not resolved by editing the standard.",
+      "Interview completion means required project data is either supplied, explicitly unresolved, or formally deferred; it does not itself constitute BEP approval."
+    ],
+    "supported_intents": ["answer", "clarification", "challenge", "correction", "help", "defer", "restart_request", "off_topic"],
+    "restart_rule": "Clear interview state only after explicit user confirmation."
+  },
+  "project_state_model": {
+    "known_facts": "Project facts already supplied by the user or supported by project sources.",
+    "unresolved_required": "Required data not yet supported by a project source or user answer.",
+    "deferred": "Questions waiting for a different responder, authority, or project artifact.",
+    "conflicts": "Contradictory project facts or conflicts between project requirements and governed standards.",
+    "deviations": "Explicit proposed departures from governed standards requiring approval.",
+    "evidence": "Source references or records supporting project facts and validation outcomes."
+  },
+  "question_model": {
+    "required_fields": ["question_id", "topic", "target", "ask_when", "governing_object_ids", "output_section"],
+    "optional_fields": ["required_for", "responding_authority", "validation_rule", "dependencies", "choices", "help_text"],
+    "ask_when_rule": "A question is eligible only when its target project datum is required for the requested BEP state and remains unresolved, contradictory, or insufficiently evidenced."
+  },
+  "question_catalog": [
+    {
+      "question_id": "BEP-Q-001",
+      "topic": "appointment_context",
+      "target": "project.bep.type",
+      "ask_when": "bep_type_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S1-CORE-GOV-EP001"],
+      "output_section": "Document Status and Appointment Context",
+      "choices": ["pre_appointment", "post_appointment"]
+    },
+    {
+      "question_id": "BEP-Q-002",
+      "topic": "project_identity",
+      "target": "project.identity",
+      "ask_when": "project_identity_incomplete",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001"],
+      "output_section": "Project and Parties"
+    },
+    {
+      "question_id": "BEP-Q-003",
+      "topic": "roles_and_authority",
+      "target": "project.role_assignments",
+      "ask_when": "required_role_or_authority_assignment_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S1-ROLES-001", "REG-ROLE-001"],
+      "output_section": "Governance, Roles and Authority"
+    },
+    {
+      "question_id": "BEP-Q-004",
+      "topic": "information_requirements",
+      "target": "project.information_requirements",
+      "ask_when": "required_information_source_or_project_requirement_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001"],
+      "output_section": "Information Requirements"
+    },
+    {
+      "question_id": "BEP-Q-005",
+      "topic": "model_progression_and_authorized_use",
+      "target": "project.progression_and_uses",
+      "ask_when": "milestone_progression_or_authorized_use_unresolved",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S2-LOD-LOI-001"],
+      "output_section": "LOIN, LOD/LOI and Authorized Use"
+    },
+    {
+      "question_id": "BEP-Q-006",
+      "topic": "delivery_planning",
+      "target": "project.delivery_planning",
+      "ask_when": "midp_tidp_milestone_or_task_team_data_incomplete",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S2-MIDP-001", "TIVERIT-BIM-STD-S2-TIDP-001"],
+      "output_section": "Delivery Planning"
+    },
+    {
+      "question_id": "BEP-Q-007",
+      "topic": "cde_and_production_environment",
+      "target": "project.cde",
+      "ask_when": "cde_system_of_record_state_or_access_context_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S3-PROD-EP001"],
+      "output_section": "CDE and Information-State Process"
+    },
+    {
+      "question_id": "BEP-Q-008",
+      "topic": "software_environment",
+      "target": "project.software_environment",
+      "ask_when": "required_tool_version_owner_or_exchange_compatibility_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S3-PROD-EP001", "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001"],
+      "output_section": "Software and Technology"
+    },
+    {
+      "question_id": "BEP-Q-009",
+      "topic": "federation_and_coordinates",
+      "target": "project.federation_coordinates",
+      "ask_when": "federation_membership_or_coordinate_authority_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001"],
+      "output_section": "Federation, Linking and Coordinates"
+    },
+    {
+      "question_id": "BEP-Q-010",
+      "topic": "coordination_and_qa",
+      "target": "project.coordination",
+      "ask_when": "coordination_cadence_issue_route_signoff_or_evidence_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S5-COORDINATION-EP001"],
+      "output_section": "Coordination, Review and Issue Process"
+    },
+    {
+      "question_id": "BEP-Q-011",
+      "topic": "exchanges_and_deliverables",
+      "target": "project.exchanges_and_deliverables",
+      "ask_when": "formal_exchange_scope_recipient_purpose_or_acceptance_route_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+      "output_section": "Exchanges, Submissions and Handover"
+    },
+    {
+      "question_id": "BEP-Q-012",
+      "topic": "information_structure",
+      "target": "project.information_structure",
+      "ask_when": "required_parameter_classification_or_semantic_selection_missing",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+      "output_section": "Information Structure, Parameters and Classification"
+    },
+    {
+      "question_id": "BEP-Q-013",
+      "topic": "external_interfaces",
+      "target": "project.external_interfaces",
+      "ask_when": "external_party_exchange_or_access_interface_unresolved",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S3-PROD-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+      "output_section": "External Parties and Interfaces"
+    },
+    {
+      "question_id": "BEP-Q-014",
+      "topic": "deviations",
+      "target": "project.deviations",
+      "ask_when": "known_conflict_or_proposed_departure_exists",
+      "governing_object_ids": ["TIVERIT-BIM-STD-S1-CORE-GOV-EP001"],
+      "output_section": "Deviations, Unresolved Inputs and Approvals"
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "BEP-VAL-001",
+      "rule": "Post-appointment BEPs shall not present required role assignments as confirmed when named project appointments are absent.",
+      "result_on_failure": "unresolved"
+    },
+    {
+      "id": "BEP-VAL-002",
+      "rule": "A MIDP shall not be represented as project-complete when required TIDP/task-team delivery inputs are absent.",
+      "result_on_failure": "gap"
+    },
+    {
+      "id": "BEP-VAL-003",
+      "rule": "Project-specific LOIN, software versions, milestone dates, people, organizations, coordinate values, and contractual acceptance routes shall not be invented from enterprise standards.",
+      "result_on_failure": "fail"
+    },
+    {
+      "id": "BEP-VAL-004",
+      "rule": "Every proposed deviation shall identify the governing object, scope, rationale, approval authority or required approver, and current approval state.",
+      "result_on_failure": "gap"
+    },
+    {
+      "id": "BEP-VAL-005",
+      "rule": "Formal exchange content shall identify intended purpose, recipient or relying party, applicable state/milestone, and acceptance or review route where required.",
+      "result_on_failure": "gap"
+    },
+    {
+      "id": "BEP-VAL-006",
+      "rule": "A generated BEP shall distinguish governed repository rules, project-instance facts, proposals, deviations, and unresolved items.",
+      "result_on_failure": "fail"
+    }
+  ],
+  "output_contract": {
+    "primary_output": "Project BEP draft or review package",
+    "required_supporting_outputs": [
+      "governing-object reference register",
+      "unresolved-input and deferred-question register",
+      "deviation register when applicable",
+      "project-instance tables used by the BEP"
+    ],
+    "assembly_rule": "Reference governed object IDs and specialize project-instance data. Do not restate repository standards as a competing authority source when a reference is sufficient."
+  },
+  "steps": [
+    {
+      "id": "BEP-WF-01",
+      "action": "Load guides/bep/README.md, guides/bep/BEP-ASSEMBLY-MAP.md, this workflow, and relevant project sources supplied by the user.",
+      "outputs": ["assembly_context"]
+    },
+    {
+      "id": "BEP-WF-02",
+      "action": "Extract and normalize already-supported project facts before asking questions.",
+      "inputs": ["assembly_context"],
+      "outputs": ["known_project_state"]
+    },
+    {
+      "id": "BEP-WF-03",
+      "action": "Determine BEP type, requested output maturity, and the set of project data required for that state.",
+      "inputs": ["known_project_state"],
+      "outputs": ["required_project_data"]
+    },
+    {
+      "id": "BEP-WF-04",
+      "action": "Compare required project data with known project state and create a gap queue containing only unresolved, contradictory, or insufficiently evidenced items.",
+      "inputs": ["required_project_data", "known_project_state"],
+      "outputs": ["gap_queue"]
+    },
+    {
+      "id": "BEP-WF-05",
+      "action": "Ask the next eligible question from the question catalogue; defer role-dependent or source-dependent questions that the current user cannot answer.",
+      "inputs": ["gap_queue"],
+      "outputs": ["project_answer_or_deferred_item"]
+    },
+    {
+      "id": "BEP-WF-06",
+      "action": "Validate the answer against the governing object, project evidence, dependencies, and applicable validation rules; update project state without converting unsupported assumptions into facts.",
+      "inputs": ["project_answer_or_deferred_item"],
+      "outputs": ["updated_project_state", "validation_result"]
+    },
+    {
+      "id": "BEP-WF-07",
+      "action": "Repeat gap evaluation and questioning until every required item is supplied, explicitly unresolved, formally deferred, or recorded as a deviation candidate.",
+      "inputs": ["updated_project_state"],
+      "outputs": ["interview_complete_state"]
+    },
+    {
+      "id": "BEP-WF-08",
+      "action": "Assemble the BEP in the packing order defined by BEP-ASSEMBLY-MAP.md using governed object references plus project-instance data.",
+      "inputs": ["interview_complete_state"],
+      "outputs": ["bep_draft"]
+    },
+    {
+      "id": "BEP-WF-09",
+      "action": "Run the BEP validation rules and explicitly report unresolved project data, deferred questions, conflicts, deviation candidates, and any missing approval evidence.",
+      "inputs": ["bep_draft"],
+      "outputs": ["bep_quality_report"]
+    },
+    {
+      "id": "BEP-WF-10",
+      "action": "Present the BEP draft and quality report without claiming approval or contractual acceptance unless supported by the project evidence and authority record.",
+      "inputs": ["bep_draft", "bep_quality_report"],
+      "outputs": ["reviewable_bep_package"]
+    }
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S1-CORE-GOV-EP001",
+      "TIVERIT-BIM-STD-S1-ROLES-001",
+      "TIVERIT-BIM-STD-S2-INF-REQ-EP001",
+      "TIVERIT-BIM-STD-S2-LOD-LOI-001",
+      "TIVERIT-BIM-STD-S2-MIDP-001",
+      "TIVERIT-BIM-STD-S2-TIDP-001",
+      "TIVERIT-BIM-STD-S3-PROD-EP001",
+      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
+      "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
+      "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001"
+    ],
+    "registries": ["REG-ROLE-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "5832715",
+    "source_version": 1,
+    "supporting_page_ids": ["6160402", "6225931", "6553603", "14090241", "14549001"],
+    "migration_note": "Reinterpreted from the source BEP interview kernel and pipeline as a repository-discoverable AI interaction protocol. Source-era organization, tool, role-code, precedence, and implementation assumptions were not promoted. Durable state-machine, gap-driven interview, deferral, validation, and assembly concepts were retained and aligned to the current governed repository."
+  }
+}
