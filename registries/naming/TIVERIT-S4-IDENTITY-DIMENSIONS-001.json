@@ -8,13 +8,17 @@
   "layer": "L7",
   "modules": ["S3","S4","S5","S7"],
   "entries": [
-    {"id":"DIM-IDENTITY","name":"Identity","owner_module":"S4","behavior":"persistent","definition":"Immutable or stable root identifier of the governed container or object."},
-    {"id":"DIM-REVISION","name":"Revision","owner_module":"S7","behavior":"mutable_controlled_sequence","definition":"Controlled change/version sequence such as preliminary, shared milestone, or contractual revision."},
-    {"id":"DIM-SUITABILITY","name":"Suitability / Permitted Use","owner_module":"S7","behavior":"mutable_governed_state","definition":"Declared permitted use or reliance status such as S0, S1, S2, S3, S4, A1, A2, or B1 where applicable."},
-    {"id":"DIM-CDE-STATE","name":"CDE Platform State","owner_module":"S3","behavior":"mutable_container_state","definition":"Governed storage or information state such as WIP, Shared, Published, Archived or coordination placement."},
+    {"id":"DIM-IDENTITY","name":"Identity","owner_module":"S4","behavior":"persistent","definition":"Stable root identifier of the governed container or object. Canonical cross-platform root identity follows the seven-token hyphen grammar and excludes mutable lifecycle dimensions.","curator_decisions":["D-11","D-13"]},
+    {"id":"DIM-REVISION","name":"Revision","owner_module":"S7","behavior":"mutable_controlled_sequence","definition":"Controlled change/version sequence such as preliminary, shared milestone, or contractual revision. Revision is associated metadata and does not redefine root identity.","curator_decision":"D-13"},
+    {"id":"DIM-SUITABILITY","name":"Suitability / Permitted Use","owner_module":"S7","behavior":"mutable_governed_state","definition":"Declared permitted use or reliance status such as S0, S1, S2, S3, S4, A1, A2, or B1 where applicable. Suitability is associated metadata and does not redefine root identity.","curator_decision":"D-13"},
+    {"id":"DIM-CDE-STATE","name":"CDE Platform State","owner_module":"S3","behavior":"mutable_container_state","definition":"Governed storage or information state such as WIP, Shared, Published, Archived or coordination placement. CDE state does not redefine root identity."},
     {"id":"DIM-ISSUE-STATE","name":"Coordination Issue State","owner_module":"S5","behavior":"mutable_workflow_state","definition":"Operational coordination issue lifecycle state, separate from container identity and delivery status."}
   ],
-  "rule":"These dimensions shall not be flattened into a single state system or treated as interchangeable identity tokens.",
-  "conflict_reference":"CONF-S4-003",
+  "rules": [
+    "These dimensions shall not be flattened into a single state system or treated as interchangeable identity tokens.",
+    "Revision and suitability/status shall not form part of canonical root container identity.",
+    "Platform-specific labels may display mutable dimensions only where required, while preserving an unchanged canonical root identity mapping."
+  ],
+  "resolved_conflict": {"id":"CONF-S4-003","status":"resolved_by_curator","decision":"D-13"},
   "provenance": {"source_system":"confluence","space":"BST","source_pages":["2719832","7241811","11042817","7700514","8126500"]}
 }
