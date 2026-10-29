@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-VIEWS-001",
+  "type": "instruction",
+  "title": "Revit View Standards and Template Use",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S4", "S5"],
+  "purpose": "Apply governed Revit view naming, view templates, visibility/filter controls, and view-purpose settings consistently while keeping unresolved office-specific template names and example view names noncanonical.",
+  "preconditions": ["The project's governing view/naming rules and approved view templates are available.", "Project phase and intended view purpose are known."],
+  "steps": [
+    {"id":"VIEW-01","name":"Name the view for governed purpose","actions":["Assign a name that identifies the view type, scope/location, discipline where applicable, and purpose using the governing naming rules.","Do not adopt source example view names as canonical unless they are present in the governed naming registry."],"validation":["View names are consistent, searchable, and aligned to the governing S4 naming structures.","No duplicate or ad-hoc naming convention is introduced."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"VIEW-02","name":"Apply the approved view template","actions":["Apply the approved view template for the view's purpose and type.","Use template-controlled category visibility, filters, linked-model visibility, phase/phase filter, detail level, and visual style where governed.","If a recurring exception is required, route it into template governance instead of accumulating per-view overrides."],"validation":["The expected view template is applied where required.","Temporary or unexplained per-view overrides are absent or recorded as governed exceptions."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"VIEW-03","name":"Verify purpose-specific display state","actions":["Confirm detail level and visual style match the view's intended use.","Confirm phase and phase filter align with project requirements.","Confirm linked-model visibility and filter behavior are controlled through governed view/template logic rather than ad-hoc settings."],"validation":["The view state is consistent with its governed purpose and template.","The view can be used for its intended documentation, coordination, or export function without undocumented graphics drift."],"automation_readiness":"AUTOMATABLE"}
+  ],
+  "outputs": ["Governed Revit views with consistent naming and template-controlled graphics", "Traceable view exceptions where required"],
+  "evidence": ["View schedule or API inventory of names and applied templates", "Override report", "Representative screenshots or QA report"],
+  "future_dependencies": ["Concrete governed View Template Registry", "Complete view-purpose vocabulary where not already governed"],
+  "governance_notes": ["Exact source-era view-template names and example view names are TODO/example content and are not promoted.", "Category-level graphics authority remains with governed Object Styles/graphics structures; views implement scoped display behavior."],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"7241762","source_version":1,"source_title":"View Standards – Instructions, Definitions, Workflows","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241762","migration_note":"Normalized as L6 view implementation guidance; generic/example view names and unresolved template names remain noncanonical."}
+}
