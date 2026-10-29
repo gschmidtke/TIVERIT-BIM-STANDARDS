@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../schemas/executable-test.schema.json",
+  "id": "ETS-S8-PARAM-004-PYTHON",
+  "type": "executable_test",
+  "title": "Python shared parameter registry consistency checker",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "ats_id": "ATS-S8-PARAM-004",
+  "implementation_binding": {
+    "platform": "repository Python runtime",
+    "executor": "scripts/run_conformance_fixtures.py",
+    "implementation_class": "registry_checker",
+    "supported_versions": ["Python 3.12"],
+    "callable_reference": "scripts/run_conformance_fixtures.py::check_s8_shared_parameters"
+  },
+  "implementation_state": "implemented_unverified",
+  "input_contract": {
+    "fixture_or_inventory": "Observed shared-parameter records must provide GUID where known plus name and data_type fields.",
+    "governing_registry": "registries/parameters/TIVERIT-BIM-STD-S8-SP-REG-001.json",
+    "unresolved_source_rows": "Names present only in unresolved_entries are not treated as passing governed definitions."
+  },
+  "execution_contract": {
+    "method": "Compare observed parameter identity and structural fields against the governed central Shared Parameter Registry.",
+    "matching_key": "GUID is authoritative where present. Name is used only to detect unresolved source rows and conflicting identity claims.",
+    "read_only": true,
+    "unknown_guid_behavior": "fail",
+    "known_unresolved_name_without_governed_guid_behavior": "indeterminate",
+    "missing_required_observation_fields_behavior": "indeterminate"
+  },
+  "evidence_output_contract": {
+    "result_schema": "schemas/conformance-result.schema.json",
+    "required_observations": [
+      "observed parameter identity",
+      "matched governed registry identity where available",
+      "field comparison findings",
+      "unresolved or conflicting parameter details"
+    ]
+  },
+  "result_mapping": {
+    "pass": "Every observed governed shared parameter matches an active central registry entry by GUID and required structural fields.",
+    "fail": "An observed parameter uses an unknown GUID, conflicts with the governed name or data type for a known GUID, or asserts a governed identity that conflicts with the central registry.",
+    "not_applicable": "The tested subject declares that no governed shared parameter requirement applies.",
+    "indeterminate": "Required evidence is incomplete or an observed parameter corresponds only to a source row whose governed GUID remains unresolved."
+  },
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "ATS-S8-PARAM-004",
+    "migration_note": "First repository-native executable conformance implementation. It validates governed shared-parameter identity against the migrated central registry without requiring Revit, allowing CI to verify ETS behavior before a Revit/ZEN adapter is added."
+  }
+}
