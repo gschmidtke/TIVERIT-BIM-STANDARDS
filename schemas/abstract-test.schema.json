@@ -19,6 +19,7 @@
     "provenance"
   ],
   "properties": {
+    "$schema": {"type": "string", "minLength": 1},
     "id": {"type": "string", "pattern": "^ATS-[A-Z0-9-]+$"},
     "type": {"const": "abstract_test"},
     "title": {"type": "string", "minLength": 1},
