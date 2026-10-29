@@ -1,0 +1,40 @@
+{
+  "id": "MIG-INV-REVIT-APP-E-001",
+  "type": "migration_inventory",
+  "title": "Revit Appendix E Source Inventory",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"],
+  "source_system": "confluence",
+  "space": "BST",
+  "checklist_page_id": "7831553",
+  "topics": [
+    {"topic":"Revit Project Templates","page_id":"7503875","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"View Standards","page_id":"7241762","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Sheet & Titleblock Standards","page_id":"6357066","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Annotation Standards","page_id":"5799975","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Category & Subcategory Graphics","page_id":"6193190","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Object Naming Standards","page_id":"6651935","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Parameter Standards","page_id":"6422556","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Materials & Appearance Standards","page_id":"7700481","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Levels, Grids & Reference Standards","page_id":"6684703","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Modeling Standards","page_id":"7733249","source_status":"current","working_layer":"mixed_L4_L6","extracted":true},
+    {"topic":"Worksharing & Collaboration Style","page_id":"7340051","source_status":"current","working_layer":"L6","extracted":true},
+    {"topic":"Documentation & Export Style","page_id":"7438366","source_status":"draft","working_layer":"L6","extracted":true},
+    {"topic":"QA / Review Checklists","page_id":"6422564","source_status":"draft","working_layer":"L6","extracted":true}
+  ],
+  "migration_rules": [
+    "Preserve source TODO, example, proposed, draft, and placeholder status.",
+    "Do not promote example codes, file patterns, role placeholders, numerical defaults, or tool settings into canonical authority without curator review.",
+    "Separate tool-independent normative requirements from Revit-specific implementation instructions.",
+    "Map Revit implementation rules back to governing S-standards rather than creating a competing authority hierarchy."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7831553",
+    "source_version": 1,
+    "migration_note": "Inventory created from direct Confluence extraction. This file records source coverage only and is not normative authority."
+  }
+}
