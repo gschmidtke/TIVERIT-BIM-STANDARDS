@@ -1,0 +1,58 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
+  "type": "standard",
+  "title": "Information Structure, Parameters & Classification",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S8"],
+  "scope": {
+    "purpose": "Define the semantic structure of information within TIVERIT BIM deliverables: project information baselines, parameter and shared-parameter strategy, classification systems, and asset/lifecycle data expectations.",
+    "governs": ["project information", "parameters and shared parameters", "classification systems", "asset and lifecycle information", "data consistency and semantic integrity"],
+    "non_goals": ["geometry/modeling methods", "coordination or clash workflows", "collaboration mechanics", "submission/acceptance gates", "approval authority or contractual responsibility", "tool UI steps", "exhaustive parameter lists"]
+  },
+  "sections": [
+    {"id":"S8.1","title":"Purpose & Relationship to ISO 19650"},
+    {"id":"S8.2","title":"Project Information (Project Info)"},
+    {"id":"S8.3","title":"Parameters & Shared Parameters"},
+    {"id":"S8.4","title":"Classification Systems"},
+    {"id":"S8.5","title":"Asset Information & Lifecycle Data"},
+    {"id":"S8.6","title":"Data Consistency & Integrity"}
+  ],
+  "requirements": [
+    {"id":"REQ-S8-001","authority":"shall","statement":"BIM models shall function as reliable information containers, not only visual representations.","verification_class":"human_verifiable"},
+    {"id":"REQ-S8-002","authority":"shall","statement":"Project information shall be consistent across all models, centrally defined, and maintained deliberately.","verification_class":"machine_assisted"},
+    {"id":"REQ-S8-003","authority":"shall","statement":"Project Info shall be treated as foundational context for downstream information use rather than optional metadata.","verification_class":"human_verifiable"},
+    {"id":"REQ-S8-004","authority":"shall","statement":"Shared parameters shall be centrally defined, version-controlled, and applied consistently.","verification_class":"machine_assisted"},
+    {"id":"REQ-S8-005","authority":"shall","statement":"Parameters shall be intentional, documented, and aligned with information requirements.","verification_class":"human_verifiable"},
+    {"id":"REQ-S8-006","authority":"shall_not","statement":"Uncontrolled creation of parameters shall not be permitted.","verification_class":"machine_assisted"},
+    {"id":"REQ-S8-007","authority":"shall","statement":"Classification shall be applied consistently, aligned with agreed standards, and maintained across relevant models.","verification_class":"machine_assisted"},
+    {"id":"REQ-S8-008","authority":"shall","statement":"Asset data shall be purpose-driven and aligned to declared lifecycle needs rather than exhaustive by default.","verification_class":"human_verifiable"},
+    {"id":"REQ-S8-009","authority":"shall","statement":"Lifecycle data shall be structured, complete for declared use, and traceable to its source.","verification_class":"machine_assisted"},
+    {"id":"REQ-S8-010","authority":"shall","statement":"Information shall remain consistent across disciplines, aligned across federated models, and resilient to model separation.","verification_class":"machine_assisted"},
+    {"id":"REQ-S8-011","authority":"shall","statement":"Information structure shall support updates without semantic drift, re-use across phases, auditability, and verification.","verification_class":"machine_assisted"},
+    {"id":"REQ-S8-012","authority":"shall","statement":"BIM deliverables shall carry reliable semantic meaning beyond geometry.","verification_class":"human_verifiable"},
+    {"id":"REQ-S8-013","authority":"shall","statement":"New parameters shall follow governed change processes and be communicated.","verification_class":"human_verifiable"},
+    {"id":"REQ-S8-014","authority":"informative","statement":"Classification supports interpretation and automation but does not replace design intent.","verification_class":"informational"},
+    {"id":"REQ-S8-015","authority":"shall_not","statement":"Data without a declared lifecycle purpose shall not be collected as governed lifecycle information.","verification_class":"human_verifiable"},
+    {"id":"REQ-S8-016","authority":"shall","statement":"Data integrity shall be maintained through governed change and verification cycles.","verification_class":"machine_assisted"}
+  ],
+  "classification_references": ["Uniclass 2015", "OmniClass", "Client-Specific Classification / Custom Taxonomies"],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001"],
+    "workflows": ["TIVERIT-SP-REGISTRY-001"],
+    "registries": ["TIVERIT-BIM-STD-S4-SP-REG-001", "TIVERIT-S8-SEMANTIC-DOMAINS-001"],
+    "roles": ["ROLE-BIM-STANDARDS-MGR-001", "ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-QAQC-AUTHORITY-001", "ROLE-TOOL-AUTHORITY-001"]
+  },
+  "implementation_gaps": ["GAP-S8-01", "GAP-S8-02", "GAP-S8-03"],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "2883653",
+    "source_version": 1,
+    "source_title": "JSON - Information Structure, Parameters & Classification",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2883653",
+    "migration_note": "Primary machine-readable L4 S8 source. Human-readable narrative counterpart: page 2785403. Gap-closure scaffolds are retained separately as migration evidence rather than treated as competing standards."
+  }
+}
