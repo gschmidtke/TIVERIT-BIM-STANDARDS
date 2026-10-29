@@ -24,6 +24,21 @@ This log records accepted curator decisions that alter migration treatment or ca
 
 **Rationale:** The detailed hierarchy aligns container state, coordination, publishing, and downstream S5/S7 workflows.
 
+### D-11 — Canonical cross-platform container identity grammar
+**Decision:** The seven-token hyphen-delimited BEP/ISO-style pattern `{proj}-{originator}-{volume/system}-{level/location}-{type}-{role}-{number}.{ext}` is the canonical cross-platform container identity grammar. The ACC underscore filename scheme is retained only as an implementation/display mapping and does not establish a second canonical identity grammar.
+
+**Rationale:** Container identity must remain portable across authoring, CDE, coordination, exchange, manufacturing, and future platform contexts rather than being defined by one platform implementation.
+
+### D-12 — Scoped discipline-code namespaces
+**Decision:** Discipline-code namespaces may coexist by governed scope. Enterprise/container identity uses the 3–4 letter discipline namespace. Tool-internal Revit view, sheet, family, or similar object naming may use compact/single-letter discipline codes only where the governing tool instruction explicitly defines that local namespace.
+
+**Rationale:** The two code schemes serve different naming surfaces. Scoped coexistence preserves existing tool conventions without allowing local abbreviations to redefine enterprise container identity.
+
+### D-13 — Stable root identity; revision and status are metadata dimensions
+**Decision:** Suitability/status and revision are removed from canonical root container identity. They remain governed, mutable metadata/revision dimensions associated with the stable container identity. Platform filenames may display or carry these values only as derived implementation labels where required; changing status or revision shall not redefine the root identity.
+
+**Rationale:** Identity must persist across lifecycle transitions. Treating mutable revision or suitability as root identity would fragment history and risk broken references.
+
 ## Earlier accepted role decisions
 
 Role-specific curator decisions remain recorded in `migration/review/Roles_curator_decision_proposal.md` and continue to govern role migration.
