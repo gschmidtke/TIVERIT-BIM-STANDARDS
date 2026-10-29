@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "REG-S9-AUTOMATION-001",
+  "type": "registry",
+  "title": "S9 Automation Registry",
+  "status": "migration_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S9"],
+  "purpose": "Machine-readable registry spine for governed automation assets that can affect governed BIM information.",
+  "runtime_status": "migration_candidate_only",
+  "record_schema": {
+    "required_fields": [
+      "id",
+      "name",
+      "tool_or_platform",
+      "scope_function",
+      "governing_references",
+      "owner_role",
+      "version",
+      "governance_status",
+      "input_types",
+      "output_types",
+      "risk_impact_classification",
+      "approval_reference",
+      "evidence_logging_expectations"
+    ],
+    "governance_status_candidate_values": ["draft","pilot","approved","deprecated"],
+    "risk_dimensions": ["read_only_or_advisory","write_change","impact_on_governed_data"]
+  },
+  "governance_rules": [
+    "Automation that writes or modifies governed information must be registered before production use.",
+    "Registry entries must be updated when version, scope, owner, approval state, or risk classification changes.",
+    "Unregistered automation that affects governed information is prohibited in production environments.",
+    "Automation changes that affect logic, scope, target data, or write behavior require governed change control and registry update.",
+    "Required execution evidence must be produced and retained where specified by the registry entry."
+  ],
+  "entries": [],
+  "open_gaps": ["GAP-S9-01"],
+  "relationships": {
+    "standard": "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001",
+    "roles": ["ROLE-TOOL-AUTHORITY-001","ROLE-BIM-STANDARDS-MANAGER-001","ROLE-QAQC-AUTHORITY-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "5308417",
+    "source_version": "1",
+    "source_title": "Automation Registry Governance Scaffold",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/5308417",
+    "migration_note": "Source-defined governance scaffold migrated without inventing production automation entries. The registry structure is machine-readable, but approval states and concrete automation assets remain intentionally unpopulated until governed review."
+  }
+}
