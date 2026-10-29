@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/conformance-fixture.schema.json",
+  "id": "FIX-S6-COORD-003-INDETERMINATE",
+  "type": "conformance_fixture",
+  "title": "S6 coordination file contains unresolved element classifications",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6"],
+  "ets_id": "ETS-S6-COORD-003-REVIT",
+  "fixture_kind": "indeterminate",
+  "expected_result": "indeterminate",
+  "subject_profile": {
+    "container_designation": "Standalone Coordination File",
+    "platform": "Revit",
+    "content_scope": "spatial-authority content plus elements that cannot be reliably classified as permitted or prohibited"
+  },
+  "simulated_observations": [
+    {"class": "permitted_spatial_authority", "category": "Levels", "count": 12},
+    {"class": "permitted_spatial_authority", "category": "Grids", "count": 28},
+    {"class": "prohibited_physical_element", "count": 0},
+    {"class": "unresolved_element", "category": "Generic Models", "count": 2, "sample_element_ids": ["234567", "234568"]}
+  ],
+  "expected_evidence_assertions": [
+    "tested subject is confirmed as the governed Standalone Coordination File",
+    "one or more elements remain unresolved after classification",
+    "unresolved element identifiers are retained in evidence",
+    "result is indeterminate and is not silently converted to pass"
+  ],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "ETS-S6-COORD-003-REVIT",
+    "migration_note": "Synthetic indeterminate regression fixture proving that unresolved classification must block a pass result."
+  }
+}
