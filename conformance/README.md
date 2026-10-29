@@ -116,9 +116,9 @@ Baseline result states are:
 
 ## First pilot
 
-The first pilot spans S4 identity/naming, S6 linking/shared coordinates, and S8 parameters/semantics. Seven ATS objects are present. The first ETS is `ETS-S6-COORD-003-REVIT`, currently specified but not implemented, with positive, negative, and indeterminate fixtures.
+The first pilot spans S4 identity/naming, S6 linking/shared coordinates, and S8 parameters/semantics. Seven ATS objects are present.
 
-The pilot sequence is:
+Two executable paths now demonstrate different maturity states:
 
 ```text
 REQ-S6-COORD-003
@@ -127,13 +127,27 @@ ATS-S6-COORD-003
   ↓
 ETS-S6-COORD-003-REVIT
   ↓
-FIX-S6-COORD-003-PASS
-FIX-S6-COORD-003-FAIL
-FIX-S6-COORD-003-INDETERMINATE
+FIX pass / fail / indeterminate
   ↓
-future callable implementation
-  ↓
-conformance-result.schema.json evidence record
+specified_not_implemented
 ```
+
+This path is ready for a future Revit/ZEN callable but remains M3 until implementation exists and fixtures execute successfully.
+
+```text
+REQ-S8-004
+  ↓
+ATS-S8-PARAM-004
+  ↓
+ETS-S8-PARAM-004-PYTHON
+  ↓
+FIX pass / fail / indeterminate
+  ↓
+CI execution + schema-valid evidence
+  ↓
+verified
+```
+
+`REQ-S8-004` is the first requirement to reach **M4** under the repository maturity model. The Python ETS compares observed shared-parameter identities and structural fields against the governed central Shared Parameter Registry. The CI fixture runner executes governed positive, negative, and unresolved-source cases and fails if implementation behavior diverges from their expected results.
 
 No pilot ATS, ETS, or fixture creates approval authority. Production acceptance remains governed by the normative standards and designated roles.
