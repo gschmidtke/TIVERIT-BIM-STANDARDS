@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-S5-ACC-GATED-COORDINATION-001",
+  "type": "workflow",
+  "title": "ACC Gated Coordination Workflow",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L5",
+  "modules": ["S5"],
+  "trigger": "Discipline authoring is complete for the coordination cycle and internal checks have passed.",
+  "steps": [
+    {"id":"GATE-A","action":"Validate model intake and pre-publish QA before coordination publication.","actor_role":"ROLE-BIM-DETAILER-001","outputs":["pre-publish QA evidence","published coordination model"]},
+    {"id":"GATE-B","action":"Run automated clash detection, apply governed exclusions, and triage candidate issues.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001","outputs":["triaged clash matrix","candidate issues"]},
+    {"id":"GATE-C","action":"Review, prioritize, assign, and date coordination issues.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001","outputs":["assigned governed issues","review record"]},
+    {"id":"GATE-D","action":"Remediate authoring issues, republish models, and independently verify resolutions.","actor_role":"ROLE-MODEL-AUTHOR-001","outputs":["updated model","verification evidence"]},
+    {"id":"GATE-E","action":"Close or waive verified milestone issues, execute coordination sign-off, and prepare the package for S7 formal exchange.","actor_role":"ROLE-PROJECT-BIM-MANAGER-001","outputs":["coordination sign-off","CDE status update","S7 exchange readiness"]}
+  ],
+  "issue_system_of_record": "ACC Issues",
+  "source_status": "draft",
+  "relationships": {"standards":["TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7241803","6881343","6881351","7962634","7798804","8093711","7241811"],"migration_note":"Tool-specific ACC implementation retained below the tool-agnostic L4 S5 doctrine."}
+}
