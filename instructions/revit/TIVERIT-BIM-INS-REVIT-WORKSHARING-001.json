@@ -1,0 +1,145 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-WORKSHARING-001",
+  "type": "instruction",
+  "title": "Revit Worksharing and Collaboration Practice",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S6", "S4"],
+  "purpose": "Implement governed S6 collaboration and workset principles in Revit authoring models through bounded worksharing, ownership, workset, maintenance, and recovery practices.",
+  "applies_to": {
+    "tools": ["Revit"],
+    "roles": ["Model Author", "Project BIM Coordinator", "Discipline Lead"],
+    "scope": "Workshared Revit authoring models"
+  },
+  "preconditions": [
+    "The project collaboration environment and authoritative model locations are governed under S3 and S6.",
+    "The project workset strategy is defined and aligned with the governed S4 naming structure.",
+    "Project-specific cloud or central/local mechanics are confirmed before applying source-era local-file guidance."
+  ],
+  "steps": [
+    {
+      "id": "RVT-WS-01",
+      "name": "Use governed multi-user authoring pattern",
+      "actions": [
+        "Open and edit the governed authoring model through the project-approved multi-user Revit workflow.",
+        "Do not directly edit a protected central/source model where the deployment pattern requires local or cloud-mediated authoring.",
+        "Synchronize or publish changes at the project-defined cadence and before ending the work session."
+      ],
+      "validation": [
+        "The user session follows the approved project worksharing pattern.",
+        "Changes are synchronized or published through the governed collaboration path."
+      ],
+      "failure_modes": [
+        "Direct editing bypasses the governed collaboration pattern.",
+        "A stale local or unstable session is propagated into shared production."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-WS-02",
+      "name": "Apply worksets as containment and ownership structure",
+      "actions": [
+        "Use worksets for governed containment, ownership boundaries, and high-level visibility rather than fine-grained graphics styling.",
+        "Place datum/reference content only on the governed datum workset or equivalent project-defined structure.",
+        "Place linked models on governed link worksets.",
+        "Keep temporary or troubleshooting worksets controlled and remove or close them when no longer needed.",
+        "Do not create personal user-named worksets."
+      ],
+      "validation": [
+        "Workset assignment follows the project-governed S4 workset grammar and S6 containment intent.",
+        "Modeled geometry is not placed on the datum/reference workset.",
+        "Links reside on governed link worksets."
+      ],
+      "failure_modes": [
+        "Worksets are used as an ad-hoc graphics system.",
+        "Personal or uncontrolled worksets appear in production.",
+        "Physical geometry is placed on a datum/reference workset."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "RVT-WS-03",
+      "name": "Borrow minimally and release ownership",
+      "actions": [
+        "Borrow only elements required for the active task.",
+        "Coordinate before editing another user's active scope.",
+        "Release ownership through regular synchronization and avoid checking out large portions of the model without explicit coordination."
+      ],
+      "validation": [
+        "Element ownership remains bounded to active work.",
+        "Persistent ownership conflicts are escalated rather than ignored."
+      ],
+      "failure_modes": [
+        "Large scopes remain checked out without need.",
+        "Repeated ownership or synchronization warnings are ignored."
+      ],
+      "automation_readiness": "MANUAL"
+    },
+    {
+      "id": "RVT-WS-04",
+      "name": "Maintain model health and controlled upgrades",
+      "actions": [
+        "Perform project-governed model maintenance such as cleanup, audit, or compact at the approved cadence.",
+        "Back up and archive a known-good model state before a governed Revit-version upgrade.",
+        "Validate the upgraded model with project-defined smoke checks before production resumes."
+      ],
+      "validation": [
+        "Maintenance and upgrade actions are traceable.",
+        "A rollback-capable pre-upgrade state exists when an upgrade is performed."
+      ],
+      "failure_modes": [
+        "Upgrade occurs without governance or rollback preparation.",
+        "Known model-health errors are propagated into production."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-WS-05",
+      "name": "Stop propagation when corruption or instability is suspected",
+      "actions": [
+        "Stop synchronization when corruption, repeated errors, or an unstable local/session is suspected.",
+        "Notify the project BIM support/coordination authority.",
+        "Recover from a fresh governed source or last known good backup using the project-approved recovery path."
+      ],
+      "validation": [
+        "Unstable sessions are isolated from shared production.",
+        "Recovery uses a traceable governed source."
+      ],
+      "failure_modes": [
+        "An unstable local/session is synchronized into the governed model."
+      ],
+      "automation_readiness": "MANUAL"
+    }
+  ],
+  "outputs": [
+    "Workshared Revit model following governed S6 collaboration practice",
+    "Controlled workset assignment and ownership state",
+    "Traceable maintenance, upgrade, or recovery actions where applicable"
+  ],
+  "evidence": [
+    "Workset inventory and element assignment report",
+    "Synchronization/publish history where available",
+    "Model maintenance or upgrade record",
+    "Recovery record where applicable"
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001", "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001", "TIVERIT-BIM-STD-S3-PROD-EP001"],
+    "registries": ["TIVERIT-S4-NAMING-SYNTAXES-001", "TIVERIT-S6-LINK-REGISTRY-001"]
+  },
+  "governance_notes": [
+    "S6 remains the normative authority for collaboration, linking, and shared-coordinate requirements; this object only implements those rules in Revit.",
+    "Source-era central/local mechanics are conditional implementation guidance because current project collaboration may use cloud worksharing rather than file-based locals.",
+    "Source workset names were examples; governed workset syntax comes from the S4 naming structure."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7340051",
+    "source_version": 1,
+    "source_title": "Revit Worksharing & Collaboration Style Standards",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7340051",
+    "migration_note": "Mixed normative/instruction source normalized to L6 under existing S6/S4 authority. Placeholder workset names and unresolved role/RACI statements were not promoted."
+  }
+}
