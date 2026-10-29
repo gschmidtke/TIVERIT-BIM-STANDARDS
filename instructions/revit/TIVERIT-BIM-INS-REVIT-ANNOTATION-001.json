@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-ANNOTATION-001",
+  "type": "instruction",
+  "title": "Revit Annotation Standards",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S4", "S8"],
+  "purpose": "Apply controlled annotation styles and behaviors for text, dimensions, tags, symbols, and keynotes without promoting unresolved source-era sizes, family names, or formatting examples into canonical values.",
+  "preconditions": ["Approved annotation types and supporting parameters are available from the governed template/library context.", "Project units and discipline-specific documentation requirements are known."],
+  "steps": [
+    {"id":"ANN-01","name":"Use approved annotation types","actions":["Use approved text, dimension, tag, symbol, and keynote types from governed project/template content.","Do not create duplicate local annotation types solely to change isolated formatting."],"validation":["Placed annotations use approved governed types.","Uncontrolled duplicate types are absent or explicitly recorded for remediation."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"ANN-02","name":"Apply dimension and notation rules consistently","actions":["Use the project-governed units and precision for the annotation context.","Avoid manual formatting overrides where governed annotation types provide the required behavior.","Use practical install/documentation precision appropriate to the governed discipline/project requirements."],"validation":["Dimension styles, units, precision, leaders, and symbols are internally consistent with project standards.","No ungoverned source-example precision or tolerance value is treated as mandatory."],"automation_readiness":"ASSISTED"},
+    {"id":"ANN-03","name":"Use parameter-driven tags and governed annotation codes","actions":["Use approved tag families tied to governed parameters.","Use keynotes/annotation codes through the governed data source where applicable.","Do not replace governed tags or keynote behavior with exploded CAD, manual detail lines, or free text where a governed data-driven annotation is required."],"validation":["Tags resolve to governed parameters and display intended information.","Keynote/code use is traceable to the applicable governed source where available."],"automation_readiness":"ASSISTED"}
+  ],
+  "outputs": ["Consistent Revit annotation using governed text/dimension/tag/symbol/keynote structures"],
+  "evidence": ["Annotation type inventory", "Tag-family and parameter mapping report", "Representative sheet/view QA results"],
+  "future_dependencies": ["Complete governed annotation type catalogue", "Governed keynote/code catalogue where applicable", "Exact family names and discipline-specific appearance rules"],
+  "governance_notes": ["Exact text sizes, fonts, dimension precision values, family names, and keynote graphics marked TODO/example in source remain unresolved.", "Annotation semantics that depend on parameters remain subordinate to S8 parameter authority."],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"5799975","source_version":1,"source_title":"Annotation Standards – Instructions, Definitions, Workflows","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/5799975","migration_note":"Migrated durable annotation-control rules only; unresolved style values and family names remain noncanonical."}
+}
