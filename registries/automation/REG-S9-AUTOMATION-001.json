@@ -39,7 +39,7 @@
   "open_gaps": ["GAP-S9-01"],
   "relationships": {
     "standard": "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001",
-    "roles": ["ROLE-TOOL-AUTHORITY-001","ROLE-BIM-STANDARDS-MANAGER-001","ROLE-QAQC-AUTHORITY-001"]
+    "roles": ["ROLE-TOOL-AUTHORITY-001","ROLE-BIM-STANDARDS-MGR-001","ROLE-QAQC-AUTHORITY-001"]
   },
   "provenance": {
     "source_system": "confluence",
