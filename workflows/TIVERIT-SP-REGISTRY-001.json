@@ -32,8 +32,12 @@
   "relationships": {
     "standards": ["TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001"],
     "registries": ["TIVERIT-BIM-STD-S4-SP-REG-001"],
-    "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001"]
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-BIM-STANDARDS-MGR-001"]
   },
+  "unresolved_role_hooks": [
+    {"observed_name":"AVLC Lead","use":"semantic owner for AVLC parameters","resolution":"unresolved"},
+    {"observed_name":"FM Lead","use":"semantic owner for facility/asset parameters","resolution":"unresolved"}
+  ],
   "conflicts": [
     {"id":"MIG-SP-CONFLICT-001","topic":"automatic_citizen_promotion","source_rule":"One source rule says a previously unseen GUID is added directly as CITIZEN with active state unless explicitly set otherwise.","conflicting_rule":"The same governance source states that promotion from VISITOR to CITIZEN is an explicit governance act and no project can silently promote a parameter.","resolution_status":"curator_review_required"}
   ],
@@ -44,6 +48,6 @@
     "source_version": 1,
     "source_title": "JSON - Shared Parameter Registry Governance Workflow",
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3768321",
-    "migration_note": "Conflicting automatic-promotion behavior is preserved as a migration conflict and not enabled as canonical behavior."
+    "migration_note": "Role cross-check resolves standards governance to ROLE-BIM-STANDARDS-MGR-001; AVLC Lead and FM Lead remain unresolved semantic-owner hooks."
   }
 }
