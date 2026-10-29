@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S2-REQUIREMENT-TYPES-001",
+  "type": "registry",
+  "title": "S2 Information Requirement Types",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S2"],
+  "entries": [
+    {"id":"PIR","name":"Project Information Requirements","purpose":"Strategic information required for project decision gates.","owner":"Appointing Party / Project Leadership","recipient":"Project BIM Manager & Lead Appointed Party","source_page_id":"3309569"},
+    {"id":"AIR","name":"Asset Information Requirements","purpose":"Operational and maintenance information required for maintainable assets.","owner":"FM Lead / Client Asset Operations","recipient":"Discipline Leads, Model Authors, Commissioning Agents","source_page_id":"3538945","owner_resolution":"unresolved"},
+    {"id":"EIR","name":"Exchange Information Requirements","purpose":"Managerial, commercial, and technical requirements for information exchanges.","owner":"Appointing Party / Project BIM Manager","recipient":"Delivery Team, Task Information Authors, Subcontractors","source_page_id":"11042817","standard_status":"distributed_implementation"},
+    {"id":"OIR","name":"Organisational Information Requirements","purpose":"Enterprise strategic and asset-management drivers informing project initiation.","owner":"Enterprise Executive Leadership / Client Corporate Board","recipient":"Project Directors, BIM Director, Project BIM Managers","source_page_id":"3047569","standard_status":"standalone_standard_missing"},
+    {"id":"LOIN","name":"Level of Information Need","purpose":"Paired geometric fidelity and non-graphical information depth required for element reliance.","owner":"Project BIM Manager","recipient":"Discipline Leads, Model Authors, Trade Contractors","source_page_id":"2425330"},
+    {"id":"SEL","name":"Showset Element List","purpose":"Instance-level identification, categorization, and tracking of placed showset elements.","owner":"Showset Discipline Lead","recipient":"Showset production modelers, detailers, fabrication vendors","source_page_id":"3637249"}
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["3309569","3538945","11042817","3047569","2425330","3637249"],"migration_note":"Registry preserves source taxonomy without inventing missing OIR or EIR standalone standards."}
+}
