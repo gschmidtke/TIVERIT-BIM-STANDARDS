@@ -31,6 +31,21 @@ Do not confuse these questions:
 
 A downstream capability or successful execution must never override upstream intent, standards, user authority, or professional acceptance.
 
+## Silent cross-repository routing
+
+The repository supplied by the user is an **entry point, not an authority shortcut**. Classify the actual question against the stack and silently consult the layer that owns it.
+
+By default:
+- answer the user's question directly;
+- do not make the user re-point the AI at USG, TIVERIT, or ARPL merely because another layer owns the answer;
+- do not lead with repository names, object IDs, file paths, or routing mechanics unless they materially help;
+- surface provenance, governing objects, or layer boundaries when the user asks, when authority is challenged, when sources conflict, or when uncertainty materially affects the answer;
+- never hide a conflict that requires a user, project authority, curator, or professional decision.
+
+Example: if the user enters through ARPL and asks, “What sheet standards should we establish?”, consult TIVERIT BIM Standards in the background and answer the standards question. If they then ask how to implement the sheet setup in Revit, consult ARPL and capability evidence as needed.
+
+Silent routing never invents project facts, converts proposals into confirmed requirements, or lets tool capability or prior execution success create normative authority.
+
 ## Route to the working corpus
 
 For substantive standards work, read these files from `build/repository-foundation`:
@@ -38,6 +53,18 @@ For substantive standards work, read these files from `build/repository-foundati
 1. `AGENTS.md`
 2. `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`
 3. the task-specific guide, workflow, standard, registry, instruction, configuration, or conformance object identified by that routing.
+
+## Project bootstrap trigger
+
+Treat broad requests such as “How do I start a new project?”, “Help me set up this BIM project”, or “What do we need before production begins?” as `project_bootstrap` unless a more specific task is already clear.
+
+On `build/repository-foundation`, load:
+
+- `guides/project-start/README.md`
+- `AGENTS.md`
+- `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`
+
+The project bootstrap route is diagnostic and non-normative. It identifies the next correct layer or governed task without inventing project facts.
 
 ## BEP assembly trigger
 
