@@ -44,6 +44,19 @@
   ],
   "task_routes": [
     {
+      "id": "TASK-ROUTE-PROJECT-BOOTSTRAP-001",
+      "task_class": "project_bootstrap",
+      "trigger_intents": ["start_project", "new_project", "project_setup", "project_onboarding", "bim_project_start", "standards_project_start"],
+      "natural_language_examples": ["How do I start a new project?", "Help me set up this BIM project", "What do we need before production begins?", "Where do we start with the standards for this project?"],
+      "preferred_guide": "guides/project-start/README.md",
+      "required_startup": ["guides/project-start/README.md", "AGENTS.md", "registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json"],
+      "interaction_mode": "diagnostic_routing",
+      "routing_rule": "When the user broadly asks how to start or set up a project and no more specific governed task is already clear, use the project bootstrap guide to identify the highest materially unresolved layer, inspect supplied project evidence, and route to the applicable governed objects or downstream production layer. If BEP creation/review becomes the primary task, hand off to TASK-ROUTE-BEP-ASSEMBLY-001.",
+      "guidance_authority": "non_normative_navigation_guide",
+      "authority_note": "Project bootstrap is a discovery and routing aid only. It does not create project requirements, appointments, approvals, or facts and does not require every project to instantiate every standards domain in the same form.",
+      "completion_condition": "The user has been routed to the correct next governed task or repository layer, with materially blocking project facts identified as supplied, unresolved, deferred, conflicted, or proposed rather than invented."
+    },
+    {
       "id": "TASK-ROUTE-BEP-ASSEMBLY-001",
       "task_class": "bep_assembly",
       "trigger_intents": ["create_bep", "prepare_bep", "draft_bep", "complete_bep", "review_bep", "update_bep", "bep_interview"],
@@ -67,6 +80,6 @@
   ],
   "provenance": {
     "source_system": "repository_curator",
-    "migration_note": "Foundational machine-readable routing model connecting the public USG, TIVERIT BIM Standards, and ARPL repositories. Extended with a task-level BEP assembly route so humans and AI agents can discover the governed interview workflow without treating the interview itself as normative authority."
+    "migration_note": "Foundational machine-readable routing model connecting the public USG, TIVERIT BIM Standards, and ARPL repositories. Extended with non-normative project bootstrap and BEP assembly task routes so humans and AI agents can discover the correct next layer without treating navigation or interview guidance as normative authority."
   }
 }
