@@ -33,7 +33,7 @@
   ],
   "source_domain_candidates": [
     {"domain":"primary BIM authoring","source_environment":"Revit","migration_treatment":"candidate mapping only; governance authority remains defined by S1-S8 and the Tool Authority Registry"},
-    {"domain":"manufacturing and mechanical authoring","source_environment":"Inventor / Vault","migration_treatment":"candidate mapping only; detailed implementation remains tool-specific"},
+    {"domain":"manufacturing and mechanical authoring","source_environment":"Inventor / Vault","migration_treatment":"now represented by dedicated S9 migration-candidate specializations; detailed execution remains downstream"},
     {"domain":"electrical and controls authoring","source_environment":"EPLAN","migration_treatment":"candidate mapping only; spatial BIM authority is not transferred"},
     {"domain":"constrained documentation/output","source_environment":"AutoCAD","migration_treatment":"candidate mapping only; not treated as primary BIM authoring authority"}
   ],
@@ -46,8 +46,17 @@
       "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
       "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001",
       "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
-      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"
+      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
+      "TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001",
+      "TIVERIT-BIM-STD-S9-INVENTOR-REVIT-EXCHANGE-001",
+      "TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001",
+      "TIVERIT-BIM-STD-S9-INVENTOR-MFG-DOC-001",
+      "TIVERIT-BIM-STD-S9-VAULT-RELEASE-001",
+      "TIVERIT-BIM-STD-S9-VAULT-LIFECYCLE-001",
+      "TIVERIT-BIM-STD-S9-INVENTOR-CONTENT-LIFECYCLE-001"
     ],
+    "workflows": ["TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001"],
+    "instructions": ["TIVERIT-BIM-INS-S9-INVENTOR-REVIT-EXPORT-001"],
     "registries": ["REG-S9-AUTOMATION-001","REG-S9-TOOL-AUTHORITY-001"],
     "roles": ["ROLE-TOOL-AUTHORITY-001","ROLE-BIM-STANDARDS-MGR-001","ROLE-PROJECT-BIM-MANAGER-001","ROLE-QAQC-AUTHORITY-001"]
   },
@@ -59,6 +68,6 @@
     "source_version": "1",
     "source_title": "JSON - Authoring, Automation & Manufacturing Toolchains",
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2228282",
-    "migration_note": "Normalized from the S9 machine-readable source. Product-specific source statements are retained as candidate domain mappings rather than elevated into independent governance authority. Automation remains explicitly subordinate to S1-S8 normative governance."
+    "migration_note": "Normalized from the S9 machine-readable source. Product-specific source statements are retained as governed specializations without creating parallel authority paths. Automation remains explicitly subordinate to S1-S8 normative governance."
   }
 }
