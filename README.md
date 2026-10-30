@@ -14,6 +14,43 @@ The open repository therefore serves two purposes: it is a reusable public stand
 
 Professional services: https://www.tiveritllc.com/
 
+## AEC AI navigation stack
+
+TIVERIT BIM Standards is the normative-governance layer in a broader AI-driven AEC workflow. An AI should use the stack as a navigation route rather than collapsing all questions into one model/tool step:
+
+```text
+USG
+purpose / intent / required outcome
+    ↓
+TIVERIT BIM Standards
+normative requirements / authority / compliance evidence
+    ↓
+ARPL
+professional Revit production precedent / failure memory
+    ↓
+API capability lookup
+    ↓
+Revit Bridge
+bounded Revit execution
+    ↓
+ZEN
+productized governed automation / verification / repair / evidence
+```
+
+Public repositories owned by Gottfried Schmidtke:
+
+- USG — https://github.com/gschmidtke/USG
+- TIVERIT BIM Standards — https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS
+- ARPL — https://github.com/gschmidtke/ARPL
+
+For Revit/API capability discovery, Autodesk Platform Services `dll2llm` / API Navigator is a useful external reference:
+
+https://github.com/autodesk-platform-services/dll2llm
+
+That external project is not owned or governed by TIVERIT. It may help answer **what can the API do?** It does not decide **what should be done**, what standards apply, or whether a method is professionally acceptable.
+
+Revit Bridge and ZEN are downstream TIVERIT implementation/product layers and are referenced here by role rather than presented as public repositories.
+
 ## AI agents: start here
 
 The repository is public. During migration, the working standards corpus is on the branch:
