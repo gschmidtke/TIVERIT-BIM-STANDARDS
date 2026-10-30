@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-S9-INVENTOR-REVIT-EXPORT-001",
+  "legacy_ids": ["IS-W6.3"],
+  "type": "instruction",
+  "title": "Inventor to Revit Export Instructions",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S9", "S6", "S7"],
+  "purpose": "Execute the governed Inventor-to-Revit export workflow with a BIM-appropriate representation, validated artifact behavior, and auditable export metadata.",
+  "applies_to": {
+    "source_environment": "Autodesk Inventor",
+    "target_environment": "Autodesk Revit",
+    "artifact_types": ["RVT", "RFA"]
+  },
+  "preconditions": [
+    "A governed export request exists.",
+    "The Inventor source model opens successfully.",
+    "Export intent is defined.",
+    "A simplification strategy is defined."
+  ],
+  "steps": [
+    {"id":"I6.3.001","name":"Confirm export intent","purpose":"Select the correct Revit artifact type from intended use.","actions":["Confirm whether the artifact is for project/coordination representation or reusable component use.","Record export intent as RVT or RFA."],"validation":["Export intent is recorded."],"failure_modes":["Wrong artifact type selected."],"automation_readiness":"ASSISTED"},
+    {"id":"I6.3.002","name":"Prepare BIM-appropriate representation","purpose":"Prevent unnecessary manufacturing detail from degrading downstream BIM use.","actions":["Suppress unnecessary fasteners and internal features.","Confirm only geometry relevant to the declared downstream use remains."],"validation":["Representation is visually simplified for the declared BIM use."],"failure_modes":["Over-detailed export.","Performance-heavy geometry."],"automation_readiness":"MANUAL"},
+    {"id":"I6.3.003","name":"Select export-specific Model State","purpose":"Provide a repeatable representation for subsequent exports.","actions":["Create or select the Model State intended for Revit export.","Use an approved export-specific naming convention; source examples include Revit_Light and Revit_Medium."],"validation":["Correct export representation is active."],"failure_modes":["Wrong Model State used."],"automation_readiness":"ASSISTED"},
+    {"id":"I6.3.004","name":"Configure RVT export settings","purpose":"Create the governed Revit project representation when the RVT path applies.","preconditions":["Export intent is RVT."],"actions":["Open the RVT export workflow.","Set Preset to No Simplification because simplification has been handled in the approved Inventor representation.","Select the approved Model State.","Select the approved export View.","Set output structure to Each top-level component.","Enable updating when the governed update path is required."],"validation":["Settings match the approved export checklist and project/tool-version constraints."],"failure_modes":["Wrong preset.","Wrong representation.","Updating omitted where the governed update path requires it."],"automation_readiness":"ASSISTED"},
+    {"id":"I6.3.005","name":"Configure RFA export settings","purpose":"Create a reusable Revit Family component when the RFA path applies.","preconditions":["Export intent is RFA."],"actions":["Assign the correct Revit category.","Add connectors only when required by the intended component behavior.","Confirm expected family behavior and downstream use."],"validation":["Category and behavior match the declared use."],"failure_modes":["Wrong category.","Unnecessary connectors.","Behavior does not match intended use."],"automation_readiness":"ASSISTED"},
+    {"id":"I6.3.006","name":"Execute export","purpose":"Generate the Revit-compatible artifact.","actions":["Run the configured export.","Allow the export to complete without interruption.","Save the artifact to the governed working location."],"validation":["Artifact is generated successfully."],"failure_modes":["Export failure.","Interrupted export."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"I6.3.007","name":"Validate export in Revit","purpose":"Verify target-environment usability and correctness.","actions":["Open or load the exported artifact in Revit.","Check orientation, scale, and geometry.","Check performance and file size against the declared use.","Check expected category or behavior for RFA artifacts."],"validation":["Artifact opens or loads cleanly and behaves as expected for the declared use."],"failure_modes":["Geometry issue.","Orientation or scale issue.","Performance problem.","Unexpected component behavior."],"automation_readiness":"ASSISTED"},
+    {"id":"I6.3.008","name":"Verify update workflow","purpose":"Confirm controlled source changes can be propagated where updating is part of the selected path.","preconditions":["Updating is enabled and required for the selected RVT workflow."],"actions":["Make or use a controlled source change.","Update or re-export according to the supported Inventor workflow.","Confirm target Revit behavior and retained dependencies where applicable."],"validation":["Update behavior is verified without uncontrolled authority or dependency changes."],"failure_modes":["Broken update path.","Unexpected target changes."],"automation_readiness":"ASSISTED"},
+    {"id":"I6.3.009","name":"Record export metadata","purpose":"Preserve auditability and traceability.","actions":["Record date, source/version context, Model State or representation, export type, settings, and validation result.","Attach or register the record in the applicable coordination or exchange log."],"validation":["Export metadata record exists and identifies the source and exported artifact."],"failure_modes":["Missing audit trail."],"automation_readiness":"AUTOMATABLE"}
+  ],
+  "outputs": ["Exported RVT or RFA artifact", "Export metadata record", "Validation evidence"],
+  "evidence": ["Successful Revit open/load or component load", "Geometry/orientation/scale check", "Performance or file-size check", "Export settings record", "Update-path result when applicable"],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S9-INVENTOR-REVIT-EXCHANGE-001"],
+    "workflows": ["TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001"]
+  },
+  "governance_notes": [
+    "The source names Revit_Light and Revit_Medium as examples, not as a closed canonical vocabulary.",
+    "Current Autodesk documentation confirms RVT simplification/export and updating capabilities but tool-version behavior remains implementation evidence rather than normative authority.",
+    "Technical export success does not equal project acceptance or formal exchange."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6684693",
+    "source_version": "1",
+    "source_title": "JSON - Inventor to Revit Export",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6684693",
+    "migration_note": "Migrated all nine source instructions. Examples were preserved as examples; project acceptance and current tool-version capability remain separate governance/evidence concerns."
+  }
+}
