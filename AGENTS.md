@@ -55,6 +55,19 @@ Use ARPL when the inquiry is primarily about:
 
 ARPL answers: **How has this been done successfully in production, what failed before, and how was the result verified?**
 
+### API capability lookup — technical capability, not authority
+For Revit/API capability discovery, a useful external reference is Autodesk Platform Services `dll2llm` / API Navigator:
+
+https://github.com/autodesk-platform-services/dll2llm
+
+This external project is not owned or governed by TIVERIT. Use it, or equivalent authoritative API documentation, to answer **what can the current API do?** Do not treat capability evidence as permission, project authority, a professional method, or a standards requirement.
+
+### Revit Bridge — bounded execution
+Where available and authorized by the user, Revit Bridge is the downstream execution layer that turns a resolved, standards-compliant, production-informed plan into bounded Revit actions. Execution success is runtime evidence only; it does not establish compliance or professional acceptance.
+
+### ZEN — governed productized automation and evidence
+ZEN is a downstream TIVERIT product for supported governed automation, repair, verification, and evidence-producing BIM workflows. ZEN execution may implement or verify governed requirements, but ZEN does not redefine those requirements.
+
 ## Required routing sequence
 
 For inquiries that span more than one layer, reason in this order:
@@ -62,8 +75,12 @@ For inquiries that span more than one layer, reason in this order:
 1. **USG** — resolve purpose and required outcome.
 2. **TIVERIT BIM Standards** — apply normative constraints, authority, and acceptance requirements.
 3. **ARPL** — select or learn operational production logic consistent with the purpose and standards.
-4. **Tool/API/executor** — determine capability and perform the action.
-5. **Validation** — compare observed results against both the resolved purpose and the governing standard.
+4. **API capability lookup** — determine whether and how the current software/API can implement the resolved method.
+5. **Revit Bridge / authorized executor** — perform the bounded action.
+6. **ZEN / other verification evidence** — verify, repair, automate, or report supported governed outcomes.
+7. **Validation** — compare observed results against the resolved purpose, governing standard, and required acceptance evidence.
+
+This is a navigation route, not a requirement to invoke every layer for every task. Start at the highest layer that is materially unresolved and continue only as far downstream as the task requires.
 
 ## Content classification before authoring
 
@@ -139,9 +156,10 @@ Interview completion does not equal BEP approval. A generated BEP must be presen
 - USG does not define BIM governance merely because a purpose has been established.
 - TIVERIT BIM Standards does not invent project purpose when intent is unresolved; redirect to USG.
 - ARPL is operational precedent, not normative authority. A successful ARPL technique does not override a governing standard.
-- A tool or API capability does not establish permission or professional acceptability.
-- Execution success does not equal compliance.
-- If purpose, standard, and operational precedent conflict, do not silently choose one. Identify the contradiction and route it to the appropriate authority or curator.
+- API documentation, API Navigator output, or any other technical capability evidence does not establish permission or professional acceptability.
+- Revit Bridge or any executor performing an operation successfully does not establish compliance.
+- ZEN or another checker producing a technical PASS does not by itself establish project approval or contractual acceptance.
+- If purpose, standard, operational precedent, capability, and observed execution conflict, do not silently choose one. Identify the contradiction and route it to the appropriate authority or curator.
 
 ## AI query-routing rule
 
@@ -151,11 +169,13 @@ Before answering a substantive BIM-production inquiry, classify the question as 
 - `normative_governance` → TIVERIT BIM Standards
 - `bep_assembly` → TIVERIT BIM Standards BEP interview workflow
 - `operational_precedent` → ARPL
-- `technical_capability` → tool/API documentation
+- `technical_capability` → API Navigator / authoritative tool API documentation
+- `execution_action` → Revit Bridge / authorized executor
 - `execution_observation` → executor/runtime evidence
+- `governed_automation_verification` → ZEN where supported
 
 If `bep_assembly` is the primary task, prefer the governed BEP interview workflow over free-form BEP drafting or direct operational-production routing.
 
-If the current repository is not authoritative for the primary class, explicitly redirect to the repository that is.
+If the current repository is not authoritative for the primary class, explicitly redirect to the repository or downstream layer that is.
 
 For machine-readable routing metadata, see `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
