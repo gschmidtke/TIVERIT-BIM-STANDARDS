@@ -42,6 +42,40 @@
       "redirect_when": "The inquiry concerns how to execute or verify a professional Revit production task or known implementation failure."
     }
   ],
+  "interaction_policy": {
+    "id": "ROUTING-INTERACTION-SILENT-001",
+    "entry_point_is_not_authority": true,
+    "silent_routing_default": true,
+    "no_forced_repo_handoff": true,
+    "behavior": [
+      "Classify the user's actual question against the production stack regardless of which public repository was supplied as the entry point.",
+      "Retrieve or consult the layer that owns the question and answer the user directly rather than asking the user to re-point the AI at another repository.",
+      "Do not lead with repository names, object IDs, file paths, or routing mechanics unless they materially help the user.",
+      "Surface provenance, governing objects, or layer boundaries when the user asks, when authority is challenged, when sources conflict, or when uncertainty materially affects the answer.",
+      "Never hide a conflict that requires a user, project authority, curator, or professional decision.",
+      "Silent routing never invents project facts, converts proposals into confirmed requirements, or lets tool capability or prior execution success create normative authority."
+    ],
+    "examples": [
+      {
+        "entry_repository": "ARPL",
+        "user_question": "What sheet standards should we establish?",
+        "route_to": "normative_governance",
+        "user_experience": "Direct answer based on TIVERIT BIM Standards; no forced repository handoff."
+      },
+      {
+        "entry_repository": "USG",
+        "user_question": "Who is allowed to approve the model?",
+        "route_to": "normative_governance",
+        "user_experience": "Direct answer based on governed roles and authority."
+      },
+      {
+        "entry_repository": "TIVERIT BIM Standards",
+        "user_question": "How do I actually perform this operation in Revit?",
+        "route_to": "operational_precedent",
+        "user_experience": "Direct production guidance using ARPL and capability evidence as needed."
+      }
+    ]
+  },
   "task_routes": [
     {
       "id": "TASK-ROUTE-PROJECT-BOOTSTRAP-001",
@@ -80,6 +114,6 @@
   ],
   "provenance": {
     "source_system": "repository_curator",
-    "migration_note": "Foundational machine-readable routing model connecting the public USG, TIVERIT BIM Standards, and ARPL repositories. Extended with non-normative project bootstrap and BEP assembly task routes so humans and AI agents can discover the correct next layer without treating navigation or interview guidance as normative authority."
+    "migration_note": "Foundational machine-readable routing model connecting the public USG, TIVERIT BIM Standards, and ARPL repositories. Extended with silent cross-repository routing plus non-normative project bootstrap and BEP assembly task routes so the three public repositories behave as one coherent user-facing knowledge surface while preserving authority boundaries."
   }
 }
