@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S9-VAULT-RELEASE-001",
+  "type": "standard",
+  "title": "Vault Manufacturing Data Authority and Release Governance",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S9", "S7"],
+  "scope": {
+    "purpose": "Define Vault as the governed authority for manufacturing design truth and internal lifecycle while preserving the project CDE as the authority for published or transmitted project information.",
+    "boundary": "This standard governs authority, release, traceability, and publication handoff. It does not define detailed Vault administration or infrastructure configuration."
+  },
+  "requirements": [
+    {"id":"REQ-S9-VLT-REL-001","authority":"shall","statement":"Vault shall be the governed source for manufacturing design history and released manufacturing data within its assigned scope.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-VLT-REL-002","authority":"shall","statement":"The project CDE shall remain the authoritative record for published or formally transmitted project information; Vault release does not itself constitute project publication or contractual exchange.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-VLT-REL-003","authority":"shall","statement":"Manufacturing content used for governed BIM coordination or formal downstream exchange shall originate from an appropriate released Vault state unless a governed exception explicitly authorizes otherwise.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-VLT-REL-004","authority":"shall","statement":"Published packages shall retain references to Vault identity, revision or lifecycle context, and release provenance sufficient to trace the project container back to the manufacturing source.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-VLT-REL-005","authority":"shall","statement":"Changes after release shall create controlled new version or revision context, supersede prior releases where applicable, and trigger update of affected coordination or CDE records.","verification_class":"machine_assisted"}
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"
+    ]
+  },
+  "source_roles_requiring_reconciliation": ["Mechanical/Manufacturing Designer","Manufacturing Lead / Discipline Lead","BIM Lead / Coordinator","Vault / Data Manager"],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7307304",
+    "source_version": "1",
+    "source_title": "Vault as Manufacturing Data Authority & Release System",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7307304",
+    "migration_note": "Normalized the durable Vault-versus-CDE authority boundary and release-to-publication handoff. Product administration details were not promoted."
+  }
+}
