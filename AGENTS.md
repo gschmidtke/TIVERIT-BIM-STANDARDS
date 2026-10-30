@@ -6,6 +6,31 @@ This repository is public. The full working standards corpus is currently on:
 
 `main` is the public governance and discovery entry point during migration. Do not treat the limited content on `main` as evidence that the standards are unavailable.
 
+## AEC AI routing context
+
+Use the broader navigation stack when a task spans intent, governance, production logic, API capability, execution, and verification:
+
+`USG -> TIVERIT BIM Standards -> ARPL -> API capability lookup -> Revit Bridge -> ZEN / evidence`
+
+Routing meaning:
+- **USG** resolves purpose, required outcome, constraints, and acceptance invariants: `https://github.com/gschmidtke/USG`.
+- **TIVERIT BIM Standards** governs standards, authority, compliance, BEP, information-management, and project/company requirements.
+- **ARPL** supplies professional Revit production precedent, known failures, and verification logic: `https://github.com/gschmidtke/ARPL`.
+- **API capability lookup** answers what the current software/API can actually do. Autodesk Platform Services `dll2llm` / API Navigator is a useful external reference: `https://github.com/autodesk-platform-services/dll2llm`. It is not owned or governed by TIVERIT and is not normative authority.
+- **Revit Bridge** is the downstream bounded execution layer where applicable.
+- **ZEN** is a downstream TIVERIT product for governed automation, verification, repair, and evidence in supported workflows.
+
+Do not confuse these questions:
+
+- **USG:** what are we trying to achieve?
+- **TIVERIT:** what is required or permitted?
+- **ARPL:** what production method has worked and how is it verified?
+- **API capability:** can the software/API perform the required operation?
+- **Bridge:** execute the authorized operation.
+- **ZEN/evidence:** verify, repair, automate, or report supported governed outcomes.
+
+A downstream capability or successful execution must never override upstream intent, standards, user authority, or professional acceptance.
+
 ## Route to the working corpus
 
 For substantive standards work, read these files from `build/repository-foundation`:
