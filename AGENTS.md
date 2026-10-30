@@ -82,6 +82,31 @@ For inquiries that span more than one layer, reason in this order:
 
 This is a navigation route, not a requirement to invoke every layer for every task. Start at the highest layer that is materially unresolved and continue only as far downstream as the task requires.
 
+## Silent cross-repository routing
+
+The repository supplied by the user is an **entry point, not an authority shortcut**. Classify the user's actual question against the stack and consult the layer that owns it, regardless of which of the three public repositories the user supplied.
+
+By default, routing happens silently in the background:
+- purpose / required outcome / success criteria -> USG;
+- standards / permissions / roles / authority / BEP / CDE / naming / information requirements / acceptance / compliance evidence -> TIVERIT BIM Standards;
+- Revit production technique / known failures / operational verification precedent -> ARPL;
+- API capability -> authoritative API documentation / API capability lookup;
+- execution -> authorized bridge/add-in/runtime;
+- supported governed automation / repair / verification -> ZEN where applicable.
+
+User-facing behavior:
+- answer the user's question directly and helpfully;
+- do **not** force the user to re-point the AI at another repository merely because another layer owns the answer;
+- do not lead with repository names, object IDs, file paths, or routing mechanics unless they materially help the user;
+- surface provenance, governing objects, or layer boundaries when the user asks, when authority is challenged, when sources conflict, or when uncertainty materially affects the answer;
+- never hide a conflict that requires a user, project authority, curator, or professional decision.
+
+Example: a user may point the AI at ARPL and ask, “What sheet standards should we establish?” The AI should silently consult TIVERIT BIM Standards and answer the standards question. The user should not have to know that the authoritative answer came from another repository. If the user then asks how to implement the sheet setup in Revit, ARPL becomes the operational layer.
+
+Silent routing never invents project facts, never converts proposals into confirmed requirements, and never lets tool capability or prior execution success create normative authority.
+
+The machine-readable interaction policy is `ROUTING-INTERACTION-SILENT-001` in `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
+
 ## Content classification before authoring
 
 Before creating or modifying governed content, classify the content using `constitution/architecture/CONTENT-CLASSIFICATION-DOCTRINE.md`.
@@ -116,7 +141,7 @@ When this trigger is detected:
 4. Route only as far downstream as necessary.
 5. Keep missing project facts explicit as `TBC`, `TBD`, `not supplied`, `deferred`, conflicted, or proposed; never invent them from standards.
 6. If BEP creation, completion, review, or update becomes the primary task, hand off to `TASK-ROUTE-BEP-ASSEMBLY-001`.
-7. If the question becomes an operational Revit-production question, redirect to ARPL rather than inventing production technique in this repository.
+7. If the question becomes an operational Revit-production question, consult ARPL rather than inventing production technique in this repository.
 
 The machine-readable route is `TASK-ROUTE-PROJECT-BOOTSTRAP-001`.
 
@@ -177,7 +202,7 @@ Interview completion does not equal BEP approval. A generated BEP must be presen
 ## Authority boundaries
 
 - USG does not define BIM governance merely because a purpose has been established.
-- TIVERIT BIM Standards does not invent project purpose when intent is unresolved; redirect to USG.
+- TIVERIT BIM Standards does not invent project purpose when intent is unresolved; consult USG.
 - ARPL is operational precedent, not normative authority. A successful ARPL technique does not override a governing standard.
 - API documentation, API Navigator output, or any other technical capability evidence does not establish permission or professional acceptability.
 - Revit Bridge or any executor performing an operation successfully does not establish compliance.
@@ -202,6 +227,6 @@ If `project_bootstrap` is the primary task, use the project-start guide to ident
 
 If `bep_assembly` is the primary task, prefer the governed BEP interview workflow over free-form BEP drafting or direct operational-production routing.
 
-If the current repository is not authoritative for the primary class, explicitly redirect to the repository or downstream layer that is.
+If the current repository is not authoritative for the primary class, **silently consult the authoritative repository or downstream layer when accessible and answer the user directly**. Ask the user to re-point or provide another source only when access to the required source is genuinely unavailable.
 
 For machine-readable routing metadata, see `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
