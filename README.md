@@ -2,6 +2,18 @@
 
 TIVERIT BIM Standards is a governed, machine-readable BIM standards repository for human use, automation, validation, AI-assisted workflows, Revit, Autodesk Construction Cloud, and related BIM systems.
 
+## Open-source framework and TIVERIT services
+
+This repository is the open-source foundation for TIVERIT's professional BIM standards, governance, BEP, digital-delivery, automation, and AI-readiness services.
+
+The framework is published openly so individuals and organizations can inspect it, learn from it, use it directly, contribute evidence and improvements through the governed Inbox, or derive their own organizational and project standards from it.
+
+TIVERIT LLC also provides professional services for organizations that want support applying the framework in practice, including standards assessment and development, company-specific standards derivation, BEP development and review, project governance, BIM management, implementation, automation, validation, training, and related digital-delivery support.
+
+The open repository therefore serves two purposes: it is a reusable public standards resource, and it provides a transparent demonstration of the methods and governance system behind TIVERIT's commercial services. Organizations may use the open-source framework independently; use of the repository does not require engaging TIVERIT.
+
+Professional services: https://www.tiveritllc.com/
+
 ## Position in the reasoning stack
 
 This repository is the **normative governance layer** between resolved purpose and operational production logic.
