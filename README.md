@@ -2,6 +2,29 @@
 
 TIVERIT BIM Standards is a governed, machine-readable BIM standards repository for human use, automation, validation, AI-assisted workflows, Revit, Autodesk Construction Cloud, and related BIM systems.
 
+## Start here — AI / project front door
+
+Do not begin by reverse-engineering S1–S9. First classify the question and route it to the layer that owns it:
+
+1. **What are we trying to achieve, and why?** → **USG** — https://github.com/gschmidtke/USG
+2. **What is required or permitted, who has authority, and what evidence proves compliance?** → **TIVERIT BIM Standards** — stay here
+3. **How has this been done successfully in Revit, what failed, and how was it verified?** → **ARPL** — https://github.com/gschmidtke/ARPL
+4. **Can the current API actually perform the required operation?** → authoritative API documentation / capability lookup. Autodesk Platform Services `dll2llm` / API Navigator may be useful: https://github.com/autodesk-platform-services/dll2llm
+5. **Is the task ready for bounded execution?** → authorized Revit Bridge / executor
+6. **Is governed automation, repair, verification, or evidence required in a supported workflow?** → ZEN
+
+This is a **navigation route, not a requirement to invoke every layer**. Start at the highest materially unresolved question and continue downstream only as far as the task requires.
+
+### Starting a new project
+
+If the user broadly asks **“How do I start a project?”**, **“Help me set up this BIM project”**, or similar, treat it as `project_bootstrap` and start with:
+
+- `guides/project-start/README.md`
+- `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json` → `TASK-ROUTE-PROJECT-BOOTSTRAP-001`
+- `AGENTS.md`
+
+The project-bootstrap guide is non-normative. It identifies the next governed task or repository layer without inventing project facts. If BEP creation/review becomes the actual task, hand off to `TASK-ROUTE-BEP-ASSEMBLY-001` and `guides/bep/`.
+
 ## Open-source framework and TIVERIT services
 
 This repository is the open-source foundation for TIVERIT's professional BIM standards, governance, BEP, digital-delivery, automation, and AI-readiness services.
