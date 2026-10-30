@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001",
+  "type": "standard",
+  "title": "Inventor Model Identity, Naming and Structure",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S9", "S4"],
+  "scope": {
+    "purpose": "Govern identity, naming, and structural organization of Inventor parts, assemblies, and drawings while preserving cross-tool identity and avoiding collisions or ambiguity.",
+    "boundary": "This standard specializes Inventor identity behavior but does not yet assert that every Inventor artifact uses the existing seven-token BIM container grammar unchanged. That mapping remains a curator review item."
+  },
+  "requirements": [
+    {"id":"REQ-S9-INV-ID-001","authority":"shall","statement":"Inventor parts, assemblies, and drawings under governance shall have stable, distinguishable identities sufficient for reliable discovery, reference, lifecycle management, and cross-tool exchange.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-INV-ID-002","authority":"shall","statement":"Inventor naming shall derive from the governed cross-tool identity vocabulary and applicable project identifiers while preserving Inventor-specific component, assembly, drawing, variant, and sequence distinctions where required.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-INV-ID-003","authority":"shall","statement":"Part identities shall distinguish governed component identity and variant where applicable; assembly identities shall reflect functional units; drawing identities shall remain traceable to the primary governed model identity.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-INV-ID-004","authority":"shall","statement":"Cross-tool mappings shall preserve recognition of the same real-world object across Inventor, Revit, coordination environments, Vault, and the project CDE without silently equating manufacturing-object identity with project information-container identity.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-INV-ID-005","authority":"shall","statement":"Changes to identity-critical tokens shall be controlled and propagated to dependent assemblies, drawings, exported representations, and project registers as applicable.","verification_class":"machine_assisted"}
+  ],
+  "open_questions": [
+    "Determine whether Inventor manufacturing-object identity is a specialization of the existing S4 seven-token container grammar or requires a generic object-identity extension.",
+    "Determine whether revision belongs in the stable Inventor identity or remains lifecycle metadata under the existing D-13 principle."
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001","TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001"]
+  },
+  "source_roles_requiring_reconciliation": ["Mechanical / Manufacturing Designer","Manufacturing Lead / Discipline Lead","BIM Coordinator / BIM Lead","Vault / Data Manager"],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6750227",
+    "source_version": "1",
+    "source_title": "S9 – Inventor Model Identity, Naming & Structure",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6750227",
+    "migration_note": "Migrated durable Inventor identity rules while preserving the unresolved distinction between manufacturing-object identity and project information-container identity. No new S4 token grammar was invented."
+  }
+}
