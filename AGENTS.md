@@ -99,6 +99,29 @@ A governed object must not be both Workflow and Instruction. Instructions must n
 
 Prefer extension by object addition or relationship enrichment over repository restructuring. If new content cannot be represented faithfully by the existing governed classes, stop and route the architecture question to the curator rather than inventing a new top-level structure.
 
+## Project bootstrap trigger
+
+Treat broad requests such as the following as a `project_bootstrap` task unless a more specific governed task is already clear:
+
+- “How do I start a new project?”
+- “Help me set up this BIM project.”
+- “What do we need before production begins?”
+- “Where do we start with the standards for this project?”
+
+When this trigger is detected:
+
+1. Load `guides/project-start/README.md` and `registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json`.
+2. Inspect conversation context and supplied project sources before asking questions.
+3. Identify the highest materially unresolved layer: purpose, governance, production precedent, technical capability, execution, or verification.
+4. Route only as far downstream as necessary.
+5. Keep missing project facts explicit as `TBC`, `TBD`, `not supplied`, `deferred`, conflicted, or proposed; never invent them from standards.
+6. If BEP creation, completion, review, or update becomes the primary task, hand off to `TASK-ROUTE-BEP-ASSEMBLY-001`.
+7. If the question becomes an operational Revit-production question, redirect to ARPL rather than inventing production technique in this repository.
+
+The machine-readable route is `TASK-ROUTE-PROJECT-BOOTSTRAP-001`.
+
+Project bootstrap is a **non-normative discovery and routing process**. It does not create project requirements, appointments, approvals, or contractual authority.
+
 ## BEP task trigger
 
 Treat the following user intents as a **BEP assembly task**:
@@ -167,12 +190,15 @@ Before answering a substantive BIM-production inquiry, classify the question as 
 
 - `purpose_intent` → USG
 - `normative_governance` → TIVERIT BIM Standards
+- `project_bootstrap` → `guides/project-start/README.md` + `TASK-ROUTE-PROJECT-BOOTSTRAP-001`
 - `bep_assembly` → TIVERIT BIM Standards BEP interview workflow
 - `operational_precedent` → ARPL
 - `technical_capability` → API Navigator / authoritative tool API documentation
 - `execution_action` → Revit Bridge / authorized executor
 - `execution_observation` → executor/runtime evidence
 - `governed_automation_verification` → ZEN where supported
+
+If `project_bootstrap` is the primary task, use the project-start guide to identify the next governed task rather than jumping directly into S1–S9 or production technique.
 
 If `bep_assembly` is the primary task, prefer the governed BEP interview workflow over free-form BEP drafting or direct operational-production routing.
 
