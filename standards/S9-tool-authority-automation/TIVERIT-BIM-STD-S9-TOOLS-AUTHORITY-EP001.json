@@ -10,14 +10,7 @@
   "scope": {
     "purpose": "Govern tool legitimacy, domain authority, interoperability, and automation boundaries across authoring, manufacturing, controls, documentation, and integration environments.",
     "tool_aware_not_instructional": "S9 defines what a tool or automation may be authoritative for and how it must respect governed information boundaries. Tool configuration, UI procedures, deployment instructions, and execution mechanics remain downstream implementation content.",
-    "non_goals": [
-      "No modeling technique or tool tutorial",
-      "No coordination/clash workflow definition",
-      "No collaboration/linking mechanics",
-      "No submission or acceptance gate definition",
-      "No semantic schema ownership",
-      "No contractual authority creation"
-    ]
+    "non_goals": ["No modeling technique or tool tutorial","No coordination/clash workflow definition","No collaboration/linking mechanics","No submission or acceptance gate definition","No semantic schema ownership","No contractual authority creation"]
   },
   "requirements": [
     {"id":"REQ-S9-AUTH-001","authority":"shall","statement":"Each governed information domain shall have an explicitly declared authoritative tool or environment, with allowed inputs, authoritative outputs, and prohibited authority shifts defined through governed configuration or registry content.","verification_class":"machine_assisted"},
@@ -38,26 +31,11 @@
     {"domain":"constrained documentation/output","source_environment":"AutoCAD","migration_treatment":"candidate mapping only; not treated as primary BIM authoring authority"}
   ],
   "relationships": {
-    "standards": [
-      "TIVERIT-BIM-STD-S1-CORE-GOV-EP001",
-      "TIVERIT-BIM-STD-S2-INF-REQ-EP001",
-      "TIVERIT-BIM-STD-S3-PROD-EP001",
-      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
-      "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
-      "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001",
-      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
-      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
-      "TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001",
-      "TIVERIT-BIM-STD-S9-INVENTOR-REVIT-EXCHANGE-001",
-      "TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001",
-      "TIVERIT-BIM-STD-S9-INVENTOR-MFG-DOC-001",
-      "TIVERIT-BIM-STD-S9-VAULT-RELEASE-001",
-      "TIVERIT-BIM-STD-S9-VAULT-LIFECYCLE-001",
-      "TIVERIT-BIM-STD-S9-INVENTOR-CONTENT-LIFECYCLE-001"
-    ],
+    "standards": ["TIVERIT-BIM-STD-S1-CORE-GOV-EP001","TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001","TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001","TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001","TIVERIT-BIM-STD-S9-INVENTOR-REVIT-EXCHANGE-001","TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001","TIVERIT-BIM-STD-S9-INVENTOR-MFG-DOC-001","TIVERIT-BIM-STD-S9-VAULT-RELEASE-001","TIVERIT-BIM-STD-S9-VAULT-LIFECYCLE-001","TIVERIT-BIM-STD-S9-INVENTOR-CONTENT-LIFECYCLE-001"],
     "workflows": ["TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001"],
     "instructions": ["TIVERIT-BIM-INS-S9-INVENTOR-REVIT-EXPORT-001"],
     "registries": ["REG-S9-AUTOMATION-001","REG-S9-TOOL-AUTHORITY-001"],
+    "conformance": ["ATS-S9-TOOL-AUTHORITY-001"],
     "roles": ["ROLE-TOOL-AUTHORITY-001","ROLE-BIM-STANDARDS-MGR-001","ROLE-PROJECT-BIM-MANAGER-001","ROLE-QAQC-AUTHORITY-001"]
   },
   "open_gaps": ["GAP-S9-01","GAP-S9-02"],
@@ -68,6 +46,6 @@
     "source_version": "1",
     "source_title": "JSON - Authoring, Automation & Manufacturing Toolchains",
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2228282",
-    "migration_note": "Normalized from the S9 machine-readable source. Product-specific source statements are retained as governed specializations without creating parallel authority paths. Automation remains explicitly subordinate to S1-S8 normative governance."
+    "migration_note": "Normalized from the S9 machine-readable source. Product-specific source statements are retained as governed specializations without creating parallel authority paths. Automation remains explicitly subordinate to S1-S8 normative governance. S9 reconciliation round 001 adds abstract conformance for explicit tool-authority coverage without promoting candidate product mappings into authority assignments."
   }
 }
