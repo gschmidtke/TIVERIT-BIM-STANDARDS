@@ -64,11 +64,10 @@
       "title": "ACC Model Coordination vs Navisworks – Clash & Issue Workflows",
       "source_status": "current",
       "source_maturity": "draft_review_decision",
-      "legacy_id": "TAIT-BIM-STD-S5-ACC-MC-vs-NW-001",
       "content_role": "ACC/Navisworks hybrid routing and system-of-record recommendation",
       "current_main_match": "workflows/S5/TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001.json + standards/S5-coordination/TIVERIT-BIM-STD-S5-ACC-RECORDS-001.json + standards/S5-coordination/TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001.json",
       "disposition": "merged_into_other_object",
-      "notes": "Current main already preserves the boundary that Navisworks is technical coordination and formal issue/acceptance evidence must remain in the governed system of record. Draft tool-preference recommendations are not newly elevated."
+      "notes": "Current main already preserves the boundary that Navisworks is technical coordination and formal issue/acceptance evidence must remain in the governed system of record. The retired source organization identifier is preserved only in Confluence provenance, not repeated in canonical machine-readable content. Draft tool-preference recommendations are not newly elevated."
     },
     {
       "page_id": "7864324",
