@@ -46,17 +46,24 @@
   },
   "public_intake": {
     "name": "STAR-T-GATE Inbox",
-    "repository": "https://github.com/gschmidtke/STAR-T-GATE-INBOX",
+    "transport": "worker_canonical",
     "method": "POST",
     "endpoint": "https://star-t-gate-inbox-worker.white-bar-0318.workers.dev/intake",
+    "schema_endpoint": "https://star-t-gate-inbox-worker.white-bar-0318.workers.dev/schema",
+    "recording_repository": "https://github.com/gschmidtke/STAR-T-GATE-INBOX",
+    "issue_queue": "https://github.com/gschmidtke/STAR-T-GATE-INBOX/issues",
     "allowed_targets": ["unknown", "USG", "STANDARDS", "ARPL"],
+    "target_semantics": "The submitted target is a routing hint, not authority. 'unknown' is valid when ownership is unresolved; the curator may reroute after checking purpose, scope, and current governed state.",
+    "issue_role": "Worker-created GitHub issues are durable uncurated evidence records and curator queue items; issue presence does not create governing knowledge.",
+    "manual_github_issue_role": "Manual GitHub issue creation is a curator or recovery path, not the canonical public submission transport, and remains uncurated evidence until processed under the same curator rules.",
     "direct_public_write_to_governed_repository": false,
     "fallback_if_http_post_unavailable": "Return a complete STAR-T-GATE Inbox-compatible JSON payload to the user; do not invent an alternate direct-write route.",
     "authority": "uncurated_evidence",
-    "rule": "Submission does not create governing knowledge."
+    "rule": "The Worker transports and records evidence; it does not decide truth, authority, promotion, or governance. Submission does not create governing knowledge."
   },
   "curation_handoff": {
     "source_queue": "https://github.com/gschmidtke/STAR-T-GATE-INBOX/issues",
+    "queue_role": "durable_uncurated_evidence_ledger_and_curator_queue",
     "active_curator_agents": [
       {"name": "Zara", "platform": "ChatGPT"},
       {"name": "Claude", "platform": "Anthropic Claude"}
@@ -64,6 +71,7 @@
     "curator_sequence": [
       "READ_INBOX_ITEM",
       "ESTABLISH_PROVENANCE",
+      "CHECK_CURRENT_GOVERNED_STATE",
       "CLASSIFY",
       "CHECK_DUPLICATE",
       "SELECT_TARGET_REPOSITORY",
@@ -76,6 +84,16 @@
       "LINK_BACK_TO_INBOX_ITEM",
       "CLOSE_OR_HOLD"
     ],
+    "dispositions": [
+      "promoted",
+      "partially_promoted",
+      "evidence_retained",
+      "resolved_by_current_state",
+      "duplicate",
+      "rejected",
+      "held_unresolved"
+    ],
+    "close_rule": "Closing an Inbox issue records curator disposition; it does not erase or retroactively authorize the submitted evidence.",
     "target_contracts": [
       "CURATION.md",
       "constitution/architecture/CONTENT-CLASSIFICATION-DOCTRINE.md"
@@ -84,6 +102,7 @@
       "Inbox evidence is not authority.",
       "Preserve provenance.",
       "Do not silently resolve conflicts.",
+      "A submitted target is a routing hint, not authority.",
       "Standards classification and curation rules govern promotion into Standards.",
       "Canonical change requires repository validation and required owner/professional decisions."
     ]
@@ -100,6 +119,6 @@
   "legacy_repo_inbox": {
     "status": "internal_or_legacy_staging_only",
     "public_entry": false,
-    "note": "Public contributors should use STAR-T-GATE Inbox. Repository-local inbox material may still exist for curator-side staging and historical provenance."
+    "note": "Public contributors should use the STAR-T-GATE Inbox Worker. Repository-local inbox material may still exist for curator-side staging and historical provenance."
   }
 }
