@@ -7,16 +7,100 @@
   "authority": "instructional",
   "layer": "L6",
   "modules": ["S4", "S5"],
-  "purpose": "Apply governed Revit view naming, view templates, visibility/filter controls, and view-purpose settings consistently while keeping unresolved office-specific template names and example view names noncanonical.",
-  "preconditions": ["The project's governing view/naming rules and approved view templates are available.", "Project phase and intended view purpose are known."],
-  "steps": [
-    {"id":"VIEW-01","name":"Name the view for governed purpose","actions":["Assign a name that identifies the view type, scope/location, discipline where applicable, and purpose using the governing naming rules.","Do not adopt source example view names as canonical unless they are present in the governed naming registry."],"validation":["View names are consistent, searchable, and aligned to the governing S4 naming structures.","No duplicate or ad-hoc naming convention is introduced."],"automation_readiness":"AUTOMATABLE"},
-    {"id":"VIEW-02","name":"Apply the approved view template","actions":["Apply the approved view template for the view's purpose and type.","Use template-controlled category visibility, filters, linked-model visibility, phase/phase filter, detail level, and visual style where governed.","If a recurring exception is required, route it into template governance instead of accumulating per-view overrides."],"validation":["The expected view template is applied where required.","Temporary or unexplained per-view overrides are absent or recorded as governed exceptions."],"automation_readiness":"AUTOMATABLE"},
-    {"id":"VIEW-03","name":"Verify purpose-specific display state","actions":["Confirm detail level and visual style match the view's intended use.","Confirm phase and phase filter align with project requirements.","Confirm linked-model visibility and filter behavior are controlled through governed view/template logic rather than ad-hoc settings."],"validation":["The view state is consistent with its governed purpose and template.","The view can be used for its intended documentation, coordination, or export function without undocumented graphics drift."],"automation_readiness":"AUTOMATABLE"}
+  "purpose": "Apply governed Revit view naming, view templates, visibility/filter controls, phasing, design-option display, and view-purpose settings consistently while keeping unresolved office-specific template names and project-specific phase/option structures noncanonical.",
+  "preconditions": [
+    "The project's governing view/naming rules and approved view templates are available.",
+    "Project phase, phase-filter intent, intended view purpose, and any applicable design-option state are known."
   ],
-  "outputs": ["Governed Revit views with consistent naming and template-controlled graphics", "Traceable view exceptions where required"],
-  "evidence": ["View schedule or API inventory of names and applied templates", "Override report", "Representative screenshots or QA report"],
-  "future_dependencies": ["Concrete governed View Template Registry", "Complete view-purpose vocabulary where not already governed"],
-  "governance_notes": ["Exact source-era view-template names and example view names are TODO/example content and are not promoted.", "Category-level graphics authority remains with governed Object Styles/graphics structures; views implement scoped display behavior."],
-  "provenance": {"source_system":"confluence","space":"BST","page_id":"7241762","source_version":1,"source_title":"View Standards – Instructions, Definitions, Workflows","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241762","migration_note":"Normalized as L6 view implementation guidance; generic/example view names and unresolved template names remain noncanonical."}
+  "steps": [
+    {
+      "id":"VIEW-01",
+      "name":"Name the view for governed purpose",
+      "actions":[
+        "Assign a name that identifies the view type, scope/location, discipline where applicable, and purpose using the governing naming rules.",
+        "Do not adopt source example view names as canonical unless they are present in the governed naming registry."
+      ],
+      "validation":[
+        "View names are consistent, searchable, and aligned to the governing S4 naming structures.",
+        "No duplicate or ad-hoc naming convention is introduced."
+      ],
+      "automation_readiness":"AUTOMATABLE"
+    },
+    {
+      "id":"VIEW-02",
+      "name":"Apply the approved view template",
+      "actions":[
+        "Apply the approved view template for the view's purpose and type.",
+        "Use template-controlled category visibility, filters, linked-model visibility, phase/phase filter, design-option visibility, detail level, and visual style where governed.",
+        "If a recurring exception is required, route it into template governance instead of accumulating per-view overrides."
+      ],
+      "validation":[
+        "The expected view template is applied where required.",
+        "Temporary or unexplained per-view overrides are absent or recorded as governed exceptions."
+      ],
+      "automation_readiness":"AUTOMATABLE"
+    },
+    {
+      "id":"VIEW-03",
+      "name":"Verify purpose-specific display state",
+      "actions":[
+        "Confirm detail level and visual style match the view's intended use.",
+        "Confirm phase and phase filter align with project requirements and the declared view purpose.",
+        "Where Design Options are in use, confirm the view inherits the governed primary option unless an explicit By View or named-option exception is required for the declared purpose.",
+        "Confirm linked-model visibility and filter behavior are controlled through governed view/template logic rather than ad-hoc settings."
+      ],
+      "validation":[
+        "The view state is consistent with its governed purpose and template.",
+        "Phase graphics represent the project phase intent without undocumented local drift.",
+        "Design-option visibility is either inherited from the governed project state or traceable to an explicit view-specific purpose.",
+        "The view can be used for its intended documentation, coordination, or export function without undocumented graphics drift."
+      ],
+      "automation_readiness":"AUTOMATABLE"
+    },
+    {
+      "id":"VIEW-04",
+      "name":"Record project-specific phase and option departures",
+      "actions":[
+        "Treat phase names, phase sequences, phase-filter definitions, option-set names, option names, and primary-option selections as project-specific governed data unless separately approved as reusable configuration.",
+        "Record any view-specific departure from the governed phase or design-option display basis with its rationale and approval trace."
+      ],
+      "validation":[
+        "No source example phase name, filter name, option name, or primary-option choice has silently become an enterprise default.",
+        "Material view-specific departures are traceable."
+      ],
+      "automation_readiness":"ASSISTED"
+    }
+  ],
+  "outputs": [
+    "Governed Revit views with consistent naming and template-controlled graphics",
+    "Traceable phase/design-option display state",
+    "Traceable view exceptions where required"
+  ],
+  "evidence": [
+    "View schedule or API inventory of names and applied templates",
+    "View Phase and Phase Filter inventory",
+    "Design Option visibility inventory where applicable",
+    "Override report",
+    "Representative screenshots or QA report"
+  ],
+  "future_dependencies": [
+    "Concrete governed View Template Registry",
+    "Complete view-purpose vocabulary where not already governed"
+  ],
+  "governance_notes": [
+    "Exact source-era view-template names and example view names are TODO/example content and are not promoted.",
+    "Source example phase names and phase-filter combinations are implementation examples, not enterprise phase taxonomy.",
+    "Default primary Design Options per discipline are explicitly unresolved in the source and remain project-specific until separately governed.",
+    "Category-level graphics authority remains with governed Object Styles/graphics structures; views implement scoped display behavior."
+  ],
+  "provenance": {
+    "source_system":"confluence",
+    "space":"BST",
+    "page_id":"7241762",
+    "source_version":1,
+    "source_title":"View Standards – Instructions, Definitions, Workflows",
+    "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241762",
+    "supporting_page_ids":["7798793","6193190"],
+    "migration_note":"Round 005 expands the existing L6 view instruction with explicit project-bound phasing and Design Option controls while leaving source example phase names, filters, and unresolved primary-option defaults noncanonical."
+  }
 }

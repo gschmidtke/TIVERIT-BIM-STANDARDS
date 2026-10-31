@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-PHASE-OPTION-CONTROL-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Phase and Design Option Control Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S5", "S2"],
+  "entries": [
+    {"id":"VIEW_PURPOSE","name":"View purpose","requirement":"Each governed phase/design-option display rule shall identify the view purpose to which the rule applies."},
+    {"id":"PROJECT_PHASE_IDENTITY","name":"Project phase identity","requirement":"Where phase state is material, the governed rule shall identify the project phase or reference the governed project phase configuration; source example phase names shall not become enterprise defaults by migration alone."},
+    {"id":"PHASE_FILTER_IDENTITY","name":"Phase-filter identity","requirement":"Where phase display is material, the governed rule shall identify the phase-filter basis or reference the governed project configuration that defines it."},
+    {"id":"PHASE_DISPLAY_INTENT","name":"Phase display intent","requirement":"The rule shall state the intended treatment of existing, demolished, new, temporary, or other project-defined phase states sufficiently to verify the declared view purpose."},
+    {"id":"TEMPLATE_CONTROL_BASIS","name":"Template control basis","requirement":"Recurring phase and option visibility shall be controlled through the approved view-template or governed mapping where feasible rather than repeated ad-hoc per-view settings."},
+    {"id":"DESIGN_OPTION_MODE","name":"Design Option visibility mode","requirement":"Where Design Options are used, each governed view shall identify whether it inherits the governed primary option or uses an explicit view-specific option display basis."},
+    {"id":"OPTION_SET_IDENTITY","name":"Option-set identity","requirement":"When a view-specific Design Option is required, the applicable project option set shall be identified explicitly."},
+    {"id":"OPTION_IDENTITY","name":"Option identity","requirement":"When a view-specific Design Option is required, the applicable option shall be identified explicitly and shall not be inferred from a local naming convention alone."},
+    {"id":"PRIMARY_OPTION_BASIS","name":"Primary-option basis","requirement":"Primary-option selection is project-governed data. No discipline-specific primary option shall be assumed unless the applicable project configuration or approval record defines it."},
+    {"id":"GRAPHICS_INTERACTION","name":"Graphics interaction","requirement":"Where phase filters or Design Options alter visibility or graphics, the resulting display shall remain consistent with the governed view purpose, graphics standards, and documented legend/communication intent."},
+    {"id":"EXCEPTION_TRACE","name":"Exception trace","requirement":"Any material view-specific departure from the governed phase or option display basis shall record the rationale and approval trace."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-VIEWS-001"],
+    "registries": ["TIVERIT-S4-REVIT-VIEW-PURPOSE-FIELDS-001"],
+    "standards": ["TIVERIT-BIM-STD-S2-LOD-LOI-001", "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001"]
+  },
+  "non_promoted_source_content": [
+    "Existing, Demolition, New Construction, Show Previous + Demo, Show Demo + New, and Show New + Existing are source examples and are not promoted as a universal enterprise phase/filter vocabulary.",
+    "The source explicitly leaves default primary Design Options per discipline unresolved; Round 005 does not invent those defaults.",
+    "No universal phase sequence, option-set taxonomy, option naming syntax, or project workset/option combination is created here."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_ids": ["7241762", "7798793", "6193190"],
+    "source_titles": ["View Standards – Instructions, Definitions, Workflows", "Revit Standards and Workflow Guidelines", "Category & Subcategory Graphics Standards and Guidelines"],
+    "migration_note": "Round 005 makes the source-backed phase and Design Option control dimensions machine-readable while preserving phase names, filter names, option sets, primary options, and discipline defaults as project-specific unless separately governed."
+  }
+}

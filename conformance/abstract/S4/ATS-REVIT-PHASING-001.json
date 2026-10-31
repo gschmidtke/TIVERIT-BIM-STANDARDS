@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-PHASING-001",
+  "type": "abstract_test",
+  "title": "Revit governed phase and phase-filter display",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S5", "S2"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-VIEWS-001",
+  "governing_clause": "VIEW-02 through VIEW-04",
+  "test_intent": "Determine whether applicable Revit views use the governed project phase and phase-filter basis for their declared purpose without undocumented local drift or reliance on source example phase names as enterprise authority.",
+  "applicability": {
+    "applies_when": "The tested Revit scope contains views for which phase state or phase-filter display is material to documentation, coordination, review, or export.",
+    "not_applicable_when": "The tested scope contains no view whose intended use depends on phase state or phase-filter behavior."
+  },
+  "required_evidence": [
+    "inventory of applicable Revit views and declared purposes",
+    "governed project phase configuration or approved phase mapping",
+    "observed View Phase and Phase Filter values",
+    "expected phase-display intent for applicable views",
+    "approved exception trace where a view departs from the governed basis"
+  ],
+  "result_logic": {
+    "pass": "Every applicable view uses the governed phase and phase-filter basis for its purpose, or has an approved traceable exception, and the resulting display matches the declared project phase intent.",
+    "fail": "An applicable view uses an ungoverned phase or phase-filter state, has undocumented local phase drift, or produces phase graphics inconsistent with the declared view purpose when a governed expected state is available.",
+    "not_applicable": "No view in the tested scope depends on phase state or phase-filter behavior.",
+    "indeterminate": "The project phase configuration, expected phase-display intent, or required mapping is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "Confluence pages 7241762 and 7798793 plus TIVERIT-BIM-INS-REVIT-VIEWS-001",
+    "migration_note": "Round 005 ATS verifies phase/view alignment without making source example phase names or filter combinations canonical."
+  }
+}
