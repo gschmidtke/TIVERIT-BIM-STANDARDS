@@ -1,2 +1,2 @@
-function_or_workflow,product,version,build_or_release,plugin_or_extension,approved_by_role_id,authority_or_source,exchange_compatibility,exception_or_upgrade_rule,status,notes
-,,,,,,,,,TBC,
+function_or_workflow,vendor,product,version_policy,file_or_exchange_types,discipline_or_role_scope,license_or_service_owner,authority_or_source,exchange_compatibility,template_rulepack_or_config_reference,access_or_viewer_model,exception_or_upgrade_rule,status,notes
+,,,,,,,,,,,,TBC,
