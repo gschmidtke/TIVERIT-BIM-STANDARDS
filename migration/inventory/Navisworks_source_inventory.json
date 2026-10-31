@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "id": "NAVISWORKS-SOURCE-INVENTORY-001",
   "type": "migration_source_inventory",
   "status": "active",
@@ -7,14 +7,12 @@
   "space": "BST",
   "scope": "Navisworks source objects relevant to S5 coordination, S6 federation/coordinates, and S7 deliverables",
   "inventory_date": "2026-10-31",
+  "migration_state": "reconciled_complete",
   "sources": [
     {
       "page_id": "8093711",
       "title": "JSON - Navisworks Export Settings",
-      "source_status": "current",
       "source_maturity": "machine_readable_instruction_set",
-      "legacy_id": "IS-W6-NAVIS-EXPORT",
-      "content_role": "tool-specific export instruction",
       "current_main_match": "instructions/revit/TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001.json",
       "disposition": "migrated",
       "notes": "The five source instructions are represented in the current L6 instruction without inventing unresolved preset values."
@@ -22,74 +20,71 @@
     {
       "page_id": "8126475",
       "title": "S5 – Navisworks Project Setup for Coordination",
-      "source_status": "current",
       "source_maturity": "governed_narrative_standard",
-      "content_role": "Navisworks coordination-container setup, provenance, coordinate alignment, governed sets, validation and change control",
-      "current_main_match": "workflows/S5/TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001.json",
-      "disposition": "partially_migrated",
-      "notes": "The current workflow compresses setup actions but does not preserve the source requirements as a distinct governed project-setup object."
+      "current_main_match": "standards/S5-coordination/TIVERIT-BIM-STD-S5-NAVISWORKS-PROJECT-SETUP-001.json + workflows/S5/TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001.json",
+      "disposition": "migrated",
+      "notes": "Project-setup governance is represented as a bounded S5/S6 standard and connected workflow."
     },
     {
       "page_id": "6324279",
       "title": "S5 – Navisworks Clash Detection Matrix – Standard Setup",
-      "source_status": "current",
       "source_maturity": "governed_narrative_standard",
-      "content_role": "clash-matrix profile, test-family, traceability, modification authority and sign-off-readiness governance",
-      "current_main_match": "registries/coordination/TIVERIT-S5-CLASH-RULE-TYPES-001.json + workflows/S5/TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001.json",
-      "disposition": "partially_migrated",
-      "notes": "Current main contains clash types and execution workflow, but not a matrix/profile registry preserving required metadata and governance."
+      "current_main_match": "registries/coordination/TIVERIT-S5-NAVISWORKS-CLASH-MATRIX-FIELDS-001.json + registries/coordination/TIVERIT-S5-CLASH-RULE-TYPES-001.json + workflows/S5/TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001.json",
+      "disposition": "migrated",
+      "notes": "Matrix governance and required metadata are represented without inventing discipline pairs or numeric tolerances."
     },
     {
       "page_id": "10944513",
       "title": "Navisworks Federation & Coordination Standards",
-      "source_status": "current",
       "source_maturity": "draft_with_todos",
-      "content_role": "detailed federation and coordinate implementation guidance",
-      "current_main_match": "standards/S6-collaboration-linking-shared-coordinates/TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001.json + workflows/S5/TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001.json",
-      "disposition": "source_evidence_only",
-      "notes": "Mature principles may support existing governed objects, but exact append toggles, thresholds, folder maps, owners and other TODO content are not promoted."
+      "current_main_match": "TIVERIT-BIM-STD-S5-NAVISWORKS-PROJECT-SETUP-001 + S6 shared-coordinate standard + Navisworks conformance tests",
+      "disposition": "merged_into_other_object",
+      "notes": "Mature federation principles are represented in governed setup/coordinate objects and conformance tests. Exact append toggles, thresholds, folder maps, owners, and other TODO content remain unresolved project/configuration data and are intentionally not promoted."
     },
     {
       "page_id": "8159247",
       "title": "Metadata and Export Settings for Navisworks",
-      "source_status": "current",
       "source_maturity": "draft_with_todos",
-      "content_role": "human-readable export guidance and proposed export profiles",
       "current_main_match": "instructions/revit/TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001.json",
       "disposition": "merged_into_other_object",
-      "notes": "The page explicitly points to JSON - Navisworks Export Settings as the governed values source. Proposed profiles and unresolved exact settings remain draft evidence."
+      "notes": "The page explicitly points to the JSON export source as the governed values basis. Proposed profiles and unresolved exact settings remain draft evidence."
     },
     {
       "page_id": "6357084",
       "title": "ACC Model Coordination vs Navisworks – Clash & Issue Workflows",
-      "source_status": "current",
       "source_maturity": "draft_review_decision",
-      "content_role": "ACC/Navisworks hybrid routing and system-of-record recommendation",
-      "current_main_match": "workflows/S5/TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001.json + standards/S5-coordination/TIVERIT-BIM-STD-S5-ACC-RECORDS-001.json + standards/S5-coordination/TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001.json",
+      "current_main_match": "workflows/S5/TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001.json + S5 ACC records/exchange objects",
       "disposition": "merged_into_other_object",
-      "notes": "Current main already preserves the boundary that Navisworks is technical coordination and formal issue/acceptance evidence must remain in the governed system of record. The retired source organization identifier is preserved only in Confluence provenance, not repeated in canonical machine-readable content. Draft tool-preference recommendations are not newly elevated."
+      "notes": "System-of-record, issue traceability, meeting, verification, and sign-off boundaries are represented. Draft tool-preference language is not elevated into enterprise doctrine."
     },
     {
       "page_id": "7864324",
       "title": "Metadata and Deliverables Standards for Navisworks",
-      "source_status": "current",
       "source_maturity": "draft_with_todos",
-      "content_role": "Navisworks deliverable classification, storage, records and handover guidance",
-      "current_main_match": "standards/S7-submission-deliverables/TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001.json",
-      "disposition": "source_evidence_only",
-      "notes": "The source leaves key deliverable criteria, storage paths, retention, record status and traceability details unresolved. No draft folder examples are promoted as enterprise rules."
+      "current_main_match": "registries/deliverables/TIVERIT-S7-NAVISWORKS-OUTPUT-TYPES-001.json + TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+      "disposition": "merged_into_other_object",
+      "notes": "The source output taxonomy is preserved, while deliverable/record status is derived from governed S7 purpose/state rules rather than unresolved draft folder paths, retention durations, or example classifications."
     },
     {
       "page_id": "6357099",
       "title": "Gaps in Navisworks",
-      "source_status": "current",
       "source_maturity": "gap_inventory",
-      "content_role": "source-side gap register",
-      "current_main_match": null,
+      "current_main_match": "migration/curation/NAVISWORKS-MIGRATION-CLOSURE-002.md",
       "disposition": "source_evidence_only",
-      "notes": "Used to reconcile whether historical gaps were subsequently addressed; it is not itself normative."
+      "gap_status": "reconciled",
+      "notes": "The historical seven-gap list remains source evidence. Each gap now has an explicit repository disposition; unresolved project/configuration values are no longer treated as migration omissions."
     }
   ],
+  "closure": {
+    "migration_complete": true,
+    "remaining_non_migration_dependencies": [
+      "project-specific numeric clash tolerances and discipline-pair matrix values",
+      "project/client-specific export preset values and exporter-version configuration",
+      "project-specific CDE folder paths and retention durations",
+      "project/BEP/RACI authority assignments where the source leaves owner or approver unresolved"
+    ],
+    "rule": "These dependencies are configuration or project-governance inputs, not missing Confluence migration objects."
+  },
   "rules": [
     "Source DRAFT or TODO content is not promoted as final authority.",
     "Existing current-main objects are enriched or referenced rather than duplicated.",
