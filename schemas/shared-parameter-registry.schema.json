@@ -3,10 +3,12 @@
   "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/shared-parameter-registry.schema.json",
   "title": "TIVERIT Shared Parameter Registry",
   "allOf": [
-    {"$ref": "./registry.schema.json"},
+    {"$ref": "./base-object.schema.json"},
     {
       "type": "object",
+      "required": ["entries", "unresolved_entries"],
       "properties": {
+        "type": {"const": "registry"},
         "entries": {
           "type": "array",
           "items": {
