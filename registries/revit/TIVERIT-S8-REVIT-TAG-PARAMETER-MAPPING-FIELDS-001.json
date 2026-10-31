@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S8-REVIT-TAG-PARAMETER-MAPPING-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Tag and Parameter Mapping Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S8"],
+  "entries": [
+    {"id":"TAG_FAMILY_IDENTITY","name":"Tag family identity","requirement":"Each governed tag family shall have a stable identity and controlled source/library reference."},
+    {"id":"HOST_CATEGORY","name":"Host category or tagged object class","requirement":"Each governed tag mapping shall identify the Revit category or object class to which the tag applies."},
+    {"id":"DISPLAYED_PARAMETERS","name":"Displayed governed parameters","requirement":"Each data field displayed by the tag shall map to an approved parameter identity from the applicable parameter registry or project-governed extension."},
+    {"id":"OPTIONAL_PARAMETERS","name":"Optional displayed parameters","requirement":"Optional tag fields shall be explicitly distinguished from required fields and shall not be populated with manual text when a governed parameter is required."},
+    {"id":"VIEW_SCOPE","name":"Applicable view and scale scope","requirement":"The mapping shall identify the view types, purposes, or scale ranges for which the tag family is approved where applicability is constrained."},
+    {"id":"LEADER_ORIENTATION","name":"Leader and orientation behavior","requirement":"Where leader, orientation, or fixed-paper behavior is governed, the mapping shall reference the approved behavior rather than project-local overrides."},
+    {"id":"SCHEDULE_ALIGNMENT","name":"Schedule and register alignment","requirement":"Tag parameter mappings shall remain semantically aligned with related schedules, registers, and deliverable fields so the same governed data is not represented by conflicting manual text."},
+    {"id":"MANUAL_TEXT_PROHIBITION","name":"Manual text substitution boundary","requirement":"Where a governed tag/parameter mapping exists, free text shall not be used as a substitute for the governed data field except through an explicitly approved exception."},
+    {"id":"APPROVED_DEVIATION","name":"Approved deviation","requirement":"Any project-specific deviation from the governed tag/parameter mapping shall be traceable to the applicable approval and rationale."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-ANNOTATION-001"],
+    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001"]
+  },
+  "non_promoted_source_content": [
+    "No placeholder door, equipment, grid, level, room, or space tag family name from the source is promoted as canonical.",
+    "No unresolved family appearance or parameter-list example is treated as an approved tag profile."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "5799975",
+    "source_version": 1,
+    "source_title": "Annotation Standards – Instructions, Definitions, Workflows",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/5799975",
+    "migration_note": "Normalizes the durable source rule that tags are controlled, parameter-driven, and aligned with schedules while leaving family-specific TODO values unresolved."
+  }
+}
