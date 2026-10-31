@@ -1,0 +1,95 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S5-NAVISWORKS-CLASH-MATRIX-FIELDS-001",
+  "type": "registry",
+  "title": "Navisworks Clash Matrix Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S5"],
+  "entries": [
+    {
+      "id": "TEST_IDENTITY",
+      "name": "Test identity and naming",
+      "requirement": "Each governed clash test shall have a stable identity and naming basis that distinguishes it within the matrix profile."
+    },
+    {
+      "id": "MODEL_SET_SCOPE",
+      "name": "Model and set scope",
+      "requirement": "Each governed clash test shall identify the source model sets or governed selection/search sets participating in the test."
+    },
+    {
+      "id": "CHECK_TYPE",
+      "name": "Check type",
+      "requirement": "Each governed clash test shall identify its clash/check classification using the applicable coordination check-type registry."
+    },
+    {
+      "id": "TOLERANCE_BASIS",
+      "name": "Tolerance basis",
+      "requirement": "Each governed clash test shall identify the applicable project/BEP tolerance or clearance basis; this registry does not create enterprise numeric defaults."
+    },
+    {
+      "id": "PRIORITY_CRITICALITY",
+      "name": "Priority or criticality",
+      "requirement": "Each governed clash test or resulting review scope shall carry the applicable priority/criticality basis needed for routing and review."
+    },
+    {
+      "id": "GROUPING_DEDUPLICATION",
+      "name": "Grouping and deduplication basis",
+      "requirement": "The matrix/profile shall define or reference the grouping and deduplication logic used to prepare repeatable review results."
+    },
+    {
+      "id": "MATRIX_PROFILE_VERSION",
+      "name": "Matrix profile and version",
+      "requirement": "Clash results used as governed evidence shall identify the matrix profile and version or equivalent configuration basis that produced them."
+    },
+    {
+      "id": "COORDINATION_CYCLE",
+      "name": "Coordination cycle",
+      "requirement": "Clash results and downstream issues shall be traceable to the coordination cycle or review event in which the test was executed."
+    },
+    {
+      "id": "RESPONSIBILITY_ROUTE",
+      "name": "Responsibility and routing basis",
+      "requirement": "Actionable findings shall be routable to an identifiable responsible party under the governed issue lifecycle; Navisworks itself does not create role authority."
+    },
+    {
+      "id": "DEVIATION_RECORD",
+      "name": "Approved deviation record",
+      "requirement": "Project-specific additions, suppressions, or deviations from the governed matrix/profile shall be traceable to the applicable approval and rationale."
+    }
+  ],
+  "matrix_governance": {
+    "selection": "Use the applicable project-approved clash matrix/profile for the declared coordination scope.",
+    "modification_authority": "Project-specific matrix modifications or extensions require the Coordination Lead or delegated authority defined by the project governance/RACI.",
+    "tool_authority_boundary": "Navisworks is a coordination and analysis tool; clash-test execution does not create design, fabrication, issue-approval, or acceptance authority.",
+    "evidence_rule": "Where clash completeness or coordination sign-off relies on the matrix, the matrix/profile version and test execution context shall be retained as traceable evidence."
+  },
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S5-COORDINATION-EP001"],
+    "workflows": ["TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001"],
+    "registries": [
+      "TIVERIT-S5-CLASH-RULE-TYPES-001",
+      "TIVERIT-S5-ISSUE-LIFECYCLE-001"
+    ],
+    "roles": [
+      "ROLE-PROJECT-BIM-COORDINATOR-001",
+      "ROLE-PROJECT-BIM-MANAGER-001",
+      "ROLE-DISCIPLINE-LEAD-001"
+    ]
+  },
+  "non_promoted_source_content": [
+    "No specific discipline-pair matrix rows are invented where the source does not provide a complete approved matrix.",
+    "No enterprise numeric hard-clash or soft-clearance tolerances are created; values remain project/BEP data.",
+    "No project-specific ignore/suppression set is promoted without an approved project basis."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6324279",
+    "source_version": 1,
+    "source_title": "S5 – Navisworks Clash Detection Matrix – Standard Setup",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6324279",
+    "migration_note": "Migrated the source's governed matrix/profile metadata, authority boundary, traceability and evidence requirements. Exact project test pairs and numeric tolerances were not invented."
+  }
+}

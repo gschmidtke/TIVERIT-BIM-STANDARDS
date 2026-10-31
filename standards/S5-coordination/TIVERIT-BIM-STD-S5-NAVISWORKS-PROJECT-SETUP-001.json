@@ -1,0 +1,112 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S5-NAVISWORKS-PROJECT-SETUP-001",
+  "type": "standard",
+  "title": "Navisworks Project Setup for Coordination",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S5", "S6"],
+  "scope": {
+    "tool": "Autodesk Navisworks",
+    "purpose": "Technical coordination setup and integrity of governed Navisworks coordination containers",
+    "excludes": [
+      "click-by-click software training",
+      "project-specific hacks or temporary configuration as enterprise doctrine",
+      "design or fabrication authority"
+    ]
+  },
+  "requirements": [
+    {
+      "id": "S5-NAV-SETUP-001",
+      "authority": "shall",
+      "statement": "A Navisworks coordination scope shall use a traceable coordination container whose included source models, model versions, configuration basis, responsible role, and approved deviations can be identified.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "S5-NAV-SETUP-002",
+      "authority": "shall",
+      "statement": "Models appended for coordination shall conform to the governed project identity and folder conventions and shall be valid for the declared coordination purpose and lifecycle state.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "S5-NAV-SETUP-003",
+      "authority": "shall",
+      "statement": "Federated coordination models shall be aligned using the governed project coordinate strategy before clash detection, review, or sign-off evidence is generated.",
+      "verification_class": "machine_checkable"
+    },
+    {
+      "id": "S5-NAV-SETUP-004",
+      "authority": "shall_not",
+      "statement": "Ad-hoc Navisworks transforms shall not be used as a permanent substitute for correcting source-model coordinate or export conditions.",
+      "verification_class": "human_verifiable"
+    },
+    {
+      "id": "S5-NAV-SETUP-005",
+      "authority": "shall",
+      "statement": "Where a temporary transform is required to continue coordination, the transform shall be documented as an exception, associated with a source-correction action, and tracked until removed or formally resolved.",
+      "verification_class": "human_verifiable"
+    },
+    {
+      "id": "S5-NAV-SETUP-006",
+      "authority": "shall",
+      "statement": "Selection and search sets used for repeatable coordination checks shall be governed and reproducible; rules-based sets should be preferred where they can reliably express the intended scope.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "S5-NAV-SETUP-007",
+      "authority": "shall",
+      "statement": "Viewpoints or other review baselines used as coordination evidence shall preserve enough context to identify the reviewed condition and relate it to the applicable model versions and issue or review cycle.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "S5-NAV-SETUP-008",
+      "authority": "shall",
+      "statement": "Before downstream clash execution or formal coordination review, the Navisworks coordination container shall be checked for source-model completeness, coordinate alignment, reference integrity, applicable set definitions, and configuration consistency.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "S5-NAV-SETUP-009",
+      "authority": "shall",
+      "statement": "A failed coordination-container integrity check shall block reliance on the affected clash or review result unless an explicit governed deviation records the condition and the authority permitting continued use.",
+      "verification_class": "human_verifiable"
+    },
+    {
+      "id": "S5-NAV-SETUP-010",
+      "authority": "shall",
+      "statement": "Changes to shared Navisworks coordination configuration, governed sets, or project extensions shall be traceable and shall not be made unilaterally by source-model authors or automation outside the project governance process.",
+      "verification_class": "human_verifiable"
+    },
+    {
+      "id": "S5-NAV-SETUP-011",
+      "authority": "shall_not",
+      "statement": "Navisworks coordination configuration or automation shall not alter the authority, geometry ownership, or formal acceptance status of source information merely by processing or federating it.",
+      "verification_class": "human_verifiable"
+    }
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
+      "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001"
+    ],
+    "workflows": ["TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001"],
+    "instructions": ["TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001"],
+    "roles": [
+      "ROLE-PROJECT-BIM-COORDINATOR-001",
+      "ROLE-PROJECT-BIM-MANAGER-001",
+      "ROLE-DISCIPLINE-LEAD-001",
+      "ROLE-MODEL-AUTHOR-001"
+    ]
+  },
+  "implementation_boundary": "This object governs repeatable Navisworks project-setup and coordination-container integrity. It does not invent project folder paths, exact software toggles, numeric tolerances, permanent transform limits, or owner/approver assignments that are not resolved in the source or project BEP/RACI.",
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "8126475",
+    "source_version": 1,
+    "source_title": "S5 – Navisworks Project Setup for Coordination",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8126475",
+    "migration_note": "Migrated as a bounded tool-specific S5/S6 standard because the source provides explicit governance, inputs/outputs, authority boundaries, setup sequence, validation and change-control rules. Draft details from adjacent federation pages were not promoted as final settings."
+  }
+}

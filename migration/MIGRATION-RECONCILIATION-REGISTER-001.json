@@ -27,20 +27,20 @@
     {
       "domain": "Navisworks coordination/export",
       "standards_scope": ["S5", "S6", "S7"],
-      "source_summary": "Export settings, project setup/federation, clash matrix/routing, and ACC/Navisworks hybrid workflow are reported in Confluence.",
-      "current_main_summary": "No dedicated Navisworks objects found in current main during curator check.",
-      "disposition": "migration_missing",
-      "confidence": "high_at_domain_level",
-      "next_action": "Perform object-level source reconciliation and create a bounded Navisworks migration batch."
+      "source_summary": "Export settings, project setup/federation, clash matrix/routing, ACC/Navisworks hybrid workflow, deliverables guidance, and an explicit gap inventory exist in Confluence.",
+      "current_main_summary": "Current main already contains TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001, TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001, tool-agnostic S5 coordination, ACC record/exchange objects, and coordination registries. Object-level reconciliation in Navisworks Round 001 adds bounded project-setup and clash-matrix-field governance while retaining draft/TODO pages as source evidence.",
+      "disposition": "partially_migrated",
+      "confidence": "high_object_level_reconciliation_started",
+      "next_action": "Complete residual Navisworks gaps only from source-backed decisions: export preset values, approved matrix/profile values if intended, deliverable/record rules, viewpoint packaging, meeting/RFI implementation, and conformance tests."
     },
     {
       "domain": "Inventor / manufacturing toolchain",
       "standards_scope": ["S9"],
       "source_summary": "Inventor standards inventory, tool-authority scaffold, naming, drawing/fabrication conventions, and translation rules are reported in Confluence.",
-      "current_main_summary": "No Inventor-specific objects found in current main during curator check.",
-      "disposition": "migration_missing",
-      "confidence": "high_at_domain_level",
-      "next_action": "Perform object-level S9 source reconciliation before defining canonical standards or tool-authority objects."
+      "current_main_summary": "Current-main tree inspection shows multiple Inventor/S9 standards, an Inventor-Revit export instruction and workflow, tool-authority registry, automation registry, and S9 migration review artifacts. The previous statement that no Inventor-specific objects existed was incorrect.",
+      "disposition": "partially_migrated",
+      "confidence": "high_current_main_presence_object_level_source_reconciliation_pending",
+      "next_action": "Perform a separate object-level S9 source reconciliation before changing or adding Inventor governance."
     },
     {
       "domain": "Revit style guide",
@@ -73,7 +73,7 @@
       "domain": "ACC / BIM 360 governance",
       "standards_scope": ["S3", "S5", "S7"],
       "source_summary": "ACC-only decision rules, system-of-record targets, templates, and BEP clauses are reported in Confluence as existing and/or known gaps.",
-      "current_main_summary": "ACC onboarding workflow exists in current main, so the domain is not wholly absent.",
+      "current_main_summary": "ACC onboarding workflow and S5 ACC coordination/records/exchange objects exist in current main, so the domain is not wholly absent.",
       "disposition": "partially_migrated",
       "confidence": "high_at_domain_level",
       "next_action": "Separate migrated ACC governance from intrinsic source gaps and reconcile each source object."
