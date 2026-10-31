@@ -29,7 +29,7 @@
     "not_applicable": "No complete interview-state or BEP assembly claim is being tested.",
     "indeterminate": "The requested BEP state, project evidence, module coverage or unresolved/deferred register is insufficient to determine completeness."
   },
-  "permitted_implementation_classes": ["registry_checker","document_checker","human_verification","hybrid"],
+  "permitted_implementation_classes": ["registry_checker","file_checker","human_verification","hybrid"],
   "provenance": {
     "source_system": "repository_curator",
     "derived_from": "BEP Interview Production — Punch List (Readiness to Production), Confluence page 14090241; current workflow TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001",
