@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S7-EXCHANGE-DELIVERABLE-FIELDS-001",
+  "type": "registry",
+  "title": "S7 Exchange and Deliverable Declaration Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S7"],
+  "entries": [
+    {"id":"DELIVERABLE_ID","name":"Stable deliverable identity","requirement":"Each project deliverable declaration shall carry a stable project identifier that remains traceable across the BEP, exchange schedule, issue records, and transmittals."},
+    {"id":"DELIVERABLE_NAME","name":"Deliverable name or description","requirement":"Each declared deliverable shall state what information container, package, dataset, federation, drawing set, report, or other governed output is being delivered."},
+    {"id":"DELIVERABLE_TYPE","name":"Deliverable type","requirement":"Each deliverable shall identify its governed deliverable category or type and reference the applicable S7 deliverable-type vocabulary where one exists."},
+    {"id":"PHASE_STAGE","name":"Project phase or stage","requirement":"The project phase, stage, or appointment context to which the deliverable applies shall be declared explicitly."},
+    {"id":"INTENDED_USE","name":"Intended use","requirement":"Each deliverable shall declare the purpose for which the receiving party may use the information."},
+    {"id":"LOD_LOI_BASIS","name":"LOD/LOI or information-need basis","requirement":"Where level of information need is material, the deliverable declaration shall reference the applicable S2 requirement or project-declared LOD/LOI basis."},
+    {"id":"FORMAT","name":"Required exchange format","requirement":"The required file, dataset, or platform format shall be declared at project level; source examples such as RVT, IFC, NWD, PDF, or spreadsheets are not universal defaults."},
+    {"id":"CDE_LOCATION","name":"CDE location or governed destination","requirement":"The intended governed location, container path, or state destination shall be declared by reference to the applicable S3/CDE configuration."},
+    {"id":"REVIEW_ROUTE","name":"Review route","requirement":"The project declaration shall identify the applicable review route or workflow reference before issue or reliance."},
+    {"id":"ACCEPTANCE_AUTHORITY_REF","name":"Acceptance authority reference","requirement":"Acceptance or sign-off authority shall be referenced from the applicable S1/BEP/RACI authority source rather than inferred from deliverable type or file format."},
+    {"id":"MILESTONE_EVENT","name":"Exchange milestone or event","requirement":"Each planned formal exchange shall identify the milestone, exchange event, or contractual context to which it belongs."},
+    {"id":"DATE_WINDOW","name":"Date or exchange window","requirement":"The project exchange schedule shall declare the applicable date or bounded exchange window; dates are project-specific and are not enterprise defaults."},
+    {"id":"TRIGGER","name":"Exchange trigger","requirement":"Each exchange shall identify the event, contractual condition, coordination cycle, or other trigger that causes the exchange to occur."},
+    {"id":"PARTIES","name":"Originating and receiving parties","requirement":"The parties participating in the exchange shall be identifiable, including originating and receiving responsibilities where applicable."},
+    {"id":"EXPECTED_DELIVERABLES","name":"Expected deliverable references","requirement":"Each exchange event shall reference the deliverable identities expected within that exchange rather than restating them ambiguously."},
+    {"id":"ISSUE_RECORD","name":"Issue/transmittal record reference","requirement":"Formal exchange shall be traceable to the applicable issue or transmittal record so technical movement is not mistaken for formal delivery."},
+    {"id":"LIMITATIONS_NOTES","name":"Constraints, dependencies, or limitations","requirement":"Material constraints, dependencies, permitted-use limitations, or rescheduling conditions shall be declared where they affect reliance or exchange execution."}
+  ],
+  "relationships": {
+    "standard": "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+    "deliverable_types": "TIVERIT-S7-DELIVERABLE-TYPES-001"
+  },
+  "non_promoted_source_content": [
+    "Source example deliverable IDs such as DL-001 and DL-002 are examples only.",
+    "Example file formats, milestones, dates, parties, CDE paths, and role labels are project-specific and are not promoted as enterprise defaults.",
+    "The registry defines the required declaration structure; actual project deliverable lists and exchange schedules remain BEP/project artifacts."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "4292618",
+    "source_version": 1,
+    "source_title": "BEP Template Scaffold for GAP-S7-01 Deliverables and Exchange Schedules",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4292618",
+    "migration_note": "Migrated the source scaffold into machine-readable declaration fields while preserving the source boundary that project deliverable lists and exchange schedules belong in the BEP rather than the S7 L4 standard."
+  }
+}
