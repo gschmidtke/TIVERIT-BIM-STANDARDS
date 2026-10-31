@@ -26,6 +26,7 @@
       "If a question belongs to another role or authority, defer it and record the dependency rather than forcing an answer.",
       "Clarification, challenge, correction, and help requests shall not erase previously accepted project facts.",
       "A correction updates the relevant project fact and re-runs dependent validation.",
+      "When normalization materially changes meaning, scope, granularity, interpretation, authority implication, or dependency, echo the normalized interpretation and obtain confirmation before treating it as a project fact; formatting-only normalization does not require confirmation.",
       "A deviation from a governed standard is recorded as a deviation candidate and requires the appropriate project approval; it is not resolved by editing the standard.",
       "Interview completion means required project data is either supplied, explicitly unresolved, or formally deferred; it does not itself constitute BEP approval."
     ],
@@ -39,6 +40,16 @@
     "conflicts": "Contradictory project facts or conflicts between project requirements and governed standards.",
     "deviations": "Explicit proposed departures from governed standards requiring approval.",
     "evidence": "Source references or records supporting project facts and validation outcomes."
+  },
+  "deferral_record": {
+    "required_fields": ["topic_or_question", "required_project_datum", "reason_for_deferral", "bep_section_affected"],
+    "optional_fields": ["required_responder_or_approval_authority", "dependency_or_source_needed"],
+    "rule": "A deferred item shall remain distinguishable from a supplied fact, proposal, deviation, or validation failure and shall preserve the information needed to route it to the appropriate responder, authority, or source."
+  },
+  "source_decomposition": {
+    "rule": "Supplied EIR, AIR, PIR, contract material, schedules, model lists, and other project sources shall be decomposed into the BEP data targets and governed dependencies they support or constrain before interview questions are generated.",
+    "required_traceability": ["source_reference", "supported_or_constrained_target", "governing_object_or_dependency_when_known", "evidence_state"],
+    "question_suppression_rule": "Do not ask for a datum already sufficiently supported by decomposed project evidence unless it is contradictory, ambiguous, authority-insufficient, or otherwise requires confirmation."
   },
   "question_model": {
     "required_fields": ["question_id", "topic", "target", "ask_when", "governing_object_ids", "output_section"],
@@ -160,6 +171,13 @@
       "output_section": "Deviations, Unresolved Inputs and Approvals"
     }
   ],
+  "validation_result_model": {
+    "pass": "Available evidence establishes that the applicable requirement is satisfied.",
+    "unresolved": "A determination cannot yet be made because required information, evidence, dependency, or authority is incomplete.",
+    "gap": "Required content, evidence, dependency, or project definition is absent or incomplete, but available evidence does not establish nonconformance.",
+    "fail": "Available evidence establishes nonconformance with an applicable governed requirement.",
+    "rule": "Do not use gap or unresolved as synonyms for fail. A fail requires sufficient evidence of nonconformance."
+  },
   "validation_rules": [
     {
       "id": "BEP-VAL-001",
@@ -210,49 +228,55 @@
     },
     {
       "id": "BEP-WF-02",
-      "action": "Extract and normalize already-supported project facts before asking questions.",
+      "action": "Extract supported project facts and decompose supplied EIR, AIR, PIR, contract material, schedules, model lists, and other project sources into the BEP data targets and governed dependencies they support or constrain before asking questions. Normalize only where meaning is preserved; if normalization materially changes meaning, scope, granularity, interpretation, authority implication, or dependency, obtain confirmation before treating the normalized value as a project fact.",
       "inputs": ["assembly_context"],
-      "outputs": ["known_project_state"]
+      "outputs": ["known_project_state", "source_decomposition_map"]
     },
     {
       "id": "BEP-WF-03",
-      "action": "Determine BEP type, requested output maturity, and the set of project data required for that state.",
-      "inputs": ["known_project_state"],
+      "action": "Determine BEP type, requested output maturity, and the set of project data required for that state, using the source decomposition map to identify already-supported, constrained, ambiguous, contradictory, or authority-insufficient targets.",
+      "inputs": ["known_project_state", "source_decomposition_map"],
       "outputs": ["required_project_data"]
     },
     {
       "id": "BEP-WF-04",
-      "action": "Compare required project data with known project state and create a gap queue containing only unresolved, contradictory, or insufficiently evidenced items.",
+      "action": "Compare required project data with known project state and create a gap queue containing only unresolved, contradictory, ambiguous, authority-insufficient, or insufficiently evidenced items.",
       "inputs": ["required_project_data", "known_project_state"],
       "outputs": ["gap_queue"]
     },
     {
       "id": "BEP-WF-05",
-      "action": "Ask the next eligible question from the question catalogue; defer role-dependent or source-dependent questions that the current user cannot answer.",
+      "action": "Ask the next eligible question from the question catalogue; defer role-dependent or source-dependent questions that the current user cannot answer. Every deferral shall be recorded using the deferral_record structure.",
       "inputs": ["gap_queue"],
       "outputs": ["project_answer_or_deferred_item"]
     },
     {
       "id": "BEP-WF-06",
-      "action": "Validate the answer against the governing object, project evidence, dependencies, and applicable validation rules; update project state without converting unsupported assumptions into facts.",
+      "action": "Validate each answer against the governing object, project evidence, dependencies, and applicable validation rules; classify the result using validation_result_model and update project state without converting unsupported assumptions into facts.",
       "inputs": ["project_answer_or_deferred_item"],
       "outputs": ["updated_project_state", "validation_result"]
     },
     {
       "id": "BEP-WF-07",
-      "action": "Repeat gap evaluation and questioning until every required item is supplied, explicitly unresolved, formally deferred, or recorded as a deviation candidate.",
+      "action": "Repeat gap evaluation and questioning until every required item is supplied, explicitly unresolved, formally deferred, identified as a conflict, or recorded as a deviation candidate.",
       "inputs": ["updated_project_state"],
       "outputs": ["interview_complete_state"]
     },
     {
+      "id": "BEP-WF-07A",
+      "action": "Before assembly, present a bounded closing opportunity for unresolved project-instance data that the current user can reasonably answer. Do not force answers, re-ask formally deferred items without new evidence or authority, or convert unanswered items into assumed facts. Update the interview-complete state only from supported responses.",
+      "inputs": ["interview_complete_state"],
+      "outputs": ["closure_checked_state"]
+    },
+    {
       "id": "BEP-WF-08",
       "action": "Assemble the BEP in the packing order defined by BEP-ASSEMBLY-MAP.md using governed object references plus project-instance data.",
-      "inputs": ["interview_complete_state"],
+      "inputs": ["closure_checked_state"],
       "outputs": ["bep_draft"]
     },
     {
       "id": "BEP-WF-09",
-      "action": "Run the BEP validation rules and explicitly report unresolved project data, deferred questions, conflicts, deviation candidates, and any missing approval evidence.",
+      "action": "Run the BEP validation rules using validation_result_model and explicitly report unresolved project data, deferred questions, conflicts, deviation candidates, failures, gaps, and any missing approval evidence.",
       "inputs": ["bep_draft"],
       "outputs": ["bep_quality_report"]
     },
