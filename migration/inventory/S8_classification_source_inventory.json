@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1",
+  "id": "S8-CLASSIFICATION-SOURCE-INVENTORY-001",
+  "type": "migration_source_inventory",
+  "status": "complete",
+  "domain": "S8 classification registry and protocol",
+  "source_objects": [
+    {"page_id":"4423719","title":"Classification Registry & Protocol Governance Scaffold","source_maturity":"draft_governance_scaffold","disposition":"migrated","target_objects":["TIVERIT-S8-CLASSIFICATION-SYSTEM-FIELDS-001","TIVERIT-S8-CLASSIFICATION-MAPPING-FIELDS-001","ATS-S8-CLASSIFICATION-ASSIGNMENT-001","ATS-S8-CLASSIFICATION-DEPRECATION-001"],"notes":"Primary GAP-S8-02 source. Governance fields and validation concepts promoted; no actual code lists or local mappings invented."},
+    {"page_id":"2785403","title":"S8 – Information Structure, Parameters & Classification","source_maturity":"normative_narrative","disposition":"merged_into_other_object","target_objects":["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"notes":"Narrative S8 doctrine already represented in current main."},
+    {"page_id":"2883653","title":"JSON - Information Structure, Parameters & Classification","source_maturity":"machine_readable_normative_source","disposition":"migrated","target_objects":["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"notes":"Canonical L4 source already in current main; GAP-S8-02 implementation reference updated by this round."},
+    {"page_id":"2425221","title":"JSON – Inventory Capture: Classification","source_maturity":"inventory_evidence","disposition":"source_evidence_only","target_objects":[],"notes":"Inventory evidence confirms classification references; it does not authorize adoption of a specific external classification system."}
+  ],
+  "migration_rules": [
+    "S8 does not mandate a specific classification system at L4.",
+    "Named systems such as Uniclass or OmniClass are references/examples unless selected through governed requirements/project declarations.",
+    "Actual code lists remain separate machine-readable artifacts or authoritative external references.",
+    "Mapping and parameter-carrier rules must be governed and versioned rather than inferred from tool state.",
+    "Approval authority remains outside this registry and is governed by S1/project instruments."
+  ],
+  "remaining_s8_gaps": ["GAP-S8-01","GAP-S8-03"]
+}
