@@ -1,0 +1,25 @@
+{
+  "id": "S9-INVENTOR-SOURCE-INVENTORY-001",
+  "type": "migration_source_inventory",
+  "status": "active",
+  "domain": "S9 Inventor / manufacturing toolchain",
+  "reconciliation_basis": "Confluence BST source objects versus current main",
+  "sources": [
+    {"page_id":"6193173","title":"Inventor Page-Worthiness Guide and Standards Inventory","disposition":"source_evidence_only","current_objects":["TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001","TIVERIT-BIM-STD-S9-INVENTOR-MFG-DOC-001","TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001","TIVERIT-BIM-STD-S9-INVENTOR-REVIT-EXCHANGE-001","TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001","TIVERIT-BIM-INS-S9-INVENTOR-REVIT-EXPORT-001"],"note":"Inventory/planning source; its page-worthy candidates are represented by current canonical objects except the detailed historical Appendix F drafting content referenced by the manufacturing-documentation standard."},
+    {"page_id":"6127640","title":"S9 – Inventor & Vault in the Authoring, Automation & Manufacturing Toolchain","disposition":"migrated","current_objects":["TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001","TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001"]},
+    {"page_id":"6357050","title":"S9 – Inventor Standards / Style Guide (Manufacturing Documentation)","disposition":"partially_migrated","current_objects":["TIVERIT-BIM-STD-S9-INVENTOR-MFG-DOC-001"],"residual":"Detailed dimensioning, tolerancing, symbols, title-block, layer and presentation rules are referenced to historical Appendix F but are not present in the normalized BST page and remain an unresolved source-extraction gap."},
+    {"page_id":"6750227","title":"S9 – Inventor Model Identity, Naming & Structure","disposition":"migrated","current_objects":["TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001"]},
+    {"page_id":"7241747","title":"S9 – Inventor to Revit Data Exchange Governance","disposition":"migrated","current_objects":["TIVERIT-BIM-STD-S9-INVENTOR-REVIT-EXCHANGE-001","TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001","TIVERIT-BIM-INS-S9-INVENTOR-REVIT-EXPORT-001"]},
+    {"page_id":"6127650","title":"S9 – Inventor Content Lifecycle & Normalization Governance","disposition":"migrated","current_objects":["TIVERIT-BIM-STD-S9-INVENTOR-CONTENT-LIFECYCLE-001"]},
+    {"page_id":"7307304","title":"Vault as Manufacturing Data Authority & Release System","disposition":"migrated","current_objects":["TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001","TIVERIT-BIM-STD-S9-VAULT-RELEASE-001"]},
+    {"page_id":"8060945","title":"S9 – Vault Lifecycle States & Approval Governance","disposition":"migrated","current_objects":["TIVERIT-BIM-STD-S9-VAULT-LIFECYCLE-001"]},
+    {"page_id":"7372834","title":"Governance Standard S9 – Vault Folder Structure, Identity & Registries","disposition":"merged_into_other_object","current_objects":["TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001","TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001"],"note":"Folder/identity governance is represented through the Vault-authority and Inventor-identity objects; project-specific folder structures remain configuration."},
+    {"page_id":"4554779","title":"Tool Authority Matrix – Governance Scaffold (GAP-S9-02)","disposition":"partially_migrated","current_objects":["REG-S9-TOOL-AUTHORITY-001","ATS-S9-TOOL-AUTHORITY-001"],"residual":"The source intentionally defines the matrix structure without specific product assignments. Current registry entries remain empty; organization/project authority assignments require governed decisions and cannot be inferred from workflows."},
+    {"page_id":"5308417","title":"Automation Registry Governance Scaffold","disposition":"partially_migrated","current_objects":["REG-S9-AUTOMATION-001"],"residual":"Registry structure is migrated, but concrete approved production automation entries remain unpopulated and require governed review rather than source migration inference."}
+  ],
+  "residuals": [
+    {"id":"S9-RESIDUAL-MFG-DOC-DETAIL","classification":"unresolved_source","description":"Recover or otherwise govern the historical Appendix F detailed Inventor drafting/style-guide content before removing the open gap from TIVERIT-BIM-STD-S9-INVENTOR-MFG-DOC-001."},
+    {"id":"S9-RESIDUAL-TOOL-AUTHORITY-ENTRIES","classification":"governed_decision_required","description":"Populate authoritative tool/environment assignments per information domain only from explicit organization/project governance decisions. Workflow usage alone is not authority evidence."},
+    {"id":"S9-RESIDUAL-AUTOMATION-ENTRIES","classification":"governed_decision_required","description":"Register concrete production automations, versions, approvals and risk classes through ordinary governance; absence of entries is not evidence that the registry scaffold failed to migrate."}
+  ]
+}
