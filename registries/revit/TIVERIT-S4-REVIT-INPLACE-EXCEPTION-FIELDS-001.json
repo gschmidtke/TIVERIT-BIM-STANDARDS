@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-INPLACE-EXCEPTION-FIELDS-001",
+  "type": "registry",
+  "title": "Revit In-Place Family Exception Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S8", "S2"],
+  "entries": [
+    {"id":"EXCEPTION_SCOPE","name":"Exception scope","requirement":"Each governed in-place family exception shall identify the project/model scope and affected content."},
+    {"id":"UNIQUENESS_BASIS","name":"Uniqueness basis","requirement":"The exception shall state why the geometry is genuinely unique, contextual, non-repeating, or temporary such that governed reusable content is not appropriate."},
+    {"id":"REUSE_ASSESSMENT","name":"Reuse assessment","requirement":"The exception shall record why a loadable family, group, assembly, or other governed reusable construct cannot reasonably satisfy the requirement."},
+    {"id":"SCHEDULE_TAG_IMPACT","name":"Schedule and tag impact","requirement":"The exception shall identify whether the content must be scheduled, tagged, classified, or tracked and how those information requirements are satisfied without manual patching."},
+    {"id":"RATIONALE","name":"Rationale","requirement":"A concise rationale shall be retained for every material in-place exception used in governed production content."},
+    {"id":"APPROVAL_REFERENCE","name":"Approval reference","requirement":"Where project governance requires approval for an in-place exception, the applicable approval decision or delegated authority shall be traceable."},
+    {"id":"PARAMETER_REFERENCE","name":"Governance parameter reference","requirement":"Where exception identity, rationale, status, or approval is carried in model data, the exact parameters shall come from governed S8 parameter authority rather than ad-hoc text fields."},
+    {"id":"TEMPORARY_OR_PERMANENT","name":"Temporary or permanent status","requirement":"The exception shall identify whether the content is temporary or intended to remain in the governed model through delivery."},
+    {"id":"REMEDIATION_TRIGGER","name":"Remediation trigger","requirement":"Where an in-place family becomes repeated, reused, scheduled, standardized, or otherwise exceeds its exception basis, conversion to governed reusable content shall be evaluated."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-MODELING-001"],
+    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001", "TIVERIT-S4-REVIT-FAMILY-CONTENT-FIELDS-001"]
+  },
+  "non_promoted_source_content": [
+    "Source example parameter labels such as Exception Flag, Rationale, and Approver are not promoted as canonical parameter names; exact parameter identities remain S8 registry authority.",
+    "No universal approver role is invented where the project BEP/RACI has not assigned one."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7733249",
+    "source_version": 1,
+    "source_title": "Revit Modeling Standards and Guidelines",
+    "migration_note": "Promotes the durable exception evidence needed for restricted in-place family use without inventing parameter names or approval authority."
+  }
+}

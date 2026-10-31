@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-MODELING-CONSTRUCT-001",
+  "type": "abstract_test",
+  "title": "Revit modeling construct selection and hygiene",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S5", "S6"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-MODELING-001",
+  "governing_clause": "RVT-MOD-03 and RVT-MOD-04",
+  "test_intent": "Determine whether groups, assemblies, linked models, and workshared model structures are being used for their governed purpose without over-grouping, excessive nesting, circular links, or uncontrolled model partitioning.",
+  "applicability": {
+    "applies_when": "The tested scope contains model groups, assemblies, linked Revit models, or governed workshared model partitioning.",
+    "not_applicable_when": "None of these constructs are present in the tested scope."
+  },
+  "required_evidence": [
+    "group and assembly inventory",
+    "group nesting/dependency information where available",
+    "link graph and model breakdown record",
+    "applicable S5/S6 model partitioning and linking strategy",
+    "documented project-specific exception or rationale where applicable"
+  ],
+  "result_logic": {
+    "pass": "Groups and assemblies match their governed repetition/documentation purpose, unmanaged deep nesting or whole-model grouping is absent, link structure is directed and non-circular, and model partitioning follows the governed project strategy.",
+    "fail": "A positive violation is found, including uncontrolled over-grouping, problematic deep nesting, circular links, unmanaged nested links entering governed containers, or a model-breakdown pattern that contradicts available S5/S6 rules.",
+    "not_applicable": "No governed modeling construct in scope requires evaluation.",
+    "indeterminate": "The project model-breakdown, linking, or construct-purpose rules needed for evaluation are unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-MODELING-001",
+    "migration_note": "Appendix E ATS for group/assembly/model-structure hygiene. Project-specific model breakdown remains governed project data."
+  }
+}
