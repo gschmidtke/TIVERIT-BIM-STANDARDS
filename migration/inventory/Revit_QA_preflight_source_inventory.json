@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "id": "REVIT-QA-PREFLIGHT-SOURCE-INVENTORY-001",
+  "type": "migration_source_inventory",
+  "status": "active",
+  "source_system": "confluence",
+  "space": "BST",
+  "scope": "Appendix E Revit QA / Review Checklists and related QA/QC workflow coverage",
+  "inventory_date": "2026-10-31",
+  "sources": [
+    {
+      "page_id": "6422564",
+      "title": "Revit Style Guide - QA / Review Checklists",
+      "source_maturity": "draft_style_focused_instruction",
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-QA-STYLE-001.json"
+      ],
+      "round_006_additions": [
+        "registries/revit/TIVERIT-S5-REVIT-PREFLIGHT-CHECK-FIELDS-001.json",
+        "conformance/abstract/S5/ATS-REVIT-PREISSUE-STYLE-QA-001.json",
+        "conformance/abstract/S5/ATS-REVIT-PREFLIGHT-EVIDENCE-001.json"
+      ],
+      "disposition": "migrated",
+      "notes": "The draft source is intentionally style-focused. Round 006 creates the machine-readable check/evidence layer without converting style QA into technical coordination or acceptance authority."
+    },
+    {
+      "page_id": "6127632",
+      "title": "Workflow & Instruction Catalogue Overview",
+      "source_maturity": "draft_catalogue_with_W7_2_QAQC_workflow",
+      "current_main_matches": [
+        "workflows/W7/TIVERIT-BIM-WF-W7-2-QAQC-VALIDATION-001.json"
+      ],
+      "round_006_additions": [
+        "registries/revit/TIVERIT-S5-REVIT-PREFLIGHT-CHECK-FIELDS-001.json",
+        "conformance/abstract/S5/ATS-REVIT-PREFLIGHT-EVIDENCE-001.json"
+      ],
+      "disposition": "migrated",
+      "notes": "W7.2 already exists as the higher-level QA/QC validation workflow. Round 006 supplies a Revit preflight evidence package that W7.2 can consume; the workflow remains separate from contractual/client acceptance authority."
+    }
+  ],
+  "explicit_non_promotions": [
+    "Source example print scales are not enterprise thresholds.",
+    "Placeholder owners/reviewers are not promoted into role authority.",
+    "No warning-count, purge, file-size, sync-frequency, open-time, or other model-health threshold is invented without an approved source/configuration.",
+    "The QA checklist does not become coordination sign-off or contractual acceptance authority."
+  ]
+}
