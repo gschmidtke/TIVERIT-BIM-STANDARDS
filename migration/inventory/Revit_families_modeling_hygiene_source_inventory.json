@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "id": "REVIT-FAMILIES-MODELING-HYGIENE-SOURCE-INVENTORY-001",
+  "type": "migration_source_inventory",
+  "status": "active",
+  "source_system": "confluence",
+  "space": "BST",
+  "scope": "Appendix E Revit family content, modeling hygiene, and LOD/LOI governance",
+  "inventory_date": "2026-10-31",
+  "sources": [
+    {
+      "page_id": "7733249",
+      "title": "Revit Modeling Standards and Guidelines",
+      "source_maturity": "mixed_normative_instruction_with_examples",
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-MODELING-001.json",
+        "standards/S2-information-requirements/TIVERIT-BIM-STD-S2-LOD-LOI-001.json"
+      ],
+      "round_004_additions": [
+        "registries/revit/TIVERIT-S4-REVIT-FAMILY-CONTENT-FIELDS-001.json",
+        "registries/revit/TIVERIT-S4-REVIT-INPLACE-EXCEPTION-FIELDS-001.json",
+        "conformance/abstract/S4/ATS-REVIT-FAMILY-CONTENT-001.json",
+        "conformance/abstract/S4/ATS-REVIT-MODELING-CONSTRUCT-001.json"
+      ],
+      "disposition": "partially_migrated",
+      "notes": "The L6 modeling instruction already covered information need, reusable content, in-place restrictions, groups/assemblies, and linked/workshared model strategy. Round 004 adds the machine-readable family-content/exception layer and conformance coverage."
+    },
+    {
+      "page_id": "4489217",
+      "title": "Family Naming Standards and Principles for TAIT BIM",
+      "source_maturity": "draft_standard_module",
+      "current_main_matches": [
+        "standards/S4-model-identity-naming/TIVERIT-BIM-STD-S4-FAMILY-NAMING-001.json"
+      ],
+      "round_004_additions": [
+        "registries/revit/TIVERIT-S4-REVIT-FAMILY-CONTENT-FIELDS-001.json"
+      ],
+      "disposition": "partially_migrated",
+      "notes": "Family naming authority already exists in L4. Round 004 connects naming to reusable-content identity, library provenance, parameters, and change control without inventing a family library catalogue."
+    },
+    {
+      "page_id": "2425330",
+      "title": "LOD & LOI — Level of Development and Level of Information",
+      "source_maturity": "foundational_draft_standard",
+      "current_main_matches": [
+        "standards/S2-information-requirements/TIVERIT-BIM-STD-S2-LOD-LOI-001.json"
+      ],
+      "round_004_additions": [
+        "registries/revit/TIVERIT-S4-REVIT-FAMILY-CONTENT-FIELDS-001.json"
+      ],
+      "disposition": "migrated",
+      "notes": "LOD/LOI authority already exists in current main. Round 004 references it as the information-need authority for family/model content; no source numeric or phase-specific requirements are newly promoted."
+    }
+  ]
+}
