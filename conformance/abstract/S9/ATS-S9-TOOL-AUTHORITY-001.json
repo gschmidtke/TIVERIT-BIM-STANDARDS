@@ -28,6 +28,7 @@
   "permitted_implementation_classes": ["registry_checker", "human_verification", "hybrid"],
   "provenance": {
     "source_system": "confluence",
+    "derived_from": "REQ-S9-AUTH-001",
     "source_page_id": "4554779",
     "source_title": "Tool Authority Matrix – Governance Scaffold (GAP-S9-02)",
     "migration_note": "Promotes the source validation hook into abstract conformance without inventing any product-specific authority assignment. Empty or incomplete registry coverage remains visible rather than being silently normalized."
