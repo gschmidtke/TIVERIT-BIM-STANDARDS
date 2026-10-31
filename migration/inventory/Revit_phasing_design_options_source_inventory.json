@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "id": "REVIT-PHASING-DESIGN-OPTIONS-SOURCE-INVENTORY-001",
+  "type": "migration_source_inventory",
+  "status": "active",
+  "source_system": "confluence",
+  "space": "BST",
+  "scope": "Appendix E Revit phasing, phase-filter, and Design Option controls",
+  "inventory_date": "2026-10-31",
+  "sources": [
+    {
+      "page_id": "7241762",
+      "title": "View Standards – Instructions, Definitions, Workflows",
+      "source_maturity": "current_instruction_and_workflow_guidance",
+      "source_findings": [
+        "Views are expected to use consistent phase and phase-filter settings aligned to project requirements.",
+        "Phase and filter settings should be applied through view templates wherever possible.",
+        "Design Option visibility should normally inherit the project primary option; By View is reserved for cases where required.",
+        "The source explicitly leaves default primary options per discipline unresolved."
+      ],
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-VIEWS-001.json",
+        "registries/revit/TIVERIT-S4-REVIT-VIEW-PURPOSE-FIELDS-001.json",
+        "conformance/abstract/S4/ATS-REVIT-VIEW-TEMPLATE-001.json"
+      ],
+      "round_005_additions": [
+        "registries/revit/TIVERIT-S4-REVIT-PHASE-OPTION-CONTROL-FIELDS-001.json",
+        "conformance/abstract/S4/ATS-REVIT-PHASING-001.json",
+        "conformance/abstract/S4/ATS-REVIT-DESIGN-OPTIONS-001.json"
+      ],
+      "disposition": "partially_migrated"
+    },
+    {
+      "page_id": "7798793",
+      "title": "Revit Standards and Workflow Guidelines",
+      "source_maturity": "current_instructional_guidance",
+      "source_findings": [
+        "View Phase and Phase Filter are to be set in templates and verified with representative existing/new/demolition conditions.",
+        "Phase-filter graphics should be checked against the intended legend and communication purpose."
+      ],
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-VIEWS-001.json"
+      ],
+      "round_005_additions": [
+        "registries/revit/TIVERIT-S4-REVIT-PHASE-OPTION-CONTROL-FIELDS-001.json",
+        "conformance/abstract/S4/ATS-REVIT-PHASING-001.json"
+      ],
+      "disposition": "partially_migrated"
+    },
+    {
+      "page_id": "6193190",
+      "title": "Category & Subcategory Graphics Standards and Guidelines",
+      "source_maturity": "current_graphics_guidance",
+      "source_findings": [
+        "Phase filters and Design Options can alter visibility and graphics and therefore must remain coordinated with governed View Standards."
+      ],
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-GRAPHICS-001.json",
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-VIEWS-001.json"
+      ],
+      "round_005_additions": [
+        "registries/revit/TIVERIT-S4-REVIT-PHASE-OPTION-CONTROL-FIELDS-001.json",
+        "conformance/abstract/S4/ATS-REVIT-DESIGN-OPTIONS-001.json"
+      ],
+      "disposition": "partially_migrated"
+    }
+  ],
+  "non_promoted_items": [
+    "Source example phase names and phase-filter combinations",
+    "Any universal enterprise phase sequence",
+    "Default primary Design Options per discipline",
+    "Option-set names or option naming syntax",
+    "Project-specific workset/Design Option combinations"
+  ]
+}
