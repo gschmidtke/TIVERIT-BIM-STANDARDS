@@ -1,0 +1,44 @@
+{
+  "schema_version":"0.1",
+  "id":"S7-SOURCE-INVENTORY-ROUND-001",
+  "type":"source_inventory",
+  "status":"active",
+  "domain":"S7 exchanges and lifecycle deliverables",
+  "source_objects":[
+    {
+      "page_id":"3047539",
+      "title":"JSON - Submission, Deliverables & Handover",
+      "disposition":"migrated",
+      "repository_objects":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"]
+    },
+    {
+      "page_id":"4292618",
+      "title":"BEP Template Scaffold for GAP-S7-01 Deliverables and Exchange Schedules",
+      "disposition":"migrated",
+      "repository_objects":["TIVERIT-S7-EXCHANGE-DELIVERABLE-FIELDS-001","ATS-S7-EXCHANGE-DECLARATION-001"],
+      "boundary":"Actual deliverable lists, dates, windows, formats, CDE paths, parties and acceptance assignments remain project/BEP content."
+    },
+    {
+      "page_id":"4554771",
+      "title":"GAP-S7-02 Asset / Lifecycle Deliverable Schemas Governance Scaffold",
+      "disposition":"migrated",
+      "repository_objects":["TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001","ATS-S7-HANDOVER-SCHEMA-REFERENCE-001"],
+      "boundary":"Full COBie/client field lists and project-populated asset datasets remain separate governed schema artifacts or project deliverables."
+    },
+    {
+      "page_id":"7438366",
+      "title":"Revit Style Guide - Appendix E",
+      "disposition":"merged_into_other_object",
+      "repository_objects":["TIVERIT-BIM-INS-REVIT-DOC-EXPORT-001"],
+      "boundary":"Draft/example PDF, IFC and other export values were migrated conservatively as tool instructions; unresolved exact presets remain project/configuration inputs."
+    },
+    {
+      "page_id":"8060929",
+      "title":"ACC / BIM 360 Deliverable Exchange Standard",
+      "disposition":"merged_into_other_object",
+      "repository_objects":["TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001","TIVERIT-BIM-STD-S5-ACC-RECORDS-001"],
+      "boundary":"Platform-specific exchange mechanics implement but do not redefine S7 delivery/acceptance authority."
+    }
+  ],
+  "curator_conclusion":"The source-side S7 migration gaps are structurally closed. Remaining project values and client-specific lifecycle schemas are configuration/project content rather than unmigrated enterprise doctrine."
+}

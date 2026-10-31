@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-S7-HANDOVER-SCHEMA-REFERENCE-001",
+  "type": "abstract_test",
+  "title": "S7 governed handover schema reference",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S7", "S8"],
+  "governing_object_id": "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+  "governing_clause": "REQ-S7-006 and REQ-S7-007",
+  "test_intent": "Determine whether structured asset or lifecycle handover deliverables reference an identifiable governed schema and version with a validation and exception route rather than relying on an undocumented field list.",
+  "applicability": {
+    "applies_when": "The handover scope includes an asset register, COBie-like dataset, equipment schedule, O&M/lifecycle dataset, or another structured lifecycle deliverable.",
+    "not_applicable_when": "The tested handover scope contains no structured asset or lifecycle dataset."
+  },
+  "required_evidence": [
+    "applicable schema identity and version",
+    "authoritative schema artifact reference",
+    "declared project applicability reference",
+    "validation method or validation reference",
+    "evidence artifact expectation",
+    "exception/deviation route where applicable"
+  ],
+  "result_logic": {
+    "pass": "Every applicable structured lifecycle deliverable references a governed schema and version with traceable validation and exception handling.",
+    "fail": "An applicable lifecycle deliverable is produced or accepted against an undocumented, unversioned, or untraceable schema basis.",
+    "not_applicable": "No structured asset/lifecycle dataset is required in the tested handover scope.",
+    "indeterminate": "The project handover requirement exists but the governing schema catalogue entry or authoritative schema artifact is unavailable."
+  },
+  "permitted_implementation_classes": ["registry_checker", "file_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001",
+    "migration_note": "Derived from GAP-S7-02 source scaffold. This test checks governed schema reference and versioning, not completeness against any proprietary client field list that is not present in the repository."
+  }
+}

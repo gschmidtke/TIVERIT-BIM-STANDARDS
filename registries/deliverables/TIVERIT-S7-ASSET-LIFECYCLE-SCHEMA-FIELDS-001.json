@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001",
+  "type": "registry",
+  "title": "S7 Asset and Lifecycle Schema Governance Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S7", "S8"],
+  "entries": [
+    {"id":"SCHEMA_ID","name":"Stable schema identity","requirement":"Each governed asset or lifecycle schema shall have a stable identifier that can be referenced from project deliverables and validation evidence."},
+    {"id":"SCHEMA_NAME","name":"Schema name","requirement":"Each schema shall have a human-readable name that identifies the structured handover or lifecycle information it governs."},
+    {"id":"PURPOSE","name":"Purpose or intended lifecycle use","requirement":"The lifecycle process or downstream use supported by the schema shall be declared explicitly."},
+    {"id":"ORIGIN","name":"Standard, client, or governed origin","requirement":"The schema shall identify whether its authority originates from an industry standard, client requirement, governed enterprise template, or other approved source."},
+    {"id":"AUTHORITATIVE_STORAGE","name":"Authoritative schema artifact","requirement":"The authoritative JSON, spreadsheet, database, specification, or other governed schema artifact shall be referenced rather than duplicating full field lists in S7 doctrine."},
+    {"id":"STATUS","name":"Schema status","requirement":"Each schema shall carry a governed lifecycle status such as draft, approved, deprecated, or superseded."},
+    {"id":"VERSION","name":"Schema version","requirement":"Each schema shall carry an identifiable version so project teams can state which version applies to a handover obligation."},
+    {"id":"FIELD_DOMAINS","name":"Field groups or domains","requirement":"The schema shall identify the principal information domains it governs, such as asset identity, location, classification, performance, maintenance, warranty, or other approved domains."},
+    {"id":"MINIMUM_REQUIREMENTS","name":"Minimum required information basis","requirement":"The schema shall define or reference its minimum required fields or required information categories without relying on undocumented project assumptions."},
+    {"id":"EXTENSION_POLICY","name":"Optional or client extension policy","requirement":"The schema shall identify how optional or client-specific extensions are activated and how deviations from the base schema are recorded."},
+    {"id":"CHANGE_CONTROL","name":"Schema change control","requirement":"The route for proposing, reviewing, approving, and communicating schema changes shall be identifiable."},
+    {"id":"VALIDATION_METHOD","name":"Validation method","requirement":"The schema shall declare or reference the validation approach for completeness, valid values, classifications, and required relationships."},
+    {"id":"EVIDENCE_ARTIFACTS","name":"Validation evidence artifacts","requirement":"Expected validation reports, QA logs, exported datasets, or equivalent evidence shall be identifiable."},
+    {"id":"EXCEPTION_ROUTE","name":"Exception or deviation route","requirement":"Missing information, approved exceptions, and client-specific departures shall be traceable through a governed deviation route."},
+    {"id":"PROJECT_APPLICATION_REF","name":"Project applicability reference","requirement":"Projects shall identify which governed schema and version applies in the BEP or equivalent project instrument; project population remains separate from this registry."
+    }
+  ],
+  "relationships": {
+    "standard": "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+    "information_structure_standard": "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"
+  },
+  "non_promoted_source_content": [
+    "Example schema IDs and names from the source scaffold are illustrative only.",
+    "No COBie field list, client-proprietary asset template, or client-specific acceptance rule is promoted by this registry.",
+    "Actual project population of lifecycle schemas remains a project execution obligation."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "4554771",
+    "source_version": 1,
+    "source_title": "GAP-S7-02 Asset / Lifecycle Deliverable Schemas Governance Scaffold",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4554771",
+    "migration_note": "Migrated the governance scaffold into machine-readable schema-catalogue fields without embedding full COBie/client field lists or project-specific asset data."
+  }
+}

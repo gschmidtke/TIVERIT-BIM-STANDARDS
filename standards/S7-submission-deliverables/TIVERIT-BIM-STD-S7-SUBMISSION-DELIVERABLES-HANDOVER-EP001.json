@@ -27,8 +27,19 @@
     {"id":"REQ-S7-016","authority":"shall","statement":"Where post-handover correction remains after acceptance, the remaining correction scope shall be explicitly bounded and traceable; new scope or changed requirements shall not be treated as defects unless separately governed and agreed.","verification_class":"human_verifiable"},
     {"id":"REQ-S7-017","authority":"shall","statement":"Acceptance shall be evaluated against fitness for the declared purpose and applicable acceptance criteria rather than inferred from absolute completeness or visual finality.","verification_class":"human_verifiable"}
   ],
-  "relationships": {"upstream_standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"implementation_standards":["TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S5-MILESTONE-VS-EXCHANGE-EP001","TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001","TIVERIT-BIM-STD-S5-ACC-RECORDS-001"],"roles":["ROLE-MODEL-AUTHOR-001","ROLE-BIM-DETAILER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-PROJECT-BIM-MANAGER-001","ROLE-DESIGN-LEAD-001","ROLE-PROJECT-DIRECTOR-001"]},
-  "implementation_gaps": ["GAP-S7-01","GAP-S7-02"],
+  "relationships": {
+    "upstream_standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "implementation_standards":["TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S5-MILESTONE-VS-EXCHANGE-EP001","TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001","TIVERIT-BIM-STD-S5-ACC-RECORDS-001"],
+    "registries":["TIVERIT-S7-DELIVERABLE-TYPES-001","TIVERIT-S7-EXCHANGE-DELIVERABLE-FIELDS-001","TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001"],
+    "conformance":["ATS-S7-EXCHANGE-DECLARATION-001","ATS-S7-HANDOVER-SCHEMA-REFERENCE-001"],
+    "roles":["ROLE-MODEL-AUTHOR-001","ROLE-BIM-DETAILER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-PROJECT-BIM-MANAGER-001","ROLE-DESIGN-LEAD-001","ROLE-PROJECT-DIRECTOR-001"]
+  },
+  "implementation_gaps": [],
+  "governance_notes": [
+    "Project deliverable lists, dates, exchange windows, formats, CDE paths, and acceptance assignments remain project/BEP declarations and are not enterprise defaults.",
+    "Asset/lifecycle schema governance defines how a schema is identified, versioned, referenced, validated, and deviated from; full client-proprietary or COBie field lists are separate governed artifacts where applicable.",
+    "Tool-specific PDF, IFC, NWC, RVT, DWG, or platform export procedures remain in L6 instructions/configuration and do not alter S7 exchange authority or acceptance semantics."
+  ],
   "provenance": {
     "source_system":"confluence",
     "space":"BST",
@@ -36,7 +47,7 @@
     "source_version":1,
     "source_title":"JSON - Submission, Deliverables & Handover",
     "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3047539",
-    "supporting_page_ids":["2457714","2326562","2457722"],
-    "migration_note":"Primary machine-readable L4 S7 source enriched from source doctrine on formal exchange, semantic decodability, acceptance fitness, and bounded handover closure. Source-specific contractual assertions were not promoted; project-specific legal and appointment effects remain governed by applicable project instruments."
+    "supporting_page_ids":["2457714","2326562","2457722","4292618","4554771"],
+    "migration_note":"Primary machine-readable L4 S7 source enriched from source doctrine on formal exchange, semantic decodability, acceptance fitness, bounded handover closure, project deliverable/exchange declarations, and asset/lifecycle schema governance. Project-specific legal, schedule, format, path, schema-instance and appointment effects remain governed by applicable project instruments."
   }
 }

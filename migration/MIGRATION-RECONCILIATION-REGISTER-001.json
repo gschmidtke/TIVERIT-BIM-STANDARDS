@@ -6,16 +6,7 @@
   "source_issue": "https://github.com/gschmidtke/STAR-T-GATE-INBOX/issues/6",
   "source_scope": "Existing Confluence source inventory versus current TIVERIT-BIM-STANDARDS main",
   "purpose": "Track source-to-current-main reconciliation and prevent stale branch comparisons from being treated as canonical migration gaps.",
-  "allowed_dispositions": [
-    "migrated",
-    "partially_migrated",
-    "merged_into_other_object",
-    "superseded",
-    "source_evidence_only",
-    "intentionally_not_promoted",
-    "migration_missing",
-    "unresolved_source"
-  ],
+  "allowed_dispositions": ["migrated","partially_migrated","merged_into_other_object","superseded","source_evidence_only","intentionally_not_promoted","migration_missing","unresolved_source"],
   "rules": [
     "Repository absence alone does not authorize promotion from source material.",
     "Confluence presence alone does not make an item normative in the repository.",
@@ -81,11 +72,11 @@
     {
       "domain": "S7 exchanges and lifecycle deliverables",
       "standards_scope": ["S7"],
-      "source_summary": "Exchange schedules, lifecycle/asset schemas and export presets are reported in Confluence.",
-      "current_main_summary": "Current status not yet reconciled object by object in this curator round.",
-      "disposition": "unresolved_source",
-      "confidence": "pending_reconciliation",
-      "next_action": "Perform object-level source-to-main comparison before classifying missing versus migrated content."
+      "source_summary": "Source coverage includes the normative S7 standard, a BEP scaffold for deliverable lists/exchange schedules, an asset/lifecycle schema-governance scaffold, ACC exchange implementation, and Revit/Navisworks export/deliverable guidance.",
+      "current_main_summary": "Object-level reconciliation is complete. Current main contains S7 normative doctrine, deliverable types, exchange/deliverable declaration fields, asset/lifecycle schema-governance fields, conformance for exchange declaration completeness and handover schema reference, platform/tool implementation objects, and source inventory. Draft/example export preset values remain project/configuration inputs rather than unmigrated S7 doctrine.",
+      "disposition": "migrated",
+      "confidence": "high_object_level_reconciliation_complete",
+      "next_action": "No further source-migration batch required for S7. Maintain concrete project exchange schedules, client asset schemas, COBie profiles, transmittal records, and tool presets through project configuration or ordinary standards evolution."
     },
     {
       "domain": "BEP interview engine and automation",
