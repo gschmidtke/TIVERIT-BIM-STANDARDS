@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-KEYNOTE-CODE-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Keynote and Annotation Code Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S8"],
+  "entries": [
+    {"id":"CODE_SYSTEM","name":"Code system","requirement":"Each governed keynote or annotation-code profile shall identify whether it is specification-based, internally coded, or another approved controlled system."},
+    {"id":"MASTER_SOURCE","name":"Master source identity","requirement":"The profile shall identify the controlled master data source used by Revit rather than relying on untracked local copies."},
+    {"id":"OWNER","name":"Governance owner","requirement":"The profile shall identify the role responsible for maintenance of the controlled code source."},
+    {"id":"EDIT_AUTHORITY","name":"Edit authority","requirement":"The profile shall identify which governed roles may modify the master code source."},
+    {"id":"VERSION_ARCHIVE","name":"Version and archive basis","requirement":"Changes to the code source shall be versioned or otherwise traceable so historical project references remain interpretable."},
+    {"id":"ANNOTATION_STYLE","name":"Annotation style reference","requirement":"The profile shall reference the approved annotation style used to display the keynote or code without embedding unresolved source-era formatting examples."},
+    {"id":"ASSOCIATIVITY","name":"Associativity requirement","requirement":"Where element- or material-associated keynoting is applicable, governed associative data shall be preferred over independent free text."},
+    {"id":"PROJECT_DEVIATION","name":"Project deviation","requirement":"Any project-specific code list or deviation shall be identified, governed, and separated from the enterprise master source."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-ANNOTATION-001"]
+  },
+  "non_promoted_source_content": [
+    "No source placeholder path, owner name, review cadence, graphic style, or code list is promoted as an approved enterprise value."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "5799975",
+    "source_version": 1,
+    "source_title": "Annotation Standards – Instructions, Definitions, Workflows",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/5799975",
+    "migration_note": "Migrates keynote/code governance structure while preserving unresolved owner, path, cadence, and style values as future governed data."
+  }
+}
