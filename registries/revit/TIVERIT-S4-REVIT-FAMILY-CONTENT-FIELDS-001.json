@@ -30,7 +30,7 @@
     "source_system": "confluence",
     "space": "BST",
     "page_ids": ["7733249", "4489217", "2425330"],
-    "source_titles": ["Revit Modeling Standards and Guidelines", "Family Naming Standards and Principles for TAIT BIM", "LOD & LOI — Level of Development and Level of Information"],
-    "migration_note": "Promotes the durable machine-readable fields needed to govern reusable family content and connect family identity, information need, parameters, library provenance, and change control."
+    "source_titles": ["Revit Modeling Standards and Guidelines", "Family Naming Standards and Principles — legacy source", "LOD & LOI — Level of Development and Level of Information"],
+    "migration_note": "Promotes the durable machine-readable fields needed to govern reusable family content and connect family identity, information need, parameters, library provenance, and change control. The retired organization label in the legacy source title is intentionally not reproduced in canonical machine-readable content."
   }
 }
