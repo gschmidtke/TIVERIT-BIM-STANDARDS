@@ -96,9 +96,11 @@
   "provenance": {
     "source_system":"confluence",
     "space":"BST",
-    "page_ids":["7241762","7798793","6193190"],
+    "page_id":"7241762",
     "source_version":1,
-    "source_titles":["View Standards – Instructions, Definitions, Workflows","Revit Standards and Workflow Guidelines","Category & Subcategory Graphics Standards and Guidelines"],
+    "source_title":"View Standards – Instructions, Definitions, Workflows",
+    "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241762",
+    "supporting_page_ids":["7798793","6193190"],
     "migration_note":"Round 005 expands the existing L6 view instruction with explicit project-bound phasing and Design Option controls while leaving source example phase names, filters, and unresolved primary-option defaults noncanonical."
   }
 }
