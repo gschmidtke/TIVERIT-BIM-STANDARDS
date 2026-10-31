@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "id": "REVIT-ANNOTATIONS-TAGS-SOURCE-INVENTORY-001",
+  "type": "migration_source_inventory",
+  "status": "active",
+  "source_system": "confluence",
+  "space": "BST",
+  "scope": "Appendix E Revit annotation, tag and keynote governance",
+  "inventory_date": "2026-10-31",
+  "sources": [
+    {
+      "page_id": "5799975",
+      "title": "Annotation Standards – Instructions, Definitions, Workflows",
+      "source_maturity": "governed_instruction_with_many_unresolved_style_and_library_values",
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-ANNOTATION-001.json",
+        "registries/parameters/TIVERIT-BIM-STD-S8-SP-REG-001.json"
+      ],
+      "round_002_additions": [
+        "registries/revit/TIVERIT-S4-REVIT-ANNOTATION-TYPE-FIELDS-001.json",
+        "registries/revit/TIVERIT-S8-REVIT-TAG-PARAMETER-MAPPING-FIELDS-001.json",
+        "registries/revit/TIVERIT-S4-REVIT-KEYNOTE-CODE-FIELDS-001.json",
+        "conformance/abstract/S4/ATS-REVIT-ANNOTATION-TYPE-001.json",
+        "conformance/abstract/S8/ATS-REVIT-TAG-PARAMETER-MAPPING-001.json"
+      ],
+      "disposition": "partially_migrated",
+      "notes": "Durable governance for controlled annotation types, parameter-driven tags and keynote/code sources is migrated. Exact fonts, paper sizes, dimension styles, family names, owner/path values and discipline-specific catalogues remain unresolved and are not promoted from TODO/example source content."
+    }
+  ],
+  "remaining_source_delta": [
+    "approved annotation type catalogue values",
+    "approved tag-family catalogue entries and exact parameter mappings by discipline/category",
+    "approved keynote/code master-source configuration",
+    "exact font, paper-size, dimension, leader, symbol and tolerance settings where enterprise defaults are intended",
+    "discipline-specific applicability and approved deviations"
+  ],
+  "completion_rule": "The annotation/tag source is fully migrated only when each unresolved catalogue/configuration value is either governed, explicitly project-driven, or intentionally retained as source evidence."
+}

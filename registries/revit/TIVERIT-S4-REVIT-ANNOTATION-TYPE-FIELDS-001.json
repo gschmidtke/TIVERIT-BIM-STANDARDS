@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-ANNOTATION-TYPE-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Annotation Type Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S8"],
+  "entries": [
+    {"id":"ANNOTATION_CLASS","name":"Annotation class","requirement":"Each governed annotation type shall identify whether it is text, dimension, tag, symbol, keynote, spot annotation, or another approved annotation class."},
+    {"id":"TYPE_IDENTITY","name":"Type identity","requirement":"Each governed annotation type shall have a stable identity sufficient to distinguish it from local duplicates or ad-hoc variants."},
+    {"id":"INTENDED_USE","name":"Intended use","requirement":"Each governed annotation type shall declare its intended use and applicable documentation context."},
+    {"id":"APPLICABLE_DISCIPLINE","name":"Applicable discipline or scope","requirement":"Where annotation behavior is discipline-specific, the applicable discipline or scope shall be declared."},
+    {"id":"DISPLAY_PROPERTIES","name":"Display properties","requirement":"The governed type shall reference or declare the approved display properties required for its class, such as font, paper text size, line/leader behavior, symbol form, or equivalent."},
+    {"id":"UNITS_PRECISION","name":"Units and precision basis","requirement":"Dimension and numerical annotation types shall reference the applicable governed units, precision, rounding, and tolerance basis rather than relying on uncontrolled local settings."},
+    {"id":"PARAMETER_DEPENDENCIES","name":"Parameter dependencies","requirement":"Where annotation content is data-driven, the type shall reference the governed parameter identities or parameter registry on which it depends."},
+    {"id":"LIBRARY_SOURCE","name":"Library or template source","requirement":"Governed annotation types shall be traceable to the approved template, family library, or other controlled source from which project instances are derived."},
+    {"id":"CHANGE_CONTROL","name":"Change control","requirement":"Changes to governed annotation types shall follow standards governance and shall not be introduced as untracked project-local variants."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-ANNOTATION-001"],
+    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001"]
+  },
+  "non_promoted_source_content": [
+    "No source TODO font family, paper text size, line spacing, color, dimension precision, arrow/tick style, or tolerance value is promoted as an enterprise default.",
+    "No placeholder annotation type name from the source is treated as canonical until separately approved."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "5799975",
+    "source_version": 1,
+    "source_title": "Annotation Standards – Instructions, Definitions, Workflows",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/5799975",
+    "migration_note": "Promotes the durable machine-readable fields required to govern annotation types while retaining unresolved style values as configuration data."
+  }
+}

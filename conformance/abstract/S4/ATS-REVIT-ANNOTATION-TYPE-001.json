@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-ANNOTATION-TYPE-001",
+  "type": "abstract_test",
+  "title": "Revit governed annotation types",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S8"],
+  "governing_object_id": "TIVERIT-S4-REVIT-ANNOTATION-TYPE-FIELDS-001",
+  "governing_clause": "TYPE_IDENTITY, DISPLAY_PROPERTIES and PARAMETER_DEPENDENCIES",
+  "test_intent": "Determine whether applicable Revit annotation instances use governed annotation types and whether local duplicates or uncontrolled formatting variants have been introduced.",
+  "applicability": {
+    "applies_when": "The tested model or template contains text, dimensions, tags, symbols, keynotes, spot annotations, or other annotation classes covered by a governed annotation-type profile.",
+    "not_applicable_when": "No governed annotation-type profile applies to the tested scope."
+  },
+  "required_evidence": [
+    "inventory of applicable annotation instances and type identities",
+    "applicable governed annotation-type profile",
+    "observed type properties and parameter dependencies",
+    "approved exception or deviation records where applicable"
+  ],
+  "result_logic": {
+    "pass": "Applicable annotations use approved governed types or approved exceptions and their governed properties/dependencies match the applicable profile without uncontrolled local variants.",
+    "fail": "An applicable annotation uses an unapproved duplicate/local type or deviates from an available governed profile without approved exception.",
+    "not_applicable": "No governed annotation-type profile applies to the tested scope.",
+    "indeterminate": "The required annotation-type catalogue/profile or expected properties are unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-S4-REVIT-ANNOTATION-TYPE-FIELDS-001",
+    "migration_note": "Derived from Appendix E annotation governance. Exact fonts, sizes, family names and dimension values remain configuration data until approved."
+  }
+}
