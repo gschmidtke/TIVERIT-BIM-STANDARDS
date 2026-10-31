@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/abstract-test.schema.json",
+  "id": "ATS-S8-CLASSIFICATION-ASSIGNMENT-001",
+  "type": "abstract_test",
+  "title": "S8 Governed Classification Assignment",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "requirement_id": "REQ-S8-007",
+  "governing_clause": "S8.4 Classification Systems",
+  "test_intent": "Verify that classification values required for a declared information use resolve through a governed classification system/code set and are carried through the governed parameter or data-carrier mapping.",
+  "applicability": {"applies_when":"The project information requirements declare classification for a model/content scope or a governed mapping rule applies to the tested content.","not_applicable_when":"No classification requirement applies to the tested scope under S2/project declarations."},
+  "required_evidence": ["Applicable classification system/code-set reference","Applicable mapping rule or project declaration","Observed classification value/reference on tested content","Governed carrier/parameter reference","Applicable model/content identity"],
+  "result_logic": {
+    "pass":"Every applicable tested item carries a classification value that resolves to the declared governed system/code set through the applicable governed mapping/carrier rule.",
+    "fail":"An applicable item lacks the required classification, uses an uncontrolled/conflicting system or code, or stores the classification outside the governed carrier without an approved deviation.",
+    "not_applicable":"The tested scope has no declared classification requirement.",
+    "indeterminate":"The project declares classification but the applicable system, code set, mapping rule, carrier, or source requirement cannot be resolved."
+  },
+  "permitted_implementation_classes": ["model_checker","registry_checker","api_checker","hybrid","human_verification"],
+  "provenance": {"source_system":"confluence","derived_from":"page 4423719 Classification Registry & Protocol Governance Scaffold; REQ-S8-007","migration_note":"Derived from VC-001 concept and S8 classification consistency requirement. No classification system or code list is assumed as mandatory."}
+}
