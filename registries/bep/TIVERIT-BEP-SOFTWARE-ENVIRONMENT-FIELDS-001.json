@@ -24,9 +24,10 @@
   ],
   "governance_notes": [
     "This registry defines the capture contract for BEP software-environment project data; it does not approve products or versions.",
+    "It supports the software_environment topic in the governed BEP workflow, including question BEP-Q-008; the question identifier is descriptive context rather than a cross-object registry reference.",
     "Product authority must not be inferred from technical capability or source-era examples; applicable S9 tool-authority decisions remain separately governed.",
     "Only fields material to the selected workflow need values; missing required project decisions remain unresolved or deferred rather than invented."
   ],
-  "relationships": {"workflow":"TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001","question_id":"BEP-Q-008","standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001"]},
+  "relationships": {"workflow":"TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001","standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001"]},
   "provenance": {"source_system":"confluence","space":"BST","page_id":"14090241","source_version":1,"source_title":"BEP Interview Production — Punch List (Readiness to Production)","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/14090241","migration_note":"Migrates the durable software-environment capture contract. Source-era product examples and runtime/module naming are not promoted as authority."}
 }
