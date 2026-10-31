@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-S7-EXCHANGE-DECLARATION-001",
+  "type": "abstract_test",
+  "title": "S7 formal exchange declaration completeness",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S7"],
+  "governing_object_id": "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+  "governing_clause": "REQ-S7-003, REQ-S7-010 and REQ-S7-012",
+  "test_intent": "Determine whether a planned or executed formal exchange is sufficiently declared for the receiving party to identify the issued information, purpose, scope, milestone context, permitted use, and issue record without inference.",
+  "applicability": {
+    "applies_when": "A project declares or executes a formal information exchange or deliverable issue under S7.",
+    "not_applicable_when": "The tested event is only a technical transfer with no claim of formal exchange or delivery."
+  },
+  "required_evidence": [
+    "project deliverable declaration or BEP deliverable list",
+    "exchange schedule or event declaration",
+    "intended-use and scope declaration",
+    "milestone or exchange-context reference",
+    "issue/transmittal record or planned record mechanism",
+    "review and acceptance-route references where applicable"
+  ],
+  "result_logic": {
+    "pass": "The exchange and its expected deliverables are declared with the applicable governed fields and can be interpreted without relying on undocumented assumptions.",
+    "fail": "A formal exchange is missing material declaration fields such as purpose, scope, intended use, milestone/event context, deliverable references, issue record, or applicable review/acceptance route.",
+    "not_applicable": "No formal exchange is asserted for the tested transfer or event.",
+    "indeterminate": "The governing project deliverable/exchange declaration or applicable authority references are unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["registry_checker", "file_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-S7-EXCHANGE-DELIVERABLE-FIELDS-001",
+    "migration_note": "Derived from GAP-S7-01 source scaffold and current S7 formal-exchange requirements. Project dates, formats, paths, and authority assignments remain project-specific."
+  }
+}
