@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-W5-1-MODEL-COORDINATION-001",
+  "legacy_ids": ["W5.1"],
+  "type": "workflow",
+  "title": "Model Coordination Workflow",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S5", "S6"],
+  "trigger": "Coordination cycle or milestone review",
+  "automation_readiness": "ASSISTED",
+  "steps": [
+    {"id":"I5.1.001","action":"Assemble the federated model set for review."},
+    {"id":"I5.1.002","action":"Run applicable coordination checks, including clash or other governed checks."},
+    {"id":"I5.1.003","action":"Log findings and assign responsibilities."},
+    {"id":"I5.1.004","action":"Publish the coordination report and next actions."}
+  ],
+  "outputs": [
+    "Federated coordination review set",
+    "Logged coordination findings",
+    "Assigned actions",
+    "Published coordination report"
+  ],
+  "governance_notes": [
+    "The source identifies future Issue Register and Coordination Log assets.",
+    "Technical coordination findings and evidence do not themselves grant formal acceptance; S5 authority remains separate."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6127632",
+    "source_version": 1,
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632",
+    "migration_note": "Source workflow W5.1 migrated from the workflow catalogue. Future Issue Register and Coordination Log remain unresolved."
+  }
+}

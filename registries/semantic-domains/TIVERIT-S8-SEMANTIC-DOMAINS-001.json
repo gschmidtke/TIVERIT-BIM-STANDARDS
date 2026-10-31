@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S8-SEMANTIC-DOMAINS-001",
+  "type": "registry",
+  "title": "S8 Semantic Domain Ownership Registry",
+  "status": "migration_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S8"],
+  "scope": {
+    "purpose": "Resolve semantic domains used by S8 parameter governance to governed owner roles where source evidence exists, while preserving unresolved owner hooks without invention."
+  },
+  "entries": [
+    {"id":"DOMAIN-MATERIALS","name":"materials","status":"migration_candidate","purpose":"Material definitions, finishes, manufacturing specifications, and physical properties attached to model geometry.","owner_role":"ROLE-DISCIPLINE-LEAD-001","resolution":"exact"},
+    {"id":"DOMAIN-QAQC","name":"qaqc","status":"migration_candidate","purpose":"Quality assurance, compliance tracking, model validation flags, and review status parameters.","owner_role":"ROLE-QAQC-AUTHORITY-001","resolution":"exact"},
+    {"id":"DOMAIN-AVLC","name":"avlc","status":"migration_candidate","purpose":"Audio, Video, Lighting, and Controls device identity, rack, and mounting parameters.","owner_role":null,"owner_function":"AVLC Lead","resolution":"unresolved"},
+    {"id":"DOMAIN-ASSET","name":"asset","status":"migration_candidate","purpose":"Maintainable asset identity, lifecycle attributes, warranty, and facility-management operations data.","owner_role":null,"owner_function":"FM Lead","resolution":"unresolved"},
+    {"id":"DOMAIN-EXPORT","name":"export","status":"migration_candidate","purpose":"Cross-platform interoperability, IFC mapping, manufacturing exports, and external exchange schemas.","owner_role":"ROLE-TOOL-AUTHORITY-001","resolution":"alias"},
+    {"id":"DOMAIN-CORE-GOVERNANCE","name":"core_governance","status":"migration_candidate","purpose":"Parameter standards, classification-system adoption, and master-registry change control.","owner_role":"ROLE-BIM-STANDARDS-MGR-001","resolution":"exact"},
+    {"id":"DOMAIN-PROJECT-INFO","name":"project_info","status":"migration_candidate","purpose":"Project context, identifiers, client references, phase, and baseline metadata across federated models.","owner_role":"ROLE-PROJECT-BIM-MANAGER-001","resolution":"exact"},
+    {"id":"DOMAIN-SHEETS","name":"sheets","status":"migration_candidate","purpose":"Titleblock properties, drawing sheet numbering, issue dates, and revision tracking.","owner_role":"ROLE-PROJECT-BIM-MANAGER-001","resolution":"alias"}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001", "TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001"],
+    "workflows": ["TIVERIT-SP-REGISTRY-001"],
+    "registries": ["REG-ROLE-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "3768321",
+    "source_version": 1,
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3768321",
+    "migration_note": "Semantic domains are extracted from the shared-parameter governance workflow and reconciled to the governed Role Registry where exact or source-supported alias mappings exist. AVLC Lead and FM Lead remain unresolved."
+  }
+}

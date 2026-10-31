@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S2-SEL-GOV-001",
+  "type": "standard",
+  "title": "Showset Element List (SEL) as Governed Information",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S2"],
+  "scope": {"purpose":"Define instance-level identification, categorization, and tracking requirements for placed showset and themed-entertainment elements."},
+  "requirements": [
+    {"id":"SEL-REQ-001","authority":"shall","statement":"SEL identifiers shall be strictly unique to a single placed family instance within the federated showset model.","verification_class":"machine_checkable"},
+    {"id":"SEL-REQ-002","authority":"shall_not","statement":"Model authors shall not assign duplicate SEL ID codes across different physical showset elements.","verification_class":"machine_checkable"}
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"roles":["ROLE-DISCIPLINE-LEAD-SHOWSET-001","ROLE-MODEL-AUTHOR-001"]},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"3637249","source_version":1,"source_title":"SEL as Governed Information","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3637249","migration_note":"SEL demand is governed in S2; shared-parameter binding and carrier structure are implemented through S8/Shared Parameters."}
+}

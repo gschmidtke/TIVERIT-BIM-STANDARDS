@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+  "type": "standard",
+  "title": "Submission, Deliverables & Handover",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S7"],
+  "scope": {"purpose":"Define how project information becomes a formal submission, a declared deliverable, and an accepted handover asset suitable for a stated purpose.","sections":["S7.1 Purpose & Relationship to ISO 19650","S7.2 Information States & CDE Lifecycle","S7.3 Deliverables Definition & Scope","S7.4 LOD / LOI and Permitted Reliance","S7.5 Review, Acceptance & Sign-Off","S7.6 Handover & Lifecycle Readiness"]},
+  "requirements": [
+    {"id":"REQ-S7-001","authority":"shall","statement":"Only Published information may be relied upon for declared uses.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-002","authority":"shall","statement":"Submission does not imply acceptance; acceptance must be recorded through controlled review and sign-off.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-003","authority":"shall","statement":"Every submission shall declare intended use, deliverable scope, LOD/LOI level, and target milestone.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-004","authority":"shall","statement":"Information containers submitted for formal exchange shall pass internal discipline quality verification and coordination checks before issue.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-005","authority":"shall_not","statement":"Information shall not be used beyond its declared governed purpose.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-006","authority":"shall","statement":"Handover deliverables shall include certified as-built models, record drawings, asset registers, and operations/maintenance information.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-007","authority":"shall","statement":"Asset data delivered at handover shall conform to governed asset/lifecycle schemas.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-008","authority":"shall","statement":"All formal exchanges and handover submissions shall be registered and tracked in the project transmittal registry.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-009","authority":"shall_not","statement":"Transmission or technical movement of information shall not by itself constitute formal exchange, delivery, acceptance, or authorization for reliance.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-010","authority":"shall","statement":"A formal exchange shall intentionally identify the information being issued, its scope, purpose, declared information state, permitted use, relevant milestone or exchange context, and traceable issue record.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-011","authority":"shall","statement":"Formal exchange shall be platform-independent at the governance level; the selected system or file-transfer mechanism shall not alter the declared purpose, authority, permitted use, or acceptance requirements.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-012","authority":"shall","statement":"Exchanged information shall be decodable by the receiving party from governed declarations sufficient to identify what it represents, why it is being issued, what it may be used for, and material limitations on that use.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-013","authority":"shall_not","statement":"A receiving party shall not be expected to infer missing scope, purpose, responsibility, maturity, or permitted-use conditions from visual appearance, file format, institutional memory, or undocumented assumptions.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-014","authority":"shall","statement":"Material exchange conditions that change with project phase, responsible party, scope, or appointment context shall be explicitly re-declared before reliance continues under the changed condition.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-015","authority":"shall","statement":"Handover shall be treated as a governed state-transition event with declared delivered scope, acceptance evidence, and transfer of information custody or responsibility as defined by the applicable project instruments.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-016","authority":"shall","statement":"Where post-handover correction remains after acceptance, the remaining correction scope shall be explicitly bounded and traceable; new scope or changed requirements shall not be treated as defects unless separately governed and agreed.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-017","authority":"shall","statement":"Acceptance shall be evaluated against fitness for the declared purpose and applicable acceptance criteria rather than inferred from absolute completeness or visual finality.","verification_class":"human_verifiable"}
+  ],
+  "relationships": {"upstream_standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"implementation_standards":["TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S5-MILESTONE-VS-EXCHANGE-EP001","TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001","TIVERIT-BIM-STD-S5-ACC-RECORDS-001"],"roles":["ROLE-MODEL-AUTHOR-001","ROLE-BIM-DETAILER-001","ROLE-DISCIPLINE-LEAD-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-PROJECT-BIM-MANAGER-001","ROLE-DESIGN-LEAD-001","ROLE-PROJECT-DIRECTOR-001"]},
+  "implementation_gaps": ["GAP-S7-01","GAP-S7-02"],
+  "provenance": {
+    "source_system":"confluence",
+    "space":"BST",
+    "page_id":"3047539",
+    "source_version":1,
+    "source_title":"JSON - Submission, Deliverables & Handover",
+    "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3047539",
+    "supporting_page_ids":["2457714","2326562","2457722"],
+    "migration_note":"Primary machine-readable L4 S7 source enriched from source doctrine on formal exchange, semantic decodability, acceptance fitness, and bounded handover closure. Source-specific contractual assertions were not promoted; project-specific legal and appointment effects remain governed by applicable project instruments."
+  }
+}

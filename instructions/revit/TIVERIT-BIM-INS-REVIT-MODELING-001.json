@@ -1,0 +1,141 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-MODELING-001",
+  "type": "instruction",
+  "title": "Revit Modeling Practice",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S2", "S4", "S5", "S6", "S8"],
+  "purpose": "Implement governed modeling practice in Revit by limiting model detail to required uses, preferring reusable governed content, controlling in-place families, choosing groups/assemblies appropriately, and applying governed linked/workshared model structure.",
+  "applies_to": {
+    "tools": ["Revit"],
+    "roles": ["Model Author", "BIM Modeler", "Project BIM Coordinator", "Discipline Lead"],
+    "scope": "Revit authoring models"
+  },
+  "preconditions": [
+    "Applicable S2 information requirements and LOD/LOI expectations are known for the current project stage and intended use.",
+    "The project model breakdown, collaboration, and coordinate strategy are governed under S5/S6.",
+    "Applicable naming, parameter, material, and family standards are available."
+  ],
+  "steps": [
+    {
+      "id": "RVT-MOD-01",
+      "name": "Model only to governed information need",
+      "actions": [
+        "Model geometry and information only to the level required for coordination, documentation, safety, exchange, or other declared downstream use.",
+        "Avoid adding fabrication-level or visual detail that is not required by contract, information need, or approved coordination purpose.",
+        "Keep geometry, identity, and graphics aligned with the applicable naming, parameter, material, and view standards."
+      ],
+      "validation": [
+        "Modeled detail can be traced to a declared information or delivery need.",
+        "Issued elements carry the information required for tags and schedules without manual patching."
+      ],
+      "failure_modes": [
+        "Over-modeling increases complexity without a governed use.",
+        "Required LOI is replaced by manual annotation or disconnected data."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-MOD-02",
+      "name": "Prefer governed reusable content",
+      "actions": [
+        "Use approved loadable families and governed reusable content for repeatable components, standard equipment, vendor items, and scheduled/tagged content.",
+        "Use in-place families only for genuinely unique, non-repeating contextual conditions or temporary content where a reusable family is not appropriate.",
+        "Do not copy in-place content between projects to simulate a reusable library asset."
+      ],
+      "validation": [
+        "Repeatable or scheduled content is implemented as governed reusable content unless an explicit exception applies.",
+        "In-place content has a documented rationale where required by project governance."
+      ],
+      "failure_modes": [
+        "In-place families are used for standard repeatable content.",
+        "Project-specific geometry is copied between models instead of being governed as reusable content."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-MOD-03",
+      "name": "Choose groups and assemblies by purpose",
+      "actions": [
+        "Use model groups for repeatable multi-element design patterns that require coordinated repeated edits.",
+        "Use assemblies for built-up elements that require their own dedicated documentation views, details, or schedules.",
+        "Keep group scope manageable, avoid deep nesting, and apply governed naming."
+      ],
+      "validation": [
+        "The selected construct matches its intended repetition or documentation purpose.",
+        "Groups are not used as uncontrolled whole-model containers."
+      ],
+      "failure_modes": [
+        "Over-grouping or deep nesting creates editing/performance risk.",
+        "Assemblies or families would better serve the intended behavior."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-MOD-04",
+      "name": "Apply governed linked versus workshared model strategy",
+      "actions": [
+        "Use worksharing where multiple users author within the same governed model scope.",
+        "Use linked models to separate authoritative disciplines, systems, zones, or external consultant sources where ownership and release cadence must remain independent.",
+        "Maintain a directed, non-circular link structure.",
+        "Do not manually move linked models to compensate for unresolved coordinate governance."
+      ],
+      "validation": [
+        "Model partitioning matches the governed S5/S6 breakdown and ownership intent.",
+        "No circular links exist.",
+        "Linked-model positioning follows the governed coordinate strategy."
+      ],
+      "failure_modes": [
+        "A monolithic mixed-authority model is used where governed separation is required.",
+        "Circular or unmanaged nested linking is introduced.",
+        "Manual link offsets replace shared-coordinate governance."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "RVT-MOD-05",
+      "name": "Document project-specific departures",
+      "actions": [
+        "Record project-specific LOD/LOI, model breakdown, or modeling exceptions in the applicable BEP or governed project record.",
+        "Route deviations through the applicable approval authority rather than treating project preference as a standards change."
+      ],
+      "validation": [
+        "Every material departure from the organizational rule is traceable to a project-specific governed decision."
+      ],
+      "failure_modes": [
+        "A project-specific modeling choice silently redefines the organizational standard."
+      ],
+      "automation_readiness": "MANUAL"
+    }
+  ],
+  "outputs": [
+    "Revit authoring model aligned with declared information need and model-breakdown strategy",
+    "Governed reusable-content usage or documented exceptions",
+    "Traceable project-specific modeling departures where applicable"
+  ],
+  "evidence": [
+    "Model content/type inventory",
+    "In-place family inventory and exception rationale where applicable",
+    "Link graph and model-breakdown record",
+    "BEP or governed deviation record where applicable"
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S2-LOD-LOI-001", "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001", "TIVERIT-BIM-STD-S5-COORDINATION-EP001", "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001", "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"]
+  },
+  "governance_notes": [
+    "Source phase-based LOD ranges were guidance, not promoted as fixed canonical project requirements.",
+    "The source's governance-parameter examples for in-place-family exceptions were not promoted because exact parameter definitions must come from S8 registry authority.",
+    "S5/S6 remain normative for model breakdown, federation, linking, and coordinates."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7733249",
+    "source_version": 1,
+    "source_title": "Revit Modeling Standards and Guidelines",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7733249",
+    "migration_note": "Mixed normative/instruction source normalized to L6. Source examples, phase LOD ranges, and organization-specific labels were retained only as provenance context or omitted where not governed."
+  }
+}

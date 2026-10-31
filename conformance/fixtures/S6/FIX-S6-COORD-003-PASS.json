@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/conformance-fixture.schema.json",
+  "id": "FIX-S6-COORD-003-PASS",
+  "type": "conformance_fixture",
+  "title": "S6 coordination file contains only permitted spatial-authority content",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6"],
+  "ets_id": "ETS-S6-COORD-003-REVIT",
+  "fixture_kind": "positive",
+  "expected_result": "pass",
+  "subject_profile": {
+    "container_designation": "Standalone Coordination File",
+    "platform": "Revit",
+    "content_scope": "levels, grids, reference planes, scope controls, and other explicitly permitted spatial-authority content only"
+  },
+  "simulated_observations": [
+    {"class": "permitted_spatial_authority", "category": "Levels", "count": 12},
+    {"class": "permitted_spatial_authority", "category": "Grids", "count": 28},
+    {"class": "permitted_spatial_authority", "category": "Reference Planes", "count": 6},
+    {"class": "prohibited_physical_element", "count": 0},
+    {"class": "unresolved_element", "count": 0}
+  ],
+  "expected_evidence_assertions": [
+    "tested subject is confirmed as the governed Standalone Coordination File",
+    "prohibited physical element count equals zero",
+    "unresolved element count equals zero",
+    "result is pass"
+  ],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "ETS-S6-COORD-003-REVIT",
+    "migration_note": "Synthetic regression fixture defining the minimum positive evidence shape for the first Revit/ZEN ETS. It is not a production model and does not assert that the executable checker is implemented."
+  }
+}

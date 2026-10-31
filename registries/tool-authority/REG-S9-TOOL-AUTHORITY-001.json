@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "REG-S9-TOOL-AUTHORITY-001",
+  "type": "registry",
+  "title": "S9 Tool Authority Registry",
+  "status": "migration_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S9"],
+  "purpose": "Machine-readable authority matrix spine for declaring which tool or environment is authoritative for each governed information domain and which tools remain consumers, derivative environments, or temporary workspaces.",
+  "runtime_status": "migration_candidate_only",
+  "record_schema": {
+    "required_fields": [
+      "id",
+      "name",
+      "information_domain",
+      "domain_scope",
+      "authoritative_environment",
+      "non_authoritative_environments",
+      "governing_references",
+      "lifecycle_context",
+      "change_authority_role",
+      "authority_violation_risk"
+    ]
+  },
+  "governance_rules": [
+    "Each governed information domain must have one explicitly declared authoritative environment for the stated scope and lifecycle context.",
+    "Non-authoritative tools may consume, visualize, or transform information but must not silently become the source of truth.",
+    "Changes to authority assignments require governed change control and communication to affected teams.",
+    "Automation and integrations must reference the applicable tool-authority entry before writing to governed information.",
+    "Project-specific authority mappings must align with organization-level governance and explicitly record approved deviations."
+  ],
+  "entries": [],
+  "source_domain_candidates": [
+    {"id":"CAND-S9-TOOL-001","name":"Primary BIM authoring","source_environment":"Revit","status":"migration_candidate"},
+    {"id":"CAND-S9-TOOL-002","name":"Manufacturing and mechanical authoring","source_environment":"Inventor / Vault","status":"migration_candidate"},
+    {"id":"CAND-S9-TOOL-003","name":"Electrical and controls authoring","source_environment":"EPLAN","status":"migration_candidate"},
+    {"id":"CAND-S9-TOOL-004","name":"Constrained documentation and output","source_environment":"AutoCAD","status":"migration_candidate"}
+  ],
+  "open_gaps": ["GAP-S9-02"],
+  "relationships": {
+    "standard": "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001",
+    "automation_registry": "REG-S9-AUTOMATION-001",
+    "roles": ["ROLE-TOOL-AUTHORITY-001","ROLE-BIM-STANDARDS-MGR-001","ROLE-PROJECT-BIM-MANAGER-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "4554779",
+    "source_version": "1",
+    "source_title": "Tool Authority Matrix – Governance Scaffold (GAP-S9-02)",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4554779",
+    "migration_note": "The source scaffold defines matrix governance but intentionally does not enumerate approved tool assignments. Product mappings observed in the parent S9 source are therefore retained only as migration candidates; no production authority assignment has been promoted."
+  }
+}

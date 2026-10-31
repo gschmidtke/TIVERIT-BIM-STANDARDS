@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-VIEW-TEMPLATE-001",
+  "type": "abstract_test",
+  "title": "Revit approved view template and governed display state",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S5"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-VIEWS-001",
+  "governing_clause": "VIEW-02 and VIEW-03",
+  "test_intent": "Determine whether applicable Revit views use the governed template for their purpose and whether template-controlled graphics, filters, linked-model visibility, phase, detail level, and visual style remain free of unexplained local drift.",
+  "applicability": {
+    "applies_when": "The tested Revit model contains views whose purpose is governed by an approved view template or governed display-state rule.",
+    "not_applicable_when": "The tested scope contains no view requiring a governed template or display-state rule."
+  },
+  "required_evidence": [
+    "inventory of applicable Revit views and their purpose/type",
+    "approved view-template mapping for each applicable purpose/type",
+    "observed applied template and controlled view properties",
+    "record of approved view exceptions where applicable"
+  ],
+  "result_logic": {
+    "pass": "Every applicable view uses the approved template or approved exception and its governed display state matches the expected template-controlled properties without unexplained overrides.",
+    "fail": "An applicable view uses the wrong or no required template, or has an unexplained override or display-state deviation from an available governed rule.",
+    "not_applicable": "No view in the tested scope requires a governed template or display-state rule.",
+    "indeterminate": "The applicable View Template Registry, purpose mapping, or required expected-property set is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-VIEWS-001",
+    "migration_note": "Appendix E ATS for view-template conformance. Exact source-era template names remain noncanonical until a governed View Template Registry exists."
+  }
+}

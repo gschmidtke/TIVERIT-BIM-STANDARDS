@@ -1,0 +1,209 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-TITLEBLOCK-001",
+  "type": "instruction",
+  "title": "Revit Titleblock and Sheet Setup Instruction",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S4", "S7", "S8"],
+  "purpose": "Provide repeatable, testable Revit actions for using governed titleblock families, project information, sheet identity, required sheet data, revision controls, and pre-issue QA without redefining upstream standards.",
+  "applies_to": {
+    "tool": "Revit",
+    "roles": ["Model Author", "Project BIM Coordinator", "Project BIM Manager", "QA/QC reviewer"],
+    "scope": "Production sheets and governed titleblock usage"
+  },
+  "preconditions": [
+    "The project uses or is aligned to an approved Revit project template.",
+    "Approved titleblock families are available from a governed content source.",
+    "Applicable parameter definitions are available through the governed parameter source.",
+    "Applicable sheet identity, naming, revision, and issue rules have been declared by the governing standards or project requirements."
+  ],
+  "steps": [
+    {
+      "id": "TB-01",
+      "name": "Load and protect governed titleblock families",
+      "actions": [
+        "Inspect the project titleblock families.",
+        "Identify duplicated, renamed, locally edited, outdated, or otherwise non-governed titleblock families.",
+        "Load the approved titleblock family or families from the governed content source.",
+        "Flag non-governed titleblock families for correction or removal through the project BIM governance process."
+      ],
+      "validation": [
+        "Production sheets use only approved titleblock family identities.",
+        "No unapproved local titleblock variant is relied upon for production output."
+      ],
+      "failure_modes": [
+        "Governed content source cannot be located.",
+        "Project template contains outdated titleblock content."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "TB-02",
+      "name": "Populate governed project information",
+      "actions": [
+        "Open Project Information.",
+        "Populate project identity fields required by the titleblock from the approved project information source.",
+        "Cross-check project identifiers against the applicable governed project record before issue."
+      ],
+      "validation": [
+        "Project identity values match the approved project identifiers.",
+        "Placeholder values do not remain in required project identity fields."
+      ],
+      "failure_modes": [
+        "Conflicting project identifiers exist between governed project records.",
+        "A required project information field is unavailable because the template and titleblock definitions are misaligned."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "TB-03",
+      "name": "Create sheets with governed titleblocks",
+      "actions": [
+        "Create each required sheet using the approved titleblock family and required size or orientation.",
+        "Do not replace the governed titleblock with a non-governed local family after sheet creation."
+      ],
+      "validation": [
+        "Every production sheet has an approved titleblock family.",
+        "No production sheet uses an unapproved titleblock family."
+      ],
+      "failure_modes": [
+        "A non-governed titleblock is assigned after sheet creation.",
+        "Legacy and current titleblock families are both available and the current governed identity cannot be determined."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "TB-04",
+      "name": "Apply governed sheet identity and naming",
+      "actions": [
+        "Set Sheet Number using the currently governed sheet identity rule.",
+        "Set Sheet Name using the currently governed human-readable naming rule.",
+        "Store client-specific or alternate identifiers in dedicated governed fields rather than redefining the canonical sheet identity unless an approved project rule explicitly requires otherwise."
+      ],
+      "validation": [
+        "Sheet numbers are unique within the governed project scope.",
+        "Sheet identity and naming conform to the applicable governed syntax and vocabularies.",
+        "Alternate identifiers do not silently replace the canonical identity."
+      ],
+      "failure_modes": [
+        "Duplicate sheet number.",
+        "Out-of-pattern sheet identity.",
+        "Alternate or client code embedded into canonical identity without governed authorization."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "TB-05",
+      "name": "Populate required titleblock data",
+      "actions": [
+        "Verify that all titleblock data fields required by the governing standard or project information requirement exist.",
+        "Populate required fields from governed project, role, date, issue, and revision sources.",
+        "Use governed role or coding conventions where the project has declared them."
+      ],
+      "validation": [
+        "Every required titleblock field exists and contains a valid governed value.",
+        "No locally invented field value overrides an applicable governed code or source."
+      ],
+      "failure_modes": [
+        "Required field missing from titleblock family.",
+        "Required field is blank.",
+        "Free-text value conflicts with an applicable governed project code."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "TB-06",
+      "name": "Use the Revit revision system for governed revisions",
+      "actions": [
+        "Define or use the governed project revision sequence through Revit's revision system.",
+        "Apply revisions to sheets through the Revit revision mechanism.",
+        "Do not represent governed revision information through ad-hoc titleblock text."
+      ],
+      "validation": [
+        "Displayed governed revision information is driven by the Revit revision system.",
+        "Revision identifiers, dates, and descriptions are consistent with the applicable governed issue record."
+      ],
+      "failure_modes": [
+        "Manual revision text is used instead of governed revision data.",
+        "Multiple incompatible revision schemes are used without an approved project decision."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "TB-07",
+      "name": "Run pre-issue sheet QA",
+      "actions": [
+        "Before formal issue, inspect a governed sample or the full sheet set according to the applicable QA plan.",
+        "Verify titleblock family identity, sheet identity, required titleblock data, and revision/issue information.",
+        "Where required, produce a sample export to verify output appearance."
+      ],
+      "validation": [
+        "No unresolved titleblock, identity, required-data, or revision deviation remains in the checked scope.",
+        "Any accepted deviation is traceable through the governed exception process rather than silently ignored."
+      ],
+      "failure_modes": [
+        "Deviation found during QA and not corrected or governed as an exception.",
+        "Titleblock standard changes mid-project without controlled migration or communication."
+      ],
+      "automation_readiness": "ASSISTED"
+    }
+  ],
+  "outputs": [
+    "Production sheets use approved governed titleblock families.",
+    "Sheet identity and naming conform to the applicable governed rules.",
+    "Required titleblock data is populated from governed sources.",
+    "Governed revisions and issues are represented through the Revit revision system."
+  ],
+  "evidence": [
+    "Sheet schedules containing relevant identity and titleblock fields.",
+    "Representative or full-set exported sheets where required by the QA plan.",
+    "Automation or QA logs showing titleblock compliance findings.",
+    "Traceable exception records for any approved deviation."
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"
+    ],
+    "roles": [
+      "ROLE-MODEL-AUTHOR-001",
+      "ROLE-PROJECT-BIM-COORDINATOR-001",
+      "ROLE-PROJECT-BIM-MANAGER-001",
+      "ROLE-QAQC-AUTHORITY-001"
+    ]
+  },
+  "future_dependencies": [
+    "A dedicated governed sheet/titleblock parent standard may replace source-page dependency once migrated.",
+    "A complete governed sheet-number and sheet-name syntax must be referenced rather than inferred from draft source examples."
+  ],
+  "source_candidates": {
+    "titleblock_fields_observed_in_source": [
+      "Sheet Number",
+      "Sheet Name",
+      "Project Name",
+      "Project Number",
+      "Drawn By",
+      "Checked By",
+      "Designed By / Approved By",
+      "Issue Date",
+      "Current Revision / Revision Description"
+    ],
+    "treatment": "Observed source fields are preserved as migration-candidate implementation context; applicability remains governed by current standards and project information requirements."
+  },
+  "governance_notes": [
+    "This L6 instruction executes upstream governance and does not create a new sheet identity standard.",
+    "Draft source examples for sheet numbering and naming are not promoted by this migration object."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "10846209",
+    "source_version": 1,
+    "source_title": "Titleblock Standards",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/10846209",
+    "migration_note": "Normalized from the source L6 Revit titleblock instruction. Source-era organization labels and placeholder identifiers were not carried into canonical identity. Draft sheet-number/name examples remain unpromoted."
+  }
+}

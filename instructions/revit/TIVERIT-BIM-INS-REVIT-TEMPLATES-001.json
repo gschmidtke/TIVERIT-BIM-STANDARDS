@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-TEMPLATES-001",
+  "type": "instruction",
+  "title": "Revit Project Template Governance and Use",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S3", "S4", "S8"],
+  "purpose": "Provide source-backed instructions for selecting, using, maintaining, and versioning governed Revit project templates without promoting draft template names or incomplete template catalogues into canonical authority.",
+  "preconditions": [
+    "An approved project or discipline template has been designated for the project context.",
+    "Canonical naming, parameter, view, annotation, graphics, material, worksharing, and titleblock rules are obtained from their governing standards or registries rather than inferred from this instruction.",
+    "Any project-specific deviation is governed through the applicable standards/BEP change process."
+  ],
+  "steps": [
+    {
+      "id": "TPL-01",
+      "name": "Select the governed template for project scope",
+      "actions": ["Determine whether the project requires the enterprise base template or an approved discipline-specific template.", "Confirm the selected template is the current governed release for the intended Revit version and project context."],
+      "validation": ["The project starts from an approved template appropriate to its discipline and scope.", "No ad-hoc or legacy template is treated as current without explicit governance approval."],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "TPL-02",
+      "name": "Verify required governed content is present",
+      "actions": ["Verify the template contains or references approved titleblocks, view templates, annotation styles, object styles, line styles, materials, phases, worksets where applicable, and governed project/shared parameters.", "Treat missing or inconsistent content as a template-governance issue rather than silently replacing it with local project content."],
+      "validation": ["Required governed content is available for the intended project use.", "Missing or obsolete content is logged for governed correction."],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "TPL-03",
+      "name": "Control template changes and versioning",
+      "actions": ["Make standards-level template changes only through the governed template maintenance/release process.", "Record the template version/release used by the project.", "Do not treat source-era filename examples or placeholder catalogue IDs as canonical naming rules."],
+      "validation": ["Template changes are traceable to a governed release or approved project exception.", "The project can identify the template release from which it was initialized or aligned."],
+      "automation_readiness": "ASSISTED"
+    }
+  ],
+  "outputs": ["Project initialized or aligned to an approved Revit project template", "Traceable template version/release context"],
+  "evidence": ["Template filename or release identifier", "Template validation checklist or automated inventory", "Recorded deviations or remediation items"],
+  "future_dependencies": ["Concrete governed Revit Template Catalogue", "Template Release Pipeline", "Template Validation Ruleset"],
+  "governance_notes": ["Source template filename patterns and placeholder catalogue entries remain examples/TODOs and are not promoted.", "Template content implements governing standards; the template itself does not redefine those standards."],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7503875",
+    "source_version": 1,
+    "source_title": "Revit Project Templates – Instructions, Definitions, Workflows",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7503875",
+    "migration_note": "Normalized as L6 implementation guidance. Source placeholders and incomplete template-name/catalogue values are intentionally not canonicalized."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S2-TIDP-001",
+  "type": "standard",
+  "title": "Task Information Delivery Plan (TIDP)",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S2"],
+  "scope": {"purpose":"Define discipline/task-team commitments that produce the information deliverables aggregated by the MIDP."},
+  "requirements": [
+    {"id":"TIDP-REQ-001","authority":"shall","statement":"Every TIDP task shall explicitly reference a valid MIDP deliverable ID.","verification_class":"machine_checkable"},
+    {"id":"TIDP-REQ-002","authority":"shall","statement":"Discipline task leads shall submit updated TIDP progress prior to each weekly coordination cycle.","verification_class":"human_verifiable"},
+    {"id":"TIDP-REQ-003","authority":"may","statement":"Task milestones may be re-baselined only with written approval from the Project BIM Manager.","verification_class":"human_verifiable"}
+  ],
+  "canonical_fields": ["TIDP ID","Related MIDP ID","Discipline / Task Team","Task Description","Information to be Produced","Model / Information Container","Task Owner Role","Planned Start","Planned Finish","Delivery Milestone","Delivery State Target","LOD","LOI","Internal Review Role","Constraints / Dependencies","Status"],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S2-MIDP-001","TIVERIT-BIM-STD-S2-LOD-LOI-001"],"roles":["ROLE-MODEL-AUTHOR-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-PROJECT-BIM-MANAGER-001"]},
+  "runtime_note":"The L4 TIDP standard governs required fields and relationships. Runtime TIDP records in the BEP delivery engine are downstream implementation data.",
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"2687082","source_version":1,"source_title":"TIDP — Task Information Delivery Plan","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2687082","migration_note":"Standalone L4 S2 production standard linked to canonical MIDP requirements."}
+}

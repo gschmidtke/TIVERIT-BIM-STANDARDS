@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S3-RECORDS-RETENTION-001",
+  "type": "registry",
+  "title": "S3 Records, Retention and Archive Rules",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S3","S7"],
+  "entries": [
+    {"id":"REC-01","name":"Milestone Issue Sets","path":"/04_Records_and_Archive/01_Issue_Sets","immutability":"Write-locked upon transmittal confirmation."},
+    {"id":"REC-02","name":"As-Built Models and Records","path":"/04_Records_and_Archive/02_As-Builts","immutability":"Frozen and write-locked at project completion."},
+    {"id":"REC-03","name":"Operations & Maintenance Handover Master","path":"/04_Records_and_Archive/03_OandM_and_Handover","immutability":"Write-locked upon client formal acceptance."},
+    {"id":"REC-04","name":"Project Audit Evidence Archive","path":"/04_Records_and_Archive/04_Project_Archive/Evidence_Archives","immutability":"Immutable read-only archive."},
+    {"id":"RET-01","name":"Active project retention","value":"Maintain project data online in ACC throughout active delivery."},
+    {"id":"RET-02","name":"Post-completion retention","value":"12 years post-completion or longer if the project contract/statutory limitation requires it."},
+    {"id":"RET-03","name":"Post-closeout correction","value":"Direct modification prohibited; use a versioned addendum under a new transmittal."}
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S5-ACC-RECORDS-001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["6848571"],"migration_note":"Retention values are migration candidates from the source and remain subordinate to project contractual/statutory requirements."}
+}

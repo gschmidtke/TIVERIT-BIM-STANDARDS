@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S9-VAULT-LIFECYCLE-001",
+  "type": "standard",
+  "title": "Vault Lifecycle States and Approval Governance",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S9"],
+  "scope": {
+    "purpose": "Govern the meaning, promotion, approval, supersession, and auditability of Vault lifecycle states for manufacturing data.",
+    "boundary": "Lifecycle governance is normative; detailed Vault configuration, permissions implementation, and deployment remain downstream configuration or instruction content."
+  },
+  "requirements": [
+    {"id":"REQ-S9-VLT-LC-001","authority":"shall","statement":"Governed Vault content shall use lifecycle states with explicit meanings and transition authority sufficient to distinguish work in progress, review, release, supersession, and archival conditions.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-VLT-LC-002","authority":"shall","statement":"New governed manufacturing content shall begin in a non-released working state and shall pass through the required review and approval route before release.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-VLT-LC-003","authority":"shall_not","statement":"The original author shall not self-approve release where the governed approval route requires independent approval.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-VLT-LC-004","authority":"shall","statement":"Release transitions shall record the responsible approval authority and sufficient audit evidence to establish who released the content and when.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-VLT-LC-005","authority":"shall","statement":"Superseded or archived content shall remain distinguishable from currently released content, and supersession shall identify the applicable replacement or successor where one exists.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-VLT-LC-006","authority":"shall","statement":"Only content in an authorized released condition shall be eligible for normal downstream manufacturing, BIM coordination, or project publication unless a governed exception explicitly permits otherwise.","verification_class":"machine_assisted"}
+  ],
+  "source_state_vocabulary": ["Work in Progress","For Review","Released","Superseded","Archived"],
+  "governance_note": "Autodesk Vault permits lifecycle names and transitions to be configured. The source state vocabulary is therefore a governed organizational pattern, not a claim that these exact names are immutable product defaults.",
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S9-VAULT-RELEASE-001","TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "8060945",
+    "source_version": "1",
+    "source_title": "S9 – Vault Lifecycle States & Approval Governance",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8060945",
+    "migration_note": "Migrated lifecycle meaning, segregation of duties, release eligibility, supersession, and audit requirements. Configuration mechanics remain outside normative authority."
+  }
+}

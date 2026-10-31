@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-W5-2-ISSUE-TRACKING-001",
+  "legacy_ids": ["W5.2"],
+  "type": "workflow",
+  "title": "Issue Tracking Workflow",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S5"],
+  "trigger": "Issue created from coordination, review, or field feedback",
+  "automation_readiness": "ASSISTED",
+  "steps": [
+    {"id":"I5.2.001","action":"Create the issue with the minimum required fields."},
+    {"id":"I5.2.002","action":"Assign an owner, due date, and status."},
+    {"id":"I5.2.003","action":"Track resolution and verify closure evidence."}
+  ],
+  "outputs": [
+    "Traceable issue record",
+    "Assigned responsibility and due date",
+    "Resolution and closure evidence"
+  ],
+  "governance_notes": [
+    "The source identifies a future Issue Register as supporting governance.",
+    "Closure evidence verifies issue resolution state but does not by itself create formal acceptance authority."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6127632",
+    "source_version": 1,
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632",
+    "migration_note": "Source workflow W5.2 migrated from the workflow catalogue. Future Issue Register remains unresolved."
+  }
+}

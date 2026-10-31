@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-S4-IDENTITY-009",
+  "type": "abstract_test",
+  "title": "Canonical container identity grammar conformance",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4"],
+  "requirement_id": "S4-REQ-009",
+  "test_intent": "Determine whether a governed information-container identity conforms to the canonical seven-token cross-platform grammar without relying on a platform-specific alternate identity scheme.",
+  "applicability": {
+    "applies_when": "A governed information container is assigned or validated for enterprise, CDE, coordination, exchange, or handover use.",
+    "not_applicable_when": "The tested object is not a governed information container identity subject to S4."
+  },
+  "required_evidence": [
+    "tested container identity string",
+    "parsed token sequence and file extension",
+    "governed token vocabulary or validation source used for each token"
+  ],
+  "result_logic": {
+    "pass": "The identity parses into exactly the governed project, originator, volume/system, level/location, type, role, and number tokens in the prescribed order, with the governed delimiter and extension treatment, and no alternate canonical grammar is asserted.",
+    "fail": "The identity cannot be parsed into the required seven-token grammar, uses an alternate root identity grammar, or omits/reorders a required identity token.",
+    "not_applicable": "The subject is outside the governed information-container identity scope.",
+    "indeterminate": "The identity string is available but one or more governing token vocabularies or scope declarations required to judge conformance are unavailable."
+  },
+  "permitted_implementation_classes": ["file_checker", "registry_checker", "api_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "S4-REQ-009",
+    "migration_note": "First conformance pilot ATS derived directly from the existing S4 requirement. Tool-neutral by design."
+  }
+}

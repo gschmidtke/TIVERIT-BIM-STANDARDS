@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S9-INVENTOR-CONTENT-LIFECYCLE-001",
+  "type": "standard",
+  "title": "Inventor Content Lifecycle and Normalization Governance",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S9"],
+  "scope": {
+    "purpose": "Govern how project, legacy, or external Inventor parts, assemblies, and drawings are assessed, normalized, approved, promoted for reuse, changed, superseded, and retired.",
+    "boundary": "The source page contains explicit gaps in outputs, authority detail, normalization criteria, and change steps. This object preserves only source-supported durable rules and records the missing areas rather than filling them by inference."
+  },
+  "requirements": [
+    {"id":"REQ-S9-INV-LC-001","authority":"shall","statement":"Inventor content proposed for reusable governed status shall be identified and assessed before promotion from project-specific or legacy use into a standard library.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-INV-LC-002","authority":"shall","statement":"Candidate reusable Inventor content shall be checked against applicable identity, naming, structure, manufacturing-documentation, and project-commitment constraints before normalization.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-INV-LC-003","authority":"shall","statement":"Normalization shall establish governed identity, structure, style, lifecycle state, ownership metadata, and traceability sufficient for reuse and change management.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-INV-LC-004","authority":"shall","statement":"Promotion into a governed standard library shall require approval by the applicable manufacturing or discipline authority and any required BIM governance authority.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-INV-LC-005","authority":"shall","statement":"Superseded or retired reusable content shall be clearly distinguishable from current reusable content to prevent accidental reuse.","verification_class":"machine_assisted"}
+  ],
+  "source_supported_lifecycle_examples": ["Draft Standard","Released Standard","superseded","archived"],
+  "open_gaps": [
+    "Source outputs section is incomplete.",
+    "Source authority-boundary detail is incomplete.",
+    "Source normalization checklist is incomplete.",
+    "Source change/supersession procedure contains incomplete steps.",
+    "A production registry/catalogue structure for governed reusable Inventor content is not yet defined in the migration corpus."
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001",
+      "TIVERIT-BIM-STD-S9-INVENTOR-MFG-DOC-001",
+      "TIVERIT-BIM-STD-S9-VAULT-LIFECYCLE-001"
+    ]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6127650",
+    "source_version": "1",
+    "source_title": "S9 – Inventor Content Lifecycle & Normalization Governance",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127650",
+    "migration_note": "Partial migration by design. Missing source content is recorded as governed gaps; no blank source sections were completed from general practice or external standards."
+  }
+}

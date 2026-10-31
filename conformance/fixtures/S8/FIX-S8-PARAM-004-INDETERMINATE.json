@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schemas/conformance-fixture.schema.json",
+  "id": "FIX-S8-PARAM-004-INDETERMINATE",
+  "type": "conformance_fixture",
+  "title": "S8 shared parameter identity remains unresolved in source migration",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "ets_id": "ETS-S8-PARAM-004-PYTHON",
+  "fixture_kind": "indeterminate",
+  "expected_result": "indeterminate",
+  "subject_profile": {
+    "subject_type": "synthetic shared-parameter inventory",
+    "governed_registry": "TIVERIT-BIM-STD-S8-SP-REG-001"
+  },
+  "simulated_observations": [
+    {"name":"PROJECT NUMBER","data_type":"TEXT"}
+  ],
+  "expected_evidence_assertions": [
+    "observed parameter name matches a registry unresolved_entries row",
+    "no governed GUID exists in the migrated registry for that source row",
+    "the checker does not invent or infer a GUID",
+    "result is indeterminate"
+  ],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "ETS-S8-PARAM-004-PYTHON",
+    "migration_note": "Synthetic indeterminate regression fixture proving that unresolved source identity remains unresolved rather than being silently accepted."
+  }
+}

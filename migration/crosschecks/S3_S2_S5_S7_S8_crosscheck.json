@@ -1,0 +1,21 @@
+{
+  "id": "MIG-CROSSCHECK-S3-S2-S5-S7-S8-001",
+  "type": "migration_crosscheck",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "modules": ["S2","S3","S5","S7","S8"],
+  "result": "pass_with_remaining_source_conditions",
+  "dependencies": [
+    {"from":"S2","to":"S3","rule":"Information requirements, MIDP/TIDP, and permitted-use constraints drive platform configuration, release cadence, and metadata."},
+    {"from":"S8","to":"S3","rule":"Semantic schemas, naming, and classification feed container metadata and validation attributes."},
+    {"from":"S3","to":"S5","rule":"WIP/Shared folders, ACC Issues, Model Coordination, and Reviews provide infrastructure for coordination and Gate E sign-off."},
+    {"from":"S3","to":"S7","rule":"Published containers stage formal submissions; Transmittals record exchange; Records and Archive stores immutable handover records."}
+  ],
+  "resolved_by_curator":[
+    {"decision":"D-08","conflict":"CONF-S3-002","resolution":"Internal ACC system-of-record authority is distinct from contract-designated external CDE contractual/legal authority."},
+    {"decision":"D-09","conflict":"CONF-S3-003","resolution":"Project Administrator is platform capability; Information Manager, Project BIM Manager, and CDE Manager remain distinct governed roles."},
+    {"decision":"D-10","conflict":"CONF-S3-004","resolution":"00_Admin / 10_WIP / 20_Shared / 30_Published / 40_Coordination is canonical for migration implementation."}
+  ],
+  "remaining_source_conditions":["CONF-S3-001","CONF-S3-005"],
+  "provenance":{"source_system":"confluence","space":"BST","source_pages":["6848513","6422580","7700514","6651950","8060929","6848571","7241803","4423696"]}
+}

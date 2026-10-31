@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S4-MODEL-BREAKDOWN-001",
+  "type": "standard",
+  "title": "S4 Model Breakdown & Segmentation Principles",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S4"],
+  "scope": {"purpose":"Govern intentional decomposition of model and information containers.","dimensions":["discipline/domain","system/subsystem","zone/area/building","vertical datum/level","phase/stage/work package","function/container role"]},
+  "requirements": [
+    {"id":"S4-BRK-001","authority":"shall","statement":"Each governed container shall have a clear ownership boundary and a declared breakdown rationale.","verification_class":"human_verifiable"},
+    {"id":"S4-BRK-002","authority":"shall","statement":"Container segmentation may use discipline/domain, system/subsystem, zone/area/building, level, phase/work package, and function/container role where supported by project need.","verification_class":"human_verifiable"},
+    {"id":"S4-BRK-003","authority":"shall_not","statement":"Containers shall not be split solely for individual-author convenience or temporary task slicing without coordination justification.","verification_class":"human_verifiable"},
+    {"id":"S4-BRK-004","authority":"shall_not","statement":"Duplicate modeling across containers shall not be used as a substitute for governed linking or federation.","verification_class":"human_verifiable"},
+    {"id":"S4-BRK-005","authority":"shall_not","statement":"Dedicated sheet or documentation container models shall not contain live physical model geometry where the source defines them as container-only models.","verification_class":"human_verifiable"},
+    {"id":"S4-BRK-006","authority":"shall","statement":"Ad-hoc container splits shall be registered through the project BEP and governed CDE/container register.","verification_class":"human_verifiable"}
+  ],
+  "relationships": {"parent":["TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001"],"upstream":["TIVERIT-BIM-STD-S2-MIDP-001","TIVERIT-BIM-STD-S2-TIDP-001"],"downstream":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-COORDINATION-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"4587521","source_version":1,"migration_note":"Quantitative file-size, element-count, and polygon thresholds are absent from the source and are not invented here."}
+}

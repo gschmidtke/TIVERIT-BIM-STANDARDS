@@ -1,0 +1,179 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-STD-L6-SP-GEN-TXT-001",
+  "type": "instruction",
+  "title": "Generate Governed Shared Parameter TXT from Registry",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S8"],
+  "purpose": "Generate and release a shared-parameter TXT carrier directly from the governed central Shared Parameter Registry so the registry remains the authoritative source and released TXT files remain derived implementation artifacts.",
+  "applies_to": {
+    "roles": ["BIM Standards Manager", "authorized BIM governance role"],
+    "tools": ["Revit", "Dynamo", "scripted TXT generator"],
+    "scope": "Generation, validation, release, and archival of governed shared-parameter TXT carriers"
+  },
+  "preconditions": [
+    "The governed central Shared Parameter Registry is available and readable.",
+    "Release scope is defined; by default only Citizen and Active rows are included unless a Candidate has explicit approval.",
+    "The selected generation path can preserve exact GUID, name, group, and type values.",
+    "A governed distribution location exists for released TXT files."
+  ],
+  "steps": [
+    {
+      "id": "SP-TXT-01",
+      "name": "Confirm registry version and release scope",
+      "actions": [
+        "Identify the registry version and release date context.",
+        "Filter to Citizen and Active rows unless an explicitly approved exception applies.",
+        "Stop if in-scope collisions or unresolved identities remain."
+      ],
+      "validation": [
+        "The release scope is traceable to a specific registry state.",
+        "No unresolved in-scope identity is silently included."
+      ],
+      "failure_modes": [
+        "Registry version cannot be identified.",
+        "Unresolved collisions remain in release scope."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "SP-TXT-02",
+      "name": "Extract governed export set",
+      "actions": [
+        "Extract GUID, Name, Group, and Type for every in-scope registry row.",
+        "Retain additional descriptive fields only as validation metadata where needed.",
+        "Check GUID uniqueness and duplicate GUID/name pairs."
+      ],
+      "validation": [
+        "The export set contains one governed definition per included GUID.",
+        "No duplicate GUID or duplicate GUID/name pair exists."
+      ],
+      "failure_modes": [
+        "Required structural fields are missing.",
+        "Duplicate governed identities are present."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "SP-TXT-03",
+      "name": "Generate TXT from governed registry values",
+      "actions": [
+        "Start from an empty base or governed template rather than an arbitrary project TXT.",
+        "Create every included parameter with the exact governed GUID, Name, Group, and Type values.",
+        "Save to a temporary working release file before publication."
+      ],
+      "validation": [
+        "Generated definitions preserve the registry values without alteration."
+      ],
+      "failure_modes": [
+        "Generation changes an identity or structural field.",
+        "An arbitrary project TXT is reused as the authoritative source."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "SP-TXT-04",
+      "name": "Validate TXT against registry",
+      "actions": [
+        "Compare every in-scope registry GUID against the generated TXT.",
+        "Confirm identical name, group, and type values.",
+        "Confirm the TXT contains no extra parameters outside the release set.",
+        "Regenerate after correcting the registry or generation process if discrepancies exist."
+      ],
+      "validation": [
+        "There are no missing, altered, or extra parameter definitions relative to the governed release set."
+      ],
+      "failure_modes": [
+        "TXT differs from the governed registry extract.",
+        "Discrepancies are repaired only in the TXT without correcting the authoritative source or generator."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "SP-TXT-05",
+      "name": "Publish governed TXT release",
+      "actions": [
+        "Apply the governed release naming convention without treating source examples as canonical unless separately governed.",
+        "Store the TXT in the governed distribution location.",
+        "Record file identity, registry version, release date, environment, releasing role, and change summary."
+      ],
+      "validation": [
+        "The released TXT is traceable to the exact registry state from which it was generated.",
+        "Release metadata is complete."
+      ],
+      "failure_modes": [
+        "Release identity is not traceable to a registry version.",
+        "A working file is distributed as though it were governed."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "SP-TXT-06",
+      "name": "Update project references and inspect deltas",
+      "actions": [
+        "Point new and existing project workflows to the governed TXT or an explicitly controlled mirror derived from it.",
+        "Avoid unmanaged local master TXT files.",
+        "For existing projects, inspect unknown parameters, name/GUID collisions, deprecated Citizens, and missing required Citizens before remediation."
+      ],
+      "validation": [
+        "Projects reference the governed release path or an approved controlled mirror.",
+        "Existing-project deviations are identified rather than silently overwritten."
+      ],
+      "failure_modes": [
+        "An unmanaged local TXT becomes de facto authority.",
+        "Existing project identities are silently replaced without delta review."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "SP-TXT-07",
+      "name": "Archive superseded releases",
+      "actions": [
+        "Move superseded TXT releases to the governed archive or mark them as superseded/deprecated.",
+        "Retain prior releases for traceability, forensic comparison, and governed rollback where applicable."
+      ],
+      "validation": [
+        "Historical releases remain traceable and are clearly distinguished from the current release."
+      ],
+      "failure_modes": [
+        "Superseded releases remain indistinguishable from the current governed release."
+      ],
+      "automation_readiness": "ASSISTED"
+    }
+  ],
+  "outputs": [
+    "Governed shared-parameter TXT release derived from the registry",
+    "Release metadata linking the TXT to a registry state",
+    "Archived superseded TXT releases",
+    "Existing-project delta findings where applicable"
+  ],
+  "evidence": [
+    "Registry export set",
+    "TXT-versus-registry comparison result",
+    "Release metadata record",
+    "Archive record",
+    "Project delta report where applicable"
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001", "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001"],
+    "workflows": ["TIVERIT-SP-REGISTRY-001"],
+    "companion_instructions": ["TIVERIT-BIM-STD-L6-SP-GEN-REG-001"]
+  },
+  "governance_notes": [
+    "The TXT is a derived distribution artifact and never supersedes the registry as shared-parameter authority.",
+    "Source example filenames and folder paths are noncanonical until separately governed.",
+    "Existing project differences are inspected and reconciled; they are not silently overwritten by release generation."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7700497",
+    "source_version": 1,
+    "source_title": "Instruction Set for Generating SP TXT from Shared Parameter Registry",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7700497",
+    "migration_note": "Source is draft L6 guidance. Organization-specific labels, paths, and example filenames were neutralized; registry authority, release validation, and archive logic were preserved."
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "REG-ROLE-001",
+  "type": "registry",
+  "title": "TIVERIT Governed Role Registry",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S1"],
+  "scope": {
+    "purpose": "Authoritative resolver for governed role IDs used by standards, workflows, registries, instructions, and automation.",
+    "migration_record_count": 27,
+    "curator_decisions_accepted_on": "2026-10-28"
+  },
+  "entries": [
+    {"id":"ROLE-PROJECT-DIRECTOR-001","name":"Project Director","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-PROJECT-DIRECTOR-001.json","source_page_id":"8421379"},
+    {"id":"ROLE-PROJECT-MANAGER-001","name":"Project Manager","status":"migration_candidate","aliases":["PM"],"definition":"definitions/ROLE-PROJECT-MANAGER-001.json","source_page_id":"8192009"},
+    {"id":"ROLE-BIM-DIRECTOR-001","name":"BIM Director","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-BIM-DIRECTOR-001.json","source_page_id":"8290309"},
+    {"id":"ROLE-PROJECT-BIM-MANAGER-001","name":"Project BIM Manager","status":"migration_candidate","aliases":["BIM Manager","Digital Delivery Lead"],"definition":"definitions/ROLE-PROJECT-BIM-MANAGER-001.json","source_page_id":"7929892","supersedes_role_ids":["ROLE-BIM-MANAGER-001"]},
+    {"id":"ROLE-PROJECT-BIM-COORDINATOR-001","name":"Project BIM Coordinator","status":"migration_candidate","aliases":["Coordination Lead"],"definition":"definitions/ROLE-PROJECT-BIM-COORDINATOR-001.json","source_page_id":"6651962","supersedes_role_ids":["ROLE-BIM-COORDINATOR-001"]},
+    {"id":"ROLE-DISCIPLINE-LEAD-001","name":"Discipline Lead","status":"migration_candidate","aliases":["Discipline BIM Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-001.json","source_page_id":"8126500","role_kind":"abstract_base","specializations":["ROLE-DISCIPLINE-LEAD-AUDIO-001","ROLE-DISCIPLINE-LEAD-CONTROLS-001","ROLE-DISCIPLINE-LEAD-ELECTRICAL-001","ROLE-DISCIPLINE-LEAD-LIGHTING-001","ROLE-DISCIPLINE-LEAD-MECHANICAL-001","ROLE-DISCIPLINE-LEAD-SFX-001","ROLE-DISCIPLINE-LEAD-SHOWSET-001","ROLE-DISCIPLINE-LEAD-VIDEO-001"]},
+    {"id":"ROLE-MODEL-AUTHOR-001","name":"Model Author","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-MODEL-AUTHOR-001.json","source_page_id":"8126500"},
+    {"id":"ROLE-BIM-MODELER-001","name":"BIM Modeler","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-BIM-MODELER-001.json","source_page_id":"6324296"},
+    {"id":"ROLE-BIM-DETAILER-001","name":"BIM Detailer","status":"migration_candidate","aliases":["Detailer"],"definition":"definitions/ROLE-BIM-DETAILER-001.json","source_page_id":"6881361"},
+    {"id":"ROLE-LAND-PRODUCER-SHOWSET-001","name":"Land Producer – Showset (BIM)","status":"migration_candidate","aliases":["Land Producer / LP"],"definition":"definitions/ROLE-LAND-PRODUCER-SHOWSET-001.json","source_page_id":"6357124"},
+    {"id":"ROLE-TECHNICAL-DIRECTOR-TECH-001","name":"Technical Director – Tech Disciplines (BIM)","status":"migration_candidate","aliases":["Technical Director / TD"],"definition":"definitions/ROLE-TECHNICAL-DIRECTOR-TECH-001.json","source_page_id":"6193228"},
+    {"id":"ROLE-DISCIPLINE-LEAD-SHOWSET-001","name":"Discipline Lead – Showset (BIM)","status":"migration_candidate","aliases":["Showset Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-SHOWSET-001.json","source_page_id":"8486927","role_kind":"specialization","parent_role":"ROLE-DISCIPLINE-LEAD-001"},
+    {"id":"ROLE-DISCIPLINE-LEAD-AUDIO-001","name":"Discipline Lead – Audio (BIM)","status":"migration_candidate","aliases":["Audio Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-AUDIO-001.json","source_page_id":"8159266","role_kind":"specialization","parent_role":"ROLE-DISCIPLINE-LEAD-001"},
+    {"id":"ROLE-DISCIPLINE-LEAD-VIDEO-001","name":"Discipline Lead – Video (BIM)","status":"migration_candidate","aliases":["Video Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-VIDEO-001.json","source_page_id":"7372863","role_kind":"specialization","parent_role":"ROLE-DISCIPLINE-LEAD-001"},
+    {"id":"ROLE-DISCIPLINE-LEAD-CONTROLS-001","name":"Discipline Lead – Controls (BIM)","status":"migration_candidate","aliases":["Controls Lead / Controls/Show Control Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-CONTROLS-001.json","source_page_id":"6651970","role_kind":"specialization","parent_role":"ROLE-DISCIPLINE-LEAD-001"},
+    {"id":"ROLE-DISCIPLINE-LEAD-SFX-001","name":"Discipline Lead – Special Effects (BIM)","status":"migration_candidate","aliases":["Special Effects Lead / SFX Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-SFX-001.json","source_page_id":"7700543","role_kind":"specialization","parent_role":"ROLE-DISCIPLINE-LEAD-001"},
+    {"id":"ROLE-DISCIPLINE-LEAD-LIGHTING-001","name":"Discipline Lead – Lighting (BIM)","status":"migration_candidate","aliases":["Lighting Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-LIGHTING-001.json","source_page_id":"6848593","role_kind":"specialization","parent_role":"ROLE-DISCIPLINE-LEAD-001"},
+    {"id":"ROLE-DISCIPLINE-LEAD-MECHANICAL-001","name":"Discipline Lead – Mechanical (BIM)","status":"migration_candidate","aliases":["Mechanical Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-MECHANICAL-001.json","source_page_id":"8552453","role_kind":"specialization","parent_role":"ROLE-DISCIPLINE-LEAD-001"},
+    {"id":"ROLE-DISCIPLINE-LEAD-ELECTRICAL-001","name":"Discipline Lead – Electrical (BIM)","status":"migration_candidate","aliases":["Electrical Lead"],"definition":"definitions/ROLE-DISCIPLINE-LEAD-ELECTRICAL-001.json","source_page_id":"7700551","role_kind":"specialization","parent_role":"ROLE-DISCIPLINE-LEAD-001"},
+    {"id":"ROLE-TOOL-AUTHORITY-001","name":"Tool / Automation Authority","status":"migration_candidate","aliases":["Tooling Authority"],"definition":"definitions/ROLE-TOOL-AUTHORITY-001.json","source_page_id":"7700534"},
+    {"id":"ROLE-QAQC-AUTHORITY-001","name":"QA/QC Authority","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-QAQC-AUTHORITY-001.json","source_page_id":"7700534"},
+    {"id":"ROLE-INFORMATION-MANAGER-001","name":"Information Manager","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-INFORMATION-MANAGER-001.json","source_page_id":"6651950"},
+    {"id":"ROLE-CDE-MANAGER-001","name":"CDE Manager","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-CDE-MANAGER-001.json","source_page_id":"6651950"},
+    {"id":"ROLE-BIM-STANDARDS-MGR-001","name":"BIM Standards Manager / Custodian","status":"migration_candidate","aliases":["BIM Standards Governance","BIM Standards Owner","BIM Standards Custodian"],"definition":"definitions/ROLE-BIM-STANDARDS-MGR-001.json","source_page_id":"7241788"},
+    {"id":"ROLE-DESIGN-LEAD-001","name":"Design Lead (TIVERIT)","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-DESIGN-LEAD-001.json","source_page_id":"6651950"},
+    {"id":"ROLE-MAIN-CONTRACTOR-REP-001","name":"Main Contractor / CM Representative","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-MAIN-CONTRACTOR-REP-001.json","source_page_id":"6651950"},
+    {"id":"ROLE-CLIENT-REP-001","name":"Client / Employer Representative","status":"migration_candidate","aliases":[],"definition":"definitions/ROLE-CLIENT-REP-001.json","source_page_id":"6651950"}
+  ],
+  "resolution_map": "role-resolution-map.json",
+  "unresolved_references": [
+    {"observed_name":"Technical PM","status":"unresolved","reason":"No governed role definition or role ID in BST."},
+    {"observed_name":"Production Manager","status":"unresolved","reason":"Referenced in RACI but no governed role definition or role ID in BST."},
+    {"observed_name":"AVLC Lead","status":"unresolved","reason":"Shared Parameters semantic-owner hook has no governed role ID in BST."},
+    {"observed_name":"FM Lead","status":"unresolved","reason":"Shared Parameters semantic-owner hook has no governed role ID in BST."},
+    {"observed_name":"IT / Network Lead","status":"unresolved","reason":"Interface role has no governed role definition or role ID in BST."}
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "8126500",
+    "source_version": "1",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8126500",
+    "migration_note": "Registry rebuilt from the extracted role corpus using accepted curator decisions; unresolved roles remain unregistered."
+  }
+}

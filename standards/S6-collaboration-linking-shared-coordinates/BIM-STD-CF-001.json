@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "BIM-STD-CF-001",
+  "type": "standard",
+  "title": "Standalone Coordination File — Governance & Use",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S6"],
+  "scope": {
+    "purpose": "Provide the project spatial authority for shared coordinates, master levels, master grids, Survey Point, Project Base Point, and True North.",
+    "ownership": "S6 owns the spatial-authority function. S5 consumes verified output for coordination intake.",
+    "curator_decision": "D-14"
+  },
+  "requirements": [
+    {"id":"REQ-S6-CF-001","authority":"shall","statement":"The Standalone Coordination File shall be created, configured, and maintained by ROLE-PROJECT-BIM-MANAGER-001 as the project spatial authority.","verification_class":"human_verifiable"},
+    {"id":"REQ-S6-CF-002","authority":"shall_not","statement":"The Standalone Coordination File shall not contain physical building geometry.","verification_class":"machine_checkable"},
+    {"id":"REQ-S6-CF-003","authority":"shall","statement":"The Standalone Coordination File shall contain the governed spatial datums required for project alignment, including shared coordinate reference, master levels, master grids, Survey Point, Project Base Point, and True North as applicable.","verification_class":"machine_checkable"},
+    {"id":"REQ-S6-CF-004","authority":"shall","statement":"Discipline authoring models shall consume the approved spatial framework from the Standalone Coordination File before S5 Gate A intake.","verification_class":"machine_checkable"},
+    {"id":"REQ-S6-CF-005","authority":"shall","statement":"After approved baseline establishment, governed spatial datums shall remain frozen until an approved coordinate change request is executed through centralized change control.","verification_class":"human_verifiable"},
+    {"id":"REQ-S6-CF-006","authority":"shall","statement":"Following an approved spatial change, downstream discipline models shall re-establish alignment from the updated authoritative coordination file and shall be revalidated before coordination intake resumes.","verification_class":"machine_assisted"}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001","TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S3-PROD-EP001"],
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-DISCIPLINE-LEAD-001"]
+  },
+  "change_control": {
+    "authority_role": "ROLE-PROJECT-BIM-MANAGER-001",
+    "required_sequence": ["formal_change_request","impact_assessment","written_approval","centralized_datum_modification","downstream_realignment","federation_revalidation"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7241780",
+    "source_title": "Standalone Coordination File - Governance & Use",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241780",
+    "migration_note": "Source labeled this asset under S5, but curator decision D-14 assigns canonical migration ownership to S6 because the asset governs spatial coordinates and datums. S5 consumes its verified output."
+  }
+}

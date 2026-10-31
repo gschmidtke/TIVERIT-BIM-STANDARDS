@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/executable-test.schema.json",
+  "id": "ETS-REVIT-WORKSET-001-REVIT",
+  "type": "executable_test",
+  "title": "Revit/ZEN governed workset containment check",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6", "S4"],
+  "ats_id": "ATS-REVIT-WORKSET-001",
+  "implementation_binding": {
+    "platform": "Autodesk Revit",
+    "executor": "ZEN",
+    "implementation_class": "api_checker",
+    "supported_versions": ["2024", "2025", "2026", "2027"],
+    "callable_reference": null
+  },
+  "implementation_state": "specified_not_implemented",
+  "input_contract": {
+    "subject": "A workshared Revit document and its user worksets/elements.",
+    "required_governance_inputs": ["project workset strategy", "governed workset naming syntax", "classification of link and datum/reference worksets", "approved exceptions"],
+    "preconditions": ["The model is workshared.", "The document is readable through an approved Revit API execution context."]
+  },
+  "execution_contract": {
+    "steps": ["Enumerate user worksets and record names and identifiers.", "Resolve each governed workset to its purpose/classification where possible.", "Enumerate linked model instances and verify their workset assignment.", "Enumerate datum/reference content and physical modeled geometry assigned to datum/reference-only worksets.", "Identify personal or uncontrolled production worksets using the governed strategy rather than source example names.", "Record positive violations and unresolved classifications and map them to ATS result states."],
+    "safety_boundary": "Read-only. The checker shall not move elements between worksets, create/delete worksets, or synchronize the model.",
+    "authority_boundary": "The ETS verifies workset containment and naming evidence only; it does not redefine the project workset strategy."
+  },
+  "evidence_output_contract": {
+    "schema": "schemas/conformance-result.schema.json",
+    "required_observations": ["tested document identity", "workset inventory", "link assignment findings", "datum/reference workset geometry findings", "personal/uncontrolled workset findings", "unresolved classification count"],
+    "retained_artifacts": ["machine-readable workset conformance result", "workset and element assignment finding inventory"]
+  },
+  "result_mapping": {
+    "pass": "The model is workshared, all applicable worksets conform to complete governed naming/containment rules, links are correctly assigned, and no physical modeled geometry is found on datum/reference-only worksets.",
+    "fail": "At least one positive violation is found against an available governed workset rule.",
+    "not_applicable": "The model is not workshared and no governed workset rule applies.",
+    "indeterminate": "The project workset strategy or workset-purpose classification required to evaluate one or more findings is incomplete or unavailable."
+  },
+  "provenance": {"source_system":"repository_curator","derived_from":"ATS-REVIT-WORKSET-001","migration_note":"Appendix E Revit/ZEN ETS contract. Source example workset names remain noncanonical."}
+}

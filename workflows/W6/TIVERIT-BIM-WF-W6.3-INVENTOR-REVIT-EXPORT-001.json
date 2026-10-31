@@ -1,0 +1,64 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001",
+  "legacy_ids": ["W6.3"],
+  "type": "workflow",
+  "title": "Inventor to Revit Export",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S9", "S6", "S7"],
+  "scope": {
+    "purpose": "Provide a governed repeatable sequence for publishing Inventor geometry for Revit coordination or reusable component use.",
+    "boundary": "This workflow selects and sequences the appropriate export path. It does not define project acceptance authority or replace the governing exchange and submission standards."
+  },
+  "trigger": "Requirement to publish governed Inventor geometry for use in Revit coordination or authoring.",
+  "entry_conditions": [
+    "Inventor source model is complete and opens without errors.",
+    "Export intent is defined as coordination/project representation or reusable component use.",
+    "Model simplification strategy is agreed."
+  ],
+  "decision_gates": [
+    {
+      "id": "DG-W6.3-01",
+      "question": "Is the exported object intended to behave as a reusable Revit component?",
+      "yes_route": "RFA export path",
+      "no_route": "RVT export path"
+    }
+  ],
+  "steps": [
+    {"id":"W6.3-01","action":"Confirm and record export intent as reusable Revit component or project/coordination representation.","outputs":["export_intent"]},
+    {"id":"W6.3-02","action":"Prepare a BIM-appropriate Inventor representation and suppress manufacturing detail that is not required for the declared downstream use.","inputs":["export_intent"],"outputs":["bim_appropriate_source"]},
+    {"id":"W6.3-03","action":"Select or create the approved export-specific Model State or representation definition.","inputs":["bim_appropriate_source"],"outputs":["approved_export_representation"]},
+    {"id":"W6.3-04","action":"Route through DG-W6.3-01 and configure the governed RVT or RFA export path using the linked L6 instruction set.","inputs":["approved_export_representation"],"outputs":["configured_export"]},
+    {"id":"W6.3-05","action":"Execute the export to the governed working location.","inputs":["configured_export"],"outputs":["exported_revit_artifact"]},
+    {"id":"W6.3-06","action":"Validate the exported artifact in Revit for successful open/load, geometry, orientation, scale, file size, performance, and intended behavior.","inputs":["exported_revit_artifact"],"outputs":["validation_result"]},
+    {"id":"W6.3-07","action":"Where updating is part of the selected RVT path, verify the update behavior against a controlled source change.","inputs":["validation_result"],"outputs":["update_validation_result"]},
+    {"id":"W6.3-08","action":"Record export metadata and evidence, including source/version context, representation, export type, settings, validation result, and date.","outputs":["export_metadata_record"]},
+    {"id":"W6.3-09","action":"Route the validated artifact to the applicable coordination or formal-exchange process without treating technical export success as acceptance.","inputs":["export_metadata_record"],"outputs":["validated_revit_ready_artifact"]}
+  ],
+  "exit_conditions": [
+    "Exported artifact opens or loads in Revit without blocking errors.",
+    "Geometry and orientation are correct for the declared use.",
+    "File size and performance are acceptable for the declared use.",
+    "Export method, representation, settings, and validation evidence are recorded."
+  ],
+  "failure_escalation": "Unresolved failures or proposed departures route to the governed deviation/exception process rather than being normalized as successful execution.",
+  "automation_readiness": "ASSISTED",
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001",
+      "TIVERIT-BIM-STD-S9-INVENTOR-REVIT-EXCHANGE-001"
+    ],
+    "instructions": ["TIVERIT-BIM-INS-S9-INVENTOR-REVIT-EXPORT-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6193165",
+    "source_version": "1",
+    "source_title": "JSON - Inventor to Revit Export Workflow",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6193165",
+    "migration_note": "Migrated the source workflow as L5 orchestration. The legacy nine instruction IDs are implemented in the linked L6 instruction object. Technical success remains separate from project acceptance."
+  }
+}

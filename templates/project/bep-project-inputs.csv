@@ -1,0 +1,16 @@
+field,value,status,source_or_authority,notes
+project_name,,TBC,project appointment,
+project_code,,TBC,project appointment,
+project_location,,TBC,project appointment,
+appointing_party,,TBC,appointment/contract,
+lead_appointed_party,,TBC,appointment/contract,
+bep_type,,TBC,appointment context,pre-appointment or post-appointment
+project_stage,,TBC,project programme,
+project_phases,,TBC,project programme,
+client_information_requirements_reference,,not supplied,client/appointment,
+contractual_cde,,TBC,contract/appointment,
+production_cde,,TBC,project governance,
+coordinate_authority,,TBC,project governance,
+issue_management_platform,,TBC,project governance,
+exchange_milestones,,TBC,project programme,
+acceptance_authority,,TBC,appointment/role governance,

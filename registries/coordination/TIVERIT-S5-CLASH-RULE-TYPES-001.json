@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S5-CLASH-RULE-TYPES-001",
+  "type": "registry",
+  "title": "S5 Clash and Coordination Check Types",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S5"],
+  "entries": [
+    {"id":"HARD_CLASH","name":"Level 1 Hard Clash","criterion":"Solid geometric intersection above the project-defined tolerance.","tolerance":"Project BEP/ruleset in millimeters; no enterprise numeric default."},
+    {"id":"SOFT_CLEARANCE","name":"Level 2 Soft Clash / Clearance","criterion":"Encroachment into governed access, maintenance, egress, travel, or deflection envelope.","tolerance":"Discipline-specific project ruleset in millimeters."},
+    {"id":"QA_DATA","name":"Level 3 QA / Data Integrity","criterion":"Missing mandatory data, non-compliant naming, or model completeness failure.","tolerance":"Zero tolerance for mandatory governed fields at the applicable gate."},
+    {"id":"EXCLUSION","name":"Governed Exclusion / Ignore Set","criterion":"Known non-issues suppressed by approved search/selection logic.","tolerance":"N/A"},
+    {"id":"DUPLICATE_GEOMETRY","name":"Duplicate Geometry","criterion":"Coincident identical elements or duplicate authored instances.","tolerance":"0 mm exact overlap."}
+  ],
+  "tolerance_policy": "Enterprise S5 defines tolerance governance but not project numeric values. Numeric clash tolerances are project/BEP data and shall be recorded in millimeters.",
+  "relationships": {"standards":["TIVERIT-BIM-STD-S5-COORDINATION-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7241803","7962634","8093711"],"migration_note":"Leading non-JSON comment from extraction was not carried into repository content."}
+}

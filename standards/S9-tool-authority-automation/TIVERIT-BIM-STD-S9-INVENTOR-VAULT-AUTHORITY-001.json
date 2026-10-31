@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001",
+  "type": "standard",
+  "title": "Inventor and Vault Toolchain Authority",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S9"],
+  "scope": {
+    "purpose": "Define authority boundaries for Inventor and Vault within mechanical and manufacturing authoring, release, exchange, coordination, and project publication.",
+    "boundary": "This standard governs authority and handoff semantics. It does not define click-by-click software operation, detailed Vault administration, or client-specific packaging."
+  },
+  "requirements": [
+    {"id":"REQ-S9-IV-AUTH-001","authority":"shall","statement":"Inventor shall be treated as the authoritative authoring environment for detailed mechanical and manufacturing geometry of governed fabricated components and assemblies within its assigned scope.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-IV-AUTH-002","authority":"shall","statement":"Vault shall govern Inventor design data history and lifecycle for manufacturing content within its assigned scope and shall not be treated as a substitute for the project CDE.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-IV-AUTH-003","authority":"shall","statement":"Project BIM context, multidisciplinary federation, and project publication authority shall remain with the governed project environments assigned to those domains; Inventor or Vault shall not silently acquire those authorities through exchange or technical capability.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-IV-AUTH-004","authority":"shall","statement":"Inventor or Vault outputs consumed by downstream BIM, coordination, fabrication, or project-information processes shall preserve identity, revision or lifecycle context, provenance, and traceability back to the authoritative manufacturing source.","verification_class":"machine_assisted"},
+    {"id":"REQ-S9-IV-AUTH-005","authority":"shall","statement":"Inventor-to-project exchanges shall use governed workflows that define purpose, representation, acceptance criteria, validation, and downstream reliance before publication or use.","verification_class":"human_verifiable"}
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001",
+      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"
+    ],
+    "workflows": ["TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001"]
+  },
+  "source_roles_requiring_reconciliation": [
+    "Manufacturing Lead / Mechanical Designer",
+    "BIM Coordinator / BIM Lead",
+    "Project Engineer / Discipline Lead",
+    "CDE / Data Manager"
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6127640",
+    "source_version": "1",
+    "source_title": "S9 – Inventor & Vault in the Authoring, Automation & Manufacturing Toolchain",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127640",
+    "migration_note": "Normalized authority boundaries and durable toolchain governance. Source-era organization-specific wording, tool training detail, and unresolved interface references were not promoted. Role labels remain source labels pending reconciliation with the canonical role registry."
+  }
+}

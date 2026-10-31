@@ -1,0 +1,15 @@
+{
+  "$schema":"../../schemas/registry.schema.json","id":"TIVERIT-S7-DELIVERABLE-TYPES-001","type":"registry","title":"S7 Deliverable Types","status":"migration_candidate","authority":"informational","layer":"L7","modules":["S7"],
+  "entries":[
+    {"id":"discipline_authoring_models","name":"Discipline Authoring Models","producer":"ROLE-MODEL-AUTHOR-001","review":"ROLE-DISCIPLINE-LEAD-001","acceptance":"ROLE-PROJECT-BIM-COORDINATOR-001","required_state":"Shared / Coordinated"},
+    {"id":"federated_coordination_models","name":"Federated Coordination Models","producer":"ROLE-PROJECT-BIM-COORDINATOR-001","review":"ROLE-DISCIPLINE-LEAD-001","acceptance":"ROLE-PROJECT-BIM-MANAGER-001","required_state":"Coordinated / Published"},
+    {"id":"record_as_built_models","name":"Record / As-Built Models","producer":"ROLE-PROJECT-BIM-COORDINATOR-001","review":"ROLE-PROJECT-BIM-MANAGER-001","acceptance":"Client Representative (External)","acceptance_resolution":"unresolved","required_state":"Archived / As Built"},
+    {"id":"contract_drawings","name":"Contract Drawings & Sheet Packages","producer":"ROLE-BIM-DETAILER-001","review":"ROLE-DISCIPLINE-LEAD-001","acceptance":"ROLE-DESIGN-LEAD-001","required_state":"Published / For Construction"},
+    {"id":"coordination_evidence","name":"Clash Reports & Coordination Evidence","producer":"ROLE-PROJECT-BIM-COORDINATOR-001","review":"ROLE-PROJECT-BIM-MANAGER-001","acceptance":"ROLE-PROJECT-BIM-MANAGER-001","required_state":"Validated"},
+    {"id":"asset_registers","name":"Structured Asset Registers / COBie Datasets","producer":"ROLE-PROJECT-BIM-MANAGER-001","review":"Client FM Lead / Operations Team (External)","acceptance":"Client Representative (External)","acceptance_resolution":"unresolved","required_state":"Validated / Accepted"},
+    {"id":"om_manuals","name":"O&M Manuals & Asset Documentation","producer":"Subcontractors / Delivery Team","review":"ROLE-PROJECT-BIM-MANAGER-001","acceptance":"Client FM Lead / Operations Team (External)","acceptance_resolution":"unresolved","required_state":"Archived"},
+    {"id":"decision_evidence","name":"Decision Evidence & Transmittal Records","producer":"ROLE-PROJECT-BIM-MANAGER-001","review":"ROLE-PROJECT-DIRECTOR-001","acceptance":"ROLE-PROJECT-DIRECTOR-001","required_state":"Archived"}
+  ],
+  "relationships":{"standards":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"]},
+  "provenance":{"source_system":"confluence","space":"BST","source_pages":["8060929","7864324","6848571","4554771"]}
+}

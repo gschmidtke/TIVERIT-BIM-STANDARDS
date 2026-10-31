@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-W1-1-PROJECT-MODEL-SETUP-001",
+  "legacy_ids": ["W1.1"],
+  "type": "workflow",
+  "title": "Project Model Setup Workflow",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S1", "S3", "S4", "S6"],
+  "trigger": "New project model creation or initial setup milestone",
+  "automation_readiness": "AUTOMATABLE",
+  "entry_conditions": [
+    "An approved project template and project information context are available.",
+    "Applicable coordinate and workset governance is known or explicitly unresolved."
+  ],
+  "steps": [
+    {"id":"I1.1.001","action":"Create the model from the approved template."},
+    {"id":"I1.1.002","action":"Apply project information and identity fields."},
+    {"id":"I1.1.003","action":"Establish the shared-coordinates baseline."},
+    {"id":"I1.1.004","action":"Verify coordinate alignment and publish the check evidence."},
+    {"id":"I1.1.005","action":"Create required worksets from the governed registry or project-defined source."},
+    {"id":"I1.1.006","action":"Assign protected worksets and applicable lock or protection rules."}
+  ],
+  "outputs": [
+    "Project model initialized from approved template",
+    "Applied project identity and information fields",
+    "Verified coordinate baseline",
+    "Governed workset structure"
+  ],
+  "governance_notes": [
+    "The source identifies Workset Registry and Model Registry as applicable registries and a Template Registry as future support.",
+    "This workflow coordinates setup; detailed Revit execution belongs in L6 instructions and configurations."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6127632",
+    "source_version": 1,
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632",
+    "migration_note": "Source workflow W1.1 migrated from the workflow catalogue. Future registry references were preserved as notes rather than invented as governed objects."
+  }
+}

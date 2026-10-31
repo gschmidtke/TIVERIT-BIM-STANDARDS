@@ -1,0 +1,158 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-STD-L6-SP-GEN-REG-001",
+  "type": "instruction",
+  "title": "Build Central Shared Parameter Registry from Existing TXT Sources",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S8"],
+  "purpose": "Create or update the governed central Shared Parameter Registry from one or more existing shared-parameter TXT sources using GUID-first identity, provenance capture, Citizen/Visitor classification, and explicit collision handling.",
+  "applies_to": {
+    "roles": ["BIM Standards Manager", "authorized BIM governance role"],
+    "tools": ["registry editor", "shared-parameter TXT parser"],
+    "scope": "Shared-parameter source consolidation and registry maintenance"
+  },
+  "preconditions": [
+    "Source TXT files are available in a controlled workspace and their project, discipline, or environment provenance can be identified.",
+    "A governed central Shared Parameter Registry location exists.",
+    "GUID-first identity and Citizen/Visitor governance are understood and applicable."
+  ],
+  "steps": [
+    {
+      "id": "SP-REG-01",
+      "name": "Stage source TXT files",
+      "actions": [
+        "Collect the shared-parameter TXT sources in a controlled workspace.",
+        "Record source provenance for each input file."
+      ],
+      "validation": [
+        "Every staged source has traceable provenance."
+      ],
+      "failure_modes": [
+        "Source provenance cannot be established."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "SP-REG-02",
+      "name": "Parse parameters using GUID-first identity",
+      "actions": [
+        "Extract each parameter GUID, name, group identifier, and data type from the TXT source.",
+        "Capture semantic group name where available.",
+        "Normalize only obvious whitespace or typographic defects that do not change meaning; otherwise flag the discrepancy for governance."
+      ],
+      "validation": [
+        "Every observed parameter retains its source GUID and structural definition."
+      ],
+      "failure_modes": [
+        "A source parameter cannot be parsed reliably.",
+        "A proposed normalization could change semantic meaning."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "SP-REG-03",
+      "name": "Build composite observed set",
+      "actions": [
+        "Union parsed parameters into a composite working set keyed by GUID.",
+        "Retain all observed source files for each GUID.",
+        "Flag repeated names under different GUIDs as potential collisions."
+      ],
+      "validation": [
+        "Each unique GUID is represented once in the composite set.",
+        "All source occurrences remain traceable."
+      ],
+      "failure_modes": [
+        "Duplicate GUID rows remain unresolved.",
+        "A name collision is silently merged."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "SP-REG-04",
+      "name": "Classify Citizen, Visitor, and lifecycle status",
+      "actions": [
+        "Apply governed Citizen/Visitor rules to each observed parameter.",
+        "Use Active only for confirmed governed Citizens.",
+        "Use Candidate for items pending review and Deprecated for identities being retired."
+      ],
+      "validation": [
+        "Every registry row has an explicit lane and status.",
+        "Unresolved items are not silently promoted to Active Citizen status."
+      ],
+      "failure_modes": [
+        "Classification is inferred without governance support.",
+        "A Visitor or unresolved candidate is treated as a governed Citizen."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "SP-REG-05",
+      "name": "Populate governed registry",
+      "actions": [
+        "Create one registry row per unique GUID.",
+        "Populate GUID, Name, GroupId, GroupName, DataType, DataCategory where applicable, Lane, Status, SourceFiles, and Notes.",
+        "Preserve exact GUID, name, group, and data-type fidelity for governed Citizen parameters unless a separately governed change is approved."
+      ],
+      "validation": [
+        "Registry identity and structural fields match the governed source decisions."
+      ],
+      "failure_modes": [
+        "A GUID or structural field is modified without governed change control."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "SP-REG-06",
+      "name": "Validate registry integrity",
+      "actions": [
+        "Check GUID uniqueness.",
+        "Check completeness against all staged sources.",
+        "Resolve or explicitly record repeated names under distinct GUIDs.",
+        "Record collision decisions in registry notes and lifecycle state."
+      ],
+      "validation": [
+        "No duplicate GUIDs exist.",
+        "Every staged parameter is represented as Citizen or Visitor.",
+        "Every known collision has an explicit governed disposition."
+      ],
+      "failure_modes": [
+        "Parameters are omitted from the registry.",
+        "A collision remains undocumented."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    }
+  ],
+  "outputs": [
+    "Governed GUID-first Shared Parameter Registry update",
+    "Traceable source-provenance set",
+    "Explicit collision and lifecycle dispositions"
+  ],
+  "evidence": [
+    "Registry rows keyed by GUID",
+    "Source-file provenance records",
+    "Uniqueness and completeness validation results",
+    "Collision decision records"
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001", "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001"],
+    "workflows": ["TIVERIT-SP-REGISTRY-001"],
+    "companion_instructions": ["TIVERIT-BIM-STD-L6-SP-GEN-TXT-001"]
+  },
+  "governance_notes": [
+    "The governed registry is the authority for shared-parameter identity; source TXT files are evidence inputs, not competing authorities.",
+    "Seed/example rows in the source do not create new canonical registry entries beyond those separately migrated and governed.",
+    "Meaning-changing normalization requires governed review rather than silent cleanup."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7733257",
+    "source_version": 1,
+    "source_title": "Instruction Set for Building a Central Shared Parameter Registry",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7733257",
+    "migration_note": "Source is draft L6 guidance. Organization-specific labels and source filenames were neutralized; the GUID-first registry procedure and governance boundaries were preserved."
+  }
+}

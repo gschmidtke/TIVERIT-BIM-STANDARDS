@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-NAMING-001",
+  "type": "abstract_test",
+  "title": "Revit governed object naming",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-NAMING-001",
+  "governing_clause": "NAME-01 and NAME-02",
+  "test_intent": "Determine whether governed Revit objects are classified to the correct naming surface and use the applicable governed syntax, token order, delimiter, and vocabulary without introducing a competing local convention.",
+  "applicability": {
+    "applies_when": "The tested Revit model contains governed families, family types, worksets, views, sheets, or other objects whose names are controlled by S4.",
+    "not_applicable_when": "No object in the tested scope is subject to a governed naming rule."
+  },
+  "required_evidence": [
+    "inventory of tested Revit object names and object classes",
+    "applicable governed naming syntax and controlled vocabulary",
+    "record of approved naming exceptions where applicable"
+  ],
+  "result_logic": {
+    "pass": "Every applicable tested object can be classified to a governed naming surface and its name conforms to the available governed syntax and vocabulary, with no unexplained duplicate or local convention.",
+    "fail": "One or more applicable objects violate an available governed naming syntax or vocabulary, introduce an unauthorized local convention, or create an unapproved ambiguous duplicate.",
+    "not_applicable": "No tested object is subject to a governed naming rule.",
+    "indeterminate": "The applicable naming syntax or controlled vocabulary is incomplete, unavailable, or insufficient to evaluate one or more tested objects."
+  },
+  "permitted_implementation_classes": ["api_checker", "registry_checker", "model_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-NAMING-001",
+    "migration_note": "Appendix E ATS. It deliberately returns indeterminate where the governed vocabulary is not yet complete instead of treating source examples as authority."
+  }
+}

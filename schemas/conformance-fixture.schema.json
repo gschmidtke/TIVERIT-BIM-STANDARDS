@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/conformance-fixture.schema.json",
+  "title": "TIVERIT Conformance Fixture",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "type",
+    "title",
+    "status",
+    "system_role",
+    "modules",
+    "ets_id",
+    "fixture_kind",
+    "expected_result",
+    "subject_profile",
+    "simulated_observations",
+    "provenance"
+  ],
+  "properties": {
+    "$schema": {"type": "string", "minLength": 1},
+    "id": {"type": "string", "pattern": "^FIX-[A-Z0-9-]+$"},
+    "type": {"const": "conformance_fixture"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "enum": ["migration_candidate", "draft", "active", "deprecated", "historical", "superseded"]},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"},
+    "effective_date": {"type": ["string", "null"], "format": "date"},
+    "system_role": {"const": "conformance"},
+    "modules": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^S[1-9]$"},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "ets_id": {"type": "string", "pattern": "^ETS-[A-Z0-9-]+$"},
+    "fixture_kind": {"type": "string", "enum": ["positive", "negative", "indeterminate", "not_applicable"]},
+    "expected_result": {"type": "string", "enum": ["pass", "fail", "not_applicable", "indeterminate"]},
+    "subject_profile": {"type": "object", "minProperties": 1},
+    "simulated_observations": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "expected_evidence_assertions": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "notes": {"type": "string"},
+    "provenance": {
+      "type": "object",
+      "required": ["source_system", "derived_from"],
+      "properties": {
+        "source_system": {"type": "string"},
+        "derived_from": {"type": "string", "minLength": 1},
+        "migration_note": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "active"}}, "required": ["status"]},
+      "then": {
+        "required": ["version", "effective_date"],
+        "properties": {"effective_date": {"type": "string", "format": "date"}}
+      }
+    }
+  ],
+  "additionalProperties": false
+}

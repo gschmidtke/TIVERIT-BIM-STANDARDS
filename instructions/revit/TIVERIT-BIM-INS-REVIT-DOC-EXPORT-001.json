@@ -1,0 +1,147 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-DOC-EXPORT-001",
+  "type": "instruction",
+  "title": "Revit Documentation and Export Preparation",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S3", "S4", "S7"],
+  "purpose": "Prepare repeatable Revit documentation and exchange outputs using governed export views, naming authority, settings, and evidence without allowing draft source examples to override S3/S4/S7 requirements.",
+  "applies_to": {
+    "tools": ["Revit"],
+    "roles": ["Model Author", "Project BIM Coordinator", "Discipline Lead"],
+    "scope": "PDF, NWC, IFC, and RVT output preparation"
+  },
+  "preconditions": [
+    "The intended deliverable or coordination output is defined under S7 or the applicable project exchange requirement.",
+    "The current naming and folder authority under S3/S4 is available.",
+    "Dedicated export views or governed output sets exist where required.",
+    "Any tool-specific export preset used has a governed source or is explicitly project-approved."
+  ],
+  "steps": [
+    {
+      "id": "RVT-EXP-01",
+      "name": "Prepare governed output scope",
+      "actions": [
+        "Identify the output purpose, format, discipline/scope, and applicable issue state.",
+        "Select the governed sheet set or dedicated export view rather than an arbitrary working view.",
+        "Confirm the export view controls categories, filters, linked-model visibility, phase, design option, and detail level as required by the output purpose."
+      ],
+      "validation": [
+        "The selected output scope is traceable to a declared deliverable or coordination purpose.",
+        "Working-view state is not used accidentally as an exchange definition."
+      ],
+      "failure_modes": [
+        "An arbitrary working view is exported.",
+        "The output scope does not match the declared exchange purpose."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-EXP-02",
+      "name": "Apply governed naming and destination",
+      "actions": [
+        "Name output files using the current governed S4 identity/naming rule or project-approved mapping.",
+        "Place outputs in the governed S3/S7 production, coordination, or publication location appropriate to their state.",
+        "Do not use source-page example filename or folder patterns where they conflict with current canonical registries."
+      ],
+      "validation": [
+        "Output identity resolves through the governed naming source.",
+        "Destination matches the output lifecycle/state under S3/S7."
+      ],
+      "failure_modes": [
+        "A draft example pattern is treated as canonical naming authority.",
+        "An output is placed in a location implying an incorrect lifecycle or acceptance state."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    },
+    {
+      "id": "RVT-EXP-03",
+      "name": "Prepare PDF output",
+      "actions": [
+        "Export the governed sheet set using the approved project/template PDF configuration where one exists.",
+        "Preserve required vector/raster, font, lineweight, and print-quality behavior defined by the governed configuration.",
+        "Test representative output for legibility before formal issue."
+      ],
+      "validation": [
+        "PDF output is legible and consistent with the approved sheet/view presentation.",
+        "The export configuration is traceable where the project requires it."
+      ],
+      "failure_modes": [
+        "Unapproved local PDF settings materially change the output.",
+        "Fonts, graphics, or lineweights render incorrectly."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-EXP-04",
+      "name": "Prepare coordination or open exchange",
+      "actions": [
+        "For NWC, use the governed Navisworks export instruction and applicable preset/settings source.",
+        "For IFC, use the project-approved IFC version, exchange scope, phase/design-option handling, and property-set mapping; do not infer defaults from draft source examples.",
+        "Use governed shared-coordinate behavior where spatial alignment is required."
+      ],
+      "validation": [
+        "The exported file opens in the intended consuming environment.",
+        "Spatial alignment and required properties are preserved for the declared purpose."
+      ],
+      "failure_modes": [
+        "An ungoverned IFC version/MVD or export preset is assumed.",
+        "Coordinate or property behavior differs from the declared exchange requirement."
+      ],
+      "automation_readiness": "ASSISTED"
+    },
+    {
+      "id": "RVT-EXP-05",
+      "name": "Record export evidence",
+      "actions": [
+        "Record output identity, source model/container, export timestamp, application/exporter version, settings or preset identity where applicable, and responsible role.",
+        "Retain validation evidence required by the applicable coordination or submission workflow."
+      ],
+      "validation": [
+        "The output can be traced to the source container and export configuration/context.",
+        "Creation of an export is not represented as formal acceptance unless the applicable S7 process grants that state."
+      ],
+      "failure_modes": [
+        "An export cannot be reproduced or traced.",
+        "File creation is mistaken for acceptance or contractual issue."
+      ],
+      "automation_readiness": "AUTOMATABLE"
+    }
+  ],
+  "outputs": [
+    "Prepared PDF, NWC, IFC, or RVT output appropriate to declared purpose",
+    "Traceable export metadata/evidence",
+    "Validated output location and identity"
+  ],
+  "evidence": [
+    "Output file identity and path/state",
+    "Source container identity",
+    "Export settings/preset reference where applicable",
+    "Exporter/application version",
+    "Representative output validation result"
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S3-PROD-EP001", "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "companion_instructions": ["TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001", "TIVERIT-BIM-INS-REVIT-QA-STYLE-001"]
+  },
+  "future_dependencies": [
+    "Governed PDF export configuration/preset where required",
+    "Governed IFC export configuration/preset and exchange mapping where required"
+  ],
+  "governance_notes": [
+    "The source page is explicitly draft; its filename patterns, folder scaffold, PDF numeric settings, NWC settings, and IFC default examples are not promoted where current S3/S4/S7 authority is stronger or the source contains TODOs.",
+    "The concrete Navisworks export instruction remains the tool-specific governed-values source for NWC behavior already migrated.",
+    "Export creation is evidence of execution, not acceptance or reliance."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7438366",
+    "source_version": 1,
+    "source_title": "Revit Style Guide - Appendix E",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7438366",
+    "migration_note": "Draft documentation/export source normalized to L6. Source examples and TODO configuration values were not promoted; current S3/S4/S7 authority and the concrete Navisworks instruction govern instead."
+  }
+}

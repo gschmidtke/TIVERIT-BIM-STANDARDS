@@ -1,0 +1,72 @@
+{
+  "id": "MIG-INV-S1-001",
+  "type": "migration_inventory",
+  "title": "S1 Governance and Constitutional Source Inventory",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S1"],
+  "source_system": "confluence",
+  "space": "BST",
+  "primary_sources": [
+    {
+      "page_id": "2326578",
+      "classification": "structured_source_json",
+      "source_status": "draft_extraction_pass",
+      "notes": "Structured S1 extraction covering A1 Standards vs BEP, A2 Roles/Responsibilities/Authority, and A3 Information Management Principles. Contains historical gap flags that require reconciliation against later source and migrated repository content."
+    },
+    {
+      "page_id": "2818168",
+      "classification": "governance_complete_self_candidate",
+      "source_status": "candidate_post_extraction",
+      "notes": "Later S1 SELF source. Adds explicit contractual precedence, permitted use/reliance, authority-as-governance rules, lifecycle principles, and a closed A1-A3 scope. It states that role matrices and reliability/suitability rules are delegated to dedicated downstream modules rather than missing from S1 itself."
+    },
+    {
+      "page_id": "2818176",
+      "classification": "narrative_source",
+      "source_status": "current",
+      "notes": "Human-readable governance narrative aligned with S1 concepts."
+    },
+    {
+      "page_id": "7700534",
+      "classification": "role_definition_standard_json",
+      "source_status": "current",
+      "notes": "Dedicated role-definition source already substantially represented in the repository role registry and role definition objects."
+    },
+    {
+      "page_id": "4456460",
+      "classification": "layer_governance_meta_standard",
+      "source_status": "draft",
+      "notes": "Defines the L1-L7 stack, dependency chain, layer boundaries, validation/evidence expectations, deviation handling and automation capability classification. Its legacy layer semantics require mapping to the repository architecture rather than one-to-one adoption."
+    },
+    {
+      "page_id": "4161558",
+      "classification": "standard_development_governance",
+      "source_status": "current",
+      "notes": "Source for standards development and governance process; supports repository curation and promotion rules but should not be confused with project delivery authority."
+    },
+    {
+      "page_id": "2326619",
+      "classification": "binder_summary",
+      "source_status": "current",
+      "notes": "Binder/index source useful for traceability and identifying canonical S1 source pages, not an independent authority object."
+    }
+  ],
+  "source_structure": {
+    "A1": "Standards vs BIM Execution Plan",
+    "A2": "Roles, Responsibilities and Authority",
+    "A3": "Information Management Principles"
+  },
+  "migration_observations": [
+    "The later S1 SELF source resolves several gaps listed in the earlier extraction JSON, so gap flags must be evaluated chronologically rather than copied forward.",
+    "Role enumeration belongs in registries and role definitions; S1 should declare authority principles and delegation boundaries.",
+    "Information reliability, suitability, LOD/LOI and permitted reliance are constitutional concerns in S1 but detailed rules are delegated to S2, S5 and S7.",
+    "The source layer model must be mapped to the repository architecture; legacy layer numbering is not automatically canonical in GitHub."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["2326578", "2818168", "2818176", "7700534", "4456460", "4161558", "2326619"],
+    "migration_note": "Direct source inventory only; no canonical S1 content promoted by this file."
+  }
+}

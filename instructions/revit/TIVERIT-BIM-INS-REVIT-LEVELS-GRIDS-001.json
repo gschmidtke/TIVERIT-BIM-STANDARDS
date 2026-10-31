@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/instruction.schema.json",
+  "id": "TIVERIT-BIM-INS-REVIT-LEVELS-GRIDS-001",
+  "type": "instruction",
+  "title": "Revit Levels, Grids, Scope Boxes, and Reference Elements",
+  "status": "migration_candidate",
+  "authority": "instructional",
+  "layer": "L6",
+  "modules": ["S4", "S6"],
+  "purpose": "Apply governed level, grid, scope-box, and reference-element practices in Revit while preserving S6 coordinate authority and keeping unconfirmed source naming/graphics examples noncanonical.",
+  "preconditions": ["The project datum/coordinate strategy is established under S6.", "Approved level and grid identities or project datum schedule are available for the project context."],
+  "steps": [
+    {"id":"DATUM-01","name":"Create and maintain governed levels","actions":["Create levels from the approved project datum/elevation source.","Use stable, clear level names suitable for cross-discipline coordination and downstream use.","Do not change authoritative elevations locally without the governed coordination process."],"validation":["Level names and elevations match the approved project datum source.","No duplicate or unexplained level elevations/names exist."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"DATUM-02","name":"Create and maintain governed grids","actions":["Create grids using the approved project grid/structural reference source.","Keep grid identity consistent across discipline models and linked coordination contexts.","Coordinate any grid change through the authoritative model/process before downstream synchronization."],"validation":["Grid identities and positions are consistent with the approved source.","No ad-hoc local grid offsets or competing grid systems are introduced without governance."],"automation_readiness":"AUTOMATABLE"},
+    {"id":"DATUM-03","name":"Control datum graphics through governed display rules","actions":["Use Object Styles and View Templates to control grid/level linework, bubbles, text, and visibility.","Do not promote source TODO graphics values into local standards."],"validation":["Datum graphics are controlled by governed template/style mechanisms.","Unexplained per-view datum graphics overrides are absent or documented."],"automation_readiness":"ASSISTED"},
+    {"id":"DATUM-04","name":"Use scope boxes and reference planes intentionally","actions":["Use scope boxes to maintain consistent extents/crops where required.","Name and manage reference planes/scope boxes according to the governing naming rules and project scope.","Place only agreed reference elements on the applicable datum/reference workset where worksharing uses one."],"validation":["Scope boxes and reference planes have clear governed purpose and naming.","Modeled building geometry is not placed on a datum/reference-only workset."],"automation_readiness":"ASSISTED"}
+  ],
+  "outputs": ["Coordinated Revit datum/reference structure aligned with the governed spatial framework"],
+  "evidence": ["Level and grid schedule/inventory", "Coordinate/datum comparison report", "Scope-box/reference-plane inventory"],
+  "future_dependencies": ["Authoritative machine-readable level abbreviation registry", "Governed scope-box naming catalogue where required"],
+  "governance_notes": ["S6 remains authoritative for shared-coordinate and spatial-authority rules.", "Source grid naming examples, scope-box patterns, and exact graphics values marked TODO/to-be-confirmed are not canonicalized."],
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"6684703","source_version":1,"source_title":"Levels, Grids & Reference Standards - Revit Guidelines","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6684703","migration_note":"Normalized as L6 datum/reference implementation guidance subordinate to S4 naming and S6 spatial authority."}
+}

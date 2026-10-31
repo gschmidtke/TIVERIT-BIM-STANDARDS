@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/interoperability-mapping.schema.json",
+  "id": "TIVERIT-BRIDGE-IDS-S8-PARAM-004-001",
+  "type": "interoperability_mapping",
+  "title": "S8 governed shared-parameter consistency to IDS 1.0 mapping",
+  "status": "migration_candidate",
+  "system_role": "interoperability",
+  "modules": ["S8"],
+  "source_requirement_id": "REQ-S8-004",
+  "target_standard": {
+    "name": "buildingSMART Information Delivery Specification",
+    "version": "1.0",
+    "representation": "XML constrained by IDS XSD",
+    "normative_reference": "https://standards.buildingsmart.org/IDS/1.0/ids.xsd"
+  },
+  "expressiveness": "partial",
+  "mapping_contract": {
+    "candidate_ids_facets": ["entity", "property", "classification"],
+    "source_semantics": "Governed shared parameters are centrally defined by stable TIVERIT/Revit identity and required structural properties.",
+    "projectable_semantics": "Where a governed IFC entity/property-set/property-name mapping exists, applicable property presence and value/data expectations may be projected into IDS requirements.",
+    "retained_tiverit_semantics": "Central registry identity, Revit shared-parameter GUID authority, change governance, and source-registry version context remain governed by TIVERIT and are not transferred to IDS.",
+    "generation_precondition": "Do not generate an IDS property requirement until the applicable TIVERIT shared parameter has an explicitly governed IFC property-set and property-name mapping."
+  },
+  "limitations": [
+    "IDS does not directly represent Revit shared-parameter GUID authority as the canonical TIVERIT identity key.",
+    "The current repository does not yet contain a governed IFC property-set/property-name mapping for the shared-parameter registry entries.",
+    "A valid IDS projection can check IFC-facing information requirements but cannot replace the TIVERIT central registry or its change-control authority.",
+    "Geometry and Revit application-state checks remain outside this IDS mapping."
+  ],
+  "generation_state": "mapping_only",
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "REQ-S8-004",
+    "migration_note": "First interoperability-plane pilot. The mapping is intentionally partial and blocks .ids generation until a governed IFC property mapping exists, preventing silent loss of Revit GUID and registry authority semantics."
+  }
+}

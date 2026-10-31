@@ -1,0 +1,73 @@
+{
+  "id": "MIG-REV-S9-TOOL-AUTH-CANDIDATES-001",
+  "type": "migration_review",
+  "title": "S9 Tool Authority Source-Supported Candidate Map",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S9"],
+  "purpose": "Record tool/domain authority relationships that are explicitly supported by Confluence source material, without promoting them into the governed Tool Authority Matrix.",
+  "candidate_rows": [
+    {
+      "domain": "BIM spatial authoring and multidisciplinary model context",
+      "authoritative_environment": "Revit",
+      "authority_scope": ["spatial coordination context", "multidisciplinary BIM authoring", "structured BIM information prepared for downstream delivery"],
+      "non_authority_boundaries": ["does not replace manufacturing authoring authority", "does not replace electrical logic authority"],
+      "source_pages": ["2228282", "2719840", "7241747"]
+    },
+    {
+      "domain": "Manufacturing geometry and fabrication design",
+      "authoritative_environment": "Inventor",
+      "authority_scope": ["mechanical fabrication geometry", "detailed assemblies", "manufacturing-level authoring"],
+      "non_authority_boundaries": ["not authoritative for overall BIM spatial context", "not authoritative for electrical production logic"],
+      "source_pages": ["2228282", "6127640", "7241747"]
+    },
+    {
+      "domain": "Manufacturing design lifecycle and released manufacturing data",
+      "authoritative_environment": "Vault",
+      "authority_scope": ["manufacturing design truth", "internal manufacturing lifecycle", "released manufacturing designs and documentation", "revision and release provenance"],
+      "non_authority_boundaries": ["not the formal project CDE", "published/transmitted project records remain governed by the CDE"],
+      "source_pages": ["7307304", "6127640"]
+    },
+    {
+      "domain": "Electrical system logic and source electrical data",
+      "authoritative_environment": "EPLAN",
+      "authority_scope": ["electrical connectivity", "circuit definitions", "loads", "voltage and phase", "panel hierarchy", "source panel schedules", "functional electrical relationships"],
+      "non_authority_boundaries": ["not authoritative for physical device placement", "not authoritative for cable tray/conduit routing geometry", "not authoritative for coordination presentation"],
+      "source_pages": ["6357114", "2228282", "2719840"]
+    },
+    {
+      "domain": "Electrical physical placement and coordination geometry",
+      "authoritative_environment": "BIM authoring model",
+      "authority_scope": ["device/equipment placement", "spatial coordination", "cable tray and conduit routing geometry", "coordination views and drawings"],
+      "non_authority_boundaries": ["mirrored electrical logic remains read-only in intent", "geometry does not imply electrical logic authority"],
+      "source_pages": ["6357114"]
+    },
+    {
+      "domain": "Automation execution",
+      "authoritative_environment": "none",
+      "authority_scope": ["execution of governed transformations", "repeatable checks", "data movement or validation under approved rules"],
+      "non_authority_boundaries": ["automation is not an authority layer", "automation may not redefine standards", "automation may not bypass approval, acceptance or governed data structures"],
+      "source_pages": ["2228282", "5308417"]
+    },
+    {
+      "domain": "Constrained 2D documentation",
+      "authoritative_environment": "AutoCAD only where explicitly designated for documentation/output",
+      "authority_scope": ["documentation and output within governed constraints"],
+      "non_authority_boundaries": ["not a primary BIM authoring environment", "may not replace authoritative BIM or manufacturing models"],
+      "source_pages": ["2228282", "2719840"]
+    }
+  ],
+  "important_boundary": "These rows are source-supported migration candidates only. The Tool Authority Matrix governance scaffold explicitly states that real governed rows belong in a controlled artifact. Curator approval is required before these candidates become canonical matrix entries.",
+  "conflict_notes": [
+    "Tool authority and platform record authority are different dimensions. For example, a manufacturing authoring system may be authoritative for source manufacturing truth while the CDE remains authoritative for formally published project information containers.",
+    "Tool authority does not grant human approval authority. Human/role authority remains governed by S1 and the role registry.",
+    "Mirrored or consumed data does not transfer authority to the receiving tool."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["2228282", "2719840", "6127640", "7241747", "7307304", "6357114", "5308417"],
+    "migration_note": "Source-supported candidate mapping only; not a canonical Tool Authority Matrix."
+  }
+}

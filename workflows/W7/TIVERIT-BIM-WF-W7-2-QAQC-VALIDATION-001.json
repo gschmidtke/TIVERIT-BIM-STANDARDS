@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-W7-2-QAQC-VALIDATION-001",
+  "legacy_ids": ["W7.2"],
+  "type": "workflow",
+  "title": "QA/QC Validation Workflow",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S5", "S7"],
+  "trigger": "Milestone submission or model state approval event",
+  "automation_readiness": "ASSISTED",
+  "steps": [
+    {"id":"I7.2.001","action":"Run the required standards checks or applicable ruleset."},
+    {"id":"I7.2.002","action":"Document findings and the remediation list."},
+    {"id":"I7.2.003","action":"Record the approve or reject decision for the tested model state together with supporting evidence."}
+  ],
+  "outputs": [
+    "QA/QC check results",
+    "Remediation list",
+    "Recorded model-state decision and evidence"
+  ],
+  "governance_notes": [
+    "The source identifies future QA/QC Checklist and Approval Log assets.",
+    "Repository governance distinguishes technical QA evidence from broader contractual or client acceptance; this workflow does not override S5/S7 authority rules."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6127632",
+    "source_version": 1,
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632",
+    "migration_note": "Source workflow W7.2 migrated from the workflow catalogue. Future checklist and approval-log assets remain unresolved."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S9-INVENTOR-MFG-DOC-001",
+  "type": "standard",
+  "title": "Inventor Manufacturing Documentation Governance",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S9"],
+  "scope": {
+    "purpose": "Govern minimum documentation conventions and release readiness for Inventor manufacturing deliverables.",
+    "boundary": "The source page establishes the governed subject and high-level requirements but references a more detailed historical style-guide source for dimensions, symbols, title blocks, and other drafting conventions. Those detailed rules are not invented here."
+  },
+  "requirements": [
+    {"id":"REQ-S9-INV-MDOC-001","authority":"shall","statement":"Governed Inventor manufacturing deliverables shall use approved templates and title blocks applicable to the project and manufacturing context.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-INV-MDOC-002","authority":"shall","statement":"Manufacturing drawings and related documentation shall comply with the approved dimensional, annotation, symbol, detailing, and presentation rules applicable to the governing manufacturing documentation standard.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-INV-MDOC-003","authority":"shall","statement":"Manufacturing documentation shall be reviewed against the governing documentation requirements before release to manufacturing or external parties.","verification_class":"human_verifiable"},
+    {"id":"REQ-S9-INV-MDOC-004","authority":"shall","statement":"Released documentation shall retain sufficient metadata and identity for governed Vault and CDE registration and downstream traceability.","verification_class":"machine_assisted"}
+  ],
+  "open_gaps": [
+    "Detailed dimensioning, tolerancing, symbol, title-block, layer, and presentation rules require a separate extraction from the referenced detailed source before this standard can be considered complete."
+  ],
+  "industry_alignment_candidates": [
+    "ISO 129-1 for presentation of dimensions and tolerances",
+    "ISO 1101 for geometrical tolerancing language",
+    "ISO 16792 for digital product definition practices",
+    "ISO 5457 for drawing sheet size and layout",
+    "ISO 5455 for drawing scales",
+    "ASME Y14.5 where the project or manufacturing context uses ASME GD&T conventions"
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S9-INVENTOR-IDENTITY-001","TIVERIT-BIM-STD-S9-INVENTOR-VAULT-AUTHORITY-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6357050",
+    "source_version": "1",
+    "source_title": "S9 – Inventor Standards / Style Guide (Manufacturing Documentation)",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6357050",
+    "migration_note": "Migrated the high-level manufacturing-documentation obligations. Detailed drafting rules remain a source-extraction gap and external industry standards are recorded only as alignment candidates pending curator review."
+  }
+}

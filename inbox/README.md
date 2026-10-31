@@ -26,4 +26,4 @@ public proposal
 - Canonical repository areas are edited only in curator sessions.
 - A merged Inbox submission remains non-authoritative until separately promoted through governance.
 
-See `CONTRIBUTING.md` for the public submission process.
+See `CONTRIBUTING.md` for the public submission process and `CURATION.md` for promotion rules.

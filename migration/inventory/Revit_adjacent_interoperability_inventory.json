@@ -1,0 +1,58 @@
+{
+  "id": "MIG-INV-REVIT-INTEROP-001",
+  "type": "migration_inventory",
+  "title": "Revit Adjacent Interoperability Source Inventory",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S3", "S6", "S7", "S9"],
+  "purpose": "Separate cross-tool interoperability sources that mention Revit from Appendix E Revit implementation standards.",
+  "assets": [
+    {
+      "page_id": "7241747",
+      "title": "S9 — Inventor to Revit Data Exchange Governance",
+      "source_status": "draft_working_narrative",
+      "working_layer": "L4",
+      "classification": "cross_tool_governance",
+      "notes": "Defines exchange authority boundaries, scope, acceptance criteria, traceability and change handling. Explicitly excludes click-by-click instructions. Inventor remains authoritative for manufacturing geometry; Revit is authoritative for BIM context/documentation; governed CDE publication controls accepted exchange packages."
+    },
+    {
+      "page_id": "6193165",
+      "title": "Inventor to Revit Export Workflow JSON",
+      "source_status": "current_source_json",
+      "working_layer": "L5",
+      "source_identifier": "W6.3",
+      "classification": "concrete_cross_tool_workflow",
+      "notes": "Governed assisted workflow for choosing RVT versus RFA, preparing/simplifying source content, executing export, validating in Revit and recording evidence."
+    },
+    {
+      "page_id": "6684693",
+      "title": "Inventor to Revit Export Instruction Set JSON",
+      "source_status": "current_source_json",
+      "working_layer": "L6",
+      "source_identifier": "IS-W6.3",
+      "classification": "concrete_cross_tool_instruction_set",
+      "notes": "Nine atomic instructions I6.3.001–I6.3.009 cover export intent, simplification, model-state selection, RVT/RFA settings, execution, Revit validation, update verification and metadata logging."
+    },
+    {
+      "page_id": "6357042",
+      "title": "Exporting Inventor Models to Revit",
+      "source_status": "current_narrative",
+      "working_layer": "L6",
+      "classification": "human_readable_workflow_guidance",
+      "notes": "Narrative guidance supporting the W6.3 workflow/instruction set."
+    }
+  ],
+  "boundary": [
+    "These assets are adjacent to Revit but are not part of the 13-topic Appendix E style-guide family.",
+    "The S9 governance object states what must be true across the tool boundary; W6.3 coordinates the process; IS-W6.3 executes the detailed steps.",
+    "Source-specific export-setting examples must remain source facts until reviewed; extraction does not promote them into universal Revit presets.",
+    "The cross-tool chain should later map to S7 exchange and S9 tool-authority governance without duplicating Appendix E content."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["7241747", "6193165", "6684693", "6357042"],
+    "migration_note": "Direct source inventory only; no canonical promotion."
+  }
+}

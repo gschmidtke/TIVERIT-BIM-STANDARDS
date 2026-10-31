@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/executable-test.schema.json",
+  "id": "ETS-REVIT-VIEW-TEMPLATE-001-REVIT",
+  "type": "executable_test",
+  "title": "Revit/ZEN view template and display-state check",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S5"],
+  "ats_id": "ATS-REVIT-VIEW-TEMPLATE-001",
+  "implementation_binding": {
+    "platform": "Autodesk Revit",
+    "executor": "ZEN",
+    "implementation_class": "api_checker",
+    "supported_versions": ["2024", "2025", "2026", "2027"],
+    "callable_reference": null
+  },
+  "implementation_state": "specified_not_implemented",
+  "input_contract": {
+    "subject": "Applicable Revit views in the tested document.",
+    "required_governance_inputs": ["governed view-purpose classification", "approved view-template mapping", "governed expected template-controlled properties", "approved exceptions"],
+    "preconditions": ["The document is readable through an approved Revit API execution context.", "The applicable view purpose/template mapping can be resolved for each tested view or explicitly marked unresolved."]
+  },
+  "execution_contract": {
+    "steps": ["Enumerate applicable Revit views and record view type, purpose indicator, applied template id/name, phase, phase filter, detail level, visual style, filters, category controls, and link display state where accessible.", "Resolve the expected governed template and property set for each view.", "Compare the observed template and controlled properties against the governed expectation.", "Record unexplained overrides, missing/wrong templates, and unresolved mappings.", "Map observations to the ATS result states."],
+    "safety_boundary": "Read-only. The checker shall not apply templates, reset overrides, or modify view settings.",
+    "authority_boundary": "A PASS is evidence of view-state conformance only; it does not approve a drawing set or coordination release."
+  },
+  "evidence_output_contract": {
+    "schema": "schemas/conformance-result.schema.json",
+    "required_observations": ["tested document identity", "applicable view count", "correct-template count", "template/display deviations", "unresolved mapping count", "finding records with view id/name and observed versus expected state"],
+    "retained_artifacts": ["machine-readable view conformance result", "view-template/override finding inventory"]
+  },
+  "result_mapping": {
+    "pass": "All applicable views match their complete governed template/display-state expectations with no unexplained override.",
+    "fail": "At least one applicable view positively violates an available governed template or display-state rule.",
+    "not_applicable": "No governed view-template rule applies to the tested scope.",
+    "indeterminate": "The View Template Registry, purpose mapping, or expected property set required for one or more views is unavailable or incomplete."
+  },
+  "provenance": {"source_system":"repository_curator","derived_from":"ATS-REVIT-VIEW-TEMPLATE-001","migration_note":"Appendix E Revit/ZEN ETS contract. It does not claim exact template names until the governed View Template Registry exists."}
+}

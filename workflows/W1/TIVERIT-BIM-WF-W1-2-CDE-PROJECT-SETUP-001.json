@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-BIM-WF-W1-2-CDE-PROJECT-SETUP-001",
+  "legacy_ids": ["W1.2"],
+  "type": "workflow",
+  "title": "CDE / ACC Project Setup Workflow",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S1", "S3"],
+  "trigger": "Project kickoff or CDE provisioning",
+  "automation_readiness": "ASSISTED",
+  "entry_conditions": [
+    "The project collaboration environment is being provisioned.",
+    "Applicable folder, permission, and baseline-publication requirements are known or explicitly unresolved."
+  ],
+  "steps": [
+    {"id":"I1.2.001","action":"Create the governed folder structure required for the project."},
+    {"id":"I1.2.002","action":"Assign permissions and role-based access."},
+    {"id":"I1.2.003","action":"Publish baseline files and the associated transmittal note."},
+    {"id":"I1.2.004","action":"Verify access and the resulting audit trail."}
+  ],
+  "outputs": [
+    "Provisioned project CDE structure",
+    "Applied role-based access",
+    "Published baseline information",
+    "Access and audit evidence"
+  ],
+  "governance_notes": [
+    "The source identifies the CDE Structure Standard and a future Permission Matrix as supporting governance.",
+    "This object does not supersede the existing S3 ACC onboarding workflow; reconciliation between generic W1.2 source logic and platform-specific onboarding remains a migration task."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6127632",
+    "source_version": 1,
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632",
+    "migration_note": "Source workflow W1.2 migrated from the workflow catalogue. Future Permission Matrix remains unresolved."
+  }
+}

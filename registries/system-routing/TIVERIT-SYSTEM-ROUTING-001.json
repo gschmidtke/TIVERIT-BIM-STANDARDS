@@ -1,0 +1,139 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-SYSTEM-ROUTING-001",
+  "type": "registry",
+  "title": "Reasoning and Repository Routing Registry",
+  "status": "migration_candidate",
+  "authority": "architectural",
+  "layer": "L3",
+  "modules": ["S1", "S9"],
+  "entries": [
+    {
+      "id": "ROUTE-USG-001",
+      "name": "USG — Purpose and Intent",
+      "status": "public",
+      "repository": "https://github.com/gschmidtke/USG",
+      "authority_class": "purpose_intent",
+      "primary_question": "What are we trying to achieve, and why?",
+      "owns": ["problem definition", "human need", "required outcome", "performance intent", "success criteria before tool selection"],
+      "does_not_own": ["BIM normative authority", "Revit production precedent", "tool capability"],
+      "redirect_when": "The inquiry concerns unresolved intent, required outcome, or purpose before BIM/tool representation is selected."
+    },
+    {
+      "id": "ROUTE-TIVERIT-STANDARDS-001",
+      "name": "TIVERIT BIM Standards — Normative Governance",
+      "status": "public",
+      "repository": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS",
+      "authority_class": "normative_governance",
+      "primary_question": "What is required or permitted, who has authority, and what evidence establishes compliance?",
+      "owns": ["normative BIM requirements", "prohibitions and permissions", "roles and authority", "information requirements", "naming and identity governance", "CDE governance", "coordination and linking governance", "delivery and acceptance governance", "compliance evidence requirements"],
+      "does_not_own": ["unresolved project purpose", "Revit operational precedent", "tool/API capability"],
+      "redirect_when": "The inquiry asks what BIM governance requires, permits, prohibits, assigns, accepts, or verifies."
+    },
+    {
+      "id": "ROUTE-ARPL-001",
+      "name": "ARPL — Operational Revit Precedent",
+      "status": "public",
+      "repository": "https://github.com/gschmidtke/ARPL",
+      "authority_class": "operational_precedent",
+      "primary_question": "How has this been done successfully before, what failed, and how was the result verified?",
+      "owns": ["Revit production techniques", "production iterations", "failure memory", "corrective methods", "operational verification precedent"],
+      "does_not_own": ["project purpose", "normative BIM authority", "permission to override standards"],
+      "redirect_when": "The inquiry concerns how to execute or verify a professional Revit production task or known implementation failure."
+    }
+  ],
+  "interaction_policy": {
+    "id": "ROUTING-INTERACTION-SILENT-001",
+    "entry_point_is_not_authority": true,
+    "silent_routing_default": true,
+    "no_forced_repo_handoff": true,
+    "must_load_owning_agent_contract_before_substantive_answer": true,
+    "unresolved_upstream_may_enter_downstream_gap_queue": true,
+    "behavior": [
+      "Classify the user's actual question against the production stack regardless of which public repository was supplied as the entry point.",
+      "Identify the layer that owns the question before answering from repository content.",
+      "Read the owning layer's AGENTS.md before giving a substantive answer; do not answer from memory of what that layer probably means.",
+      "Retrieve or consult the layer that owns the question and answer the user directly rather than asking the user to re-point the AI at another repository.",
+      "When an upstream item remains unresolved but the requested downstream process can continue safely, carry the unresolved item into that process as an explicit gap rather than forcing a restart or inventing a value.",
+      "Do not lead with repository names, object IDs, file paths, or routing mechanics unless they materially help the user.",
+      "Surface provenance, governing objects, or layer boundaries when the user asks, when authority is challenged, when sources conflict, or when uncertainty materially affects the answer.",
+      "Never hide a conflict that requires a user, project authority, curator, or professional decision.",
+      "Silent routing never invents project facts, converts proposals into confirmed requirements, or lets tool capability or prior execution success create normative authority."
+    ],
+    "owning_contracts": {
+      "purpose_intent": "https://github.com/gschmidtke/USG/blob/main/AGENTS.md",
+      "normative_governance": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/blob/main/AGENTS.md",
+      "operational_precedent": "https://github.com/gschmidtke/ARPL/blob/main/AGENTS.md"
+    },
+    "examples": [
+      {
+        "entry_repository": "ARPL",
+        "user_question": "What sheet standards should we establish?",
+        "route_to": "normative_governance",
+        "required_before_answer": "Load TIVERIT BIM Standards AGENTS.md and applicable governed standards content.",
+        "user_experience": "Direct answer based on TIVERIT BIM Standards; no forced repository handoff."
+      },
+      {
+        "entry_repository": "USG",
+        "user_question": "Who is allowed to approve the model?",
+        "route_to": "normative_governance",
+        "required_before_answer": "Load TIVERIT BIM Standards AGENTS.md and governed role/authority content.",
+        "user_experience": "Direct answer based on governed roles and authority."
+      },
+      {
+        "entry_repository": "TIVERIT BIM Standards",
+        "user_question": "How do I actually perform this operation in Revit?",
+        "route_to": "operational_precedent",
+        "required_before_answer": "Load ARPL AGENTS.md before applying production precedent.",
+        "user_experience": "Direct production guidance using ARPL and capability evidence as needed."
+      },
+      {
+        "entry_repository": "ARPL",
+        "user_question": "I need a BEP for this project, but the project purpose is not fully resolved yet.",
+        "route_to": "normative_governance",
+        "required_before_answer": "Load TIVERIT BIM Standards AGENTS.md and the BEP assembly route; retain unresolved purpose as an explicit BEP gap when safe.",
+        "user_experience": "BEP assembly may continue without inventing the missing upstream purpose or forcing a complete restart."
+      }
+    ]
+  },
+  "task_routes": [
+    {
+      "id": "TASK-ROUTE-PROJECT-BOOTSTRAP-001",
+      "task_class": "project_bootstrap",
+      "trigger_intents": ["start_project", "new_project", "project_setup", "project_onboarding", "bim_project_start", "standards_project_start"],
+      "natural_language_examples": ["How do I start a new project?", "Help me set up this BIM project", "What do we need before production begins?", "Where do we start with the standards for this project?"],
+      "preferred_guide": "guides/project-start/README.md",
+      "required_startup": ["guides/project-start/README.md", "AGENTS.md", "registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json"],
+      "interaction_mode": "diagnostic_routing",
+      "routing_rule": "When the user broadly asks how to start or set up a project and no more specific governed task is already clear, use the project bootstrap guide to identify the highest materially unresolved layer, inspect supplied project evidence, and route to the applicable governed objects or downstream production layer. If BEP creation/review becomes the primary task, hand off to TASK-ROUTE-BEP-ASSEMBLY-001.",
+      "guidance_authority": "non_normative_navigation_guide",
+      "authority_note": "Project bootstrap is a discovery and routing aid only. It does not create project requirements, appointments, approvals, or facts and does not require every project to instantiate every standards domain in the same form.",
+      "completion_condition": "The user has been routed to the correct next governed task or repository layer, with materially blocking project facts identified as supplied, unresolved, deferred, conflicted, or proposed rather than invented."
+    },
+    {
+      "id": "TASK-ROUTE-BEP-ASSEMBLY-001",
+      "task_class": "bep_assembly",
+      "trigger_intents": ["create_bep", "prepare_bep", "draft_bep", "complete_bep", "review_bep", "update_bep", "bep_interview"],
+      "natural_language_examples": ["Create a BEP", "Create a BEP with me using the TIVERIT BIM Standards repository", "Help me fill out a BIM Execution Plan", "Review and complete this BEP"],
+      "preferred_workflow": "TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001",
+      "required_startup": ["guides/bep/README.md", "guides/bep/BEP-ASSEMBLY-MAP.md", "guides/bep/BEP-INTERVIEW-PROTOCOL.md", "workflows/BEP/TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001.json"],
+      "interaction_mode": "gap_driven_interview",
+      "routing_rule": "When the primary user intent is BEP creation, completion, review, or update using this repository, prefer the governed BEP interview workflow over free-form drafting or operational-production routing.",
+      "guidance_authority": "non_normative_assembly_guide",
+      "authority_note": "The BEP interview guides project-data collection and assembly. It does not approve the BEP, create contractual obligations, change standards, or convert proposals and unresolved items into project facts.",
+      "completion_condition": "Required BEP data is captured, explicitly unresolved, formally deferred, or recorded as a conflict or deviation candidate; the resulting BEP remains a draft/review package unless approval is independently evidenced."
+    }
+  ],
+  "routing_order": ["purpose_intent", "normative_governance", "operational_precedent", "technical_capability", "execution_observation", "validation"],
+  "precedence_rules": [
+    "Resolved purpose does not override normative governance automatically.",
+    "Normative governance constrains operational precedent.",
+    "Operational precedent does not create normative authority.",
+    "Technical capability does not establish permission or professional acceptability.",
+    "Execution success does not establish compliance without validation against purpose and governing standards."
+  ],
+  "provenance": {
+    "source_system": "repository_curator",
+    "migration_note": "Foundational machine-readable routing model connecting the public USG, TIVERIT BIM Standards, and ARPL repositories. Strengthened after a live external routing test with an explicit owning-contract load requirement and a governed rule allowing unresolved upstream items to enter downstream gap queues when continuation is safe and authority-preserving."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-S6-COORD-003",
+  "type": "abstract_test",
+  "title": "Standalone Coordination File contains no physical modeled elements",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6"],
+  "requirement_id": "REQ-S6-COORD-003",
+  "test_intent": "Determine whether the governed Standalone Coordination File contains any modeled physical building elements beyond its permitted spatial-authority content.",
+  "applicability": {
+    "applies_when": "The tested subject is the governed Standalone Coordination File for a project.",
+    "not_applicable_when": "The tested subject is not the governed Standalone Coordination File."
+  },
+  "required_evidence": [
+    "tested container identity confirming Standalone Coordination File designation",
+    "complete inventory of model elements or governed element categories in the tested container",
+    "governed classification of permitted spatial-authority elements versus prohibited physical building elements"
+  ],
+  "result_logic": {
+    "pass": "The tested Standalone Coordination File contains no modeled physical building elements and contains only content permitted for its governed spatial-authority function.",
+    "fail": "One or more modeled physical building elements are present in the governed Standalone Coordination File.",
+    "not_applicable": "The subject is not the governed Standalone Coordination File.",
+    "indeterminate": "A complete element inventory cannot be obtained or the evidence cannot reliably distinguish permitted spatial-authority elements from physical building elements."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "REQ-S6-COORD-003",
+    "migration_note": "First conformance pilot ATS. This is a strong candidate for a future Revit/ZEN ETS because the normative condition can be evaluated from model content without changing S6 authority."
+  }
+}

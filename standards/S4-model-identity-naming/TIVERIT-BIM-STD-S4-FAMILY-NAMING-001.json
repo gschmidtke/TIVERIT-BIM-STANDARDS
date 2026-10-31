@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S4-FAMILY-NAMING-001",
+  "type": "standard",
+  "title": "S4 Family Naming Principles",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S4"],
+  "scope": {"purpose":"Govern stable family identity while keeping dynamic variation in type/instance data.","applies_to":["Revit loadable families"],"excludes":["type/instance parameter semantics", "project-specific temporary content"]},
+  "requirements": [
+    {"id":"S4-FAM-001","authority":"shall","statement":"Family names shall be unique, stable, human-readable, semantically meaningful, and discoverable.","verification_class":"machine_assisted"},
+    {"id":"S4-FAM-002","authority":"shall","statement":"The conceptual family naming pattern shall distinguish discipline/domain, native category/system, type/function, and optional variant/classification/descriptor.","verification_class":"human_verifiable"},
+    {"id":"S4-FAM-003","authority":"shall_not","statement":"Dynamic physical states, ratings, sizes, and other governed variation shall not be endlessly encoded into the family name where type or parameter data is the appropriate carrier.","verification_class":"human_verifiable"}
+  ],
+  "relationships": {"parent":["TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001"],"semantic_dependency":["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["4489217","6651935"],"migration_note":"L4 family-naming micro-standard retained separately from L6 tool instructions; competing Appendix E details remain migration evidence pending S4 curator decisions."}
+}

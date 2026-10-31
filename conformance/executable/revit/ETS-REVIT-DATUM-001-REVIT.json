@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/executable-test.schema.json",
+  "id": "ETS-REVIT-DATUM-001-REVIT",
+  "type": "executable_test",
+  "title": "Revit/ZEN level and grid alignment check",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6", "S4"],
+  "ats_id": "ATS-REVIT-DATUM-001",
+  "implementation_binding": {
+    "platform": "Autodesk Revit",
+    "executor": "ZEN",
+    "implementation_class": "api_checker",
+    "supported_versions": ["2024", "2025", "2026", "2027"],
+    "callable_reference": null
+  },
+  "implementation_state": "specified_not_implemented",
+  "input_contract": {
+    "subject": "Governed levels and grids in the tested Revit document.",
+    "required_governance_inputs": ["approved level/grid source", "governed coordinate transform or spatial basis", "comparison tolerance where needed", "approved datum exceptions"],
+    "preconditions": ["The document is readable through an approved Revit API execution context.", "The approved datum/grid source can be resolved into the tested document coordinate context or explicitly marked unresolved."]
+  },
+  "execution_contract": {
+    "steps": ["Enumerate levels and record stable id, name, elevation, and relevant scope.", "Enumerate grids and record stable id, identity/name, curve/position representation, and relevant scope.", "Resolve the governed comparison source and coordinate basis.", "Compare level identities/elevations and grid identities/positions against the governed source using approved tolerances where applicable.", "Record duplicates, offsets, mismatches, competing datum systems, and unresolved transforms.", "Map observations to ATS result states."],
+    "safety_boundary": "Read-only. The checker shall not move, rename, create, delete, pin, or unpin levels/grids or modify shared coordinates.",
+    "authority_boundary": "The ETS observes alignment to S6 spatial authority; it does not establish or change project coordinates."
+  },
+  "evidence_output_contract": {
+    "schema": "schemas/conformance-result.schema.json",
+    "required_observations": ["tested document identity", "level comparison summary", "grid comparison summary", "duplicate/mismatch counts", "unresolved coordinate/tolerance count", "finding records with datum id/name and observed versus governed position"],
+    "retained_artifacts": ["machine-readable datum conformance result", "level/grid comparison finding inventory"]
+  },
+  "result_mapping": {
+    "pass": "All applicable levels and grids match the complete governed source and spatial comparison rules.",
+    "fail": "At least one applicable level/grid positively conflicts with the governed identity or spatial rule.",
+    "not_applicable": "No governed level/grid rule applies to the tested model.",
+    "indeterminate": "The approved source, coordinate transform, or required comparison tolerance is unavailable or ambiguous."
+  },
+  "provenance": {"source_system":"repository_curator","derived_from":"ATS-REVIT-DATUM-001","migration_note":"Appendix E Revit/ZEN ETS contract. It does not invent coordinate tolerances or naming codes absent from governance."}
+}

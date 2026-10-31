@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schemas/conformance-fixture.schema.json",
+  "id": "FIX-S8-PARAM-004-PASS",
+  "type": "conformance_fixture",
+  "title": "S8 shared parameter definitions match central registry",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "ets_id": "ETS-S8-PARAM-004-PYTHON",
+  "fixture_kind": "positive",
+  "expected_result": "pass",
+  "subject_profile": {
+    "subject_type": "synthetic shared-parameter inventory",
+    "governed_registry": "TIVERIT-BIM-STD-S8-SP-REG-001"
+  },
+  "simulated_observations": [
+    {"guid":"f16eb500-0976-4c80-b5d1-082470821ef8","name":"Classification.Uniclass.Ss.Number","data_type":"TEXT"},
+    {"guid":"d92d4d5a-53dd-4a81-af58-67538a84947a","name":"HEIGHT","data_type":"LENGTH"}
+  ],
+  "expected_evidence_assertions": [
+    "both observed GUIDs resolve to active central registry entries",
+    "observed names match the governed names for those GUIDs",
+    "observed data types match the governed data types",
+    "result is pass"
+  ],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "ETS-S8-PARAM-004-PYTHON",
+    "migration_note": "Synthetic positive regression fixture for the first runnable repository-native conformance checker."
+  }
+}
