@@ -7,6 +7,11 @@
   "repository": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS",
   "authority_class": "normative_governance",
   "primary_question": "What is required or permitted, who has authority, and what evidence establishes compliance?",
+  "orientation": {
+    "mode": "offered_not_imposed",
+    "operating_ai_retains_system_authority": true,
+    "rule": "Consult this governed node where materially relevant. Repository relevance does not by itself create authority, and routing must not override the operating AI's system, developer, safety, or platform rules."
+  },
   "owns": [
     "normative_bim_requirements",
     "roles_and_authority",
@@ -37,7 +42,7 @@
       "ARPL": "https://github.com/gschmidtke/ARPL"
     },
     "local_routing_registry": "registries/system-routing/TIVERIT-SYSTEM-ROUTING-001.json",
-    "rule": "The repository used as an entry point is not automatically authoritative for the user's question. Route to the owning node and load that node's agent contract before substantive use."
+    "rule": "The repository used as an entry point is not automatically authoritative for the user's question. Where governed routing materially contributes, consult the owning node and its local contract before substantive governed use."
   },
   "public_intake": {
     "name": "STAR-T-GATE Inbox",
@@ -83,6 +88,15 @@
       "Canonical change requires repository validation and required owner/professional decisions."
     ]
   },
+  "tracked_governance_gaps": [
+    {
+      "source": "https://github.com/gschmidtke/STAR-T-GATE-INBOX/issues/3",
+      "topic": "formal_model_acceptance_authority_mapping",
+      "status": "unresolved",
+      "scope": "Acceptance authority remains conditional on purpose, information state, and project BEP/RACI. Coordination sign-off does not establish a universal formal-use acceptance authority.",
+      "rule": "Track this as a substantive Standards curation dependency; this infrastructure node does not resolve or promote the missing authority mapping."
+    }
+  ],
   "legacy_repo_inbox": {
     "status": "internal_or_legacy_staging_only",
     "public_entry": false,
