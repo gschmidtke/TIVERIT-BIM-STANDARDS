@@ -6,16 +6,77 @@
   "status": "migration_candidate",
   "authority": "normative",
   "layer": "L5",
-  "modules": ["S5"],
-  "trigger": "Federated desktop coordination is required for heavy assembly, clash execution, viewpoint review, or evidence packaging.",
+  "modules": ["S5", "S7"],
+  "trigger": "Federated desktop coordination is required for heavy assembly, advanced clash execution, viewpoint review, offline review, or evidence packaging.",
   "steps": [
-    {"id":"NAV-1","action":"Create or update the NWF coordination container and verify shared-coordinate alignment.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001"},
-    {"id":"NAV-2","action":"Apply governed search/selection sets and define discipline-pair clash tests.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001"},
-    {"id":"NAV-3","action":"Execute clash matrix, deduplicate results, and prepare review viewpoints.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001"},
-    {"id":"NAV-4","action":"Use curated viewpoints during coordination review and synchronize formal issues to the governed system of record.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001"},
-    {"id":"NAV-5","action":"Re-test remediated conditions and package milestone evidence.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001"}
+    {
+      "id": "NAV-1",
+      "action": "Create or update the governed NWF coordination container, identify the coordination scope and included source versions, and verify shared-coordinate alignment before relying on federation results.",
+      "actor_role": "ROLE-PROJECT-BIM-COORDINATOR-001"
+    },
+    {
+      "id": "NAV-2",
+      "action": "Apply governed search/selection sets and define the applicable clash tests from the project clash-matrix configuration without inventing enterprise numeric tolerances or discipline pairs.",
+      "actor_role": "ROLE-PROJECT-BIM-COORDINATOR-001"
+    },
+    {
+      "id": "NAV-3",
+      "action": "Execute the clash matrix, deduplicate and classify findings, preserve the model/test context, and prepare reproducible viewpoints or other review evidence.",
+      "actor_role": "ROLE-PROJECT-BIM-COORDINATOR-001"
+    },
+    {
+      "id": "NAV-4",
+      "action": "During coordination review, use curated Navisworks viewpoints or sections to examine findings, but create or synchronize every governed actionable issue in the project-designated issue system of record with traceable model/version context.",
+      "actor_role": "ROLE-PROJECT-BIM-COORDINATOR-001"
+    },
+    {
+      "id": "NAV-5",
+      "action": "Assignees correct the authoritative source information; Navisworks transforms, appearance overrides, viewpoints, or local status changes shall not substitute for correction of the source model or authoritative issue state.",
+      "actor_role": "ROLE-PROJECT-BIM-COORDINATOR-001"
+    },
+    {
+      "id": "NAV-6",
+      "action": "Re-federate the corrected source versions, re-run applicable tests, verify resolved conditions, and reflect verification or closure in the governed issue system of record.",
+      "actor_role": "ROLE-PROJECT-BIM-COORDINATOR-001"
+    },
+    {
+      "id": "NAV-7",
+      "action": "For a governed coordination gate or milestone, package the required Navisworks outputs as evidence only to the extent declared by the project exchange/records requirements, and record coordination sign-off through the applicable governed review/sign-off process.",
+      "actor_role": "ROLE-PROJECT-BIM-MANAGER-001"
+    }
   ],
-  "system_of_record_boundary": "Navisworks-only logs are not authoritative for formal acceptance; formal coordination issues must be synchronized to the governed issue system of record.",
-  "relationships": {"standards":["TIVERIT-BIM-STD-S5-COORDINATION-EP001"]},
-  "provenance": {"source_system":"confluence","space":"BST","source_pages":["8126475","6324279","8159247"],"migration_note":"Desktop implementation retained separately from core S5 doctrine. Incomplete source TODOs are not promoted."}
+  "meeting_rules": [
+    "Navisworks may be used as the technical review environment for coordination meetings, including viewpoints, sections, search/selection sets, and clash results.",
+    "Meeting discussion or a Navisworks result does not by itself create formal issue, acceptance, or sign-off authority.",
+    "Meeting notes and decisions that affect governed issues shall reference the corresponding issue identifiers or governed evidence records."
+  ],
+  "evidence_requirements": [
+    "coordination container and declared scope",
+    "identifiable source-model versions used for the review",
+    "applicable clash-matrix/profile version or configuration basis",
+    "traceable governed issue identifiers for actionable findings",
+    "verification evidence for resolved findings",
+    "declared coordination gate or milestone when sign-off evidence is packaged"
+  ],
+  "system_of_record_boundary": "Navisworks is a technical coordination and evidence-generation environment, not an authority source merely because a result exists there. Formal coordination issues, review decisions, acceptance evidence, and sign-off records shall remain in the project-designated governed system of record. Where ACC is the project-designated system, Navisworks findings shall be synchronized to the applicable ACC issue/review/transmittal process rather than maintained as an unsynchronized parallel tracker.",
+  "output_classification": "NWF, NWD, clash reports, viewpoints, screenshots, and issue exports do not acquire deliverable, record, or acceptance status from file format alone; classification is governed by S7 and the applicable project exchange, BEP, CDE, and records requirements.",
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
+      "TIVERIT-BIM-STD-S5-NAVISWORKS-PROJECT-SETUP-001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"
+    ],
+    "registries": [
+      "TIVERIT-S5-NAVISWORKS-CLASH-MATRIX-FIELDS-001",
+      "TIVERIT-S5-CLASH-RULE-TYPES-001",
+      "TIVERIT-S7-NAVISWORKS-OUTPUT-TYPES-001"
+    ],
+    "roles": ["ROLE-PROJECT-BIM-COORDINATOR-001", "ROLE-PROJECT-BIM-MANAGER-001"]
+  },
+  "provenance": {
+    "source_system": "confluence+repository_curator",
+    "space": "BST",
+    "source_pages": ["8126475", "6324279", "8159247", "6357084", "7864324", "10944513"],
+    "migration_note": "Completed object-level migration by integrating the source-supported meeting, issue traceability, verification, evidence and system-of-record boundaries into the existing desktop workflow. Draft platform-preference statements, exact folder paths, exporter toggles, retention durations, and unresolved authority assignments are not promoted."
+  }
 }

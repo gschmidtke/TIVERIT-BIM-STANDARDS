@@ -28,10 +28,10 @@
       "domain": "Navisworks coordination/export",
       "standards_scope": ["S5", "S6", "S7"],
       "source_summary": "Export settings, project setup/federation, clash matrix/routing, ACC/Navisworks hybrid workflow, deliverables guidance, and an explicit gap inventory exist in Confluence.",
-      "current_main_summary": "Current main already contains TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001, TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001, tool-agnostic S5 coordination, ACC record/exchange objects, and coordination registries. Object-level reconciliation in Navisworks Round 001 adds bounded project-setup and clash-matrix-field governance while retaining draft/TODO pages as source evidence.",
-      "disposition": "partially_migrated",
-      "confidence": "high_object_level_reconciliation_started",
-      "next_action": "Complete residual Navisworks gaps only from source-backed decisions: export preset values, approved matrix/profile values if intended, deliverable/record rules, viewpoint packaging, meeting/RFI implementation, and conformance tests."
+      "current_main_summary": "The Navisworks source set has been reconciled object by object. Current repository coverage includes export instruction, project-setup standard, clash-matrix governance, technical coordination workflow, output-type governance, system-of-record boundaries, generic role authority, and abstract conformance tests. Draft/TODO values that depend on project configuration remain explicitly unpromoted.",
+      "disposition": "migrated",
+      "confidence": "high_object_level_reconciliation_complete",
+      "next_action": "No further Confluence migration batch required. Maintain Navisworks objects through ordinary standards governance; supply project-specific tolerances, exporter settings, CDE paths, retention, and BEP/RACI authority as project/configuration inputs."
     },
     {
       "domain": "Inventor / manufacturing toolchain",

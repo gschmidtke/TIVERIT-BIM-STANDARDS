@@ -1,0 +1,78 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S7-NAVISWORKS-OUTPUT-TYPES-001",
+  "type": "registry",
+  "title": "Navisworks Output Types and Governance Classification",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S5", "S7"],
+  "entries": [
+    {
+      "id": "NWF_WORKING_CONTAINER",
+      "name": "Navisworks NWF Working Coordination Container",
+      "intrinsic_deliverable_status": "none",
+      "classification_rule": "Treat as working coordination information unless a project-specific exchange requirement explicitly declares the NWF itself as an issued deliverable.",
+      "record_rule": "Working-file existence alone does not make the NWF a project record."
+    },
+    {
+      "id": "NWD_PUBLISHED_SNAPSHOT",
+      "name": "Navisworks NWD Published Coordination Snapshot",
+      "intrinsic_deliverable_status": "conditional",
+      "classification_rule": "An NWD becomes a governed deliverable only when intentionally issued through the applicable S7 exchange process with declared purpose, scope, state, permitted use, and traceable issue record.",
+      "record_rule": "Record status depends on the project records/retention rule and declared milestone purpose, not on the NWD format itself."
+    },
+    {
+      "id": "CLASH_REPORT",
+      "name": "Navisworks Clash Report",
+      "intrinsic_deliverable_status": "conditional",
+      "classification_rule": "A clash report may serve as working evidence or a formally issued deliverable depending on the declared coordination gate or exchange requirement.",
+      "record_rule": "Retain as governed evidence when it supports a recorded coordination gate, sign-off, acceptance decision, or required project record."
+    },
+    {
+      "id": "VIEWPOINT_SET",
+      "name": "Navisworks Viewpoint Set",
+      "intrinsic_deliverable_status": "conditional",
+      "classification_rule": "Viewpoints are review evidence unless explicitly packaged and issued as part of a governed exchange.",
+      "record_rule": "Viewpoint evidence must remain traceable to the reviewed model versions and applicable issue or review cycle when retained."
+    },
+    {
+      "id": "SCREENSHOT_MARKUP",
+      "name": "Navisworks Screenshot or Markup",
+      "intrinsic_deliverable_status": "supplemental_evidence",
+      "classification_rule": "Screenshots and markups may support communication or evidence but do not replace the governed issue, review, or acceptance record when such a record is required.",
+      "record_rule": "Retain only when needed to support a governed issue, review, decision, or exchange."
+    },
+    {
+      "id": "ISSUE_EXPORT",
+      "name": "BCF or Governed Issue-System Export",
+      "intrinsic_deliverable_status": "conditional",
+      "classification_rule": "An issue export is a representation of issue data and does not become the authoritative issue system merely because it is generated or distributed.",
+      "record_rule": "Authoritative status remains with the project-designated issue system of record unless project governance explicitly declares otherwise."
+    }
+  ],
+  "governance_rules": [
+    "Navisworks file format does not by itself establish formal exchange, deliverable, record, acceptance, or reliance status.",
+    "Formal issue, acceptance, and sign-off evidence shall remain traceable to the project-designated governed system of record.",
+    "Project-specific folder paths, retention durations, exact packaging rules, and client-specific deliverable requirements shall be defined by the applicable BEP, exchange requirements, CDE rules, and records schedule."
+  ],
+  "relationships": {
+    "standards": [
+      "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
+      "TIVERIT-BIM-STD-S5-ACC-RECORDS-001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"
+    ],
+    "workflows": ["TIVERIT-BIM-WF-S5-NAVISWORKS-COORDINATION-001"],
+    "roles": ["ROLE-PROJECT-BIM-COORDINATOR-001", "ROLE-PROJECT-BIM-MANAGER-001"]
+  },
+  "provenance": {
+    "source_system": "confluence+repository_curator",
+    "space": "BST",
+    "source_pages": ["7864324", "6357084", "6357099"],
+    "derived_from_repository": [
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+      "TIVERIT-BIM-STD-S5-ACC-RECORDS-001"
+    ],
+    "migration_note": "The source identifies NWF, NWD, clash reports, viewpoint sets, screenshots, and issue exports but leaves several deliverable/record classifications as TODO. This registry therefore preserves the source object taxonomy while deriving status rules from existing governed S7/S5 doctrine rather than promoting unresolved draft examples, folder paths, or retention assumptions."
+  }
+}
