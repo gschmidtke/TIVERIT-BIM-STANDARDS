@@ -54,11 +54,11 @@
     {
       "domain": "Classification registry/protocol",
       "standards_scope": ["S8"],
-      "source_summary": "Classification governance for OmniClass, Uniclass and MasterFormat carriers is reported in Confluence.",
-      "current_main_summary": "No registries/classification path found in current main during curator check.",
-      "disposition": "migration_missing",
-      "confidence": "medium_at_domain_level",
-      "next_action": "Verify source objects and intended repository model before creating classification registry objects."
+      "source_summary": "The GAP-S8-02 source defines governance for classification systems, code sets, mapping rules, parameter carriers, lifecycle status/versioning and validation hooks, while explicitly keeping actual code lists in separate governed artifacts.",
+      "current_main_summary": "Object-level reconciliation is complete. Current main contains the S8 normative classification requirement plus machine-readable system/code-set governance fields, mapping/carrier governance fields, and conformance checks for required classification assignment and deprecated/superseded classification use. No named external classification system is promoted as an enterprise default.",
+      "disposition": "migrated",
+      "confidence": "high_object_level_reconciliation_complete",
+      "next_action": "No further source-migration batch required for GAP-S8-02. Populate project/client classification selections, authoritative code sets, and concrete mappings only through governed project configuration or ordinary standards evolution."
     },
     {
       "domain": "ACC / BIM 360 governance",
