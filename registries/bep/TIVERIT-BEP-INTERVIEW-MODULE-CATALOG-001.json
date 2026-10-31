@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-BEP-INTERVIEW-MODULE-CATALOG-001",
+  "type": "registry",
+  "title": "BEP Interview Module Catalog",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L7",
+  "modules": ["S1","S2","S3","S4","S5","S6","S7","S8","S9"],
+  "entries": [
+    {"id":"BEP-MOD-APPOINTMENT","name":"Appointment Context","required":true,"description":"BEP type, appointment state and requested output maturity.","question_ids":["BEP-Q-001"]},
+    {"id":"BEP-MOD-IDENTITY","name":"Project Identity","required":true,"description":"Project identity, parties and controlled project codes.","question_ids":["BEP-Q-002"]},
+    {"id":"BEP-MOD-ROLES","name":"Roles and Authority","required":true,"description":"Named organizations, people, governed roles and authority/deferment state.","question_ids":["BEP-Q-003"]},
+    {"id":"BEP-MOD-INFOREQ","name":"Information Requirements","required":true,"description":"PIR/AIR/EIR/project information requirements and source decomposition.","question_ids":["BEP-Q-004"]},
+    {"id":"BEP-MOD-PROGRESSION","name":"Model Progression and Authorized Use","required":true,"description":"LOIN/LOD/LOI progression and permitted uses.","question_ids":["BEP-Q-005"]},
+    {"id":"BEP-MOD-DELIVERY","name":"Delivery Planning","required":true,"description":"MIDP/TIDP, task-team, milestone and delivery planning data.","question_ids":["BEP-Q-006"]},
+    {"id":"BEP-MOD-CDE","name":"CDE and Production Environment","required":true,"description":"CDE system-of-record, states, access and production-environment context.","question_ids":["BEP-Q-007"]},
+    {"id":"BEP-MOD-SOFTWARE","name":"Software Environment","required":true,"description":"Authoring, coordination, checking, issue, viewer, scheduling/cost and exchange compatibility selections.","question_ids":["BEP-Q-008"]},
+    {"id":"BEP-MOD-FEDERATION","name":"Federation and Coordinates","required":true,"description":"Federation membership, linking and coordinate authority.","question_ids":["BEP-Q-009"]},
+    {"id":"BEP-MOD-COORDINATION","name":"Coordination and QA","required":true,"description":"Coordination cadence, issue routing, sign-off and evidence.","question_ids":["BEP-Q-010"]},
+    {"id":"BEP-MOD-EXCHANGES","name":"Exchanges and Deliverables","required":true,"description":"Exchange purpose, scope, recipient, formats, milestones and review/acceptance route.","question_ids":["BEP-Q-011"]},
+    {"id":"BEP-MOD-SEMANTICS","name":"Information Structure","required":true,"description":"Parameters, classification, semantics and project selections.","question_ids":["BEP-Q-012"]},
+    {"id":"BEP-MOD-EXTERNAL","name":"External Interfaces","required":false,"description":"External-party exchange, access and interface conditions.","question_ids":["BEP-Q-013"]},
+    {"id":"BEP-MOD-DEVIATIONS","name":"Deviations and Unresolved Inputs","required":true,"description":"Conflicts, deviations, deferred questions and unresolved approval dependencies.","question_ids":["BEP-Q-014"]}
+  ],
+  "governance_notes": [
+    "The catalog provides a modular index over the existing gap-driven question catalogue; modules are not replayed mechanically when evidence already resolves their project data targets.",
+    "A module may be implemented by one or more runtime components, but runtime package names and code structure are implementation details unless separately governed.",
+    "Object-specific collection and transformation logic should preserve explicit input paths, validations and output contracts; implementation of those transforms is ordinary engine evolution, not a source-migration prerequisite."
+  ],
+  "relationships": {"workflow":"TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001","guide":"guides/bep/BEP-INTERVIEW-PROTOCOL.md"},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"14090241","source_version":1,"source_title":"BEP Interview Production — Punch List (Readiness to Production)","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/14090241","migration_note":"Normalizes the durable modular-domain concept onto the current governed question catalogue without recreating source-era runtime module naming or deployment mechanics."}
+}

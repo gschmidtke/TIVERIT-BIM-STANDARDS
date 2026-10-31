@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-BEP-INTERVIEW-COMPLETENESS-001",
+  "type": "abstract_test",
+  "title": "BEP interview state is complete enough for governed assembly",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S1","S2","S3","S4","S5","S6","S7","S8","S9"],
+  "governing_object_id": "TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001",
+  "governing_clause": "interaction_contract, question_catalog, validation_result_model, output_contract",
+  "test_intent": "Determine whether a captured BEP interview state can be assembled without inventing required project facts, silently dropping unresolved dependencies, or omitting an applicable interview domain.",
+  "applicability": {
+    "applies_when": "A BEP interview is claimed complete or a project BEP draft/review package is about to be assembled from captured project state.",
+    "not_applicable_when": "The interaction is exploratory and no complete BEP interview state or assembly claim is being made."
+  },
+  "required_evidence": [
+    "requested BEP type and maturity",
+    "applicable module/question coverage from TIVERIT-BEP-INTERVIEW-MODULE-CATALOG-001",
+    "known project facts with source/evidence traceability",
+    "unresolved and deferred-item register",
+    "conflict and deviation records where applicable",
+    "software-environment capture where applicable",
+    "validation outcomes using pass/unresolved/gap/fail semantics",
+    "governing-object reference register"
+  ],
+  "result_logic": {
+    "pass": "Every datum required for the requested BEP state is supported, explicitly unresolved, formally deferred, identified as a conflict, or recorded as a deviation candidate; all applicable interview modules are represented and no project fact has been invented to close a gap.",
+    "fail": "The interview is declared complete while an applicable required domain was skipped, a required project datum was silently defaulted or invented, or unresolved/deferred/conflict/deviation state was discarded during assembly.",
+    "not_applicable": "No complete interview-state or BEP assembly claim is being tested.",
+    "indeterminate": "The requested BEP state, project evidence, module coverage or unresolved/deferred register is insufficient to determine completeness."
+  },
+  "permitted_implementation_classes": ["registry_checker","file_checker","human_verification","hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "BEP Interview Production — Punch List (Readiness to Production), Confluence page 14090241; current workflow TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001",
+    "migration_note": "Promotes the durable end-to-end readiness condition into abstract conformance. It does not claim that a runtime ETS or generator implementation already exists."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-BEP-SOFTWARE-ENVIRONMENT-FIELDS-001",
+  "type": "registry",
+  "title": "BEP Software Environment Capture Fields",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L7",
+  "modules": ["S3", "S9"],
+  "entries": [
+    {"id":"FUNCTION_OR_WORKFLOW","name":"Function / Workflow","required":true,"description":"Governed project function served by the product, such as authoring, coordination/clash, model checking, issue tracking, visualization, scheduling, costing, CDE access, conversion or publishing."},
+    {"id":"VENDOR","name":"Vendor","required":false,"description":"Product vendor or provider where relevant."},
+    {"id":"PRODUCT","name":"Product","required":true,"description":"Project-selected product or environment."},
+    {"id":"VERSION_POLICY","name":"Version Policy","required":true,"description":"Approved version, version range, release/build constraint or governed upgrade rule."},
+    {"id":"FILE_OR_EXCHANGE_TYPES","name":"File / Exchange Types","required":false,"description":"Applicable native, exchange, coordination or published formats used by the workflow."},
+    {"id":"DISCIPLINE_OR_ROLE_SCOPE","name":"Discipline / Role Scope","required":false,"description":"Disciplines, teams or roles expected to use or depend on the environment."},
+    {"id":"LICENSE_OR_SERVICE_OWNER","name":"License / Service Owner","required":false,"description":"Project organization or governed role responsible for licensing, service ownership or support where material."},
+    {"id":"AUTHORITY_OR_SOURCE","name":"Authority / Source","required":true,"description":"Project source, appointment, BEP decision, tool-authority entry or other evidence supporting the selection."},
+    {"id":"EXCHANGE_COMPATIBILITY","name":"Exchange Compatibility","required":false,"description":"Required compatibility with connectors, downstream products, exchange versions or CDE workflows."},
+    {"id":"TEMPLATE_RULEPACK_OR_CONFIG_REFERENCE","name":"Template / Rulepack / Configuration Reference","required":false,"description":"Controlled template, checker rulepack, configuration, plugin or extension reference where applicable."},
+    {"id":"ACCESS_OR_VIEWER_MODEL","name":"Access / Viewer Model","required":false,"description":"Stakeholder access mode such as desktop, web, SSO or guest where relevant."},
+    {"id":"EXCEPTION_OR_UPGRADE_RULE","name":"Exception / Upgrade Rule","required":false,"description":"Governed handling for version conflicts, upgrades, temporary exceptions or unsupported combinations."},
+    {"id":"STATUS","name":"Status","required":true,"description":"Project state such as proposed, approved, TBC, deprecated or superseded."}
+  ],
+  "governance_notes": [
+    "This registry defines the capture contract for BEP software-environment project data; it does not approve products or versions.",
+    "It supports the software_environment topic in the governed BEP workflow, including question BEP-Q-008; the question identifier is descriptive context rather than a cross-object registry reference.",
+    "Product authority must not be inferred from technical capability or source-era examples; applicable S9 tool-authority decisions remain separately governed.",
+    "Only fields material to the selected workflow need values; missing required project decisions remain unresolved or deferred rather than invented."
+  ],
+  "relationships": {"workflow":"TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001","standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"14090241","source_version":1,"source_title":"BEP Interview Production — Punch List (Readiness to Production)","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/14090241","migration_note":"Migrates the durable software-environment capture contract. Source-era product examples and runtime/module naming are not promoted as authority."}
+}
