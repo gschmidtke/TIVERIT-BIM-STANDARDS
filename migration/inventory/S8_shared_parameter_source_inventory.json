@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "id": "S8-SHARED-PARAMETER-SOURCE-INVENTORY-001",
+  "type": "migration_source_inventory",
+  "status": "reconciled",
+  "domain": "S8 shared parameter governance",
+  "sources": [
+    {
+      "source_system": "confluence",
+      "page_id": "5177345",
+      "title": "Shared Parameter Registry Governance Scaffold",
+      "disposition": "migrated",
+      "notes": "GAP-S8-01 governance envelope: name, GUID, domain/category, binding, data type, description, steward, version/status, contexts, governed change, QA hooks."
+    },
+    {
+      "source_system": "confluence",
+      "page_id": "7241788",
+      "title": "Central Shared Parameter Registry - First Citizen Set",
+      "disposition": "partially_migrated",
+      "notes": "Citizen + Active GUID-backed rows are migrated. Ten sheet/project rows remain unresolved because the source itself contains '(from CSV)' instead of exact GUID values."
+    },
+    {
+      "source_system": "confluence",
+      "page_id": "3768321",
+      "title": "JSON - Shared Parameter Registry Governance Workflow",
+      "disposition": "migrated",
+      "notes": "Existing workflow already governs GUID-first identity, Visitor default, explicit promotion, registry merge, Citizen TXT generation, and delta analysis."
+    },
+    {
+      "source_system": "star_t_gate_inbox",
+      "issue": 8,
+      "title": "JSON Schema Definition",
+      "disposition": "partially_promoted",
+      "notes": "Useful evidence for a dedicated registry schema, GUID-first identity, binding/category fields, ownership, and lifecycle/deprecation handling. SP-01..SP-05 hard-coding, weekly cadence, duplicate lane/citizenship concepts, fixed group-name enumeration, and closed data-type enumeration were not promoted."
+    }
+  ],
+  "remaining_source_resolution": [
+    "Recover exact GUID/data-definition evidence for the ten '(from CSV)' sheet/project parameter rows before promoting them into the governed entries array.",
+    "Populate binding_type, applicable_categories, owner_role, and applicable_contexts only where authoritative source/project governance supplies them; absence is not permission to infer."
+  ],
+  "migration_gap_status": "GAP-S8-01 structural governance migrated; source-value reconciliation remains for ten explicitly unresolved rows."
+}

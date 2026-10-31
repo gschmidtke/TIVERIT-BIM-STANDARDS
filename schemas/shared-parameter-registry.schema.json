@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/shared-parameter-registry.schema.json",
+  "title": "TIVERIT Shared Parameter Registry",
+  "allOf": [
+    {"$ref": "./base-object.schema.json"},
+    {
+      "type": "object",
+      "required": ["entries", "unresolved_entries"],
+      "properties": {
+        "type": {"const": "registry"},
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "status", "data_type", "lane"],
+            "properties": {
+              "id": {"type": "string", "format": "uuid"},
+              "name": {"type": "string", "minLength": 1},
+              "status": {"type": "string", "enum": ["proposed", "active", "deprecated", "superseded"]},
+              "lane": {"type": "string", "enum": ["Citizen", "Visitor", "Transition"]},
+              "group_id": {"type": ["string", "integer"]},
+              "group_name": {"type": "string"},
+              "data_type": {"type": "string", "minLength": 1},
+              "data_category": {"type": "string"},
+              "binding_type": {"type": "string", "enum": ["Instance", "Type", "Other", "Unresolved"]},
+              "applicable_categories": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+              "description": {"type": "string"},
+              "owner_role": {"type": "string"},
+              "applicable_contexts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+              "effective_from": {"type": ["string", "null"], "format": "date"},
+              "source_files": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+              "notes": {"type": "string"}
+            },
+            "additionalProperties": true
+          }
+        },
+        "unresolved_entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "reason"],
+            "properties": {
+              "name": {"type": "string", "minLength": 1},
+              "reason": {"type": "string", "minLength": 1},
+              "source_reference": {"type": "string"},
+              "required_resolution": {"type": "string"}
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  ],
+  "$comment": "GUID is the authoritative parameter identity. Immutability and promotion are governance rules enforced by workflow/change control; JSON Schema validates structure but cannot by itself prove historical immutability. Lane represents Citizen/Visitor/Transition governance state. A separate citizenship field is intentionally not introduced because it would duplicate lane semantics."
+}

@@ -43,11 +43,14 @@
     "standards": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001", "TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001", "TIVERIT-BIM-STD-S2-PIR-001", "TIVERIT-BIM-STD-S2-AIR-001", "TIVERIT-BIM-STD-S2-LOD-LOI-001", "TIVERIT-BIM-STD-S2-SEL-GOV-001"],
     "workflows": ["TIVERIT-SP-REGISTRY-001"],
     "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001", "TIVERIT-S8-SEMANTIC-DOMAINS-001", "TIVERIT-S8-CLASSIFICATION-SYSTEM-FIELDS-001", "TIVERIT-S8-CLASSIFICATION-MAPPING-FIELDS-001"],
-    "conformance": ["ATS-S8-CLASSIFICATION-ASSIGNMENT-001", "ATS-S8-CLASSIFICATION-DEPRECATION-001"],
+    "conformance": ["ATS-S8-PARAM-004", "ATS-S8-PARAM-006", "ATS-S8-PARAM-DEPRECATION-001", "ATS-REVIT-PARAM-BINDING-001", "ATS-S8-CLASSIFICATION-ASSIGNMENT-001", "ATS-S8-CLASSIFICATION-DEPRECATION-001"],
     "roles": ["ROLE-BIM-STANDARDS-MGR-001", "ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-QAQC-AUTHORITY-001", "ROLE-TOOL-AUTHORITY-001"]
   },
   "information_demand_boundary": "S8 structures and carries information demand governed by S2; it does not redefine the requirement, timing, or permitted use locally.",
-  "implementation_gaps": ["GAP-S8-01", "GAP-S8-03"],
+  "implementation_gaps": ["GAP-S8-03"],
+  "unresolved_source_items": [
+    "Ten first-citizen sheet/project parameter rows remain without exact GUID evidence because the source contains '(from CSV)'. These are source-value gaps, not a missing shared-parameter governance architecture."
+  ],
   "provenance": {
     "source_system":"confluence",
     "space":"BST",
@@ -55,7 +58,7 @@
     "source_version":1,
     "source_title":"JSON - Information Structure, Parameters & Classification",
     "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2883653",
-    "supporting_page_ids":["2785403","4423719"],
-    "migration_note":"Primary machine-readable L4 S8 source. Human-readable narrative counterpart: page 2785403. GAP-S8-02 classification registry/protocol structural implementation migrated through classification system/code-set and mapping/carrier field registries plus conformance checks; no specific external classification system is made mandatory by this change."
+    "supporting_page_ids":["2785403","4423719","5177345","7241788","3768321"],
+    "migration_note":"Primary machine-readable L4 S8 source. GAP-S8-02 classification registry/protocol structural implementation and GAP-S8-01 shared-parameter registry governance have been migrated. The latter includes a dedicated registry schema, GUID-first governance contract, lifecycle/deprecation conformance, and reuse of existing identity/binding/uncontrolled-creation ATS coverage. Ten source rows remain unresolved pending exact GUID recovery; STAR-T-GATE Inbox #8 was partially promoted as evidence, not copied as authority."
   }
 }

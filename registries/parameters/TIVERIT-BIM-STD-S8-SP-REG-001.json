@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schemas/registry.schema.json",
+  "$schema": "../../schemas/shared-parameter-registry.schema.json",
   "id": "TIVERIT-BIM-STD-S8-SP-REG-001",
   "legacy_ids": ["TIVERIT-BIM-STD-S4-SP-REG-001"],
   "type": "registry",
@@ -8,7 +8,19 @@
   "authority": "configuration",
   "layer": "L7",
   "modules": ["S8"],
-  "scope": {"view":"Citizen + Active subset","identity_key":"GUID","source_note":"Only rows with explicit GUIDs are represented as registry entries in this migration candidate. Rows whose Confluence source contains '(from CSV)' remain unresolved migration items."},
+  "scope": {
+    "view": "Citizen + Active subset",
+    "identity_key": "GUID",
+    "source_note": "Only rows with explicit GUIDs are represented as registry entries in this migration candidate. Rows whose source contains '(from CSV)' remain unresolved migration items."
+  },
+  "governance_contract": {
+    "identity": "GUID is the authoritative stable identity for a governed shared parameter; name is descriptive and collision evidence, not a replacement identity.",
+    "citizenship": "Lane is the canonical Citizen/Visitor/Transition governance state. New observed GUIDs default to Visitor and require governed promotion before Citizen use.",
+    "lifecycle": "Entry status records proposed, active, deprecated, or superseded state. Deprecated or superseded entries remain traceable but are not valid for new governed use without an approved transition/deviation.",
+    "binding": "Binding type and applicable categories are governed when known. Missing binding/category data remains unresolved rather than inferred.",
+    "ownership": "Owner/steward roles may be recorded per entry; project execution does not create parameter authority.",
+    "carrier": "Derived Revit shared-parameter TXT files are carriers generated from governed Citizen + active registry state and do not supersede registry authority."
+  },
   "entries": [
     {"id":"f16eb500-0976-4c80-b5d1-082470821ef8","name":"Classification.Uniclass.Ss.Number","status":"active","group_id":"1","group_name":"Default Group","data_type":"TEXT","data_category":"Uniclass","lane":"Citizen","source_files":["Uniclass"]},
     {"id":"53e1dbb9-9434-44ad-abcc-51bca479123d","name":"Classification.Uniclass.Ss.Description","status":"active","group_id":"1","group_name":"Default Group","data_type":"TEXT","data_category":"Uniclass","lane":"Citizen","source_files":["Uniclass"]},
@@ -31,8 +43,31 @@
     {"id":"cdca6aac-f46f-4ce8-8c5a-cbd925c78204","name":"DESCRIPTION","status":"active","group_id":"3","group_name":"General","data_type":"TEXT","data_category":"General","lane":"Citizen","source_files":["WBEXPN"]}
   ],
   "unresolved_entries": [
-    {"name":"SHEET NUMBER","reason":"Source GUID is '(from CSV)'"},{"name":"SHEET NAME","reason":"Source GUID is '(from CSV)'"},{"name":"SHEET DISCIPLINE","reason":"Source GUID is '(from CSV)'"},{"name":"SHEET ISSUE DESCRIPTION","reason":"Source GUID is '(from CSV)'"},{"name":"SHEET ISSUE DATE","reason":"Source GUID is '(from CSV)'"},{"name":"PROJECT NAME","reason":"Source GUID is '(from CSV)'"},{"name":"PROJECT NUMBER","reason":"Source GUID is '(from CSV)'"},{"name":"PROJECT PHASE","reason":"Source GUID is '(from CSV)'"},{"name":"CLIENT NAME","reason":"Source GUID is '(from CSV)'"},{"name":"PROJECT LOCATION","reason":"Source GUID is '(from CSV)'"}
+    {"name":"SHEET NUMBER","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"SHEET NAME","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"SHEET DISCIPLINE","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"SHEET ISSUE DESCRIPTION","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"SHEET ISSUE DATE","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"PROJECT NAME","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"PROJECT NUMBER","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"PROJECT PHASE","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"CLIENT NAME","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."},
+    {"name":"PROJECT LOCATION","reason":"Source GUID is '(from CSV)'","source_reference":"Confluence page 7241788 / source CSV","required_resolution":"Recover exact source GUID and verify data definition before registry promotion."}
   ],
-  "relationships": {"standards":["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001","TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001"],"workflows":["TIVERIT-SP-REGISTRY-001"],"instructions":["TIVERIT-BIM-STD-L6-SP-GEN-REG-001","TIVERIT-BIM-STD-L6-SP-GEN-TXT-001"]},
-  "provenance": {"source_system":"confluence","space":"BST","page_id":"7241788","source_version":1,"source_title":"Central Shared Parameter Registry - First Citizen Set","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241788","migration_note":"Renamed into the S8 namespace by accepted curator decision D-01. Ten source rows remain unresolved because the Confluence table contains '(from CSV)' rather than GUID values."}
+  "relationships": {
+    "standards":["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001","TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001"],
+    "workflows":["TIVERIT-SP-REGISTRY-001"],
+    "instructions":["TIVERIT-BIM-STD-L6-SP-GEN-REG-001","TIVERIT-BIM-STD-L6-SP-GEN-TXT-001"],
+    "conformance":["ATS-S8-PARAM-004","ATS-S8-PARAM-006","ATS-S8-PARAM-DEPRECATION-001","ATS-REVIT-PARAM-BINDING-001"]
+  },
+  "provenance": {
+    "source_system":"confluence",
+    "space":"BST",
+    "page_id":"7241788",
+    "source_version":1,
+    "source_title":"Central Shared Parameter Registry - First Citizen Set",
+    "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241788",
+    "supporting_page_ids":["5177345","3768321"],
+    "migration_note":"Registry contract strengthened during GAP-S8-01 reconciliation using the Shared Parameter Governance Scaffold, existing GUID-first workflow, and STAR-T-GATE Inbox #8 as uncurated evidence. The Inbox proposal was adapted rather than copied: SP-01..SP-05 hard-coding, duplicate citizenship/lane fields, fixed group-name/data-type enumerations, and a weekly cadence were not promoted."
+  }
 }

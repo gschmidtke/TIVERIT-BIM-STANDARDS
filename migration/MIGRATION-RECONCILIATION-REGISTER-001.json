@@ -45,11 +45,11 @@
     {
       "domain": "Shared parameters",
       "standards_scope": ["S8"],
-      "source_summary": "Shared-parameter governance scaffold and source data are reported in Confluence.",
-      "current_main_summary": "A shared-parameter registry exists in registries/parameters, but completeness against the source inventory is unproven.",
+      "source_summary": "The source includes a Shared Parameter Registry governance scaffold, a GUID-first First Citizen Set, and a registry workflow for import, curation, promotion, TXT generation and delta comparison. STAR-T-GATE Inbox #8 supplied an additional uncurated schema proposal.",
+      "current_main_summary": "Object-level structural reconciliation is complete for GAP-S8-01. Current main contains the GUID-first registry, existing governance workflow, a dedicated shared-parameter registry schema, conformance for central identity, uncontrolled creation, Revit binding and deprecated/superseded use, plus a source inventory and curator record. Ten source rows remain explicitly unresolved because their source page contains '(from CSV)' instead of exact GUIDs.",
       "disposition": "partially_migrated",
-      "confidence": "high_at_domain_level",
-      "next_action": "Reconcile source parameter objects and GUID coverage against the current registry and related workflows/conformance."
+      "confidence": "high_structural_governance_complete_source_values_incomplete",
+      "next_action": "Recover authoritative GUID/data-definition evidence for the ten unresolved sheet/project parameters before promoting those rows. Do not infer binding/category/owner values where authoritative evidence is absent."
     },
     {
       "domain": "Classification registry/protocol",
