@@ -165,6 +165,7 @@
   "relationships": {
     "standards": [
       "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S7-SHEET-TITLEBLOCK-DOCUMENTATION-001",
       "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
       "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"
     ],
@@ -176,7 +177,6 @@
     ]
   },
   "future_dependencies": [
-    "A dedicated governed sheet/titleblock parent standard may replace source-page dependency once migrated.",
     "A complete governed sheet-number and sheet-name syntax must be referenced rather than inferred from draft source examples."
   ],
   "source_candidates": {
