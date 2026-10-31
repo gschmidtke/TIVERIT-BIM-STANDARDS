@@ -26,7 +26,7 @@
     "not_applicable": "The subject is not used for governed coordination.",
     "indeterminate": "Available evidence is insufficient to establish federation completeness, coordinate alignment, reference integrity, or configuration consistency."
   },
-  "permitted_implementation_classes": ["api_checker", "desktop_tool_checker", "hybrid", "human_assisted"],
+  "permitted_implementation_classes": ["api_checker", "model_checker", "file_checker", "hybrid", "human_verification"],
   "provenance": {
     "source_system": "repository_curator",
     "derived_from": "TIVERIT-BIM-STD-S5-NAVISWORKS-PROJECT-SETUP-001:S5-NAV-SETUP-008",
