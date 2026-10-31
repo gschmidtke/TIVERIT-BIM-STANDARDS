@@ -1,0 +1,189 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S7-SHEET-TITLEBLOCK-DOCUMENTATION-001",
+  "type": "standard",
+  "title": "Sheet, Titleblock & Documentation Governance",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S4", "S7", "S8"],
+  "scope": {
+    "purpose": "Define reusable governance constraints for production sheets, titleblocks, sheet identity, required sheet metadata, revision representation, composition, and pre-issue documentation quality without promoting unresolved source examples into canonical syntax.",
+    "applies_to": ["production sheets", "standard titleblocks", "sheet identity and naming", "sheet metadata", "revision and issue representation", "sheet composition", "pre-issue documentation QA"]
+  },
+  "requirements": [
+    {
+      "id": "REQ-S7-SHEET-001",
+      "authority": "shall",
+      "statement": "Production sheets shall use approved titleblock families from the governed content source.",
+      "verification_class": "machine_checkable"
+    },
+    {
+      "id": "REQ-S7-SHEET-002",
+      "authority": "shall_not",
+      "statement": "A locally edited, duplicated, renamed, or otherwise non-governed titleblock variant shall not be relied upon for production output unless it has been accepted through the governed exception or change process.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-003",
+      "authority": "shall",
+      "statement": "Sheet numbers shall be unique within the governed project scope and shall use the applicable governed sheet-identity rule or approved project mapping.",
+      "verification_class": "machine_checkable"
+    },
+    {
+      "id": "REQ-S7-SHEET-004",
+      "authority": "should",
+      "statement": "Once a sheet identity has entered formal issue, it should remain stable through the project lifecycle; a post-issue identity change shall be documented through applicable change control.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-005",
+      "authority": "shall_not",
+      "statement": "A retired sheet number shall not be silently reused; reuse requires a documented reason and traceable change record.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-006",
+      "authority": "shall",
+      "statement": "Sheet names shall be human-readable, concise, descriptive of the primary content, and conform to the applicable governed naming vocabulary and syntax.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-007",
+      "authority": "shall",
+      "statement": "Client-specific or alternate sheet identifiers shall be stored in dedicated governed fields unless an approved project rule explicitly makes them part of the canonical sheet identity.",
+      "verification_class": "machine_checkable"
+    },
+    {
+      "id": "REQ-S7-SHEET-008",
+      "authority": "shall",
+      "statement": "Every standard titleblock shall expose the required sheet, project, issue, revision, and responsibility data defined by the applicable governed parameter registry and project information requirements.",
+      "verification_class": "machine_checkable"
+    },
+    {
+      "id": "REQ-S7-SHEET-009",
+      "authority": "shall",
+      "statement": "Required titleblock values shall be populated from governed project, parameter, role, issue, revision, and transmittal sources rather than locally invented substitutes.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-010",
+      "authority": "shall",
+      "statement": "New titleblock parameters or changes to governed titleblock parameters shall pass the applicable standards governance process before inclusion in standard titleblocks.",
+      "verification_class": "human_verifiable"
+    },
+    {
+      "id": "REQ-S7-SHEET-011",
+      "authority": "shall",
+      "statement": "Governed revision information shall be represented through the Revit revision system and shall correspond to the applicable governed issue or transmittal record.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-012",
+      "authority": "shall_not",
+      "statement": "Ad-hoc titleblock text or manual graphical overrides shall not be used to substitute for governed revision information.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-013",
+      "authority": "should",
+      "statement": "Each sheet should communicate a cohesive set of information and preserve sufficient visual context, spacing, and legibility for its declared use rather than maximizing content density.",
+      "verification_class": "human_verifiable"
+    },
+    {
+      "id": "REQ-S7-SHEET-014",
+      "authority": "shall",
+      "statement": "Placed views shall use applicable approved view templates and governed view naming; per-view graphic overrides shall not be used unless the governing view standard explicitly permits them or an accepted exception records the reason.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-015",
+      "authority": "should",
+      "statement": "Related plans, elevations, sections, details, legends, notes, north arrows, scale bars, and keynotes should be composed consistently across a sheet set using governed templates and annotation conventions.",
+      "verification_class": "human_verifiable"
+    },
+    {
+      "id": "REQ-S7-SHEET-016",
+      "authority": "shall",
+      "statement": "Repeatable symbols, abbreviations, keynotes, legends, and general annotation shall use governed reusable content where available rather than uncontrolled duplicated graphics or text.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-017",
+      "authority": "shall_not",
+      "statement": "Floating or unanchored annotation that cannot be clearly associated with a view, legend, or governed sheet context shall not be used on production sheets.",
+      "verification_class": "human_verifiable"
+    },
+    {
+      "id": "REQ-S7-SHEET-018",
+      "authority": "shall",
+      "statement": "Before formal issue, the applicable sheet set shall undergo pre-issue documentation QA covering titleblock identity, sheet identity and naming, required metadata, view-template compliance, annotation quality, revision state, and representative output legibility.",
+      "verification_class": "machine_assisted"
+    },
+    {
+      "id": "REQ-S7-SHEET-019",
+      "authority": "shall",
+      "statement": "Changes to governed sheet-numbering rules, titleblock parameters, standard titleblock families, or reusable sheet-composition rules shall follow the BIM Standards governance and release process.",
+      "verification_class": "human_verifiable"
+    }
+  ],
+  "relationships": {
+    "upstream_standards": [
+      "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001",
+      "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
+      "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"
+    ],
+    "implementation_instructions": [
+      "TIVERIT-BIM-INS-REVIT-TITLEBLOCK-001",
+      "TIVERIT-BIM-INS-REVIT-DOC-EXPORT-001",
+      "TIVERIT-BIM-INS-REVIT-QA-STYLE-001"
+    ]
+  },
+  "unresolved_source_items": [
+    {
+      "topic": "sheet_number_syntax",
+      "state": "not_promoted",
+      "source_evidence": "The source proposes {DisciplineCode}{Series}-{Sequence} and example discipline/series codes but explicitly states that exact codes are to be finalized by the Standards Committee and contains TODOs.",
+      "curator_treatment": "Retain as source evidence only until a governed S4 vocabulary and syntax is approved."
+    },
+    {
+      "topic": "sheet_name_syntax",
+      "state": "not_promoted",
+      "source_evidence": "The source recommends {Level/Area} – {Content/Scope}, Title Case, and source examples, while other naming source material repeats the pattern without resolving the underlying TODO status.",
+      "curator_treatment": "Require governed human-readable naming without treating the proposed literal pattern as canonical."
+    },
+    {
+      "topic": "special_sheet_series",
+      "state": "not_promoted",
+      "source_evidence": "G-series, discipline+S, discipline+D, and discipline+3 examples are described as typical, proposed, or subject to local confirmation.",
+      "curator_treatment": "Do not promote example ranges or codes."
+    },
+    {
+      "topic": "numeric_composition_limits",
+      "state": "not_promoted",
+      "source_evidence": "The source calls one main plan view typical and explicitly leaves numeric limits and discipline exceptions as TODOs.",
+      "curator_treatment": "Promote the readability/cohesion principle only; do not invent a maximum view count."
+    },
+    {
+      "topic": "exact_parameter_registry",
+      "state": "dependency",
+      "source_evidence": "The source lists titleblock fields but repeatedly requires exact parameter names to resolve through the Shared Parameter Registry and contains unresolved links/TODOs.",
+      "curator_treatment": "Govern the obligation to expose required fields while leaving exact parameter identity to S8/project information requirements."
+    }
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "primary_page_id": "6357066",
+    "primary_source_title": "Sheet & Titleblock Standards – Instructions, Definitions, Workflows",
+    "primary_source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6357066",
+    "supporting_pages": [
+      {"page_id": "10846209", "title": "Titleblock Standards"},
+      {"page_id": "6422564", "title": "Revit Style Guide - QA / Review Checklists"},
+      {"page_id": "5799975", "title": "Annotation Standards – Instructions, Definitions, Workflows"},
+      {"page_id": "6651935", "title": "Object Naming Standards for Revit"},
+      {"page_id": "7438366", "title": "Revit Style Guide - Appendix E"}
+    ],
+    "migration_note": "Curated from mixed Confluence source material by separating normative sheet/titleblock constraints from L6 Revit execution. Explicit TODOs, proposed numbering codes, example ranges, unconfirmed organization-specific values, and draft export filename/folder examples were not promoted. During migration, Confluence remains source authority."
+  }
+}
