@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-FAMILY-CONTENT-001",
+  "type": "abstract_test",
+  "title": "Revit governed family content and reusable-content hygiene",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S8", "S2"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-MODELING-001",
+  "governing_clause": "RVT-MOD-01 and RVT-MOD-02",
+  "test_intent": "Determine whether repeatable, scheduled, tagged, or otherwise governed Revit content uses controlled reusable families and governed data carriers rather than uncontrolled duplicates, ad-hoc in-place content, or manual information patching.",
+  "applicability": {
+    "applies_when": "The tested Revit model contains loadable families, in-place families, or other governed component content.",
+    "not_applicable_when": "No family/component content is present in the tested scope."
+  },
+  "required_evidence": [
+    "family/type inventory and family class",
+    "applicable family naming and reusable-content rules",
+    "parameter and tag/schedule dependencies where relevant",
+    "approved library or controlled content source where applicable",
+    "in-place exception evidence where applicable"
+  ],
+  "result_logic": {
+    "pass": "Applicable reusable content follows governed family identity, source, and information requirements; scheduled/tagged repeatable content is not implemented as uncontrolled in-place content; and any in-place exceptions have sufficient governed rationale/evidence.",
+    "fail": "A positive violation is found, including repeatable or governed content implemented as uncontrolled in-place geometry, duplicate/uncontrolled family identities, manual patching replacing governed information carriers, or an in-place exception without the required rationale/evidence.",
+    "not_applicable": "No family/component content is within scope.",
+    "indeterminate": "The applicable family naming, library/source, parameter, information-need, or exception requirements needed for evaluation are unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-MODELING-001",
+    "migration_note": "Appendix E ATS for family-content hygiene. Exact family catalogues, parameter names, and approval roles remain governed dependencies rather than invented defaults."
+  }
+}
