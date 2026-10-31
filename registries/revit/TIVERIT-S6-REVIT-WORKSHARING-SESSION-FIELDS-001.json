@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S6-REVIT-WORKSHARING-SESSION-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Worksharing Session and Model Health Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S6", "S3"],
+  "entries": [
+    {"id":"AUTHORING_PATTERN","name":"Approved multi-user authoring pattern","requirement":"Each workshared Revit model shall identify the approved authoring pattern for its deployment context, including cloud-mediated or central/local mechanics where applicable."},
+    {"id":"AUTHORITATIVE_MODEL_LOCATION","name":"Authoritative model location","requirement":"The governed source or authoritative model location shall be identified so users do not bypass the approved collaboration path."},
+    {"id":"SYNC_PUBLISH_EXPECTATION","name":"Synchronization or publish expectation","requirement":"The project shall define the required synchronization or publish behavior and cadence appropriate to the deployment pattern."},
+    {"id":"BORROWING_ETIQUETTE","name":"Borrowing and ownership etiquette","requirement":"Users shall borrow only the active scope needed for the task, coordinate cross-scope edits, and release ownership through the approved worksharing process."},
+    {"id":"MAINTENANCE_CADENCE","name":"Model maintenance cadence","requirement":"Where audit, compact, cleanup, or other model-health maintenance is required, the project shall define the applicable cadence and responsible role."},
+    {"id":"UPGRADE_AUTHORITY","name":"Upgrade authority and approval","requirement":"Revit-version upgrades shall identify the authorized decision path and approval basis before production models are upgraded."},
+    {"id":"PRE_UPGRADE_BACKUP","name":"Pre-upgrade recoverable state","requirement":"A traceable known-good pre-upgrade state shall be retained before a governed version upgrade is performed."},
+    {"id":"POST_UPGRADE_VALIDATION","name":"Post-upgrade validation","requirement":"The upgraded model shall be validated using the project-defined smoke checks or equivalent acceptance checks before production resumes."},
+    {"id":"INSTABILITY_STOP_RULE","name":"Instability stop rule","requirement":"When corruption, repeated synchronization errors, or an unstable session is suspected, synchronization or publication shall stop until the issue is isolated and recovery is authorized."},
+    {"id":"RECOVERY_SOURCE","name":"Recovery source","requirement":"Recovery shall use a traceable governed source or last known good backup rather than an uncontrolled local or unstable session."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-WORKSHARING-001"],
+    "standards": ["TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001", "TIVERIT-BIM-STD-S3-PROD-EP001"]
+  },
+  "non_promoted_source_content": [
+    "The source's example weekly audit/compact cadence is not promoted as a universal enterprise interval.",
+    "The source's central/local wording is not promoted as universally mandatory because approved cloud worksharing may use different session mechanics.",
+    "Placeholder role labels and support-channel references remain unresolved project/RACI data."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7340051",
+    "source_version": 1,
+    "source_title": "Revit Worksharing & Collaboration Style Standards",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7340051",
+    "migration_note": "Promotes durable session, maintenance, upgrade, and recovery control fields while keeping deployment mechanics and cadence project-specific."
+  }
+}
