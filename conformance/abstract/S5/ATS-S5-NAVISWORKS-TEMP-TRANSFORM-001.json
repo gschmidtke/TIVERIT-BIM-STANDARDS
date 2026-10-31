@@ -26,7 +26,7 @@
     "not_applicable": "No temporary transform is present.",
     "indeterminate": "A transform appears to exist but available evidence cannot establish whether it is temporary, authorized, or linked to corrective action."
   },
-  "permitted_implementation_classes": ["api_checker", "desktop_tool_checker", "hybrid", "human_assisted"],
+  "permitted_implementation_classes": ["api_checker", "model_checker", "file_checker", "hybrid", "human_verification"],
   "provenance": {
     "source_system": "repository_curator",
     "derived_from": "TIVERIT-BIM-STD-S5-NAVISWORKS-PROJECT-SETUP-001:S5-NAV-SETUP-005",
