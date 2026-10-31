@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1",
+  "id": "REVIT-VIEWS-TEMPLATES-GRAPHICS-SOURCE-INVENTORY-001",
+  "type": "migration_source_inventory",
+  "status": "active",
+  "source_system": "confluence",
+  "space": "BST",
+  "scope": "Appendix E Revit views, project templates, and category/subcategory graphics",
+  "inventory_date": "2026-10-31",
+  "sources": [
+    {
+      "page_id": "7241762",
+      "title": "View Standards – Instructions, Definitions, Workflows",
+      "source_maturity": "governed_instruction_with_examples",
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-VIEWS-001.json",
+        "conformance/abstract/S4/ATS-REVIT-VIEW-TEMPLATE-001.json"
+      ],
+      "round_001_addition": "registries/revit/TIVERIT-S4-REVIT-VIEW-PURPOSE-FIELDS-001.json",
+      "disposition": "partially_migrated",
+      "notes": "Durable instruction and ATS already existed. Round 001 adds the missing machine-readable mapping fields while leaving source example names and recommended settings noncanonical."
+    },
+    {
+      "page_id": "7503875",
+      "title": "Revit Project Templates – Instructions, Definitions, Workflows",
+      "source_maturity": "governed_instruction_with_placeholders",
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-TEMPLATES-001.json",
+        "conformance/abstract/S3/ATS-REVIT-TEMPLATE-CONTENT-001.json"
+      ],
+      "round_001_addition": "registries/revit/TIVERIT-S3-REVIT-TEMPLATE-CONTENT-FIELDS-001.json",
+      "disposition": "partially_migrated",
+      "notes": "Template governance and ATS already existed. Round 001 adds the missing manifest fields; actual approved template catalogue entries remain future governed data, not inferred from placeholders."
+    },
+    {
+      "page_id": "6193190",
+      "title": "Category & Subcategory Graphics Standards and Guidelines",
+      "source_maturity": "governed_instruction_with_unconfirmed_numeric_examples",
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-GRAPHICS-001.json"
+      ],
+      "round_001_addition": "registries/revit/TIVERIT-S4-REVIT-GRAPHICS-CONTROL-FIELDS-001.json",
+      "disposition": "partially_migrated",
+      "notes": "Graphics-control hierarchy was already migrated. Round 001 adds the machine-readable control fields but intentionally does not promote example lineweights, colors, hatch names, or subcategory names marked for confirmation."
+    },
+    {
+      "page_id": "5799975",
+      "title": "Annotation Standards – Instructions, Definitions, Workflows",
+      "source_maturity": "governed_instruction_with_many_todos",
+      "current_main_matches": [
+        "instructions/revit/TIVERIT-BIM-INS-REVIT-ANNOTATION-001.json"
+      ],
+      "disposition": "deferred_to_next_revit_round",
+      "notes": "Annotation is adjacent but not part of Round 001. Existing L6 instruction is retained; controlled annotation catalogue and parameter/tag mappings will be reconciled in a later Revit round."
+    }
+  ],
+  "round_boundary": {
+    "included": ["view-purpose/template mapping fields", "template-content manifest fields", "graphics-control fields"],
+    "excluded": ["annotation catalogue", "worksets", "families/modeling hygiene", "phasing/design options beyond view mapping", "QA/pre-flight", "materials", "levels/grids", "documentation/export"]
+  },
+  "rules": [
+    "Source examples and TODO-bound values are not canonicalized without explicit governed approval.",
+    "Current-main objects are enriched rather than duplicated.",
+    "Round 001 creates executable registry structure; approved enterprise values may be populated only from governed source authority or curator decision."
+  ]
+}
