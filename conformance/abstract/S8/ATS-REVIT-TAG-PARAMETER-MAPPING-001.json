@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-TAG-PARAMETER-MAPPING-001",
+  "type": "abstract_test",
+  "title": "Revit governed tag and parameter mapping",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S8"],
+  "governing_object_id": "TIVERIT-S8-REVIT-TAG-PARAMETER-MAPPING-FIELDS-001",
+  "governing_clause": "DISPLAYED_PARAMETERS and MANUAL_TEXT_PROHIBITION",
+  "test_intent": "Determine whether applicable Revit tags use approved tag families and display governed parameters without substituting manual text for required data-driven fields.",
+  "applicability": {
+    "applies_when": "The tested model contains tags or symbols covered by a governed tag/parameter mapping.",
+    "not_applicable_when": "No governed tag/parameter mapping applies to the tested scope."
+  },
+  "required_evidence": [
+    "inventory of applicable tag instances and family/type identities",
+    "applicable governed tag/parameter mapping",
+    "observed label parameter references for governed tag fields",
+    "approved exception records where project-specific deviations apply"
+  ],
+  "result_logic": {
+    "pass": "Applicable tags use approved families or approved exceptions and each governed displayed data field resolves to the expected governed parameter without unapproved manual-text substitution.",
+    "fail": "An applicable tag uses an unapproved family, references the wrong parameter, or substitutes manual/free text for a governed data field where an approved mapping is available.",
+    "not_applicable": "No governed tag/parameter mapping applies to the tested scope.",
+    "indeterminate": "The required tag-family profile, mapping, or parameter identity is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-S8-REVIT-TAG-PARAMETER-MAPPING-FIELDS-001",
+    "migration_note": "Derived from Appendix E source requirements for controlled tag families, parameter-driven content, and schedule alignment."
+  }
+}
