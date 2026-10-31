@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-S8-PARAM-DEPRECATION-001",
+  "type": "abstract_test",
+  "title": "Deprecated or superseded governed parameters are not used as active authority",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8"],
+  "governing_object_id": "TIVERIT-BIM-STD-S8-SP-REG-001",
+  "governing_clause": "governance_contract.lifecycle",
+  "test_intent": "Determine whether deprecated or superseded governed shared parameters remain traceable without being used for new governed information unless an approved transition or deviation explicitly permits temporary use.",
+  "applicability": {
+    "applies_when": "The tested model, template, family, exchange, or registry view contains a parameter identity that is deprecated or superseded in the applicable Shared Parameter Registry version.",
+    "not_applicable_when": "No deprecated or superseded governed parameter appears in the tested scope."
+  },
+  "required_evidence": [
+    "applicable Shared Parameter Registry version and entry status",
+    "observed parameter GUIDs in the tested scope",
+    "approved transition, replacement mapping, or deviation record where temporary legacy use is claimed",
+    "replacement parameter identity where the registry declares supersession"
+  ],
+  "result_logic": {
+    "pass": "No deprecated or superseded governed parameter is used as active semantic authority, or any temporary legacy use is covered by an explicit governed transition/deviation with traceable replacement handling.",
+    "fail": "A deprecated or superseded governed parameter is used for new or active governed information without an approved transition/deviation, or a declared replacement is bypassed without governed justification.",
+    "not_applicable": "No deprecated or superseded governed parameter appears in the tested scope.",
+    "indeterminate": "The applicable registry version, observed GUID inventory, or transition/deviation evidence is insufficient to determine whether legacy use is permitted."
+  },
+  "permitted_implementation_classes": ["api_checker", "registry_checker", "model_checker", "hybrid", "human_verification"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-STD-S8-SP-REG-001",
+    "migration_note": "Closes the deprecated-parameter QA hook from GAP-S8-01 and adapts the useful lifecycle concept in STAR-T-GATE Inbox #8 without importing its duplicate lane/citizenship model."
+  }
+}
