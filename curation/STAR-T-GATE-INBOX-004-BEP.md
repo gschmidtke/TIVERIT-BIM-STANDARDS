@@ -38,7 +38,7 @@ The companion protocol already requires a deferred item to record:
 
 The workflow JSON currently names `deferred` in the project-state model without restating this structure. This is a machine-readability gap, not a new policy requirement.
 
-**Intended workflow refinement:** add a `deferral_record` definition to the workflow JSON and require every formally deferred item to contain those six fields.
+**Intended workflow refinement:** add a `deferral_record` definition to the workflow JSON with four always-required fields — topic/question, required project datum, reason for deferral, and affected BEP section — plus responder/approval authority and dependency/source when known. Unknown routing metadata shall remain explicit rather than being fabricated merely to satisfy a schema.
 
 ### 3. Validation-result semantics
 
@@ -85,7 +85,7 @@ Retain this observation as execution/conformance evidence: an external AI failed
 The intended repository change is deliberately narrow:
 
 1. strengthen source decomposition in `BEP-WF-02`/`BEP-WF-03`;
-2. add machine-readable deferral-record fields;
+2. add machine-readable deferral-record fields with four required and two conditional-if-known routing fields;
 3. add validation-result semantics;
 4. add a pre-assembly unresolved-data closure pass before assembly;
 5. add material-normalization confirmation behavior;
