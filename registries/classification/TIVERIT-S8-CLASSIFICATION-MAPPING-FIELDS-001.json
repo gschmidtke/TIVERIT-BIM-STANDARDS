@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S8-CLASSIFICATION-MAPPING-FIELDS-001",
+  "type": "registry",
+  "title": "S8 Classification Mapping and Carrier Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S8"],
+  "entries": [
+    {"id":"MAPPING_RULE_ID","name":"Mapping Rule ID","required":true,"description":"Stable identifier for a mapping rule."},
+    {"id":"SOURCE_TYPE","name":"Source Type","required":true,"description":"Source model/content type used by the rule, such as category, family type, space type, asset type, or information-container class."},
+    {"id":"SOURCE_SCOPE","name":"Source Scope","required":true,"description":"Explicit source selection or applicability condition for the rule."},
+    {"id":"TARGET_SYSTEM_ID","name":"Target System ID","required":true,"description":"Governed classification system referenced by the mapping."},
+    {"id":"TARGET_CODESET_ID","name":"Target Code-Set ID","required":true,"description":"Governed code set referenced by the mapping."},
+    {"id":"TARGET_CODE_REF","name":"Target Code Reference","required":true,"description":"Code or governed code reference produced by the mapping; the authoritative code list remains external to this field registry."},
+    {"id":"MAPPING_LOGIC","name":"Mapping Logic Summary","required":true,"description":"Human- and machine-readable description of the mapping basis."},
+    {"id":"STEWARD","name":"Owning Authority / Steward","required":true,"description":"Governed role or team responsible for the mapping rule."},
+    {"id":"EFFECTIVE_FROM","name":"Effective From","required":true,"description":"Date, version, or project condition from which the mapping applies."},
+    {"id":"CARRIER_ID","name":"Carrier ID","required":true,"description":"Stable identifier for the parameter or data carrier used to store the classification value."},
+    {"id":"PARAMETER_REF","name":"Parameter Reference","required":true,"description":"Reference to the governed parameter/shared-parameter registry entry or equivalent governed carrier."},
+    {"id":"APPLICABLE_DISCIPLINE_MODEL","name":"Applicable Discipline / Model Types","required":true,"description":"Scope in which the carrier is valid."},
+    {"id":"DATA_TYPE_FORMAT","name":"Expected Data Type / Format","required":true,"description":"Expected storage type, code syntax, or reference format for the classification value."},
+    {"id":"DEVIATION_ROUTE","name":"Deviation / Exception Route","required":true,"description":"Governed path for approved departures from the mapping or carrier rule."}
+  ],
+  "governance_notes": [
+    "Mapping rules must reference governed classification systems/code sets rather than uncontrolled local codes.",
+    "Carrier definitions should resolve to the governed shared-parameter registry or another explicitly governed semantic carrier.",
+    "Tool-specific assignment methods belong in instructions, not this registry.",
+    "Ad-hoc project mappings require explicit project governance and do not silently become enterprise standards."
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],"registries":["TIVERIT-S8-CLASSIFICATION-SYSTEM-FIELDS-001","TIVERIT-BIM-STD-S8-SP-REG-001"]},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"4423719","source_version":1,"source_title":"Classification Registry & Protocol Governance Scaffold","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4423719","migration_note":"GAP-S8-02 mapping-rule and carrier governance fields migrated without inventing code mappings or parameter names."}
+}
