@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-DESIGN-OPTIONS-001",
+  "type": "abstract_test",
+  "title": "Revit governed Design Option visibility",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S5"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-VIEWS-001",
+  "governing_clause": "VIEW-02 through VIEW-04",
+  "test_intent": "Determine whether applicable Revit views inherit the governed project primary Design Option or use a traceable view-specific option basis only where required for the declared purpose.",
+  "applicability": {
+    "applies_when": "The tested Revit model uses Design Options and contains views whose visibility depends on option state.",
+    "not_applicable_when": "The tested model contains no Design Options or the tested scope contains no view affected by Design Option visibility."
+  },
+  "required_evidence": [
+    "inventory of project Design Option sets and options",
+    "governed primary-option basis or project decision record",
+    "inventory of applicable views and their Design Option visibility mode",
+    "view-specific option-set and option identity where explicitly selected",
+    "approved exception trace where applicable"
+  ],
+  "result_logic": {
+    "pass": "Every applicable view either inherits the governed project primary option or has an explicit view-specific option basis that is traceable to the declared view purpose and approved project state.",
+    "fail": "An applicable view displays an ungoverned option, uses an unexplained By View or named-option override, or assumes a discipline/default primary option not supported by the governed project configuration.",
+    "not_applicable": "The model or tested scope does not use Design Options in a way that affects view visibility.",
+    "indeterminate": "The applicable project primary-option basis, option-set identity, or expected view-specific option state is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "Confluence pages 7241762 and 6193190 plus TIVERIT-BIM-INS-REVIT-VIEWS-001",
+    "migration_note": "Round 005 ATS converts the source Design Option visibility guidance into testable project-bound conformance without inventing enterprise primary options or option naming."
+  }
+}
