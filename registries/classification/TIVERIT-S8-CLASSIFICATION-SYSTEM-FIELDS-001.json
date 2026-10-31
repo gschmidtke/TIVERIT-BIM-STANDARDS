@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S8-CLASSIFICATION-SYSTEM-FIELDS-001",
+  "type": "registry",
+  "title": "S8 Classification System and Code-Set Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S8"],
+  "entries": [
+    {"id":"SYSTEM_ID","name":"System ID","required":true,"description":"Stable governed identifier for the classification system."},
+    {"id":"SYSTEM_NAME","name":"System Name","required":true,"description":"Human-readable classification-system name."},
+    {"id":"SCOPE_DOMAIN","name":"Scope / Domain","required":true,"description":"The information domain to which the system applies, such as elements, spaces, activities, assets, or project-specific categories."},
+    {"id":"ORIGIN_REFERENCE","name":"Origin / Standard Reference","required":true,"description":"Traceable external, client, industry, or internal origin for the classification system."},
+    {"id":"STEWARD","name":"Governance Owner / Steward","required":true,"description":"Governed role or team responsible for maintaining the system entry."},
+    {"id":"VERSION","name":"Version","required":true,"description":"Version or edition of the governed classification system or code set."},
+    {"id":"STATUS","name":"Status","required":true,"description":"Governed lifecycle status such as proposed, approved, deprecated, or superseded."},
+    {"id":"CODESET_ID","name":"Code-Set ID","required":true,"description":"Stable identifier for a governed collection of classification codes within the system."},
+    {"id":"APPLICABLE_SCOPE","name":"Applicable Project / Portfolio Scope","required":true,"description":"Declared project, portfolio, discipline, or information-use scope for the code set."},
+    {"id":"ALLOWED_FACETS","name":"Allowed Levels / Facets","required":false,"description":"Permitted table, group, facet, level, or equivalent subdivision where relevant."},
+    {"id":"USAGE_GUIDANCE","name":"Usage Guidance","required":false,"description":"Additional governed usage constraints without duplicating the underlying external code list."},
+    {"id":"EFFECTIVE_FROM","name":"Effective From","required":true,"description":"Date, version, or project condition from which the classification entry applies."}
+  ],
+  "governance_notes": [
+    "This registry defines the required governance fields for classification systems and code sets; it does not itself adopt Uniclass, OmniClass, MasterFormat, CCI, or any other named system as an enterprise default.",
+    "Actual classification code lists remain separate governed machine-readable artifacts or external authoritative references.",
+    "Project-specific classification selection must be driven by S2 information requirements, client requirements, and governed project declarations."
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"4423719","source_version":1,"source_title":"Classification Registry & Protocol Governance Scaffold","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4423719","migration_note":"GAP-S8-02 system/code-set governance fields migrated without promoting any example classification system as mandatory."}
+}
