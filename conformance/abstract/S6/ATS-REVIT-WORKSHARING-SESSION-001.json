@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-WORKSHARING-SESSION-001",
+  "type": "abstract_test",
+  "title": "Revit governed worksharing session, maintenance, upgrade and recovery",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S6", "S3"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-WORKSHARING-001",
+  "governing_clause": "RVT-WS-01, RVT-WS-03, RVT-WS-04 and RVT-WS-05",
+  "test_intent": "Determine whether a workshared Revit model follows the approved multi-user authoring path and whether maintenance, version upgrades, and recovery actions are governed and traceable rather than ad-hoc.",
+  "applicability": {
+    "applies_when": "A Revit model is workshared or a governed maintenance, upgrade, or recovery action is being reviewed.",
+    "not_applicable_when": "The tested model is not workshared and no maintenance, upgrade, or recovery event is within scope."
+  },
+  "required_evidence": [
+    "approved project worksharing/session configuration",
+    "authoritative model/source location or cloud collaboration context",
+    "synchronization or publish history where available",
+    "maintenance, upgrade, or recovery records when such events occurred",
+    "approved role/RACI or escalation path where required"
+  ],
+  "result_logic": {
+    "pass": "The applicable worksharing path is followed, synchronization/publication behavior is consistent with the project rule, ownership remains bounded, and any maintenance, upgrade, or recovery action is traceable to the approved configuration and evidence requirements.",
+    "fail": "A positive violation is found against an available governed rule, including bypassing the approved authoring path, propagating an unstable session, performing an upgrade without a recoverable pre-upgrade state, or resuming production without required post-upgrade validation.",
+    "not_applicable": "No governed worksharing, maintenance, upgrade, or recovery rule applies to the tested scope.",
+    "indeterminate": "The project worksharing configuration, maintenance cadence, upgrade authority, or recovery basis required for evaluation is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-WORKSHARING-001",
+    "migration_note": "Appendix E ATS covering the broader worksharing/session-health behavior not covered by ATS-REVIT-WORKSET-001. Project-specific cadence and deployment mechanics remain inputs rather than enterprise defaults."
+  }
+}
