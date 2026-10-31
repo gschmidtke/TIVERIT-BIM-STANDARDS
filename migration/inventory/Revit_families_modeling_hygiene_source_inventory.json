@@ -27,7 +27,7 @@
     },
     {
       "page_id": "4489217",
-      "title": "Family Naming Standards and Principles for TAIT BIM",
+      "title": "Family Naming Standards and Principles — legacy source",
       "source_maturity": "draft_standard_module",
       "current_main_matches": [
         "standards/S4-model-identity-naming/TIVERIT-BIM-STD-S4-FAMILY-NAMING-001.json"
@@ -36,7 +36,7 @@
         "registries/revit/TIVERIT-S4-REVIT-FAMILY-CONTENT-FIELDS-001.json"
       ],
       "disposition": "partially_migrated",
-      "notes": "Family naming authority already exists in L4. Round 004 connects naming to reusable-content identity, library provenance, parameters, and change control without inventing a family library catalogue."
+      "notes": "Family naming authority already exists in L4. Round 004 connects naming to reusable-content identity, library provenance, parameters, and change control without inventing a family library catalogue. The retired organization label in the historical page title is intentionally not reproduced in canonical machine-readable content."
     },
     {
       "page_id": "2425330",
