@@ -90,6 +90,8 @@ Confluence remains source authority during migration. The curation therefore pre
 
 The new object fills the previously explicit dependency in `TIVERIT-BIM-INS-REVIT-TITLEBLOCK-001` for a dedicated governed sheet/titleblock parent standard while retaining S4 as naming authority, S8 as parameter/information-structure authority, and S7 as formal issue/deliverable authority.
 
+Repository validation infrastructure is intentionally not part of this domain curation. The branch-local `canonical-validation.yml` experiment was removed because canonical validation is repository infrastructure already provided from `main`; this PR therefore remains limited to the sheet/titleblock governed object, its Revit instruction relationship, and this evidence-to-authority record.
+
 ## Validation / promotion state
 
 The new object remains `migration_candidate`. It is not a formal cutover claim. Repository schema/reference/conformance validation is required before this curation branch is considered ready for promotion or merge.
