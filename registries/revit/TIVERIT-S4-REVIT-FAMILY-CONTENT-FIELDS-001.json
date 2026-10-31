@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-FAMILY-CONTENT-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Family Content Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S8", "S2"],
+  "entries": [
+    {"id":"FAMILY_IDENTITY","name":"Family identity","requirement":"Each governed loadable family shall have a stable family identity aligned with the applicable S4 family naming standard."},
+    {"id":"CONTENT_CLASS","name":"Content class","requirement":"Each family shall identify whether it is governed reusable library content, project-specific loadable content, in-place content, or temporary content."},
+    {"id":"REUSE_EXPECTATION","name":"Reuse expectation","requirement":"Repeatable components, standard equipment, vendor items, and content intended for reuse shall use governed loadable-family content unless an approved exception applies."},
+    {"id":"SCHEDULE_TAG_EXPECTATION","name":"Schedule and tag expectation","requirement":"Content intended to be scheduled, tagged, or tracked shall use a governed content form and governed parameter carriers appropriate to that use."},
+    {"id":"PARAMETER_DEPENDENCIES","name":"Parameter dependencies","requirement":"Governed family content shall reference the applicable S8 parameter identities needed for information requirements, tags, schedules, classification, or downstream exchange."},
+    {"id":"MATERIAL_DEPENDENCIES","name":"Material dependencies","requirement":"Where family appearance or material identity is governed, the family shall use approved material definitions rather than uncontrolled project-local substitutes."},
+    {"id":"LIBRARY_SOURCE","name":"Library source","requirement":"Governed reusable content shall be traceable to its approved library, template, or other controlled source."},
+    {"id":"TYPE_VARIATION_BASIS","name":"Type and variation basis","requirement":"Dynamic sizes, ratings, states, and other governed variation shall be carried by types or parameters where appropriate rather than proliferating duplicate family identities."},
+    {"id":"CHANGE_CONTROL","name":"Change control","requirement":"Changes to governed reusable families, including rename, repurpose, replacement, or deprecation, shall follow the applicable standards/library change process."}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S4-FAMILY-NAMING-001", "TIVERIT-BIM-STD-S2-LOD-LOI-001", "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "instructions": ["TIVERIT-BIM-INS-REVIT-MODELING-001"]
+  },
+  "non_promoted_source_content": [
+    "No exhaustive family library catalogue, discipline-specific family list, geometry recipe, or type catalogue is invented where the source does not provide an approved governed dataset.",
+    "No visual richness or geometric complexity is treated as evidence of permitted use or information maturity."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_ids": ["7733249", "4489217", "2425330"],
+    "source_titles": ["Revit Modeling Standards and Guidelines", "Family Naming Standards and Principles for TAIT BIM", "LOD & LOI — Level of Development and Level of Information"],
+    "migration_note": "Promotes the durable machine-readable fields needed to govern reusable family content and connect family identity, information need, parameters, library provenance, and change control."
+  }
+}
