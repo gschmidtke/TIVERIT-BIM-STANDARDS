@@ -44,12 +44,12 @@
     },
     {
       "domain": "Revit style guide",
-      "standards_scope": ["S4"],
-      "source_summary": "View templates/naming, annotation/graphics, worksets, family hygiene, phasing/design options, and QA/pre-flight are reported in Confluence.",
-      "current_main_summary": "Current main already contains Revit conformance objects for view templates, worksets, naming and related checks, so the older branch comparison is incomplete.",
-      "disposition": "partially_migrated",
-      "confidence": "high_at_domain_level",
-      "next_action": "Match source objects to current standards, conformance, instructions, configurations, and registries; identify remaining delta."
+      "standards_scope": ["S3", "S4", "S5", "S6", "S7", "S8"],
+      "source_summary": "Appendix E source coverage includes project templates, views, sheets/titleblocks, annotation, graphics, naming, parameters, materials, levels/grids, modeling, worksharing, documentation/export, and QA/review checklists, with related child instruction/workflow assets.",
+      "current_main_summary": "Object-level reconciliation is complete for the Revit style-guide migration scope. Current main contains the corresponding L6 instructions plus machine-readable control registries and conformance coverage for views/templates/graphics, annotation/tags/keynotes, worksets/worksharing, families/modeling hygiene, phasing/design options, and QA/preflight. Existing sheet/titleblock, parameter, levels/grids, materials, naming, documentation/export, template and related shared-parameter assets remain integrated in their governing modules. Draft/TODO/example values remain explicitly noncanonical.",
+      "disposition": "migrated",
+      "confidence": "high_object_level_reconciliation_complete",
+      "next_action": "No further Appendix E source-migration batch required. Maintain Revit objects through ordinary standards governance and supply project/template-specific values through governed configuration. Future executable ATS/ETS expansion is standards evolution, not unresolved migration."
     },
     {
       "domain": "Shared parameters",
