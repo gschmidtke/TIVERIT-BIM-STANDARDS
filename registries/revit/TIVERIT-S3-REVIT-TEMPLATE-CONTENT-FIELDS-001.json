@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S3-REVIT-TEMPLATE-CONTENT-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Template Content Manifest Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S3", "S4", "S8"],
+  "entries": [
+    {"id":"TEMPLATE_IDENTITY","name":"Template identity","requirement":"Each governed Revit template release shall have a stable identity distinct from ad-hoc project copies."},
+    {"id":"TEMPLATE_SCOPE","name":"Template scope","requirement":"The release shall declare its office/base, discipline, regional or other bounded applicability where relevant."},
+    {"id":"REVIT_VERSION","name":"Supported Revit version","requirement":"The release shall declare the supported Revit version or compatibility basis."},
+    {"id":"RELEASE_VERSION","name":"Template release version","requirement":"The release shall have a governed version or release identifier sufficient for project traceability and change control."},
+    {"id":"VIEW_TEMPLATES","name":"Required view-template content","requirement":"The manifest shall identify required governed view templates or references to the applicable view-template registry."},
+    {"id":"ANNOTATION_STYLES","name":"Required annotation content","requirement":"The manifest shall identify required governed text, dimension, tag, symbol or keynote content where applicable."},
+    {"id":"GRAPHICS_STYLES","name":"Required graphics content","requirement":"The manifest shall identify required Object Styles, line styles, filters or other governed graphics content where applicable."},
+    {"id":"TITLEBLOCKS","name":"Required titleblock content","requirement":"The manifest shall identify the governed titleblock families or references required for the template scope."},
+    {"id":"MATERIALS","name":"Required material content","requirement":"Where materials are part of the template baseline, the manifest shall identify the governed material set or reference its registry."},
+    {"id":"PHASES","name":"Phase configuration","requirement":"Where phase configuration is part of the template baseline, the manifest shall identify the required governed phases and phase-filter basis."},
+    {"id":"WORKSHARING","name":"Worksharing content","requirement":"Where worksets or worksharing settings are preconfigured, the manifest shall identify the applicable governed worksharing basis."},
+    {"id":"PARAMETERS","name":"Governed parameter content","requirement":"The manifest shall identify required governed project/shared parameters or reference the applicable parameter registry."},
+    {"id":"RELEASE_NOTES","name":"Release notes and impact","requirement":"Each governed release shall record material changes, compatibility or migration impacts, and known limitations."},
+    {"id":"DEPRECATION_STATUS","name":"Deprecation status","requirement":"Superseded template releases shall be identifiable as deprecated or retired rather than remaining indistinguishable from current approved releases."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-TEMPLATES-001"],
+    "conformance": ["ATS-REVIT-TEMPLATE-CONTENT-001"],
+    "standards": ["TIVERIT-BIM-STD-S3-PROD-EP001", "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"]
+  },
+  "non_promoted_source_content": [
+    "Source filename patterns containing organization placeholders are not promoted as canonical naming rules.",
+    "The source discipline-template catalogue is treated as an illustrative scope list until each template is approved and registered.",
+    "Placeholder repository paths, owners, titleblock names, view-template IDs, phase values and shared-parameter values remain unresolved."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7503875",
+    "source_version": 1,
+    "source_title": "Revit Project Templates – Instructions, Definitions, Workflows",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7503875",
+    "migration_note": "Migrated the content-manifest and release-control fields needed to make template validation executable without promoting placeholder template names or incomplete catalogue values."
+  }
+}

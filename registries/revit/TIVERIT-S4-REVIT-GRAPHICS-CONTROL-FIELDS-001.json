@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-GRAPHICS-CONTROL-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Graphics Control Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S5"],
+  "entries": [
+    {"id":"CONTROL_LEVEL","name":"Graphics control level","requirement":"Each governed graphics rule shall identify whether its baseline authority belongs to Object Styles, a view template, a rule-based filter, a material, or another governed control layer."},
+    {"id":"CATEGORY_SCOPE","name":"Category or subcategory scope","requirement":"The rule shall identify the applicable Revit category or approved subcategory scope without relying on ambiguous free text."},
+    {"id":"DISPLAY_CONTEXT","name":"Display context","requirement":"Where graphics vary by view type, purpose, discipline or output context, the applicable context shall be declared explicitly."},
+    {"id":"PROJECTION_LINE","name":"Projection graphics","requirement":"Where governed, projection line weight, pattern and color values shall be stored as explicit configuration values or references rather than inferred from examples."},
+    {"id":"CUT_LINE","name":"Cut graphics","requirement":"Where governed, cut line weight, pattern and color values shall be stored as explicit configuration values or references rather than inferred from examples."},
+    {"id":"FILL_PATTERN","name":"Fill or hatch basis","requirement":"Where a fill or hatch is governed, the approved pattern identity, pattern type and applicable scale/density basis shall be traceable."},
+    {"id":"FILTER_LOGIC","name":"Rule-based filter logic","requirement":"Condition-based graphics that recur across views shall identify the governed filter logic or registry reference that implements the semantic rule."},
+    {"id":"SUBCATEGORY_IDENTITY","name":"Approved subcategory identity","requirement":"Reusable family/detail graphics shall use stable approved subcategory identities; project-specific duplicates or near-duplicates shall not be treated as governed values."},
+    {"id":"PRINT_VALIDATION","name":"Print/legibility validation","requirement":"Graphics values intended for documentation shall identify the applicable validation basis for legibility at governed output scales or plotting conditions."},
+    {"id":"CHANGE_CONTROL","name":"Change-control trace","requirement":"Changes to governed graphics definitions shall be traceable to the standards/template release process rather than made as unrecorded project-local changes."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-GRAPHICS-001", "TIVERIT-BIM-INS-REVIT-VIEWS-001"],
+    "standards": ["TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001"],
+    "registries": ["TIVERIT-S4-REVIT-VIEW-PURPOSE-FIELDS-001"]
+  },
+  "non_promoted_source_content": [
+    "The source line-weight examples such as Walls 2/5 and Structural Framing 3/5 are not promoted as enterprise defaults because the source explicitly says they require confirmation against plotting tests.",
+    "Example subcategory names such as DET_BOUNDARY, DET_HATCH, DET_CENTERLINE and DET_PIPING are not promoted as approved enterprise vocabulary until a governed subcategory catalogue exists.",
+    "Example hatch names, RGB values and plotting assumptions remain source examples or TODO-bound values."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6193190",
+    "source_version": 1,
+    "source_title": "Category & Subcategory Graphics Standards and Guidelines",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6193190",
+    "migration_note": "Migrated the machine-readable graphics-control fields and authority hierarchy while preserving unresolved numeric style values as project/template configuration rather than enterprise doctrine."
+  }
+}

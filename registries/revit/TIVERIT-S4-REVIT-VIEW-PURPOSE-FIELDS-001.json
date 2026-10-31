@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-VIEW-PURPOSE-FIELDS-001",
+  "type": "registry",
+  "title": "Revit View Purpose and Template Mapping Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S5"],
+  "entries": [
+    {"id":"VIEW_PURPOSE","name":"View purpose","requirement":"Each governed view-template mapping shall identify the intended view purpose or use class, such as documentation, coordination, presentation, export, or another approved project purpose."},
+    {"id":"VIEW_TYPE","name":"Revit view type","requirement":"Each mapping shall identify the applicable Revit view type or bounded type family to which the governed display state applies."},
+    {"id":"DISCIPLINE_SCOPE","name":"Discipline scope","requirement":"Where the mapping varies by discipline, the applicable discipline or multi-discipline scope shall be identified explicitly."},
+    {"id":"TEMPLATE_IDENTITY","name":"Approved template identity","requirement":"Each mapping shall identify the approved view-template identity or governed template-release reference. Source example template names are not canonical unless separately approved."},
+    {"id":"DETAIL_LEVEL","name":"Detail level basis","requirement":"The mapping shall identify the governed detail-level rule where the view purpose requires one, or reference the applicable project/configuration source."},
+    {"id":"VISUAL_STYLE","name":"Visual style basis","requirement":"The mapping shall identify the governed visual-style rule where applicable, or reference the project/configuration source that defines it."},
+    {"id":"PHASE_FILTER","name":"Phase and phase-filter basis","requirement":"Where phase display is material to the view purpose, the mapping shall identify the applicable phase/phase-filter basis rather than relying on local ad-hoc settings."},
+    {"id":"LINK_VISIBILITY","name":"Linked-model visibility basis","requirement":"Where linked-model display is material, the mapping shall identify the governed linked-model visibility rule or reference its governing configuration."},
+    {"id":"FILTER_SET","name":"Governed filter set","requirement":"Recurring parameter-driven display logic shall reference governed filters or filter sets rather than repeated per-view manual overrides."},
+    {"id":"OVERRIDE_POLICY","name":"Local override policy","requirement":"The mapping shall identify whether local overrides are prohibited, conditionally permitted, or allowed only through an approved exception for the declared view purpose."},
+    {"id":"EXCEPTION_TRACE","name":"Approved exception trace","requirement":"Any approved departure from the governed view-template/display mapping shall be traceable to its rationale and approval basis."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-VIEWS-001"],
+    "conformance": ["ATS-REVIT-VIEW-TEMPLATE-001"],
+    "registries": ["TIVERIT-S4-NAMING-SYNTAXES-001", "TIVERIT-S4-CONTROLLED-VOCABULARIES-001"]
+  },
+  "non_promoted_source_content": [
+    "The example template names PLN-Coordination, PLN-Documentation, RCP-Documentation, SEC-Documentation and 3D-Coordination are not promoted as enterprise canonical names.",
+    "The example view-name syntaxes and suffixes remain source examples until governed by the naming registry.",
+    "Recommended detail levels, visual styles and phase-filter examples are not promoted as universal values where the source leaves project or discipline applicability unresolved."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7241762",
+    "source_version": 1,
+    "source_title": "View Standards – Instructions, Definitions, Workflows",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7241762",
+    "migration_note": "Migrated the machine-readable mapping fields required to make view-template governance executable without canonicalizing source example names or unresolved project values."
+  }
+}
