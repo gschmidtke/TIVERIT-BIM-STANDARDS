@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1",
+  "id": "MIGRATION-RECONCILIATION-REGISTER-001",
+  "type": "migration_reconciliation_register",
+  "status": "active",
+  "source_issue": "https://github.com/gschmidtke/STAR-T-GATE-INBOX/issues/6",
+  "source_scope": "Existing Confluence source inventory versus current TIVERIT-BIM-STANDARDS main",
+  "purpose": "Track source-to-current-main reconciliation and prevent stale branch comparisons from being treated as canonical migration gaps.",
+  "allowed_dispositions": [
+    "migrated",
+    "partially_migrated",
+    "merged_into_other_object",
+    "superseded",
+    "source_evidence_only",
+    "intentionally_not_promoted",
+    "migration_missing",
+    "unresolved_source"
+  ],
+  "rules": [
+    "Repository absence alone does not authorize promotion from source material.",
+    "Confluence presence alone does not make an item normative in the repository.",
+    "Reconciliation is against current main, not build/repository-foundation or another stale branch.",
+    "Object-level provenance must be preserved before promotion.",
+    "Remaining migration batches are generated from the reconciled delta."
+  ],
+  "domain_reconciliation": [
+    {
+      "domain": "Navisworks coordination/export",
+      "standards_scope": ["S5", "S6", "S7"],
+      "source_summary": "Export settings, project setup/federation, clash matrix/routing, and ACC/Navisworks hybrid workflow are reported in Confluence.",
+      "current_main_summary": "No dedicated Navisworks objects found in current main during curator check.",
+      "disposition": "migration_missing",
+      "confidence": "high_at_domain_level",
+      "next_action": "Perform object-level source reconciliation and create a bounded Navisworks migration batch."
+    },
+    {
+      "domain": "Inventor / manufacturing toolchain",
+      "standards_scope": ["S9"],
+      "source_summary": "Inventor standards inventory, tool-authority scaffold, naming, drawing/fabrication conventions, and translation rules are reported in Confluence.",
+      "current_main_summary": "No Inventor-specific objects found in current main during curator check.",
+      "disposition": "migration_missing",
+      "confidence": "high_at_domain_level",
+      "next_action": "Perform object-level S9 source reconciliation before defining canonical standards or tool-authority objects."
+    },
+    {
+      "domain": "Revit style guide",
+      "standards_scope": ["S4"],
+      "source_summary": "View templates/naming, annotation/graphics, worksets, family hygiene, phasing/design options, and QA/pre-flight are reported in Confluence.",
+      "current_main_summary": "Current main already contains Revit conformance objects for view templates, worksets, naming and related checks, so the older branch comparison is incomplete.",
+      "disposition": "partially_migrated",
+      "confidence": "high_at_domain_level",
+      "next_action": "Match source objects to current standards, conformance, instructions, configurations, and registries; identify remaining delta."
+    },
+    {
+      "domain": "Shared parameters",
+      "standards_scope": ["S8"],
+      "source_summary": "Shared-parameter governance scaffold and source data are reported in Confluence.",
+      "current_main_summary": "A shared-parameter registry exists in registries/parameters, but completeness against the source inventory is unproven.",
+      "disposition": "partially_migrated",
+      "confidence": "high_at_domain_level",
+      "next_action": "Reconcile source parameter objects and GUID coverage against the current registry and related workflows/conformance."
+    },
+    {
+      "domain": "Classification registry/protocol",
+      "standards_scope": ["S8"],
+      "source_summary": "Classification governance for OmniClass, Uniclass and MasterFormat carriers is reported in Confluence.",
+      "current_main_summary": "No registries/classification path found in current main during curator check.",
+      "disposition": "migration_missing",
+      "confidence": "medium_at_domain_level",
+      "next_action": "Verify source objects and intended repository model before creating classification registry objects."
+    },
+    {
+      "domain": "ACC / BIM 360 governance",
+      "standards_scope": ["S3", "S5", "S7"],
+      "source_summary": "ACC-only decision rules, system-of-record targets, templates, and BEP clauses are reported in Confluence as existing and/or known gaps.",
+      "current_main_summary": "ACC onboarding workflow exists in current main, so the domain is not wholly absent.",
+      "disposition": "partially_migrated",
+      "confidence": "high_at_domain_level",
+      "next_action": "Separate migrated ACC governance from intrinsic source gaps and reconcile each source object."
+    },
+    {
+      "domain": "S7 exchanges and lifecycle deliverables",
+      "standards_scope": ["S7"],
+      "source_summary": "Exchange schedules, lifecycle/asset schemas and export presets are reported in Confluence.",
+      "current_main_summary": "Current status not yet reconciled object by object in this curator round.",
+      "disposition": "unresolved_source",
+      "confidence": "pending_reconciliation",
+      "next_action": "Perform object-level source-to-main comparison before classifying missing versus migrated content."
+    },
+    {
+      "domain": "BEP interview engine and automation",
+      "standards_scope": ["BEP"],
+      "source_summary": "Module decomposition, software environment coverage, automation modules and end-to-end tests are reported in Confluence punch-list material.",
+      "current_main_summary": "BEP workflow exists and has recently been curated, but source completeness has not been reconciled object by object.",
+      "disposition": "partially_migrated",
+      "confidence": "medium_at_domain_level",
+      "next_action": "Distinguish migrated workflow improvements from still-open production-readiness work."
+    },
+    {
+      "domain": "Metadata, provenance and ISO edition tagging",
+      "standards_scope": ["cross_domain"],
+      "source_summary": "Edition-specific tagging, provenance blocks and W0-W8 identifier normalization are reported as source-side concerns.",
+      "current_main_summary": "Repository-wide completeness has not yet been assessed in this curator round.",
+      "disposition": "unresolved_source",
+      "confidence": "pending_reconciliation",
+      "next_action": "Audit repository metadata/provenance model against source inventory and current identifier rules."
+    }
+  ],
+  "completion_condition": "Every inventoried source object has an explicit disposition against current main and no migration task remains derived only from a stale branch comparison."
+}
