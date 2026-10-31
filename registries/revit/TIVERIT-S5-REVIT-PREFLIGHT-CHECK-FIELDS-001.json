@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S5-REVIT-PREFLIGHT-CHECK-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Preflight Check Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S5", "S7", "S8"],
+  "entries": [
+    {"id":"CHECK_ID","name":"Check identity","requirement":"Each governed preflight check shall have a stable identity so results can be traced across model states, issues, and automation runs."},
+    {"id":"CHECK_SCOPE","name":"Check scope","requirement":"Each check shall identify the applicable model, views, sheets, elements, or output package being evaluated."},
+    {"id":"CHECK_DOMAIN","name":"Check domain","requirement":"Each check shall identify its governed domain, such as view/template state, sheet/titleblock state, annotation/tagging, naming/identity, parameters, worksharing, family/modeling hygiene, phasing/design options, output legibility, or another approved domain."},
+    {"id":"GOVERNING_OBJECT","name":"Governing object","requirement":"Each check shall reference the standard, instruction, registry, or conformance object that defines the expected state."},
+    {"id":"IMPLEMENTATION_CLASS","name":"Implementation class","requirement":"Each check shall identify whether it is intended for API checking, model checking, registry checking, file/output checking, human verification, or an approved hybrid method."},
+    {"id":"APPLICABILITY_RULE","name":"Applicability rule","requirement":"Each check shall state when it applies and when a not-applicable result is permitted."},
+    {"id":"EXPECTED_EVIDENCE","name":"Expected evidence","requirement":"Each check shall identify the evidence required to support pass, fail, not-applicable, or indeterminate results."},
+    {"id":"RESULT_STATE","name":"Result state","requirement":"Each execution shall record a governed result state rather than relying on an undocumented verbal conclusion."},
+    {"id":"DEVIATION_TRACE","name":"Deviation trace","requirement":"Any unresolved or accepted deviation shall be traceable to its rationale, owner, disposition, and governing exception path where applicable."},
+    {"id":"MODEL_STATE_REFERENCE","name":"Model-state reference","requirement":"The preflight result shall identify the model/container state, version, issue, or other reproducible state against which the checks were executed."},
+    {"id":"OUTPUT_EVIDENCE_REFERENCE","name":"Output evidence reference","requirement":"Where visual or plotted legibility is material, the check shall reference representative PDF, print, screenshot, or equivalent output evidence."},
+    {"id":"DECISION_BOUNDARY","name":"Decision boundary","requirement":"The check definition shall state that preflight evidence does not by itself constitute coordination sign-off, contractual acceptance, or reliance authorization unless the governing S5/S7 authority explicitly assigns that decision."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-QA-STYLE-001"],
+    "workflows": ["TIVERIT-BIM-WF-W7-2-QAQC-VALIDATION-001"]
+  },
+  "non_promoted_source_content": [
+    "No universal warning-count threshold is promoted because the source does not provide an approved enterprise value.",
+    "No universal purge-frequency, file-size, sync-frequency, model-open-time, or print-scale threshold is promoted where the source provides only examples or TODO values.",
+    "No QA result is promoted to formal acceptance authority merely by passing a preflight check."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6422564",
+    "source_version": 1,
+    "source_title": "Revit Style Guide - QA / Review Checklists",
+    "migration_note": "Round 006 creates the machine-readable control fields needed to execute and evidence Appendix E Revit preflight checks while preserving the source's draft/style-focused scope and higher-level S5/S7 authority boundaries."
+  }
+}

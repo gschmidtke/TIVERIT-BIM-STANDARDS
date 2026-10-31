@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-PREFLIGHT-EVIDENCE-001",
+  "type": "abstract_test",
+  "title": "Revit preflight evidence package completeness",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S5", "S6", "S7", "S8"],
+  "governing_object_id": "TIVERIT-S5-REVIT-PREFLIGHT-CHECK-FIELDS-001",
+  "governing_clause": "CHECK_SCOPE through DECISION_BOUNDARY",
+  "test_intent": "Determine whether the Revit preflight package is reproducible, scoped to a known model state, linked to governing checks, and supported by traceable results and deviations before it is consumed by a higher-level readiness or approval workflow.",
+  "applicability": {
+    "applies_when": "A Revit model state or issue package is submitted into a governed QA/QC validation, milestone-readiness, coordination, or delivery gate that requires preflight evidence.",
+    "not_applicable_when": "The governing workflow does not require a Revit preflight evidence package for the tested state."
+  },
+  "required_evidence": [
+    "model/container state or version reference",
+    "declared preflight scope",
+    "applicable check identities and governing-object references",
+    "recorded result state for each applicable check",
+    "evidence references required by each check",
+    "unresolved deviation records and disposition traces"
+  ],
+  "result_logic": {
+    "pass": "The preflight package identifies a reproducible model state, includes every applicable governed check with a recorded result and required evidence, and traces unresolved deviations without claiming authority beyond the preflight function.",
+    "fail": "The package omits an applicable governed check, lacks required evidence or model-state identity, contains unresolved untraced deviations, or asserts acceptance/sign-off authority not granted by the governing workflow.",
+    "not_applicable": "The governing workflow does not require a Revit preflight evidence package for the tested state.",
+    "indeterminate": "The applicable check profile, model state, or higher-level workflow requirement cannot be determined from available evidence."
+  },
+  "permitted_implementation_classes": ["registry_checker", "file_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-S5-REVIT-PREFLIGHT-CHECK-FIELDS-001",
+    "migration_note": "Round 006 adds a packaging/completeness test so Revit preflight evidence can be consumed by W7.2 and other gates without conflating evidence production with approval authority."
+  }
+}

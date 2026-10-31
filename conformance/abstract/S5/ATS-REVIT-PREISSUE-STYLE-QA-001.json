@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-PREISSUE-STYLE-QA-001",
+  "type": "abstract_test",
+  "title": "Revit pre-issue style QA completeness",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S5", "S7", "S8"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-QA-STYLE-001",
+  "governing_clause": "RVT-QA-01 through RVT-QA-04",
+  "test_intent": "Determine whether the declared Revit issue/review scope has completed the required style-focused QA checks for view graphics, sheet/view consistency, annotation/notation, and recorded evidence without misrepresenting the result as coordination sign-off or formal acceptance.",
+  "applicability": {
+    "applies_when": "A Revit view/sheet package is being prepared for formal issue or major internal review.",
+    "not_applicable_when": "No Revit view/sheet package is in the tested issue/review scope."
+  },
+  "required_evidence": [
+    "declared issue/review scope",
+    "applicable governed view/template, titleblock, naming, annotation/tagging, parameter, and output rules",
+    "recorded results for applicable pre-issue style checks",
+    "representative output evidence where plotted/visual legibility is material",
+    "deviation or exception records for unresolved findings"
+  ],
+  "result_logic": {
+    "pass": "Every applicable style-focused pre-issue check has a recorded acceptable result or approved deviation, required evidence is present, and the QA record preserves the boundary between style QA and higher-level coordination/acceptance decisions.",
+    "fail": "One or more applicable checks fail without governed disposition, required evidence is missing, or the QA result is incorrectly represented as coordination sign-off or formal acceptance.",
+    "not_applicable": "No Revit view/sheet package is in the tested issue/review scope.",
+    "indeterminate": "The issue/review scope, governing rules, required check profile, or evidence record is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "file_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-QA-STYLE-001",
+    "migration_note": "Round 006 adds explicit conformance for the already-migrated Appendix E Revit style QA instruction."
+  }
+}
