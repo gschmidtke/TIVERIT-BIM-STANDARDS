@@ -4,7 +4,8 @@
   "title": "Sheet Number Resolver — Authority, Phase and Content Classification",
   "status": "curator_candidate",
   "subject": "TIVERIT-BIM-WF-S7-SHEET-NUMBER-RESOLVER-001",
-  "purpose": "Exercise the resolver against representative sheets without inventing missing client/project codes.",
+  "purpose": "Exercise the resolver against representative sheets without publishing or inventing real client/project identifiers.",
+  "anonymization_rule": "Project-derived tests shall preserve semantic and structural behavior while replacing real project, client, attraction, zone, and document identifiers with neutral placeholders such as AAA, WWW, ZZZ, Project A, Client A, Building A, Zone A, and Area A.",
   "cases": [
     {
       "id": "TS-SHEET-001",
@@ -29,48 +30,48 @@
         "identity": "C2018120-PWA-AB-01-DR-AR-0001",
         "project_stage_location": "metadata_unless_project_rule_says_otherwise",
         "gate": "pass",
-        "reason": "All identity fields required by the reference profile are supplied; stage remains a separate governed dimension."
+        "reason": "All identity fields required by the public authority reference profile are supplied; stage remains a separate governed dimension."
       }
     },
     {
       "id": "TS-SHEET-002",
-      "name": "WBX Miral enlarged floor plan with unresolved Aconex identity grammar",
+      "name": "Client A / Project AAA enlarged floor plan with unresolved governed-CDE identity grammar",
       "input": {
-        "profile": "PROFILE-MIRAL-UAE-001",
-        "project_stage": "riba_stage_4",
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_stage": "stage_4",
         "lod": "300",
-        "project_phase": "2A",
+        "project_phase": "phase_a",
         "work_condition": "proposed",
-        "zone_or_area": "Diagon Alley",
+        "zone_or_area": "Zone A",
         "discipline": "architecture",
         "information_form": "drawing",
         "content_class": "large_scale_view",
         "content_subtype": "enlarged_floor_plan",
         "level_or_location": "project_defined",
-        "title": "Diagon Alley - Enlarged Floor Plan"
+        "title": "Zone A - Enlarged Floor Plan"
       },
       "expected": {
         "identity": null,
         "gate": "unresolved",
         "blocking": true,
-        "reason": "The semantic classification is resolvable, but curated evidence does not yet establish the WBX/Miral Aconex document-number grammar or required codes. The resolver must not fabricate them."
+        "reason": "The semantic classification is resolvable, but the test intentionally withholds the governed project document-number grammar. The resolver must not fabricate it."
       }
     },
     {
       "id": "TS-SHEET-003",
-      "name": "WBX Miral reflected ceiling plan does not become a project phase",
+      "name": "Client A / Project AAA reflected ceiling plan does not become a project phase",
       "input": {
-        "profile": "PROFILE-MIRAL-UAE-001",
-        "project_stage": "riba_stage_5",
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_stage": "stage_5",
         "lod": "350_or_400",
-        "project_phase": "2B",
+        "project_phase": "phase_b",
         "work_condition": "proposed",
-        "zone_or_area": "Hogwarts Castle",
+        "zone_or_area": "Building A",
         "discipline": "architecture",
         "information_form": "drawing",
         "content_class": "plan",
         "content_subtype": "reflected_ceiling_plan",
-        "title": "Hogwarts Castle - Reflected Ceiling Plan"
+        "title": "Building A - Reflected Ceiling Plan"
       },
       "expected": {
         "identity": null,
@@ -78,39 +79,39 @@
         "blocking": true,
         "assertions": [
           "reflected_ceiling_plan remains a content subtype",
-          "project_phase 2B remains distinct from RIBA Stage 5",
+          "project phase remains distinct from project stage",
           "work_condition proposed remains distinct from both phase and stage"
         ]
       }
     },
     {
       "id": "TS-SHEET-004",
-      "name": "WBX Miral door schedule",
+      "name": "Client A / Project AAA door schedule",
       "input": {
-        "profile": "PROFILE-MIRAL-UAE-001",
-        "project_stage": "riba_stage_5",
-        "project_phase": "2A",
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_stage": "stage_5",
+        "project_phase": "phase_a",
         "work_condition": "proposed",
-        "zone_or_area": "Hogwarts Castle",
+        "zone_or_area": "Building A",
         "discipline": "architecture",
         "information_form": "drawing",
         "content_class": "schedule",
         "content_subtype": "door_schedule",
-        "title": "Hogwarts Castle - Door Schedule"
+        "title": "Building A - Door Schedule"
       },
       "expected": {
         "identity": null,
         "gate": "unresolved",
         "blocking": true,
-        "reason": "Schedule semantics are known, but no evidenced Miral/WBX sheet-series or Aconex identity range may be invented."
+        "reason": "Schedule semantics are known, but no unevidenced client/project sheet-series or governed-CDE identity range may be invented."
       }
     },
     {
       "id": "TS-SHEET-005",
-      "name": "WBX Miral demolition plan",
+      "name": "Client A / Project AAA demolition plan",
       "input": {
-        "profile": "PROFILE-MIRAL-UAE-001",
-        "project_stage": "riba_stage_5",
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_stage": "stage_5",
         "project_phase": "project_defined",
         "work_condition": "demolition",
         "zone_or_area": "project_defined",
@@ -126,40 +127,40 @@
         "blocking": true,
         "assertions": [
           "demolition is work_condition, not project_stage",
-          "RIBA Stage 5 remains project_stage",
+          "project stage remains project_stage",
           "missing project identity grammar blocks CDE registration"
         ]
       }
     },
     {
       "id": "TS-SHEET-006",
-      "name": "WBX Miral perspective",
+      "name": "Client A / Project AAA perspective",
       "input": {
-        "profile": "PROFILE-MIRAL-UAE-001",
-        "project_stage": "riba_stage_4",
-        "project_phase": "2A",
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_stage": "stage_4",
+        "project_phase": "phase_a",
         "work_condition": "proposed",
-        "zone_or_area": "Forbidden Forest",
+        "zone_or_area": "Zone B",
         "discipline": "architecture",
         "information_form": "drawing",
         "content_class": "three_dimensional_representation",
         "content_subtype": "perspective",
-        "title": "Forbidden Forest - Perspective"
+        "title": "Zone B - Perspective"
       },
       "expected": {
         "identity": null,
         "gate": "unresolved",
         "blocking": true,
-        "reason": "Perspective is semantically classifiable; no unsupported Miral numeric series is assigned."
+        "reason": "Perspective is semantically classifiable; no unsupported client/project numeric series is assigned."
       }
     },
     {
       "id": "TS-SHEET-007",
-      "name": "Simplified fallback cannot activate while project authority is unresolved",
+      "name": "Simplified fallback cannot activate while higher-precedence project authority is unresolved",
       "input": {
         "known_project_context": "governed_cde",
-        "client": "Miral",
-        "cde": "Aconex",
+        "client": "Client A",
+        "cde": "governed_document_platform",
         "requested_profile": "PROFILE-SIMPLIFIED-001",
         "content_subtype": "enlarged_floor_plan"
       },
