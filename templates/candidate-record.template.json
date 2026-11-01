@@ -1,0 +1,47 @@
+{
+  "$schema": "../schemas/candidate-record.schema.json",
+  "id": "CANDIDATE-<ID>",
+  "type": "candidate_record",
+  "title": "<candidate title>",
+  "summary": "<what arrived and why it may matter>",
+  "candidate_state": "captured",
+  "candidate_class": "observation_evidence",
+  "claimed_authority": {
+    "authority_rank": "E1",
+    "authority_basis": "<claimed basis; not yet verified>",
+    "verified": false
+  },
+  "importance": {
+    "scope": "tool_local",
+    "impact": "low",
+    "dependency_reach": "local",
+    "urgency": "normal",
+    "rationale": "<why this rating applies>"
+  },
+  "priority": "P4",
+  "promotion_readiness": "not_assessed",
+  "standards_eligibility": "undetermined",
+  "source": {
+    "source_system": "<source system>",
+    "source_reference": "<durable URL, document ID, issue, file, or citation>",
+    "source_title": "<source title>",
+    "source_authority_status": "<unknown/draft/current/licensed/etc.>"
+  },
+  "evaluated_against": "<repository>/<canonical-branch>@<commit-sha>",
+  "affected_modules": [],
+  "routing": {
+    "target": "HOLD",
+    "reason": "Classification and authority not yet established.",
+    "owner_or_role": null
+  },
+  "evidence": [],
+  "unresolved": [
+    {
+      "id": "UNRES-001",
+      "question": "What authority, scope, evidence, or configuration is still needed before a decision can be made?",
+      "blocking": true,
+      "needed_evidence": "<specific evidence required>"
+    }
+  ],
+  "curator_decision": null
+}
