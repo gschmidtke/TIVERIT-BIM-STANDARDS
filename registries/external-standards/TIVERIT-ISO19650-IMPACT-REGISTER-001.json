@@ -11,13 +11,7 @@
     "private_source_repository": "gschmidtke/ISO-19650",
     "source_access": "curator_only",
     "public_source_text_republication": false,
-    "verified_editions": [
-      "BS EN ISO 19650-1:2018",
-      "BS EN ISO 19650-2:2018",
-      "BS EN ISO 19650-3:2020",
-      "BS EN ISO 19650-4:2022",
-      "BS EN ISO 19650-5:2020"
-    ]
+    "verified_editions": ["BS EN ISO 19650-1:2018","BS EN ISO 19650-2:2018","BS EN ISO 19650-3:2020","BS EN ISO 19650-4:2022","BS EN ISO 19650-5:2020"]
   },
   "rules": {
     "no_automatic_applicability": "A verified relationship does not make ISO 19650 applicable to a project; applicability remains governed by the External Standards Gateway.",
@@ -26,128 +20,15 @@
     "relationship_precision": "Distinguish aligned, partially aligned, gap, potential conflict and not-yet-verified findings. Terminology similarity alone is insufficient."
   },
   "findings": [
-    {
-      "finding_id": "ISO-IMP-001",
-      "topic": "information_requirements_chain",
-      "external_sources": [
-        {"standard":"ISO 19650-1","edition":"2018","clauses":["5.2","5.3","5.4","5.5"]},
-        {"standard":"ISO 19650-2","edition":"2018","clauses":["5.1.2","5.2.1","5.4.3"]}
-      ],
-      "tiverit_objects": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001"],
-      "relationship": "partially_aligned_with",
-      "assessment": "TIVERIT S2 governs PIR/AIR/EIR interfaces and delivery planning, but its own parent object records OIR as source-data-required and EIR as distributed implementation rather than a standalone governed S2 object.",
-      "curator_action": "Create a governed decision for completing the OIR/PIR/AIR/EIR demand chain without importing protected external text.",
-      "priority": "high",
-      "promotion_status": "decision_required"
-    },
-    {
-      "finding_id": "ISO-IMP-002",
-      "topic": "midp_tidp_delivery_planning",
-      "external_sources": [
-        {"standard":"ISO 19650-2","edition":"2018","clauses":["5.4.4","5.4.5"]}
-      ],
-      "tiverit_objects": ["TIVERIT-BIM-STD-S2-MIDP-001","TIVERIT-BIM-STD-S2-TIDP-001"],
-      "relationship": "aligned_with",
-      "assessment": "TIVERIT already separates governed MIDP and TIDP concepts and requires MIDP-to-TIDP traceability. Role ownership and aggregation semantics should be checked so task-team planning is not conflated with master-plan governance.",
-      "curator_action": "Audit TIDP ownership and MIDP aggregation role semantics; promote only if an actual contradiction or missing responsibility is found.",
-      "priority": "medium",
-      "promotion_status": "audit_required"
-    },
-    {
-      "finding_id": "ISO-IMP-003",
-      "topic": "preappointment_bep_content",
-      "external_sources": [
-        {"standard":"ISO 19650-2","edition":"2018","clauses":["5.3.2","5.3.3","5.3.4","5.3.5","5.3.6","5.3.7"]}
-      ],
-      "tiverit_objects": ["BEP_INTERVIEW_WORKFLOW"],
-      "relationship": "partially_aligned_with",
-      "assessment": "The governed BEP workflow covers substantial project governance but requires explicit review of federation/model breakdown, responsibility allocation, task-team capability/capacity, mobilization readiness and information-delivery risk capture.",
-      "curator_action": "Reconcile STAR-T-GATE Inbox #12 against the verified clause set and prepare a BEP workflow patch with explicit source/provenance and validation semantics.",
-      "priority": "high",
-      "promotion_status": "patch_candidate"
-    },
-    {
-      "finding_id": "ISO-IMP-004",
-      "topic": "cde_container_governance",
-      "external_sources": [
-        {"standard":"ISO 19650-1","edition":"2018","clauses":["12.1","12.3","12.4","12.5","12.6","12.7"]},
-        {"standard":"ISO 19650-2","edition":"2018","clauses":["5.1.7"]}
-      ],
-      "tiverit_objects": ["TIVERIT-S3-CDE-STATES-001"],
-      "relationship": "partially_aligned_with",
-      "assessment": "TIVERIT explicitly represents WIP, Shared, Published and Archived states. A second-pass audit is required for container identifiers, codification, status/revision/classification metadata, transition audit evidence and controlled access rather than assuming state-name alignment proves complete conformance.",
-      "curator_action": "Audit S3 metadata, transition-history and access-control requirements against existing registries and production standards.",
-      "priority": "medium",
-      "promotion_status": "audit_required"
-    },
-    {
-      "finding_id": "ISO-IMP-005",
-      "topic": "approval_authorization_acceptance_authority",
-      "external_sources": [
-        {"standard":"ISO 19650-1","edition":"2018","clauses":["12.3","12.5"]},
-        {"standard":"ISO 19650-2","edition":"2018","clauses":["5.6.3","5.6.4","5.7.1","5.7.2","5.7.3","5.7.4"]},
-        {"standard":"ISO 19650-4","edition":"2022","clauses":["6.1","6.2","6.3"]}
-      ],
-      "tiverit_objects": ["TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-S3-CDE-STATES-001"],
-      "relationship": "potential_conflict_with",
-      "assessment": "TIVERIT currently links formal acceptance, coordination sign-off and milestone approval to CDE state transitions. Verified ISO source distinguishes approval for sharing, lead-party authorization and appointing-party acceptance. TIVERIT terminology and authority mapping must preserve these distinct decision types where applicable rather than collapse them into a generic approval concept.",
-      "curator_action": "Use this finding as evidence for the existing formal information acceptance authority issue and define a TIVERIT decision/authority taxonomy before changing normative requirements.",
-      "priority": "critical",
-      "promotion_status": "governed_decision_required"
-    },
-    {
-      "finding_id": "ISO-IMP-006",
-      "topic": "information_exchange_validation",
-      "external_sources": [
-        {"standard":"ISO 19650-4","edition":"2022","clauses":["5.1","5.2","5.3","6.1","6.2","6.3","7.1","7.2","7.3","7.4","7.5","7.6"]}
-      ],
-      "tiverit_objects": ["S5","S7","S8","CONFORMANCE"],
-      "relationship": "partially_aligned_with",
-      "assessment": "TIVERIT contains coordination, delivery, information-structure and conformance mechanisms, but no single governed exchange gate currently expresses the verified review dimensions of CDE metadata, conformance, continuity, communication, consistency and completeness as an executable exchange decision system.",
-      "curator_action": "Design a TIVERIT-native Information Exchange Gate and map its checks to existing S3/S5/S7/S8 authorities before creating new normative requirements or ATS/ETS tests.",
-      "priority": "high",
-      "promotion_status": "design_required"
-    },
-    {
-      "finding_id": "ISO-IMP-007",
-      "topic": "security_minded_information_management",
-      "external_sources": [
-        {"standard":"ISO 19650-5","edition":"2020","clauses":["4.1","4.3","4.4","4.5","4.6","4.7","4.8","4.9","4.10","5.1"]}
-      ],
-      "tiverit_objects": ["SECURITY-MINDED-INFORMATION-GATE"],
-      "relationship": "partially_aligned_with",
-      "assessment": "The existing TIVERIT security gate correctly preserves unresolved applicability and routes applicable security requirements to authorized controls, but it is only an applicability/routing gate. Verified ISO source additionally establishes sensitivity assessment, third-party sensitivity consideration, retained assessment outcomes, review/triage and security accountability concepts.",
-      "curator_action": "Retain the existing gate boundary and design downstream TIVERIT security-assessment and responsibility objects only where TIVERIT chooses to govern them or project applicability requires them.",
-      "priority": "high",
-      "promotion_status": "design_required"
-    },
-    {
-      "finding_id": "ISO-IMP-008",
-      "topic": "operational_phase_information_management",
-      "external_sources": [
-        {"standard":"ISO 19650-3","edition":"2020","clauses":["4.1","4.2","5.1.2","5.1.4","5.1.11","5.1.12"]}
-      ],
-      "tiverit_objects": ["OPERATIONAL-PHASE-INFORMATION-GATE","TIVERIT-BIM-STD-S2-INF-REQ-EP001"],
-      "relationship": "partially_aligned_with",
-      "assessment": "TIVERIT correctly distinguishes delivery-to-operation interfaces from operational governance. Its current S2 scope references OIR/AIR/AIM concepts without a complete standalone operational information-management lifecycle.",
-      "curator_action": "Keep the operational gate and treat expansion into AIM/OIR operational governance as an explicit scope decision rather than silently extending delivery-phase standards.",
-      "priority": "medium",
-      "promotion_status": "scope_decision_required"
-    }
+    {"finding_id":"ISO-IMP-001","topic":"information_requirements_chain","external_sources":[{"standard":"ISO 19650-1","edition":"2018","clauses":["5.2","5.3","5.4","5.5"]},{"standard":"ISO 19650-2","edition":"2018","clauses":["5.1.2","5.2.1","5.4.3"]}],"tiverit_objects":["TIVERIT-BIM-STD-S2-INF-REQ-EP001"],"relationship":"partially_aligned_with","assessment":"TIVERIT S2 governs PIR/AIR/EIR interfaces and delivery planning, but its own parent object records OIR as source-data-required and EIR as distributed implementation rather than a standalone governed S2 object.","curator_action":"Create a governed decision for completing the OIR/PIR/AIR/EIR demand chain without importing protected external text.","priority":"high","promotion_status":"decision_required"},
+    {"finding_id":"ISO-IMP-002","topic":"midp_tidp_delivery_planning","external_sources":[{"standard":"ISO 19650-2","edition":"2018","clauses":["5.4.4","5.4.5"]}],"tiverit_objects":["TIVERIT-BIM-STD-S2-MIDP-001","TIVERIT-BIM-STD-S2-TIDP-001"],"relationship":"aligned_with","assessment":"TIVERIT already separates governed MIDP and TIDP concepts and requires MIDP-to-TIDP traceability. Role ownership and aggregation semantics should be checked so task-team planning is not conflated with master-plan governance.","curator_action":"Audit TIDP ownership and MIDP aggregation role semantics; promote only if an actual contradiction or missing responsibility is found.","priority":"medium","promotion_status":"audit_required"},
+    {"finding_id":"ISO-IMP-003","topic":"preappointment_bep_content","external_sources":[{"standard":"ISO 19650-2","edition":"2018","clauses":["5.3.2","5.3.3","5.3.4","5.3.5","5.3.6","5.3.7"]}],"tiverit_objects":["BEP_INTERVIEW_WORKFLOW"],"relationship":"partially_aligned_with","assessment":"The governed BEP workflow covers substantial project governance but requires explicit review of federation/model breakdown, responsibility allocation, task-team capability/capacity, mobilization readiness and information-delivery risk capture.","curator_action":"Reconcile STAR-T-GATE Inbox #12 against the verified clause set and prepare a BEP workflow patch with explicit source/provenance and validation semantics.","priority":"high","promotion_status":"patch_candidate"},
+    {"finding_id":"ISO-IMP-004","topic":"cde_container_governance","external_sources":[{"standard":"ISO 19650-1","edition":"2018","clauses":["12.1","12.3","12.4","12.5","12.6","12.7"]},{"standard":"ISO 19650-2","edition":"2018","clauses":["5.1.7"]}],"tiverit_objects":["TIVERIT-S3-CDE-STATES-001"],"relationship":"partially_aligned_with","assessment":"TIVERIT explicitly represents WIP, Shared, Published and Archived states. A second-pass audit is required for container identifiers, codification, status/revision/classification metadata, transition audit evidence and controlled access rather than assuming state-name alignment proves complete conformance.","curator_action":"Audit S3 metadata, transition-history and access-control requirements against existing registries and production standards.","priority":"medium","promotion_status":"audit_required"},
+    {"finding_id":"ISO-IMP-005","topic":"approval_authorization_acceptance_authority","external_sources":[{"standard":"ISO 19650-1","edition":"2018","clauses":["12.3","12.5"]},{"standard":"ISO 19650-2","edition":"2018","clauses":["5.6.4","5.7.1","5.7.2","5.7.3","5.7.4"]},{"standard":"ISO 19650-4","edition":"2022","clauses":["6.1","6.2","6.3"]}],"tiverit_objects":["TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-S3-CDE-STATES-001","INFORMATION-DECISION-AUTHORITY-TAXONOMY"],"relationship":"potential_conflict_with","assessment":"Verified source evidence distinguishes originating-team approval for sharing, lead-party authorization, and appointing/receiving-party acceptance. Existing TIVERIT acceptance/status language can collapse coordination sign-off, milestone approval and acceptance into one status consequence. A TIVERIT-native decision taxonomy has now been defined to separate quality verification, approval for sharing, coordination sign-off, authorization for formal exchange, acceptance for declared use, milestone approval and handover acceptance.","curator_action":"Audit and patch S5/S7/S3 and role authority objects against INFORMATION-DECISION-AUTHORITY-TAXONOMY.md. Do not promote a universal job-title assignment; resolve authority from decision type, purpose, scope and governing authority basis.","priority":"critical","promotion_status":"taxonomy_defined_patch_required","resolution_artifact":"constitution/architecture/INFORMATION-DECISION-AUTHORITY-TAXONOMY.md","related_issue":"TIVERIT-BIM-STANDARDS#33"},
+    {"finding_id":"ISO-IMP-006","topic":"information_exchange_validation","external_sources":[{"standard":"ISO 19650-4","edition":"2022","clauses":["5.1","5.2","5.3","6.1","6.2","6.3","7.1","7.2","7.3","7.4","7.5","7.6"]}],"tiverit_objects":["S5","S7","S8","CONFORMANCE"],"relationship":"partially_aligned_with","assessment":"TIVERIT contains coordination, delivery, information-structure and conformance mechanisms, but no single governed exchange gate currently expresses the verified review dimensions of CDE metadata, conformance, continuity, communication, consistency and completeness as an executable exchange decision system.","curator_action":"Design a TIVERIT-native Information Exchange Gate and map its checks to existing S3/S5/S7/S8 authorities before creating new normative requirements or ATS/ETS tests.","priority":"high","promotion_status":"design_required"},
+    {"finding_id":"ISO-IMP-007","topic":"security_minded_information_management","external_sources":[{"standard":"ISO 19650-5","edition":"2020","clauses":["4.1","4.3","4.4","4.5","4.6","4.7","4.8","4.9","4.10","5.1"]}],"tiverit_objects":["SECURITY-MINDED-INFORMATION-GATE"],"relationship":"partially_aligned_with","assessment":"The existing TIVERIT security gate correctly preserves unresolved applicability and routes applicable security requirements to authorized controls, but it is only an applicability/routing gate. Verified ISO source additionally establishes sensitivity assessment, third-party sensitivity consideration, retained assessment outcomes, review/triage and security accountability concepts.","curator_action":"Retain the existing gate boundary and design downstream TIVERIT security-assessment and responsibility objects only where TIVERIT chooses to govern them or project applicability requires them.","priority":"high","promotion_status":"design_required"},
+    {"finding_id":"ISO-IMP-008","topic":"operational_phase_information_management","external_sources":[{"standard":"ISO 19650-3","edition":"2020","clauses":["4.1","4.2","5.1.2","5.1.4","5.1.11","5.1.12"]}],"tiverit_objects":["OPERATIONAL-PHASE-INFORMATION-GATE","TIVERIT-BIM-STD-S2-INF-REQ-EP001"],"relationship":"partially_aligned_with","assessment":"TIVERIT correctly distinguishes delivery-to-operation interfaces from operational governance. Its current S2 scope references OIR/AIR/AIM concepts without a complete standalone operational information-management lifecycle.","curator_action":"Keep the operational gate and treat expansion into AIM/OIR operational governance as an explicit scope decision rather than silently extending delivery-phase standards.","priority":"medium","promotion_status":"scope_decision_required"}
   ],
-  "recommended_sequence": [
-    "ISO-IMP-005",
-    "ISO-IMP-003",
-    "ISO-IMP-001",
-    "ISO-IMP-006",
-    "ISO-IMP-007",
-    "ISO-IMP-004",
-    "ISO-IMP-002",
-    "ISO-IMP-008"
-  ],
-  "provenance": {
-    "source_system": "repository_curator",
-    "derived_from": ["STAR-T-GATE-INBOX#12","private:gschmidtke/ISO-19650"],
-    "curation_note": "Round 001 records verified impact findings only. It deliberately does not assert project applicability, ISO conformance, or automatic normative promotion."
-  }
+  "recommended_sequence": ["ISO-IMP-005","ISO-IMP-003","ISO-IMP-001","ISO-IMP-006","ISO-IMP-007","ISO-IMP-004","ISO-IMP-002","ISO-IMP-008"],
+  "provenance": {"source_system":"repository_curator","derived_from":["STAR-T-GATE-INBOX#12","private:gschmidtke/ISO-19650"],"curation_note":"Round 001 records verified impact findings only. It deliberately does not assert project applicability, ISO conformance, or automatic normative promotion."}
 }
