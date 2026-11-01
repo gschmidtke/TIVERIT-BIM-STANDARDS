@@ -8,15 +8,28 @@
   "layer": "L7",
   "modules": ["S3"],
   "entries": [
-    {"id":"CDE-WIP","name":"Work in Progress","code":"WIP","system":"iso19650_information_state","meaning":"Active authoring and internal QA/QC; no cross-discipline reliance.","acc_mapping":"/02_Design_and_Coordination/10_WIP/<Discipline>"},
-    {"id":"CDE-SHARED","name":"Shared","code":"S","system":"iso19650_information_state","meaning":"Verified for interdisciplinary coordination and consultation.","acc_mapping":"/02_Design_and_Coordination/20_Shared"},
-    {"id":"CDE-PUBLISHED","name":"Published","code":"P","system":"iso19650_information_state","meaning":"Authorized information package suitable for the permitted use stated by S2/S7.","acc_mapping":"/02_Design_and_Coordination/30_Published"},
-    {"id":"CDE-ARCHIVED","name":"Archived","code":"A","system":"iso19650_information_state","meaning":"Frozen write-locked record snapshot.","acc_mapping":"/04_Records_and_Archive"},
-    {"id":"DELIV-WIP","name":"Work in Progress","code":"WIP","system":"deliverable_issue_state","permitted_use":"Internal discipline drafting only."},
-    {"id":"DELIV-REVIEW","name":"Shared / For Review","code":"S_REV","system":"deliverable_issue_state","permitted_use":"Coordination/review only; not construction reliance."},
-    {"id":"DELIV-FORMAL","name":"For Construction / Formal Submission","code":"FC_SUB","system":"deliverable_issue_state","permitted_use":"Contractual/statutory/construction reliance per transmittal terms."},
-    {"id":"DELIV-ASBUILT","name":"As Built","code":"AB","system":"deliverable_issue_state","permitted_use":"FM, handover, and operations reliance."}
+    {"id":"CDE-WIP","name":"Work in Progress","code":"WIP","system":"iso19650_information_state","meaning":"Active authoring and internal quality activity within the originating task-team context. This information state does not evidence approval for sharing, authorization, acceptance, milestone approval, handover acceptance, or external reliance.","acc_mapping":"/02_Design_and_Coordination/10_WIP/<Discipline>"},
+    {"id":"CDE-SHARED","name":"Shared","code":"S","system":"iso19650_information_state","meaning":"Information made available for the governed shared purpose after the upstream decision required for sharing. Shared is an information state and shall not by itself be interpreted as authorization for formal exchange, receiving-party acceptance, milestone approval, handover acceptance, or unrestricted reliance.","acc_mapping":"/02_Design_and_Coordination/20_Shared"},
+    {"id":"CDE-PUBLISHED","name":"Published","code":"P","system":"iso19650_information_state","meaning":"Information placed in the Published state for a declared governed purpose after the decision events required by the applicable project process. Published status records information state; it shall not by itself prove receiving-party acceptance, milestone approval, handover acceptance, contractual acceptance, professional approval, or unrestricted reliance.","acc_mapping":"/02_Design_and_Coordination/30_Published"},
+    {"id":"CDE-ARCHIVED","name":"Archived","code":"A","system":"iso19650_information_state","meaning":"Controlled record of superseded, historical, or otherwise retained information and its traceable state/decision history. Archived status shall not be interpreted as a new approval or acceptance event.","acc_mapping":"/04_Records_and_Archive"},
+    {"id":"DELIV-WIP","name":"Work in Progress","code":"WIP","system":"deliverable_issue_state","permitted_use":"Internal discipline drafting only; no downstream decision or reliance is implied."},
+    {"id":"DELIV-REVIEW","name":"Shared / For Review","code":"S_REV","system":"deliverable_issue_state","permitted_use":"Coordination/review for the declared purpose only; review status does not imply authorization, acceptance, construction reliance, milestone approval, or handover acceptance."},
+    {"id":"DELIV-FORMAL","name":"Formal Submission / Issued for Declared Use","code":"FORMAL_SUB","system":"deliverable_issue_state","permitted_use":"Use only for the purpose and reliance explicitly permitted by the applicable exchange declaration, decision record, authority basis, and project instruments. The state name does not itself create construction, contractual, statutory, or other reliance authority."},
+    {"id":"DELIV-ASBUILT","name":"Record / As-Built Submission","code":"AB_SUB","system":"deliverable_issue_state","permitted_use":"Record or handover submission for the declared purpose. The label does not itself establish handover acceptance, fitness for operations, custody transfer, or FM reliance without the applicable governed decision and evidence."}
   ],
-  "relationships": {"standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001"]},
-  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7700514","8060929","6848571","4423696"],"migration_note":"State systems remain distinct. ACC issue lifecycle is governed separately under S5 and is not merged into CDE container-state semantics."}
+  "state_semantics": {
+    "information_state":"Describes the managed lifecycle position of an information container in the CDE.",
+    "deliverable_issue_state":"Describes the declared issue context or intended use of a deliverable package.",
+    "decision_state":"Governed separately by the Information Decision & Authority Taxonomy and applicable S5/S7 requirements.",
+    "authority_rule":"No CDE state, issue-state label, folder location, workflow status, platform permission, publication action, or technical transition creates or expands decision authority."
+  },
+  "transition_evidence": {
+    "rule":"Where a CDE transition depends on a governed decision, the transition record shall remain traceable to the decision type, decision outcome, authority basis, authorized role or party, scope/purpose, evidence reference, and transition actor where applicable.",
+    "execution_boundary":"The person or system executing the technical state transition need not be the decision authority; execution capability shall not be treated as decision authority."
+  },
+  "relationships": {
+    "standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "architecture":["INFORMATION-DECISION-AUTHORITY-TAXONOMY"]
+  },
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7700514","8060929","6848571","4423696"],"migration_note":"State systems remain distinct. ACC issue lifecycle is governed separately under S5 and is not merged into CDE container-state semantics. ISO-IMP-005 curator reconciliation separates CDE information state and deliverable issue context from approval, authorization, acceptance, milestone, handover, and reliance authority."}
 }
