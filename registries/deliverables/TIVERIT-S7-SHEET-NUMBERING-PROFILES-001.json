@@ -71,13 +71,45 @@
           "Any field order, code, content range, or CDE mapping not supported by curated project evidence."
         ]
       },
+      "anonymized_project_evidence_pattern": {
+        "status": "confirmed_project_pattern_not_tiverit_default",
+        "evidence_scale": "more_than_10000_sheets_used_for_submission",
+        "authoring_sheet_identity": {
+          "grammar": "{spatial_code}-{discipline_code}{content_series}{sequence}",
+          "example": "AAA-A40001",
+          "example_only": true,
+          "fields": {
+            "spatial_code": "AAA",
+            "discipline_code": "A",
+            "content_series": "4",
+            "sequence": "0001"
+          }
+        },
+        "evidenced_content_series": [
+          {"series":"1","semantic":"plan","example_identity":"AAA-A10001"},
+          {"series":"2","semantic":"elevation","example_identity":"AAA-A20001"},
+          {"series":"3","semantic":"section","example_identity":"AAA-A30001"},
+          {"series":"4","semantic":"large_scale_or_enlarged_view","example_identity":"AAA-A40001"},
+          {"series":"5","semantic":"detail","example_identity":"AAA-A50001"},
+          {"series":"6","semantic":"reflected_ceiling_plan","example_identity":"AAA-A60001"},
+          {"series":"8","semantic":"schedule","example_identity":"AAA-A80001"},
+          {"series":"9","semantic":"diagram_or_single_line","example_identity":"AAA-A90001"}
+        ],
+        "submission_identity_transform": {
+          "status": "transformation_confirmed_exact_grammar_unresolved",
+          "rule": "The submission process may add an information-form or deliverable designation after authoring-tool sheet output. The added designation is part of the governed submission/container identity and shall not be reinterpreted as sheet content classification.",
+          "known_examples_of_form_semantics": ["dwg","model"],
+          "implementation_note": "A post-export automation may perform the transformation, but the tool does not create authority and the exact submission filename/document-number grammar must come from project evidence."
+        }
+      },
       "rules": [
         "Do not publish real confidential or project-specific names, codes, zones, sheet numbers, or identifiers as TIVERIT defaults or examples; substitute neutral placeholders while preserving the tested structure.",
         "Do not generalize a project-specific convention into a national or enterprise client convention without governing evidence.",
         "Treat CDE platform configuration as implementation evidence rather than upstream authority unless the project arrangement explicitly makes it authoritative.",
         "Preserve project phase/stage, work condition, zone/sub-zone, discipline, content class/subtype, status/suitability, revision, title, and information form as separate semantic dimensions until governing evidence maps them into identity fields.",
         "Where a submission workflow adds a deliverable or information-form designation after authoring-tool output, model that as a governed identity transformation rather than changing the semantic sheet classification.",
-        "If the document-number grammar remains unresolved, the pre-registration gate returns unresolved and blocks generation of a supposedly compliant project number.",
+        "A project-evidenced content-series mapping may resolve sheet classification only when the active project profile explicitly adopts that mapping; it is not a TIVERIT universal default.",
+        "If the submission identity grammar remains unresolved, the authoring sheet number may be resolved while the submission pre-registration gate remains unresolved.",
         "Once additional governing evidence is curated, map it to the common semantic classification rather than redefining semantic classes."
       ]
     },
