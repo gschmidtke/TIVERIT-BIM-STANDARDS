@@ -12,7 +12,11 @@ A user may simply say something like:
 
 That request should trigger the governed BEP interview workflow rather than immediate free-form drafting.
 
-The AI should first inspect the conversation and supplied project sources, reuse already-supported facts, then guide the user through only the remaining project-data gaps. The interview normally proceeds one bounded question at a time until the required information is captured, explicitly unresolved, formally deferred, or recorded as a conflict/deviation candidate.
+**Mandatory interview consumption rule:** before asking substantive project questions, the AI shall read `guides/bep/BEP-INTERVIEW-PROTOCOL.md` together with `BEP-ASSEMBLY-MAP.md` and `workflows/BEP/TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001.json`. The protocol is the human/AI operational interpretation of the machine-readable workflow and shall not be skipped merely because the workflow JSON has been loaded.
+
+The AI should first inspect the conversation and supplied project sources, decompose requirements sources into the downstream BEP data they support or constrain, reuse already-supported facts, then guide the user through only the remaining project-data gaps. The interview normally proceeds one bounded question at a time until the required information is captured, explicitly unresolved, formally deferred, identified as a conflict, or recorded as a deviation candidate.
+
+During the interview, materially normalized interpretations must be confirmed, every answer must be validated as it is accepted, and deferrals must preserve the complete governed deferral record. Before assembly, the AI runs the bounded project-instance closure sweep defined in `BEP-INTERVIEW-PROTOCOL.md`. Validation results must preserve the distinction between `pass`, `unresolved`, `gap`, and `fail`.
 
 The interview is a guide for assembling a BEP. It does not approve the BEP, create contractual obligations, alter standards, or create project authority. The resulting BEP remains a draft/review package unless approval is independently evidenced.
 
