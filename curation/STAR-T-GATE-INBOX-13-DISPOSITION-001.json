@@ -15,7 +15,7 @@
     {
       "finding_id": "FIND-ATS-LINK-002",
       "disposition": "normalized_in_branch_pending_ci",
-      "notes": "The audit correctly identified two ATS linkage conventions. The schema now requires governing_object_id on every ATS. The ten requirement-only ATS retain requirement_id as their bounded secondary locator and now also identify their canonical parent governing object. A dedicated CI validator resolves every ATS governing_object_id and any requirement_id against the canonical ID graph. This changes conformance linkage only and does not alter the underlying normative requirements."
+      "notes": "The audit correctly identified the incompatible linkage pattern but undercounted the requirement-only ATS set. Schema enforcement exposed two additional root-level S8 classification ATS, making twelve requirement-linked ATS rather than ten. All twelve retain requirement_id as their bounded secondary locator and now also identify their canonical parent governing object. The schema requires governing_object_id on every ATS, and a dedicated CI validator resolves every ATS governing_object_id and any requirement_id against the canonical ID graph. This changes conformance linkage only and does not alter the underlying normative requirements."
     },
     {
       "finding_id": "FIND-CONF-COV-003",
