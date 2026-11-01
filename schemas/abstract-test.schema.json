@@ -3,20 +3,7 @@
   "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/abstract-test.schema.json",
   "title": "TIVERIT Abstract Test Specification",
   "type": "object",
-  "required": [
-    "id",
-    "type",
-    "title",
-    "status",
-    "system_role",
-    "modules",
-    "test_intent",
-    "applicability",
-    "required_evidence",
-    "result_logic",
-    "permitted_implementation_classes",
-    "provenance"
-  ],
+  "required": ["id", "type", "title", "status", "system_role", "modules", "governing_object_id", "test_intent", "applicability", "required_evidence", "result_logic", "permitted_implementation_classes", "provenance"],
   "properties": {
     "$schema": {"type": "string", "minLength": 1},
     "id": {"type": "string", "pattern": "^ATS-[A-Z0-9-]+$"},
@@ -26,71 +13,20 @@
     "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"},
     "effective_date": {"type": ["string", "null"], "format": "date"},
     "system_role": {"const": "conformance"},
-    "modules": {
-      "type": "array",
-      "items": {"type": "string", "pattern": "^S[1-9]$"},
-      "minItems": 1,
-      "uniqueItems": true
-    },
-    "requirement_id": {"type": "string", "minLength": 1},
+    "modules": {"type": "array", "items": {"type": "string", "pattern": "^S[1-9]$"}, "minItems": 1, "uniqueItems": true},
     "governing_object_id": {"type": "string", "minLength": 1},
+    "requirement_id": {"type": "string", "minLength": 1},
     "governing_clause": {"type": "string", "minLength": 1},
     "test_intent": {"type": "string", "minLength": 1},
-    "applicability": {
-      "type": "object",
-      "required": ["applies_when"],
-      "properties": {
-        "applies_when": {"type": "string", "minLength": 1},
-        "not_applicable_when": {"type": "string"}
-      },
-      "additionalProperties": true
-    },
-    "required_evidence": {
-      "type": "array",
-      "minItems": 1,
-      "items": {"type": "string", "minLength": 1},
-      "uniqueItems": true
-    },
-    "result_logic": {
-      "type": "object",
-      "required": ["pass", "fail", "indeterminate"],
-      "properties": {
-        "pass": {"type": "string", "minLength": 1},
-        "fail": {"type": "string", "minLength": 1},
-        "not_applicable": {"type": "string"},
-        "indeterminate": {"type": "string", "minLength": 1}
-      },
-      "additionalProperties": false
-    },
-    "permitted_implementation_classes": {
-      "type": "array",
-      "minItems": 1,
-      "items": {"type": "string", "enum": ["api_checker", "model_checker", "registry_checker", "file_checker", "human_verification", "hybrid"]},
-      "uniqueItems": true
-    },
-    "provenance": {
-      "type": "object",
-      "required": ["source_system", "derived_from"],
-      "properties": {
-        "source_system": {"type": "string"},
-        "derived_from": {"type": "string", "minLength": 1},
-        "migration_note": {"type": "string"}
-      },
-      "additionalProperties": true
-    }
+    "applicability": {"type": "object", "required": ["applies_when"], "properties": {"applies_when": {"type": "string", "minLength": 1}, "not_applicable_when": {"type": "string"}}, "additionalProperties": true},
+    "required_evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "result_logic": {"type": "object", "required": ["pass", "fail", "indeterminate"], "properties": {"pass": {"type": "string", "minLength": 1}, "fail": {"type": "string", "minLength": 1}, "not_applicable": {"type": "string"}, "indeterminate": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+    "permitted_implementation_classes": {"type": "array", "minItems": 1, "items": {"type": "string", "enum": ["api_checker", "model_checker", "registry_checker", "file_checker", "human_verification", "hybrid"]}, "uniqueItems": true},
+    "provenance": {"type": "object", "required": ["source_system", "derived_from"], "properties": {"source_system": {"type": "string"}, "derived_from": {"type": "string", "minLength": 1}, "migration_note": {"type": "string"}}, "additionalProperties": true}
   },
-  "oneOf": [
-    {"required": ["requirement_id"], "not": {"required": ["governing_object_id"]}},
-    {"required": ["governing_object_id"], "not": {"required": ["requirement_id"]}}
-  ],
   "allOf": [
-    {
-      "if": {"properties": {"status": {"const": "active"}}, "required": ["status"]},
-      "then": {
-        "required": ["version", "effective_date"],
-        "properties": {"effective_date": {"type": "string", "format": "date"}}
-      }
-    }
+    {"if": {"required": ["requirement_id"]}, "then": {"required": ["governing_object_id"]}},
+    {"if": {"properties": {"status": {"const": "active"}}, "required": ["status"]}, "then": {"required": ["version", "effective_date"], "properties": {"effective_date": {"type": "string", "format": "date"}}}
   ],
   "additionalProperties": false
 }
