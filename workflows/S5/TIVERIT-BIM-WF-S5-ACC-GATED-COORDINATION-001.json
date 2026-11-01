@@ -9,14 +9,31 @@
   "modules": ["S5"],
   "trigger": "Discipline authoring is complete for the coordination cycle and internal checks have passed.",
   "steps": [
-    {"id":"GATE-A","action":"Validate model intake and pre-publish QA before coordination publication.","actor_role":"ROLE-BIM-DETAILER-001","outputs":["pre-publish QA evidence","published coordination model"]},
+    {"id":"GATE-A","action":"Validate model intake and pre-coordination QA, then place the coordination copy in the governed information state permitted for coordination use. This technical publication or state transition is not formal-exchange authorization or acceptance for downstream reliance.","actor_role":"ROLE-BIM-DETAILER-001","outputs":["pre-coordination QA evidence","coordination-use information-state record"]},
     {"id":"GATE-B","action":"Run automated clash detection, apply governed exclusions, and triage candidate issues.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001","outputs":["triaged clash matrix","candidate issues"]},
-    {"id":"GATE-C","action":"Review, prioritize, assign, and date coordination issues.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001","outputs":["assigned governed issues","review record"]},
-    {"id":"GATE-D","action":"Remediate authoring issues, republish models, and independently verify resolutions.","actor_role":"ROLE-MODEL-AUTHOR-001","outputs":["updated model","verification evidence"]},
-    {"id":"GATE-E","action":"Close or waive verified milestone issues, execute coordination sign-off, and prepare the package for S7 formal exchange.","actor_role":"ROLE-PROJECT-BIM-MANAGER-001","outputs":["coordination sign-off","CDE status update","S7 exchange readiness"]}
+    {"id":"GATE-C","action":"Review, prioritize, assign, and date coordination issues within the governed coordination scope. Issue creation, assignment, review, or closure does not constitute authorization for formal exchange or acceptance for declared use.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001","outputs":["assigned governed issues","review record"]},
+    {"id":"GATE-D","action":"Remediate authoring issues, republish coordination-use models, and independently verify resolutions. Verification establishes coordination evidence only within the declared scope and does not create formal acceptance authority.","actor_role":"ROLE-MODEL-AUTHOR-001","outputs":["updated coordination-use model","verification evidence"]},
+    {"id":"GATE-E","action":"Close or waive verified milestone coordination issues and execute the governed coordination_signoff decision. Record its scope, authorized role or delegation, authority basis, exceptions, and evidence; then declare the package coordination-ready for the separate S7 formal-exchange process. Coordination sign-off shall not itself authorize formal exchange, establish acceptance for declared use, approve a project milestone outside the coordination scope, or establish handover acceptance.","actor_role":"ROLE-PROJECT-BIM-MANAGER-001","outputs":["coordination_signoff decision record","coordination exception or waiver record where applicable","coordination information-state/status update where required","S7 exchange-readiness declaration"]}
   ],
+  "decision_boundary": {
+    "workflow_decision_type": "coordination_signoff",
+    "meaning": "Gate E concludes the governed S5 coordination cycle only.",
+    "does_not_establish": [
+      "authorize_for_formal_exchange",
+      "accept_for_declared_use",
+      "milestone_approval outside the explicitly governed coordination scope",
+      "handover_acceptance"
+    ],
+    "handoff": "S7 shall resolve any subsequent formal-exchange authorization, receiving-party acceptance, reliance, milestone, or handover decision under the applicable authority basis."
+  },
   "issue_system_of_record": "ACC Issues",
   "source_status": "draft",
-  "relationships": {"standards":["TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"]},
-  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7241803","6881343","6881351","7962634","7798804","8093711","7241811"],"migration_note":"Tool-specific ACC implementation retained below the tool-agnostic L4 S5 doctrine."}
+  "governance_notes": [
+    "ACC issue status, issue closure, review completion, folder placement, publication action, transmittal preparation, platform permission, or CDE information-state transition is evidence or execution only and does not create decision authority.",
+    "The actor executing a technical ACC action may differ from the actor authorized to make the underlying governed decision; the decision record shall preserve that distinction.",
+    "Where the project RACI or other governing authority basis delegates coordination_signoff away from the default Project BIM Manager implementation role, the authorized delegation governs and shall be traceable.",
+    "Unresolved authority for a required decision shall remain unresolved and shall not be inferred from ACC permissions, workflow ownership, or role title."
+  ],
+  "relationships": {"standards":["TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"architecture":["INFORMATION-DECISION-AUTHORITY-TAXONOMY"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7241803","6881343","6881351","7962634","7798804","8093711","7241811"],"migration_note":"Tool-specific ACC implementation retained below the tool-agnostic L4 S5 doctrine. Curator reconciliation separates coordination_signoff from formal-exchange authorization, acceptance for declared use, milestone approval, and handover acceptance; technical ACC actions do not create authority."}
 }
