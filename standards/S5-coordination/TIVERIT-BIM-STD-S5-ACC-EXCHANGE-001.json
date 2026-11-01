@@ -8,27 +8,23 @@
   "layer": "L4",
   "modules": ["S5", "S7"],
   "requirements": [
-    {"id":"REQ-S7-019","authority":"shall","statement":"Project deliverables shall be exchanged through the governed CDE using governed folders, formal reviews, or transmittals appropriate to the declared exchange purpose.","verification_class":"machine_checkable"},
-    {"id":"REQ-S7-020","authority":"shall_not","statement":"Ad-hoc sharing links or email attachments shall not be used for deliverables requiring governed traceability.","verification_class":"human_verifiable"},
-    {"id":"REQ-S7-021","authority":"shall","statement":"Before a formal issue to an external party is executed, the required authorize_for_formal_exchange decision shall be resolved under the applicable authority basis and recorded separately from the technical transmittal or publication action. The governed transmittal mechanism shall then preserve the formal issue record where required.","verification_class":"machine_assisted"},
-    {"id":"REQ-S7-022","authority":"shall","statement":"Deliverable files shall comply with the governed project naming convention and applicable exchange prerequisites before formal issue.","verification_class":"machine_checkable"},
-    {"id":"REQ-S7-023","authority":"shall_not","statement":"A coordination_signoff, ACC issue closure, review completion, platform permission, folder placement, publication action, transmittal creation, or CDE information-state label shall not by itself establish authorize_for_formal_exchange, accept_for_declared_use, milestone_approval, handover_acceptance, or unrestricted reliance.","verification_class":"machine_assisted"},
-    {"id":"REQ-S7-024","authority":"shall","statement":"Where acceptance for a declared use is required after formal exchange, the accept_for_declared_use decision shall identify its scope, declared purpose or permitted use, authorized receiving role or party, authority basis, and decision evidence independently from the exchange execution record.","verification_class":"human_verifiable"},
-    {"id":"REQ-S7-025","authority":"shall","statement":"ACC issue-state labels such as For Review / Comment, For Construction, or As Built shall be interpreted only through governed project status and permitted-use rules; the label alone shall not be treated as proof that the corresponding authorization, acceptance, milestone, reliance, or handover decision occurred.","verification_class":"machine_assisted"}
+    {"id":"REQ-S7-019","authority":"shall","statement":"Project information exchanges shall use the governed CDE and the applicable ISO 19650 information-delivery process, with ACC folders, reviews and transmittals serving as implementation mechanisms appropriate to the declared exchange purpose.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-020","authority":"shall_not","statement":"Ad-hoc sharing links or email attachments shall not be used where the applicable project information-management arrangements require governed CDE traceability.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-021","authority":"shall","statement":"For information governed by the ISO 19650-2 delivery sequence, ACC implementation shall preserve the sequence of task-team submission, lead-appointed-party review and authorization, lead-appointed-party submission, and appointing-party review and acceptance before the applicable Shared-to-Published transition is completed.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-022","authority":"shall","statement":"Deliverable information shall comply with the governed project naming, metadata, status and applicable exchange prerequisites before the relevant submission or state transition.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-023","authority":"shall_not","statement":"TIVERIT coordination sign-off, ACC issue closure, review completion, platform permission, folder placement, transmittal creation or technical publication action shall not replace the ISO 19650 review, approval-for-sharing, authorization or acceptance activity required for the applicable CDE transition.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-024","authority":"shall","statement":"ACC evidence for a Decision B transition shall identify or reference the applicable information-model authorization and acceptance records and the responsible ISO 19650 parties or project-mapped functions. Where authorization and acceptance are separate activities, both shall remain independently traceable.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-025","authority":"shall","statement":"Project status or issue labels such as For Review / Comment, For Construction or As Built shall be interpreted through the governed project status and permitted-use rules and shall not replace the ISO 19650 CDE state or required transition evidence.","verification_class":"machine_assisted"}
   ],
-  "issue_states": [
-    {"label":"WIP","semantic":"information/deliverable state; no formal-exchange or acceptance authority implied"},
-    {"label":"Shared","semantic":"coordination/review availability subject to governed permitted use; no formal acceptance implied"},
-    {"label":"For Review / Comment","semantic":"review context only unless a governed project rule establishes a more specific decision consequence"},
-    {"label":"For Construction","semantic":"project-defined permitted-use label requiring traceable governing authority and decision evidence before construction reliance; label alone is insufficient"},
-    {"label":"As Built","semantic":"project-defined record/handover label; does not itself establish handover acceptance or operational reliance"}
+  "acc_implementation_mapping": [
+    {"context":"Work in Progress","iso_semantic":"authoring/production state before Decision A"},
+    {"context":"Shared","iso_semantic":"state reached after applicable review and approval for sharing; ACC mapping shall preserve Decision A evidence"},
+    {"context":"Published","iso_semantic":"state reached after applicable Decision B authorization and acceptance process; ACC mapping shall preserve both activities where separated"},
+    {"context":"For Review / Comment","iso_semantic":"platform/project review context only; not a replacement ISO CDE state"},
+    {"context":"For Construction","iso_semantic":"project-defined status/permitted-use code; not a replacement for Decision B evidence"},
+    {"context":"As Built","iso_semantic":"project-defined record/handover context; not by itself a supplementary handover-acceptance decision"}
   ],
-  "relationships": {
-    "standards": ["TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
-    "workflows": ["TIVERIT-BIM-WF-S5-ACC-GATED-COORDINATION-001"],
-    "architecture": ["INFORMATION-DECISION-AUTHORITY-TAXONOMY"],
-    "roles": ["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001"]
-  },
-  "implementation_boundary": "ACC/BIM 360 executes governed exchange and preserves evidence. Platform capabilities, issue states, reviews, transmittals, publication actions, and permissions do not create the authority for the underlying decision.",
-  "provenance": {"source_system":"confluence","space":"BST","page_id":"8060929","source_version":1,"source_title":"ACC / BIM 360 Deliverable Exchange Standard","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8060929","migration_note":"Curator reconciliation separates ACC execution/status semantics from coordination_signoff, formal-exchange authorization, acceptance for declared use, milestone approval, handover acceptance, and reliance authority."}
+  "relationships": {"standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"workflows":["TIVERIT-BIM-WF-S5-ACC-GATED-COORDINATION-001"],"registries":["TIVERIT-S3-CDE-STATES-001"],"architecture":["INFORMATION-DECISION-AUTHORITY-TAXONOMY"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001"]},
+  "implementation_boundary": "ACC/BIM 360 implements governed exchange and preserves evidence. It shall preserve rather than redefine the ISO 19650 CDE transition and information-model delivery semantics.",
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"8060929","source_version":1,"source_title":"ACC / BIM 360 Deliverable Exchange Standard","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8060929","migration_note":"ISO-IMP-005 re-audit replaces the generic TIVERIT formal-exchange decision abstraction with the applicable ISO 19650-2 information-model delivery sequence for ISO-governed exchanges, while retaining ACC as the implementation and evidence layer."}
 }
