@@ -21,8 +21,10 @@ dist/              generated distributions, reports, and exchange artifacts
 provenance/        immutable source traceability
 migration/         migration mappings, gaps, and review artifacts
 archive/           non-canonical historical material
-inbox/             public proposal/contribution surface
+inbox/             curator staging/recovery and historical provenance; not public entry
 ```
+
+Public proposal intake is external to this repository through the STAR-T-GATE Inbox route declared in `STAR-T-GATE.json`. The STAR-T-GATE Worker records submissions in `gschmidtke/STAR-T-GATE-INBOX` as uncurated evidence; repository-local `inbox/` content does not become authoritative by being stored or merged.
 
 ## Standards ecosystem planes
 

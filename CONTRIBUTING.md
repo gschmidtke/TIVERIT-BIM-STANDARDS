@@ -2,29 +2,20 @@
 
 TIVERIT BIM Standards is publicly readable, but canonical standards content is curator-managed.
 
-## Public contribution rule
+## Public contribution route
 
-External contributors — human or AI — should add material only under:
+The canonical public intake route is the **STAR-T-GATE Inbox** described by `STAR-T-GATE.json`. Public submissions are transported by the STAR-T-GATE Inbox Worker and recorded in the `gschmidtke/STAR-T-GATE-INBOX` issue queue as durable, uncurated evidence.
 
-```text
-inbox/**
-```
+Do not edit canonical repository content directly. Submission through STAR-T-GATE does not create standards authority and does not guarantee promotion.
 
-Do not edit canonical repository content directly.
+The repository-local `inbox/**` path is retained only for curator-side staging, recovery, and historical provenance. It is **not the canonical public entry point**.
 
-A repository guard checks external pull requests and rejects changes outside `inbox/**`.
+## How public contributions are handled
 
-## How to contribute
-
-1. Fork the repository.
-2. Add one or more files under:
-
-```text
-inbox/<contributor>/<yyyy-mm-dd>-<short-topic>.<ext>
-```
-
-3. Open a pull request.
-4. The curator reviews, classifies, normalizes, validates, and routes useful material into the governed repository where appropriate.
+1. Submit the observation, proposal, evidence item, review, or candidate change through the STAR-T-GATE Inbox route declared in `STAR-T-GATE.json`.
+2. The submission is recorded as uncurated evidence in the STAR-T-GATE Inbox queue.
+3. A curator establishes provenance, checks the current governed state, classifies and routes the item, and determines whether normalization or a canonical repository change is justified.
+4. Canonical changes are separately validated and promoted under repository governance.
 
 You do not need to understand the repository schemas before contributing. Raw observations and evidence are welcome.
 
@@ -41,19 +32,25 @@ Useful submissions include:
 - proposed conformance tests;
 - examples that expose a gap in the current governance model.
 
+## Repository-local inbox
+
+Material under `inbox/**` remains non-authoritative. It may be used by curators for staging, recovery, or preserving historical provenance, but public contributors should use the STAR-T-GATE Inbox route rather than opening direct contribution PRs against this repository.
+
+Any repository guard or branch rule that permits `inbox/**` changes is a repository permission boundary only; it does not make that path the canonical public intake route and does not create authority for submitted content.
+
 ## Contribution rights
 
-By intentionally submitting material through the public Inbox contribution process, you represent that you have the right to submit it and grant TIVERIT permission to review, store, reproduce, normalize, modify, combine, validate, publish, redistribute, and incorporate it into the repository under the license applicable to the destination material, as described in `LICENSE.md`.
+By intentionally submitting material through the public STAR-T-GATE Inbox contribution process, you represent that you have the right to submit it and grant TIVERIT permission to review, store, reproduce, normalize, modify, combine, validate, publish, redistribute, and incorporate it into the repository under the license applicable to the destination material, as described in `LICENSE.md`.
 
-Do not submit copyrighted, licensed, proprietary, client, or other third-party material unless you have the rights necessary for that submission and intended use. A citation or observation about an external source is preferable to copying protected source text into the public Inbox.
+Do not submit copyrighted, licensed, proprietary, client, or other third-party material unless you have the rights necessary for that submission and intended use. A citation or observation about an external source is preferable to copying protected source text into public intake.
 
 Submission creates no standards authority and does not guarantee acceptance or promotion.
 
 ## Authority boundary
 
-Inbox material is not authoritative merely because it has been submitted or merged.
+Inbox material is not authoritative merely because it has been submitted or recorded.
 
-The public Inbox is an intake channel. Promotion into standards, workflows, instructions, registries, configurations, schemas, conformance assets, guides, or other canonical areas is performed only through curator review.
+The STAR-T-GATE Inbox is an intake and evidence channel. Promotion into standards, workflows, instructions, registries, configurations, schemas, conformance assets, guides, or other canonical areas is performed only through curator review.
 
 Canonical changes remain subject to repository governance, provenance, schema/reference validation, and curator approval.
 
