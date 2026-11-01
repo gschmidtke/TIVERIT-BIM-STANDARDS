@@ -7,78 +7,42 @@
   "modules": ["S1"],
   "accepted_on": "2026-10-28",
   "superseded_ids": [
-    {
-      "from": "ROLE-BIM-COORDINATOR-001",
-      "to": "ROLE-PROJECT-BIM-COORDINATOR-001",
-      "reason": "Project-scoped dedicated definition supersedes the earlier scaffold identifier."
-    },
-    {
-      "from": "ROLE-BIM-MANAGER-001",
-      "to": "ROLE-PROJECT-BIM-MANAGER-001",
-      "reason": "Project-scoped governed definition replaces the earlier generic scaffold identifier."
-    }
+    {"from":"ROLE-BIM-COORDINATOR-001","to":"ROLE-PROJECT-BIM-COORDINATOR-001","reason":"Project-scoped dedicated definition supersedes the earlier scaffold identifier."},
+    {"from":"ROLE-BIM-MANAGER-001","to":"ROLE-PROJECT-BIM-MANAGER-001","reason":"Project-scoped governed definition replaces the earlier generic scaffold identifier."}
   ],
-  "distinct_functions": [
-    "ROLE-PROJECT-BIM-MANAGER-001",
-    "ROLE-INFORMATION-MANAGER-001",
-    "ROLE-CDE-MANAGER-001"
-  ],
+  "distinct_functions": ["ROLE-PROJECT-BIM-MANAGER-001","ROLE-INFORMATION-MANAGER-001","ROLE-CDE-MANAGER-001"],
   "inheritance": {
     "base_role": "ROLE-DISCIPLINE-LEAD-001",
     "abstract": true,
-    "specializations": [
-      "ROLE-DISCIPLINE-LEAD-SHOWSET-001",
-      "ROLE-DISCIPLINE-LEAD-AUDIO-001",
-      "ROLE-DISCIPLINE-LEAD-VIDEO-001",
-      "ROLE-DISCIPLINE-LEAD-CONTROLS-001",
-      "ROLE-DISCIPLINE-LEAD-SFX-001",
-      "ROLE-DISCIPLINE-LEAD-LIGHTING-001",
-      "ROLE-DISCIPLINE-LEAD-MECHANICAL-001",
-      "ROLE-DISCIPLINE-LEAD-ELECTRICAL-001"
-    ]
+    "specializations": ["ROLE-DISCIPLINE-LEAD-SHOWSET-001","ROLE-DISCIPLINE-LEAD-AUDIO-001","ROLE-DISCIPLINE-LEAD-VIDEO-001","ROLE-DISCIPLINE-LEAD-CONTROLS-001","ROLE-DISCIPLINE-LEAD-SFX-001","ROLE-DISCIPLINE-LEAD-LIGHTING-001","ROLE-DISCIPLINE-LEAD-MECHANICAL-001","ROLE-DISCIPLINE-LEAD-ELECTRICAL-001"]
   },
   "issue_lifecycle": {
     "governance_owner": "ROLE-PROJECT-BIM-MANAGER-001",
     "routine_closure_delegate": "ROLE-PROJECT-BIM-COORDINATOR-001",
     "administrative_tracking_concept": "Issue Owner",
     "technical_fix_concept": "Responsible Party",
-    "escalation_required_for": [
-      "governance exceptions",
-      "disputed closures",
-      "milestone-critical issues",
-      "items outside delegated thresholds"
-    ]
+    "escalation_required_for": ["governance exceptions","disputed closures","milestone-critical issues","items outside delegated thresholds"]
   },
   "delivery_approval_separation": {
+    "classification": "tiverit_supplementary_and_project_specific",
     "discipline_readiness": "ROLE-DISCIPLINE-LEAD-001",
     "design_package_approval": "ROLE-DESIGN-LEAD-001",
-    "contractual_acceptance": "project leadership"
+    "contractual_acceptance": "project leadership",
+    "boundary": "These TIVERIT/project roles do not by themselves establish ISO 19650 task-team, lead-appointed-party or appointing-party functions."
   },
-  "pre_publish_gate": {
-    "criteria_owner": "ROLE-QAQC-AUTHORITY-001",
-    "check_executor": "ROLE-BIM-DETAILER-001",
-    "workflow_validator": "ROLE-PROJECT-BIM-COORDINATOR-001",
-    "governance_owner": "ROLE-PROJECT-BIM-MANAGER-001"
+  "iso_19650_project_function_mapping": {
+    "classification": "iso_derived_with_project_specific_assignment",
+    "rule": "When ISO 19650 is applicable, ISO party and team functions remain canonical. A TIVERIT or project job title may perform an ISO function only when the appointment, BEP, RACI or equivalent governing project instrument establishes that mapping; otherwise the mapping is authority_unresolved.",
+    "functions": [
+      {"iso_function":"task_team","relevant_activities":["produce information","quality assurance","review and approve for sharing","submit information model for lead appointed party authorization"],"tiverit_default_role":null,"resolution_source":"appointment/BEP/RACI or equivalent project instrument","unresolved_state":"authority_unresolved"},
+      {"iso_function":"lead_appointed_party","relevant_activities":["aggregate TIDPs into MIDP","review and authorize information model","submit information model for appointing party acceptance"],"tiverit_default_role":null,"resolution_source":"appointment/BEP/RACI or equivalent project instrument","unresolved_state":"authority_unresolved"},
+      {"iso_function":"appointing_party","relevant_activities":["establish appointing-party requirements","review and accept or reject information model"],"tiverit_default_role":null,"resolution_source":"appointment/BEP/RACI or equivalent project instrument","unresolved_state":"authority_unresolved"}
+    ],
+    "prohibited_inference": ["Project BIM Manager equals lead appointed party","Discipline Lead equals task team approval authority for every project","Client Representative equals appointing party acceptance authority","CDE Manager or platform administrator gains ISO decision authority from technical permissions"]
   },
-  "unresolved_role_names": [
-    "Technical PM",
-    "Production Manager",
-    "AVLC Lead",
-    "FM Lead",
-    "IT / Network Lead"
-  ],
-  "source_decisions": [
-    "CONF-ROLE-001",
-    "CONF-ROLE-002",
-    "CONF-ROLE-005",
-    "CONF-ROLE-006",
-    "CONF-ROLE-007",
-    "CONF-ROLE-008",
-    "CONF-ROLE-009"
-  ],
-  "deferred_conflicts": [
-    "CONF-ROLE-003",
-    "CONF-ROLE-004",
-    "CONF-ROLE-010"
-  ]
+  "pre_publish_gate": {"criteria_owner":"ROLE-QAQC-AUTHORITY-001","check_executor":"ROLE-BIM-DETAILER-001","workflow_validator":"ROLE-PROJECT-BIM-COORDINATOR-001","governance_owner":"ROLE-PROJECT-BIM-MANAGER-001","boundary":"TIVERIT pre-publish governance is supplementary and shall not replace applicable ISO approval-for-sharing, authorization or acceptance activities."},
+  "unresolved_role_names": ["Technical PM","Production Manager","AVLC Lead","FM Lead","IT / Network Lead"],
+  "source_decisions": ["CONF-ROLE-001","CONF-ROLE-002","CONF-ROLE-005","CONF-ROLE-006","CONF-ROLE-007","CONF-ROLE-008","CONF-ROLE-009"],
+  "deferred_conflicts": ["CONF-ROLE-003","CONF-ROLE-004","CONF-ROLE-010"],
+  "curator_note": "ISO-IMP-005 role-mapping pass: ISO 19650 functions are not replaced by enterprise job titles. Project-specific mapping is required and missing mapping remains unresolved."
 }

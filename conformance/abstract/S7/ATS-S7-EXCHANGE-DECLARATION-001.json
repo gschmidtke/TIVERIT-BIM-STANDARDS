@@ -2,35 +2,33 @@
   "$schema": "../../../schemas/abstract-test.schema.json",
   "id": "ATS-S7-EXCHANGE-DECLARATION-001",
   "type": "abstract_test",
-  "title": "S7 formal exchange declaration completeness",
+  "title": "S7 ISO 19650 exchange sequence and declaration conformance",
   "status": "migration_candidate",
   "system_role": "conformance",
   "modules": ["S7"],
   "governing_object_id": "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001",
-  "governing_clause": "REQ-S7-003, REQ-S7-010 and REQ-S7-012",
-  "test_intent": "Determine whether a planned or executed formal exchange is sufficiently declared for the receiving party to identify the issued information, purpose, scope, milestone context, permitted use, and issue record without inference.",
+  "governing_clause": "REQ-S7-001 through REQ-S7-010",
+  "test_intent": "Determine whether an ISO 19650-governed information-model exchange preserves the applicable approval-for-sharing, authorization and acceptance sequence, project role mapping, exchange declaration and CDE transition evidence without substituting TIVERIT supplementary or platform actions.",
   "applicability": {
-    "applies_when": "A project declares or executes a formal information exchange or deliverable issue under S7.",
-    "not_applicable_when": "The tested event is only a technical transfer with no claim of formal exchange or delivery."
+    "applies_when": "ISO 19650 is applicable to the tested project exchange and the event claims a governed Shared or Published transition or information-model delivery.",
+    "not_applicable_when": "ISO 19650 is not applicable to the tested exchange or the event is only a technical transfer with no governed information-model delivery claim."
   },
   "required_evidence": [
-    "project deliverable declaration or BEP deliverable list",
-    "exchange schedule or event declaration",
-    "intended-use and scope declaration",
-    "milestone or exchange-context reference",
-    "issue/transmittal record or planned record mechanism",
-    "review and acceptance-route references where applicable"
+    "project appointment, BEP, RACI or equivalent mapping for task team, lead appointed party and appointing party functions as applicable",
+    "Decision A or approval-for-sharing evidence for Work in Progress to Shared where applicable",
+    "task-team submission record for the information-model delivery sequence",
+    "lead-appointed-party review and authorization evidence where applicable",
+    "submission record for appointing-party acceptance where applicable",
+    "appointing-party acceptance or rejection evidence where applicable",
+    "information scope, purpose/status, permitted-use and applicable information-requirement references",
+    "CDE transition and issue/transmittal record"
   ],
   "result_logic": {
-    "pass": "The exchange and its expected deliverables are declared with the applicable governed fields and can be interpreted without relying on undocumented assumptions.",
-    "fail": "A formal exchange is missing material declaration fields such as purpose, scope, intended use, milestone/event context, deliverable references, issue record, or applicable review/acceptance route.",
-    "not_applicable": "No formal exchange is asserted for the tested transfer or event.",
-    "indeterminate": "The governing project deliverable/exchange declaration or applicable authority references are unavailable or incomplete."
+    "pass": "The applicable ISO sequence, project function mapping, exchange declaration and transition evidence are complete and traceable, and supplementary TIVERIT or platform actions are not substituted for ISO activities.",
+    "fail": "A required ISO activity is omitted or replaced by coordination sign-off, milestone approval, issue closure, platform permission, technical publication or another non-equivalent action, or a project role is asserted as an ISO party function without a governing mapping.",
+    "not_applicable": "ISO 19650 is not applicable to the tested event or no governed information-model delivery is asserted.",
+    "indeterminate": "The applicable project appointment, role mapping, exchange declaration or decision evidence is unavailable or incomplete."
   },
   "permitted_implementation_classes": ["registry_checker", "file_checker", "human_verification", "hybrid"],
-  "provenance": {
-    "source_system": "repository_curator",
-    "derived_from": "TIVERIT-S7-EXCHANGE-DELIVERABLE-FIELDS-001",
-    "migration_note": "Derived from GAP-S7-01 source scaffold and current S7 formal-exchange requirements. Project dates, formats, paths, and authority assignments remain project-specific."
-  }
+  "provenance": {"source_system":"repository_curator","derived_from":"ISO-IMP-005 and TIVERIT-S7-EXCHANGE-DELIVERABLE-FIELDS-001","migration_note":"ISO-IMP-005 conformance pass extends the exchange declaration test to detect missing Decision A/Decision B evidence, missing project role mapping, and substitution of supplementary TIVERIT/platform actions for ISO 19650 activities."}
 }
