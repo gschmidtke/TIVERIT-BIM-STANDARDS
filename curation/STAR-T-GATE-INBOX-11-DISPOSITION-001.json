@@ -1,0 +1,13 @@
+{
+  "id":"CURATION-STAR-T-GATE-INBOX-11-001",
+  "type":"curator_disposition",
+  "title":"STAR-T-GATE Inbox #11 ISO 19650 external-reference gateway disposition",
+  "status":"curator_reviewed",
+  "authority":"informational",
+  "source_issue":"https://github.com/gschmidtke/STAR-T-GATE-INBOX/issues/11",
+  "disposition":"partially_promoted_as_external_authority_gateway",
+  "promoted":["External standards remain external authority; TIVERIT governs independently authored implementation doctrine.","Applicability is project/organizational evidence, not inferred from the existence of a standard.","External-standard mappings require part/edition identity and explicit applicability/evidence.","Draft editions are monitoring evidence and do not silently supersede published editions.","Public-repository copyright and licensed-content boundaries are explicit.","A machine-readable public ISO 19650 identity/status registry and empty-by-default alignment map are established."],
+  "not_promoted":["No protected ISO clause text or systematic clause reconstruction.","No claim that TIVERIT is currently ISO 19650 compliant or certified.","No inferred TIVERIT-to-ISO requirement mappings.","No automatic adoption of ISO 19650-3 operational requirements or ISO 19650-5 security requirements.","No licensed full-text gateway without explicit licence review."],
+  "downstream_unlocks":["FIND-SEC-004 may be resolved as an explicit scope/implementation decision against the gateway rather than by inventing ISO 19650-5 content.","FIND-OPE-007 may be resolved as an explicit operational-phase scope decision against ISO 19650-3 identity/status without importing protected requirements."],
+  "curator_rule":"External authority is referenced and routed, not copied. Alignment claims remain unverified until evidence, edition, applicability, relationship type and curator status are recorded."
+}
