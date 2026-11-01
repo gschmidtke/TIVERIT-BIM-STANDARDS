@@ -19,8 +19,8 @@
     },
     {
       "finding_id": "FIND-CONF-COV-003",
-      "disposition": "confirmed_visibility_gap_not_blanket_failure",
-      "notes": "Incomplete ATS/ETS coverage is expected during staged maturity, but silent coverage is undesirable. Record a coverage inventory; do not require every instruction to have executable conformance where human verification is legitimate."
+      "disposition": "visibility_inventory_published_and_ci_guarded",
+      "notes": "The current branch publishes TIVERIT-CONFORMANCE-COVERAGE-001 as a generated informational inventory. It records 17 instructions (8 with direct ATS, 9 without), 33 ATS (8 with ETS, 25 without), and 8 ETS (7 specified_not_implemented, 1 verified/callable). Coverage is computed only from explicit governing_object_id and ats_id relationships; semantic similarity is not inferred. Missing ATS or ETS is a visibility state, not a blanket conformance failure, and the inventory creates no automation obligation where human verification is legitimate. CI now checks that the committed inventory remains synchronized with repository relationships."
     },
     {
       "finding_id": "FIND-SEC-004",
