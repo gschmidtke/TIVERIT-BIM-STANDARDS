@@ -3,25 +3,56 @@ project_name,,TBC,project appointment,
 project_code,,TBC,project appointment,
 project_location,,TBC,project appointment,
 appointing_party,,TBC,appointment/contract,
-lead_appointed_party,,TBC,appointment/contract,
+lead_appointed_party,,TBC,appointment/contract,prospective lead appointed party for pre-appointment context
 bep_type,,TBC,appointment context,pre-appointment or post-appointment
 project_stage,,TBC,project programme,
 project_phases,,TBC,project programme,
-client_information_requirements_reference,,not supplied,client/appointment,
+client_information_requirements_reference,,not supplied,appointing-party requirements/EIR,
 contractual_cde,,TBC,contract/appointment,
 production_cde,,TBC,project governance,
 coordinate_authority,,TBC,project governance,
 issue_management_platform,,TBC,project governance,
-exchange_milestones,,TBC,project programme,
+exchange_milestones,,TBC,project programme/EIR,
 acceptance_authority,,TBC,appointment/role governance,
 naming_code_sets,,TBC,project information standard/appointing-party requirements,
 naming_overlays,,TBC,project information standard/appointing-party requirements,
-workset_strategy,,TBC,project BEP/production methods,
+workset_strategy,,TBC,project BEP/production methods,TIVERIT supplementary implementation where applicable
 model_breakdown,,TBC,project BEP/production methods,
 raci_assignments,,TBC,appointment/BEP/RACI,
 iso_function_mapping,,TBC,appointment/BEP/RACI,task team lead appointed party and appointing party functions where ISO 19650 applies
+information_management_function_individuals,,TBC,pre-appointment BEP/prospective lead appointed party,proposed individuals and requested qualification evidence
+information_delivery_strategy,,TBC,pre-appointment BEP,approach to EIR collaborative objectives organization/commercial relationships and task-team composition
+federation_strategy,,TBC,pre-appointment BEP,
+high_level_responsibility_matrix,,TBC,pre-appointment BEP,responsibility for information-model elements and key deliverables
+production_methods_proposed_amendments,,TBC,pre-appointment BEP,proposed additions or amendments
+project_information_standard_proposed_amendments,,TBC,pre-appointment BEP,proposed additions or amendments
+proposed_software_versions,,TBC,pre-appointment BEP/IT schedule,
+proposed_hardware,,TBC,pre-appointment BEP/IT schedule,
+proposed_it_infrastructure,,TBC,pre-appointment BEP/IT schedule,
 security_approach,,TBC,security applicability/project requirements,
-task_team_capability_capacity,,TBC,pre-appointment assessment evidence,
-mobilization_plan,,TBC,pre-appointment tender response,
-information_delivery_risk_register,,TBC,pre-appointment tender response,
+task_team_capability_assessments,,TBC,task-team pre-appointment assessment evidence,separate source assessment for each task team
+information_management_capability,,TBC,task-team assessment,experience staffing education and training
+information_production_capability,,TBC,task-team assessment,experience staffing education and training
+it_capability_capacity,,TBC,task-team assessment,software hardware infrastructure capacity utilization support and service arrangements
+delivery_team_capability_capacity_summary,,TBC,prospective lead appointed party,aggregation of task-team assessments
+mobilization_plan,,TBC,pre-appointment tender response,approach timescales and responsibilities
+mobilization_testing_production_methods,,TBC,mobilization plan,
+mobilization_testing_task_team_exchanges,,TBC,mobilization plan,
+mobilization_testing_delivery_to_appointing_party,,TBC,mobilization plan,
+mobilization_cde_configuration_testing,,TBC,mobilization plan,project and distributed CDE where applicable
+mobilization_technology_actions,,TBC,mobilization plan,software hardware and IT infrastructure
+mobilization_shared_resources,,TBC,mobilization plan,
+mobilization_education_training,,TBC,mobilization plan,
+mobilization_recruitment_support,,TBC,mobilization plan,recruitment and support for parties joining during appointment
+information_delivery_risk_register,,TBC,pre-appointment tender response,risks to timely information delivery and management actions
+risk_eir_assumptions,,TBC,information delivery risk register,
+risk_delivery_milestones,,TBC,information delivery risk register,
+risk_information_protocol,,TBC,information delivery risk register,
+risk_information_delivery_strategy,,TBC,information delivery risk register,
+risk_information_standard_and_methods,,TBC,information delivery risk register,
+risk_mobilization_capability_capacity,,TBC,information delivery risk register,
 structured_data_formats,,TBC,information requirements/project information standard,
+tender_response_bep_component,,TBC,pre-appointment tender response,
+tender_response_capability_capacity_component,,TBC,pre-appointment tender response,
+tender_response_mobilization_component,,TBC,pre-appointment tender response,
+tender_response_information_delivery_risk_component,,TBC,pre-appointment tender response,
