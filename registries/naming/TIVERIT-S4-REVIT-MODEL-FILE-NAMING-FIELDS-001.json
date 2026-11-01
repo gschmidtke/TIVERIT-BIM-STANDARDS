@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-MODEL-FILE-NAMING-FIELDS-001",
+  "type": "registry",
+  "title": "S4 Revit Model File Naming Resolution Fields",
+  "status": "migration_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S4"],
+  "entries": [
+    {"id":"PROJECT_CODE","name":"Project Code","required":true,"description":"Project-instance code supplied by the appointment, BEP, EIR or governed project registry; not invented by the enterprise standard."},
+    {"id":"ORIGINATOR_CODE","name":"Originator Code","required":true,"description":"Project-approved originator identifier supplied by project naming governance or appointment information."},
+    {"id":"VOLUME_SYSTEM_CODE","name":"Volume / System Code","required":true,"description":"Project-approved volume, zone, system or equivalent code. The enterprise standard governs the token position but not the project-specific value where no enterprise vocabulary exists."},
+    {"id":"LEVEL_LOCATION_CODE","name":"Level / Location Code","required":true,"description":"Project-approved level or location code from the applicable governed vocabulary or project code set."},
+    {"id":"CONTAINER_TYPE_CODE","name":"Container Type Code","required":true,"description":"Information-container type code from the governed S4 container-type vocabulary; a Revit authoring model is resolved through the applicable model/container type rather than by free text."},
+    {"id":"ROLE_DISCIPLINE_CODE","name":"Role / Discipline Code","required":true,"description":"Role or discipline token selected from the applicable governed enterprise/container namespace or project-approved mapping."},
+    {"id":"SEQUENCE_NUMBER","name":"Number / Sequence","required":true,"description":"Project-controlled stable sequence or identifier completing the root information-container identity."},
+    {"id":"FILE_EXTENSION","name":"File Extension","required":true,"description":"Technical file extension appropriate to the information container; for native Revit models this is .rvt. The extension is not a semantic identity code."},
+    {"id":"MUTABLE_STATUS","name":"Status / Suitability","required":false,"description":"Governed mutable metadata such as suitability or CDE state. It does not redefine canonical root identity and is included in a platform label only when the applicable mapping explicitly requires it."},
+    {"id":"REVISION_SEQUENCE","name":"Revision / Release Sequence","required":false,"description":"Governed mutable revision metadata. It remains separate from canonical root identity even where an ACC/platform implementation label carries it."},
+    {"id":"AUTHORITY_SOURCE","name":"Authority Source","required":true,"description":"Reference to the BEP, EIR, project naming register, controlled vocabulary or other governed source supporting each project-specific token value."}
+  ],
+  "governance_notes": [
+    "Canonical Revit model-file root identity uses SYNTAX-ISO19650-CONTAINER-001: {proj}-{originator}-{volume/system}-{level/location}-{type}-{role}-{number}.{ext}.",
+    "SYNTAX-ACC-MODEL-FILE-001 is an implementation/display mapping and does not replace the canonical root identity.",
+    "If a required project token value has no governed enterprise vocabulary or project-approved code, the result is unresolved/indeterminate; STAR-T-GATE shall ask for that project datum rather than inventing a code.",
+    "Status/suitability and revision are mutable dimensions outside canonical root identity under D-13."
+  ],
+  "relationships": {
+    "registries": ["TIVERIT-S4-NAMING-SYNTAXES-001", "TIVERIT-S4-CONTROLLED-VOCABULARIES-001", "TIVERIT-S4-IDENTITY-DIMENSIONS-001"],
+    "instruction": "TIVERIT-BIM-INS-REVIT-NAMING-001"
+  },
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "STAR-T-GATE Inbox #10 plus existing S4 naming registry and Confluence pages 11042817 and 7241811",
+    "migration_note": "Resolves the routing/required-input gap exposed by Inbox #10 without inventing project-specific volume, level, originator, role or sequence values."
+  }
+}

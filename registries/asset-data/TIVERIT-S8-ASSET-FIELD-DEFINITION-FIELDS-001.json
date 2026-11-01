@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S8-ASSET-FIELD-DEFINITION-FIELDS-001",
+  "type": "registry",
+  "title": "S8 Asset and Lifecycle Field Definition Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S8"],
+  "entries": [
+    {"id":"SCHEMA_ID","name":"Schema ID","required":true,"description":"Stable identifier of the governed asset or lifecycle schema to which the field belongs."},
+    {"id":"FIELD_GROUP_ID","name":"Field Group ID","required":false,"description":"Stable identifier of the logical field group, such as identification, location, performance or maintenance."},
+    {"id":"FIELD_ID","name":"Field ID","required":true,"description":"Stable governed identifier for the lifecycle field."},
+    {"id":"FIELD_NAME","name":"Field Name","required":true,"description":"Human-readable governed field name."},
+    {"id":"MEANING","name":"Description / Intended Meaning","required":true,"description":"Declared semantic meaning and intended lifecycle use of the field."},
+    {"id":"DATA_TYPE","name":"Data Type","required":true,"description":"Governed data type such as text, number, date, Boolean, list or another declared type."},
+    {"id":"ALLOWED_DOMAIN","name":"Allowed Values / Domain","required":false,"description":"Controlled value set, range, reference list or other governed domain where applicable."},
+    {"id":"REQUIREDNESS","name":"Required / Optional Basis","required":true,"description":"Required, optional or conditionally required state, tied to a declared lifecycle use or information requirement rather than assumed globally."},
+    {"id":"SOURCE_OR_RESPONSIBILITY","name":"Source System / Responsibility","required":true,"description":"Authoritative source system, producing party, governed role or other traceable responsibility for the field value."},
+    {"id":"LIFECYCLE_USE_REF","name":"Lifecycle Use Reference","required":true,"description":"Reference to the lifecycle purpose, information requirement, project scope or schema rule that creates demand for the field."},
+    {"id":"STATUS","name":"Status","required":true,"description":"Governed lifecycle state of the field definition, such as proposed, approved, deprecated or superseded."},
+    {"id":"EFFECTIVE_FROM","name":"Effective From","required":true,"description":"Date, version or governed condition from which the field definition applies."}
+  ],
+  "governance_notes": [
+    "Field definitions shall be purpose-driven and aligned with explicit S2 lifecycle information requirements; requiredness shall not be inferred merely because a field exists in a source template.",
+    "Client-specific or proprietary field lists remain separate governed artifacts or external authoritative references; this registry defines the governance fields needed to describe them.",
+    "Field semantics, data types, domains and source responsibility must be versioned so downstream validation can distinguish current from deprecated definitions."
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "schema_catalogue": ["TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "4161550",
+    "source_version": 1,
+    "source_title": "Governance Metadata and Asset Schema Registry",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4161550",
+    "migration_note": "Migrates the field-group and field-definition layer of GAP-S8-03 without embedding any client-specific schema table or proprietary asset template."
+  }
+}

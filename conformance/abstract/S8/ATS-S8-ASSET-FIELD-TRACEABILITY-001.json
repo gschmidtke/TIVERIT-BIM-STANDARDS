@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-S8-ASSET-FIELD-TRACEABILITY-001",
+  "type": "abstract_test",
+  "title": "S8 asset and lifecycle field traceability",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S8", "S7"],
+  "governing_object_id": "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
+  "governing_clause": "REQ-S8-008, REQ-S8-009, REQ-S8-015 and REQ-S8-016",
+  "test_intent": "Determine whether governed lifecycle data fields and their carriers can be traced to a declared lifecycle purpose, governed schema definition, source/responsibility and validation route without relying on undocumented field semantics or mappings.",
+  "applicability": {
+    "applies_when": "A project or deliverable contains governed asset or lifecycle information intended for operations, maintenance, facility management, handover or another declared downstream lifecycle use.",
+    "not_applicable_when": "No governed lifecycle information is required or claimed in the tested scope."
+  },
+  "required_evidence": [
+    "applicable governed schema and version",
+    "field-definition records for required lifecycle fields",
+    "declared lifecycle-use or information-requirement references",
+    "source-system or responsibility references",
+    "carrier/mapping records where information is transported between systems or containers",
+    "validation evidence or validation reference"
+  ],
+  "result_logic": {
+    "pass": "Every governed lifecycle field in scope has a traceable semantic definition, lifecycle-purpose basis, source/responsibility and applicable carrier/mapping and validation reference.",
+    "fail": "Lifecycle information is asserted as governed while one or more required fields use undocumented semantics, untraceable source/responsibility, uncontrolled requiredness, or an undocumented carrier/mapping that prevents reliable interpretation or validation.",
+    "not_applicable": "No governed asset/lifecycle information is required or claimed in the tested scope.",
+    "indeterminate": "The project declares lifecycle information requirements, but the applicable schema, field-definition or carrier/mapping evidence is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["registry_checker", "file_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-S8-ASSET-FIELD-DEFINITION-FIELDS-001 and TIVERIT-S8-ASSET-CARRIER-MAPPING-FIELDS-001",
+    "migration_note": "Derived from Confluence GAP-S8-03 page 4161550. It tests field-level semantic and mapping traceability, complementing the existing S7 test for schema/version reference."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S8-ASSET-CARRIER-MAPPING-FIELDS-001",
+  "type": "registry",
+  "title": "S8 Asset and Lifecycle Carrier Mapping Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S8", "S7"],
+  "entries": [
+    {"id":"MAPPING_ID","name":"Mapping ID","required":true,"description":"Stable governed identifier for the mapping between a source information carrier and one or more lifecycle schema fields."},
+    {"id":"SOURCE_CONTAINER_OR_TYPE","name":"Source Container / Element Type","required":true,"description":"Model element type, asset record, external data source or other originating information container."},
+    {"id":"TARGET_SCHEMA_ID","name":"Target Schema ID","required":true,"description":"Governed asset or lifecycle schema receiving the mapped information."},
+    {"id":"TARGET_FIELD_IDS","name":"Target Field ID(s)","required":true,"description":"One or more governed lifecycle field identifiers populated or constrained by the mapping."},
+    {"id":"CARRIER_MECHANISM","name":"Carrier Mechanism","required":true,"description":"Mechanism carrying the information, such as model parameter, external database field, COBie-style worksheet column or other governed carrier."},
+    {"id":"SOURCE_FIELD_OR_PARAMETER_REF","name":"Source Field / Parameter Reference","required":false,"description":"Stable reference to the originating field, shared parameter, property or other governed source identifier where applicable."},
+    {"id":"TRANSFORMATION_OR_MAPPING_RULE","name":"Transformation / Mapping Rule","required":false,"description":"Declared transformation, lookup, normalization or mapping logic where a direct identity mapping is not sufficient."},
+    {"id":"EXPORT_IMPORT_PATH_REF","name":"Export / Import Path Reference","required":false,"description":"High-level reference to the governed exchange or implementation path; tool-specific procedural detail remains in L6 instructions or project annexes."},
+    {"id":"SEQUENCE_OR_DEPENDENCY","name":"Sequence / Dependency","required":false,"description":"Required sequencing or dependency, such as population before handover package generation or prerequisite validation."},
+    {"id":"VALIDATION_REF","name":"Validation Reference","required":true,"description":"Applicable ATS, validation rule, schema checker, rulepack or other governed evidence route for the mapping."},
+    {"id":"STATUS","name":"Status","required":true,"description":"Governed lifecycle state such as proposed, approved, deprecated or superseded."},
+    {"id":"EFFECTIVE_FROM","name":"Effective From","required":true,"description":"Date, version or governed condition from which the mapping applies."}
+  ],
+  "governance_notes": [
+    "Mappings connect S8 semantics to concrete carriers without making a software product or export mechanism the source of semantic authority.",
+    "Project-specific mappings may specialize this structure only where the governing information requirement, schema version and carrier are declared.",
+    "Tool UI steps and detailed export/import procedures belong in L6 instructions or BEP annexes, not in this registry."
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "registries": ["TIVERIT-S8-ASSET-FIELD-DEFINITION-FIELDS-001", "TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001", "TIVERIT-BIM-STD-S8-SP-REG-001"]
+  },
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "4161550",
+    "source_version": 1,
+    "source_title": "Governance Metadata and Asset Schema Registry",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4161550",
+    "migration_note": "Migrates the mapping/carrier layer of GAP-S8-03 while keeping tool procedures and project/client mappings outside enterprise doctrine."
+  }
+}

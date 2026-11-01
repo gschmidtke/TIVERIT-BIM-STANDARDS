@@ -1,0 +1,30 @@
+{
+  "inventory_id": "S8-ASSET-METADATA-SOURCE-INVENTORY-001",
+  "domain": "S8 asset information and lifecycle data",
+  "source_objects": [
+    {
+      "source_page_id": "4161550",
+      "title": "Governance Metadata and Asset Schema Registry",
+      "disposition": "migrated",
+      "target_objects": [
+        "TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001",
+        "TIVERIT-S8-ASSET-FIELD-DEFINITION-FIELDS-001",
+        "TIVERIT-S8-ASSET-CARRIER-MAPPING-FIELDS-001",
+        "ATS-S7-HANDOVER-SCHEMA-REFERENCE-001",
+        "ATS-S8-ASSET-FIELD-TRACEABILITY-001"
+      ],
+      "notes": "Schema catalogue governance was already present through S7/S8 integration. This round migrated the residual field-definition and mapping/carrier semantics. Client-specific field tables and project population remain separate governed artifacts/project content."
+    },
+    {
+      "source_page_id": "4554771",
+      "title": "GAP-S7-02 Asset / Lifecycle Deliverable Schemas Governance Scaffold",
+      "disposition": "merged_into_other_object",
+      "target_objects": [
+        "TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001",
+        "ATS-S7-HANDOVER-SCHEMA-REFERENCE-001"
+      ],
+      "notes": "Already reconciled in S7 migration round 001; retained as upstream schema-catalogue/handover governance rather than duplicated under S8."
+    }
+  ],
+  "curator_conclusion": "GAP-S8-03 is structurally migrated. S8 now has machine-readable governance for schema catalogue references, field semantics, lifecycle-purpose requiredness, source/responsibility traceability and carrier mappings without embedding proprietary client schemas."
+}

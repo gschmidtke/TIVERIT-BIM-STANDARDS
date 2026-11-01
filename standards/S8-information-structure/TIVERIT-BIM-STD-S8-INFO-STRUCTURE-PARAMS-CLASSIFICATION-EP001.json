@@ -42,12 +42,29 @@
   "relationships": {
     "standards": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001", "TIVERIT-BIM-STD-S2-PARAM-SP-GOV-001", "TIVERIT-BIM-STD-S2-PIR-001", "TIVERIT-BIM-STD-S2-AIR-001", "TIVERIT-BIM-STD-S2-LOD-LOI-001", "TIVERIT-BIM-STD-S2-SEL-GOV-001"],
     "workflows": ["TIVERIT-SP-REGISTRY-001"],
-    "registries": ["TIVERIT-BIM-STD-S8-SP-REG-001", "TIVERIT-S8-SEMANTIC-DOMAINS-001", "TIVERIT-S8-CLASSIFICATION-SYSTEM-FIELDS-001", "TIVERIT-S8-CLASSIFICATION-MAPPING-FIELDS-001"],
-    "conformance": ["ATS-S8-PARAM-004", "ATS-S8-PARAM-006", "ATS-S8-PARAM-DEPRECATION-001", "ATS-REVIT-PARAM-BINDING-001", "ATS-S8-CLASSIFICATION-ASSIGNMENT-001", "ATS-S8-CLASSIFICATION-DEPRECATION-001"],
+    "registries": [
+      "TIVERIT-BIM-STD-S8-SP-REG-001",
+      "TIVERIT-S8-SEMANTIC-DOMAINS-001",
+      "TIVERIT-S8-CLASSIFICATION-SYSTEM-FIELDS-001",
+      "TIVERIT-S8-CLASSIFICATION-MAPPING-FIELDS-001",
+      "TIVERIT-S7-ASSET-LIFECYCLE-SCHEMA-FIELDS-001",
+      "TIVERIT-S8-ASSET-FIELD-DEFINITION-FIELDS-001",
+      "TIVERIT-S8-ASSET-CARRIER-MAPPING-FIELDS-001"
+    ],
+    "conformance": [
+      "ATS-S8-PARAM-004",
+      "ATS-S8-PARAM-006",
+      "ATS-S8-PARAM-DEPRECATION-001",
+      "ATS-REVIT-PARAM-BINDING-001",
+      "ATS-S8-CLASSIFICATION-ASSIGNMENT-001",
+      "ATS-S8-CLASSIFICATION-DEPRECATION-001",
+      "ATS-S7-HANDOVER-SCHEMA-REFERENCE-001",
+      "ATS-S8-ASSET-FIELD-TRACEABILITY-001"
+    ],
     "roles": ["ROLE-BIM-STANDARDS-MGR-001", "ROLE-PROJECT-BIM-MANAGER-001", "ROLE-DISCIPLINE-LEAD-001", "ROLE-QAQC-AUTHORITY-001", "ROLE-TOOL-AUTHORITY-001"]
   },
   "information_demand_boundary": "S8 structures and carries information demand governed by S2; it does not redefine the requirement, timing, or permitted use locally.",
-  "implementation_gaps": ["GAP-S8-03"],
+  "implementation_gaps": [],
   "unresolved_source_items": [
     "Ten first-citizen sheet/project parameter rows remain without exact GUID evidence because the source contains '(from CSV)'. These are source-value gaps, not a missing shared-parameter governance architecture."
   ],
@@ -58,7 +75,7 @@
     "source_version":1,
     "source_title":"JSON - Information Structure, Parameters & Classification",
     "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/2883653",
-    "supporting_page_ids":["2785403","4423719","5177345","7241788","3768321"],
-    "migration_note":"Primary machine-readable L4 S8 source. GAP-S8-02 classification registry/protocol structural implementation and GAP-S8-01 shared-parameter registry governance have been migrated. The latter includes a dedicated registry schema, GUID-first governance contract, lifecycle/deprecation conformance, and reuse of existing identity/binding/uncontrolled-creation ATS coverage. Ten source rows remain unresolved pending exact GUID recovery; STAR-T-GATE Inbox #8 was partially promoted as evidence, not copied as authority."
+    "supporting_page_ids":["2785403","4423719","5177345","4161550","4554771","7241788","3768321"],
+    "migration_note":"Primary machine-readable L4 S8 source. GAP-S8-01 shared-parameter governance, GAP-S8-02 classification registry/protocol, and GAP-S8-03 asset/lifecycle schema semantics and carrier mapping have been structurally migrated. S7 owns schema catalogue/handover reference governance; S8 owns field semantics, requiredness/source traceability and carrier mappings. Client-specific field lists and project schema population remain separate governed artifacts/project content. Ten source shared-parameter rows remain unresolved pending exact GUID recovery."
   }
 }
