@@ -1,0 +1,91 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-QA-001",
+  "type": "registry",
+  "title": "Revit Working Library - QA and Review",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S5", "S7"],
+  "entries": [
+    {
+      "id": "QA-REF-VIEW-GRAPHICS",
+      "name": "Pre-issue view graphics check",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "checks": [
+        "correct view template applied to intended issue views",
+        "temporary overrides removed or explicitly justified",
+        "line weights and patterns legible at target print scale",
+        "filled regions, masking regions and detail lines used only where appropriate",
+        "linked-model visibility controlled intentionally",
+        "levels, grids and section/elevation heads do not collide with content",
+        "hatch patterns and material graphics remain legible"
+      ],
+      "unresolved": ["approved target scales", "monochrome versus color policy", "approved exception policy"]
+    },
+    {
+      "id": "QA-REF-SHEET-CONSISTENCY",
+      "name": "Sheet and view consistency check",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "checks": [
+        "approved titleblock/configuration in use",
+        "required project information populated and current",
+        "sheet numbers and names are unique and governed",
+        "view names comply with the applicable naming rule",
+        "callouts and references resolve correctly",
+        "view placement is readable and consistently aligned",
+        "revision information matches the issue state",
+        "notes, legends and schedules use governed sources where available"
+      ],
+      "unresolved": ["approved titleblock catalogue", "sheet numbering authority", "required margin/alignment rules", "revision removal policy"]
+    },
+    {
+      "id": "QA-REF-ANNOTATION",
+      "name": "Annotation and spelling check",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "checks": [
+        "approved or governed text/tag types used where available",
+        "manual text-format overrides minimized",
+        "spelling checked before issue",
+        "technical terms and abbreviations checked against the applicable glossary",
+        "leaders and arrowheads remain readable and consistent",
+        "units and notation render correctly in the issued output"
+      ],
+      "unresolved": ["approved glossary", "approved text/tag catalogue", "minimum annotation clearances", "project unit/notation policy"]
+    },
+    {
+      "id": "QA-REF-MODEL-HYGIENE",
+      "name": "Model hygiene and issue-readiness check",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "checks": [
+        "temporary worksets, imports and troubleshooting content reviewed",
+        "unused or stale links identified",
+        "duplicate or ad-hoc content identified for reconciliation",
+        "project information and required parameters present",
+        "export views and issue sheets use repeatable governed states",
+        "known unresolved items are recorded rather than silently ignored"
+      ],
+      "unresolved": ["approved purge/cleanup policy", "warning thresholds", "model-health acceptance thresholds", "issue authority mapping"]
+    }
+  ],
+  "working_rules": [
+    "A QA check produces evidence; it does not itself grant formal acceptance, authorization or publication authority.",
+    "Checks should distinguish objective findings from professional or contractual judgment.",
+    "Missing governing values should produce an unresolved or indeterminate state rather than an invented pass criterion.",
+    "Representative print/export tests are useful evidence where style quality cannot be established from model metadata alone."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-QA-STYLE-001"],
+    "registries": ["TIVERIT-S5-REVIT-PREFLIGHT-CHECK-FIELDS-001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "6422564",
+    "source_version": 1,
+    "migration_note": "Style-focused QA checks retained as non-authoritative working data. Role, organization, client and project identifiers removed; acceptance authority remains outside this library."
+  }
+}
