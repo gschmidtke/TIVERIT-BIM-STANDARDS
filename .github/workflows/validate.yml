@@ -27,6 +27,9 @@ jobs:
       - name: Validate schemas and JSON objects
         run: python scripts/validate_repository.py
 
+      - name: Validate ATS governing links
+        run: python scripts/validate_ats_governing_links.py
+
       - name: Run executable conformance fixtures
         run: python scripts/run_conformance_fixtures.py
 
