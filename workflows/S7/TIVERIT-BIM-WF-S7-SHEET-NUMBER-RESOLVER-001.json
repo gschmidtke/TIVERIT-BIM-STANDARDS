@@ -1,0 +1,71 @@
+{
+  "id": "TIVERIT-BIM-WF-S7-SHEET-NUMBER-RESOLVER-001",
+  "type": "workflow",
+  "title": "Sheet Number Authority Resolver and CDE Pre-Registration Gate",
+  "status": "curator_candidate",
+  "modules": ["S3", "S4", "S7", "S8"],
+  "purpose": "Resolve the applicable sheet/drawing numbering authority, acquire missing project data through governed AI inquiry, classify document meaning independently from identifier syntax, distinguish authoring sheet identity from submission information-container identity, and prevent ambiguous or unauthorized identities from entering a governed CDE document register.",
+  "inputs": ["contract_or_appointment_requirements","appointing_party_or_authority_requirements","applicable_external_standard_or_national_requirement","project_information_standard_eir_or_equivalent","bep","cde_configuration","sheet_semantic_record","user_confirmed_project_facts"],
+  "ai_inquiry": {
+    "principle": "The AI shall retrieve or ask for facts; it shall not invent project codes, mappings, content series, submission transformations, or authority.",
+    "source_order": ["already_confirmed_project_context","contract_or_appointment_requirements","appointing_party_or_authority_requirements","project_information_standard_eir_or_equivalent","approved_bep","approved_cde_or_document_control_configuration","user_confirmation_or_user_supplied_project_evidence"],
+    "question_policy": [
+      "Do not ask the user for a value already resolved by higher-precedence project evidence.",
+      "When evidence contains one unambiguous applicable value, normalize it and echo the value and source back for confirmation where interpretation was required.",
+      "When evidence contains conflicting values, present the conflict and ask the user to identify the governing value or provide the governing source; do not choose silently.",
+      "When evidence is silent, ask one focused question for the missing value and explain why it is needed.",
+      "A user answer may establish a project fact for the current workflow, but shall not be represented as an external-standard, client-enterprise, or contractual requirement unless supported by evidence.",
+      "If the user says a value will be provided, capture it before proceeding rather than converting it to TBC without another prompt.",
+      "Persist confirmed answers in the structured project semantic record so subsequent sheets reuse them and the user is not repeatedly asked.",
+      "Resolve the authoring sheet identity and the submission information-container identity separately when the project workflow transforms names or numbers after export/printing.",
+      "If project evidence establishes the authoring sheet grammar but not the submission transformation grammar, generate/validate the authoring sheet identity and keep the submission gate unresolved rather than inventing the final container identity.",
+      "Public TIVERIT examples and conformance cases shall anonymize real project/client identifiers using neutral placeholders such as AAA, WWW, ZZZ, Project A, Client A, Building A, Zone A, or equivalent."
+    ],
+    "inquiry_groups": [
+      {"id":"INQ-AUTHORITY","purpose":"Determine which numbering rules govern the project.","fields":["project_or_contract","appointing_party_or_client","country_or_authority","governing_information_standard","bep","cde_platform","document_control_standard","numbering_profile"]},
+      {"id":"INQ-PROJECT","purpose":"Capture project-wide values normally reused across many sheets.","fields":["project_code","originator_code","project_phase","project_stage","status_or_suitability_scheme","revision_scheme"]},
+      {"id":"INQ-SPATIAL","purpose":"Resolve project spatial identity where required by the selected profile.","fields":["building_or_volume","functional_breakdown_or_package","zone_or_area","level_or_location","spatial_code"]},
+      {"id":"INQ-SHEET","purpose":"Classify and number the individual authoring sheet without conflating meaning with submission identity.","fields":["discipline","discipline_code","content_class","content_subtype","content_series","work_condition","sheet_title","sequence_or_instance","authoring_sheet_identity"]},
+      {"id":"INQ-SUBMISSION","purpose":"Resolve any governed transformation from authoring sheet identity to submitted information-container identity.","fields":["submission_information_form","deliverable_designation","submission_identity_grammar","cde_document_number_mapping","required_metadata","revision","status_or_suitability","registration_state"]}
+    ],
+    "example_dialogue_logic": [
+      "AI: I found a project BEP. I will use it first for project-specific sheet-numbering values and ask only for unresolved fields.",
+      "AI: The active project profile resolves this enlarged floor plan to the project's evidenced large-scale-view series, so I do not need to ask you which series to use.",
+      "AI: I can resolve the authoring sheet number, but the project also transforms exported deliverables before submission. What information form are you submitting, and where is the governed submission naming rule defined?",
+      "AI: I know the submission is a DWG, but I do not yet know where or how that designation is inserted into the final container identity. I will not invent that transformation."
+    ]
+  },
+  "steps": [
+    {"id":"SNR-01","action":"Collect governing evidence and determine whether a governed document-number convention applies.","on_missing":"Start the AI inquiry. Do not assume simplified numbering until the authority sweep is complete."},
+    {"id":"SNR-02","action":"Resolve numbering profile by precedence: law/regulation; contract/appointment; appointing-party/authority requirements; incorporated external/national standard; project information standard/EIR; BEP/CDE configuration; TIVERIT fallback."},
+    {"id":"SNR-03","action":"Build a missing-field set from the selected profile and available project evidence."},
+    {"id":"SNR-04","action":"Run the AI inquiry for unresolved fields, preferring BEP/project evidence and requesting focused user confirmation only where evidence is silent, ambiguous, or conflicting."},
+    {"id":"SNR-05","action":"Classify the sheet/drawing semantic record: project phase, project stage, work condition, building/volume, zone/area, level/location, discipline, content class, content subtype, sequence, status/suitability, revision, and title."},
+    {"id":"SNR-06","action":"Resolve the authoring sheet identity from the active governed profile and evidenced content-series mapping, if available."},
+    {"id":"SNR-07","action":"Determine whether submission requires an identity transformation such as an information-form or deliverable designation added after export/printing."},
+    {"id":"SNR-08","action":"Echo normalized or user-confirmed project facts when interpretation was required and persist them for reuse across subsequent sheets."},
+    {"id":"SNR-09","action":"Generate or validate the submission information-container identity only when the governing transformation grammar is resolved."},
+    {"id":"SNR-10","action":"Run pre-registration validation against the selected authority/profile and CDE-required metadata."},
+    {"id":"SNR-11","action":"If validation passes, permit technical registration in the CDE. Registration execution or post-export automation does not create or alter underlying authority."},
+    {"id":"SNR-12","action":"After formal registration or issue, route identity changes through governed document-control change/supersede procedure and preserve traceability."}
+  ],
+  "pre_registration_gate": {
+    "required_checks": ["selected_profile_is_supported_by_governing_evidence_or_valid_fallback","required_project_facts_are_evidenced_or_user_confirmed","authoring_sheet_identity_is_resolved_or_traceably_mapped","document_number_is_unique_within_governed_project_scope","project_phase_and_project_stage_are_separately_resolved_where_applicable","work_condition_is_not_misrepresented_as_project_stage_or_phase","discipline_is_valid_for_selected_profile","content_class_and_subtype_are_not_ambiguous","content_series_is_evidenced_when_used","spatial_fields_required_by_profile_are_present","sequence_conforms_to_profile","submission_information_form_is_explicit_where_required","submission_identity_transformation_is_evidenced_where_required","status_suitability_and_revision_are_separate_from_root_identity_unless_profile_explicitly_says_otherwise","title_describes_content_and_does_not_substitute_for_missing_classification","authoring_tool_sheet_number_matches_or_maps_traceably_to_cde_document_number"],
+    "outcomes": ["pass","unresolved","gap","fail"],
+    "blocking": ["unresolved","gap","fail"]
+  },
+  "failure_conditions": [
+    "The AI invents a project code, client code, content range, submission transformation, or CDE field mapping instead of retrieving or asking for it.",
+    "The AI repeatedly asks for project-wide facts already established by the BEP or prior confirmed answers.",
+    "A user-provided project fact is falsely promoted to external-standard, client-enterprise, or contractual authority.",
+    "A TIVERIT fallback number is generated while a higher-precedence project convention is known or unresolved.",
+    "CDE platform configuration or post-export automation is treated as authority without a governing project basis.",
+    "Project stage is inferred from demolition/existing/proposed condition.",
+    "An enlarged floor plan is silently treated as a detail solely because a numbering range uses the same digit.",
+    "An information-form designation such as DWG or MODEL is treated as the sheet's content class.",
+    "A document is first registered with an unresolved submission identity and expected to be casually renamed later.",
+    "A client/project profile is activated without curated governing evidence.",
+    "A public TIVERIT example exposes real project/client identifiers where neutral placeholders would preserve the rule."
+  ],
+  "references": ["TIVERIT-S7-SHEET-SEMANTIC-CLASSIFICATION-001","TIVERIT-S7-SHEET-NUMBERING-PROFILES-001","TIVERIT-BIM-STD-S7-SHEET-TITLEBLOCK-DOCUMENTATION-001"]
+}
