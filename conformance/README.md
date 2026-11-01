@@ -63,8 +63,9 @@ Directories should be created when their first governed artifact is added; empty
 An ATS should contain at least:
 
 - stable `ATS-*` ID
-- exactly one governing target: `requirement_id` for a normative requirement or `governing_object_id` for another governed object such as an L6 instruction
-- optional `governing_clause` when only a bounded step/clause of the target object is tested
+- one machine-resolvable `governing_object_id` identifying the canonical governed object that owns the tested rule
+- `requirement_id` when the ATS tests a specific normative requirement within that governing object
+- optional `governing_clause` when only a bounded step/clause of the governing object is tested
 - test intent
 - applicability criteria
 - required evidence
@@ -74,6 +75,8 @@ An ATS should contain at least:
 - `indeterminate` condition where relevant
 - permitted implementation classes
 - lifecycle/provenance information
+
+`governing_object_id` is mandatory for every ATS. `requirement_id` is a secondary locator, not a substitute for the governing-object reference. Both identifiers must resolve against the canonical repository ID graph. This keeps requirement-level tests and instruction/clause-level tests machine-routable through one linkage convention.
 
 An ATS should be tool-neutral unless the governed target being tested is itself explicitly tool-specific.
 
@@ -113,8 +116,8 @@ Synthetic fixtures are specification-level regression cases. They do not replace
 
 Conformance evidence should preserve, at minimum:
 
-- governing requirement or object ID
-- governing clause where applicable
+- governing object ID
+- governing requirement ID or clause where applicable
 - ATS ID
 - ETS ID or governed human verification method
 - tested subject/container identity
