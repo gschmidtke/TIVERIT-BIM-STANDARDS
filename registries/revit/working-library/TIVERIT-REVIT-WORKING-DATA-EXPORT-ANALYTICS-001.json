@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-DATA-EXPORT-ANALYTICS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Data Export and Analytics",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S7", "S8", "S9"],
+  "entries": [
+    {"id":"DATA-REF-STANDARD-SCHEDULE-SOURCE","name":"Standard schedule source model","knowledge_status":"reference_example","authority_status":"non_authoritative","working_guidance":["govern a canonical schedule source separately from project models","verify fields, filters, sorting and formatting before distribution","do not alter the canonical schedule source ad hoc"],"candidate_schedule_types":["instance parameters","sheet lists","QA/QC checks","project information"],"unresolved":["approved source-file location","approved schedule catalogue","edit authority"]},
+    {"id":"DATA-REF-SCHEDULE-INJECTION","name":"Schedule injection workflow","knowledge_status":"reference_example","authority_status":"non_authoritative","working_guidance":["prefer governed automation for inserting standard schedules into project models","verify injected schedules match the canonical source","manual insertion should be treated as an exception where automation is the target state"],"unresolved":["approved automation tool","target-model selection rules","exception route"]},
+    {"id":"DATA-REF-SCHEDULE-EXTRACTION","name":"Schedule extraction workflow","knowledge_status":"reference_example","authority_status":"non_authoritative","working_guidance":["extract named standard schedules consistently","use stable output naming and destination","verify file existence, timestamp, non-zero size, headers and row-count plausibility"],"candidate_file_pattern":"{ProjectCode}_{ModelName}_{ScheduleName}.csv","unresolved":["approved destination platform","approved filename syntax","export cadence","run identifier scheme"]},
+    {"id":"DATA-REF-ANALYTICS-CONSUMPTION","name":"Analytics consumption","knowledge_status":"reference_example","authority_status":"non_authoritative","working_guidance":["preserve source identifiers during transformation","apply only necessary data transformations","align report refresh cadence with source export cadence","validate row/column alignment between source schedule and analytics table"],"candidate_filter_fields":["Project Code","Model Name","Schedule Name or Type","Extract Date or Run ID"],"unresolved":["approved BI platform/workspace","refresh ownership","governed report location"]}
+  ],
+  "working_rules": ["The Revit model or governed schedule source remains authoritative for model data unless another source is explicitly designated.", "An analytics dataset is a downstream representation, not automatically a new authority.", "Manual one-off exports should not silently replace a governed repeatable pipeline."],
+  "provenance": {"source_system":"legacy_confluence_reference","page_id":"6848529","source_version":1,"migration_note":"Schedule injection/extraction and analytics workflow retained as non-authoritative working knowledge. Source organization and storage-platform assumptions generalized."}
+}
