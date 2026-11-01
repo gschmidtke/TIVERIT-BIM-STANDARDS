@@ -1,0 +1,85 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S7-SHEET-NUMBERING-PROFILES-001",
+  "type": "registry",
+  "title": "Sheet and Drawing Numbering Profiles",
+  "status": "curator_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S3", "S4", "S7", "S8"],
+  "precedence": [
+    "law_or_regulation",
+    "contract_or_appointment",
+    "appointing_party_or_authority_information_requirements",
+    "explicitly_incorporated_external_standard_or_national_requirement",
+    "project_information_standard_eir_or_equivalent",
+    "bep_and_project_cde_configuration",
+    "tiverit_fallback"
+  ],
+  "resolver_rule": "Select the highest-precedence applicable numbering profile. Lower-precedence profiles may supply only unresolved definitions permitted by the higher authority; they shall not silently replace or contradict it.",
+  "profiles": [
+    {
+      "id": "PROFILE-GOVERNED-CDE-001",
+      "name": "Governed CDE / Document-Control Numbering",
+      "status": "canonical_architecture_candidate",
+      "selection": "Use when the project has an authority-, client-, contract-, EIR-, project-information-standard-, or CDE-governed document numbering convention.",
+      "requirements": [
+        "Resolve the governing document-number grammar before first formal registration.",
+        "Preserve semantic classification separately from the generated document number.",
+        "Treat CDE platform configuration as implementation evidence, not as authority unless the governing project arrangement explicitly makes it authoritative.",
+        "Validate project stage, work condition, spatial metadata, discipline, information form, content classification, sequence, status/suitability, revision, and title as required by the selected profile.",
+        "After first formal registration or issue, identity changes require governed document-control change rather than casual authoring-tool renumbering."
+      ]
+    },
+    {
+      "id": "PROFILE-ASHGHAL-QA-001",
+      "name": "Qatar / Ashghal Drawing Identity",
+      "status": "external_authority_reference_candidate",
+      "parent": "PROFILE-GOVERNED-CDE-001",
+      "authority_type": "government_or_appointing_party",
+      "identity_fields": ["project_or_contract_number","originator","functional_breakdown_package_or_volume","spatial_breakdown_location_or_level","form","discipline","number"],
+      "delimiter": "-",
+      "stage_metadata": ["concept","preliminary","detailed_design","tender","contract","as_built"],
+      "rules": [
+        "The drawing identity follows the applicable Ashghal/project requirement; TIVERIT shall not substitute a simplified sheet-number syntax.",
+        "Project stage is governed metadata and is not assumed to be an identity field unless the applicable project requirement says so.",
+        "The final number/sequence shall follow the applicable Ashghal/project rule; TIVERIT shall not invent content-series meanings where the authority material is silent.",
+        "Where implemented in Aconex or another CDE, the authority requirement remains upstream of platform configuration."
+      ],
+      "public_evidence_locators": [
+        "https://www.ashghal.gov.qa/en/Services/GIS%20and%20CAD%20Manuals/ASHGHAL%20CAD%20STANDARD/PWA%20BUILDINGS%20CAD%20STANDARDS%20MANUAL%20Ver%204.0.pdf",
+        "https://www.ashghal.gov.qa/en/Services/GIS%20and%20CAD%20Manuals/ASHGHAL%20BIM%20STANDARD/D0201_File%20Naming%20Convention%20for%20BIM%20%26%20CAD_V1.pdf"
+      ]
+    },
+    {
+      "id": "PROFILE-MIRAL-UAE-001",
+      "name": "UAE / Miral Project Numbering",
+      "status": "evidence_required_not_active",
+      "parent": "PROFILE-GOVERNED-CDE-001",
+      "selection": "Do not activate from country or client name alone. Requires governing Miral/project document-control, EIR/project-information-standard, BEP, or Aconex configuration evidence.",
+      "rules": [
+        "Do not generalize a project-specific Miral convention into a UAE national convention.",
+        "Do not infer field order, codes, content ranges, project stage encoding, or Aconex metadata from memory or job title.",
+        "Once evidence is curated, map it to the common semantic classification rather than redefining semantic classes."
+      ]
+    },
+    {
+      "id": "PROFILE-SIMPLIFIED-001",
+      "name": "Simplified Non-CDE Sheet Numbering",
+      "status": "fallback_architecture_candidate",
+      "selection": "Use only where no higher-precedence authority, client, project, or governed CDE numbering requirement applies.",
+      "rules": [
+        "Use the common semantic classification registry.",
+        "A compact TIVERIT numbering syntax may be selected only after higher-precedence requirements have been checked and found silent or inapplicable.",
+        "Legacy D-18/D-19 style discipline/series/sequence concepts may be considered for this fallback profile only after the content taxonomy research is complete; they are not universal defaults."
+      ]
+    }
+  ],
+  "suspended_decisions": [
+    {
+      "id": "D-18-D-19-UNIVERSAL-DEFAULT",
+      "status": "suspended_as_universal_default",
+      "reason": "Research established that international, authority, client, project-information-standard, BEP, and CDE requirements must resolve first. A TIVERIT discipline/series/sequence convention may survive only as a lower-precedence simplified fallback profile."
+    }
+  ]
+}
