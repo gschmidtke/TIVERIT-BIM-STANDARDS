@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-EXPORT-001",
+  "type": "registry",
+  "title": "Revit Working Library - Export",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S7"],
+  "entries": [
+    {
+      "id": "EXPORT-REF-PDF",
+      "name": "PDF export reference configuration",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "format": "PDF",
+      "working_guidance": [
+        "use dedicated issue-ready sheets rather than ad-hoc working views",
+        "preserve governed line weights, patterns and fonts",
+        "test representative sheets at target print scale"
+      ],
+      "candidate_values": {
+        "raster_quality_dpi": "300-600 reference range",
+        "jpeg_compression": "low compression candidate"
+      },
+      "unresolved": ["approved PDF preset identity", "vector/raster policy", "font handling", "line-pattern handling", "approved filename pattern", "combined-set packaging rules"]
+    },
+    {
+      "id": "EXPORT-REF-NWC",
+      "name": "NWC coordination export reference configuration",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "format": "NWC",
+      "candidate_values": {
+        "export_scope": "current dedicated export view",
+        "coordinate_basis": "shared/project-governed coordinates candidate",
+        "element_properties": "enabled candidate",
+        "split_by_level": "disabled candidate",
+        "faceting_precision": "medium candidate"
+      },
+      "working_guidance": [
+        "use dedicated 3D export views rather than working views",
+        "control categories, links, phase and detail level through the export view/template",
+        "treat every option as project/BEP configuration unless separately approved as enterprise default"
+      ],
+      "unresolved": ["approved NWC preset", "faceting tolerance", "linked-model inclusion policy", "units", "coordinate basis", "project naming/destination"]
+    },
+    {
+      "id": "EXPORT-REF-IFC",
+      "name": "IFC export reference configuration",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "format": "IFC",
+      "candidate_values": {
+        "phase_scope": "approved phase only candidate",
+        "design_options": "primary/approved options only candidate",
+        "annotation_export": "exclude candidate",
+        "property_sets": "common plus governed custom mappings candidate"
+      },
+      "working_guidance": [
+        "IFC version and MVD must be explicitly governed by the exchange requirement/BEP",
+        "property-set mapping should be traceable to governed parameters",
+        "linked-model federation should be intentional rather than assumed"
+      ],
+      "unresolved": ["IFC version", "MVD", "property-set mapping", "classification mapping", "link federation policy", "export-view identity", "file naming and destination"]
+    },
+    {
+      "id": "EXPORT-REF-RVT-DELIVERABLE",
+      "name": "RVT deliverable preparation",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "format": "RVT",
+      "working_guidance": [
+        "prepare a controlled issue state rather than handing over an uncontrolled production state",
+        "verify links, temporary content, warnings and project information before packaging",
+        "preserve provenance and issue identification"
+      ],
+      "unresolved": ["approved packaging rules", "detachment/central-state policy", "link packaging", "issue naming", "archive destination"]
+    }
+  ],
+  "working_rules": [
+    "Export presets are implementation/configuration unless a governing standard explicitly elevates them.",
+    "Do not treat a historical preset value as the current project requirement.",
+    "Dedicated export views should be governed and repeatable where the format depends on view state.",
+    "Naming, destination, version/MVD and coordinate choices remain unresolved until their governing project or exchange source is identified."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-DOC-EXPORT-001", "TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001"],
+    "standards": ["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "7438366",
+    "source_version": 1,
+    "migration_note": "Export examples and option values retained as non-authoritative working data. Historical organization/client/project naming examples removed."
+  }
+}
