@@ -7,31 +7,47 @@
   "authority": "normative",
   "layer": "L4",
   "modules": ["S3"],
-  "purpose": "Govern the internal production ecosystem, CDE platform authority, collaboration boundaries, output handling, and procedural interfaces to S2, S5, S7, S8, and the CDE implementation branch.",
+  "purpose": "Govern the internal production ecosystem, CDE platform authority, information-state semantics, collaboration boundaries, output handling, and procedural interfaces to S2, S5, S7, S8, and the CDE implementation branch.",
   "requirements": [
     {"id":"S3-REQ-001","authority":"shall","statement":"ACC Docs shall serve as the primary governed internal cloud environment for TIVERIT project collaboration and information-container management, subject to project contractual precedence."},
-    {"id":"S3-REQ-002","authority":"shall","statement":"Authoring tools are authoritative only within their declared scope; governed reliance begins only when information is placed in the appropriate governed platform/container."},
+    {"id":"S3-REQ-002","authority":"shall","statement":"Authoring tools are authoritative only within their declared scope; governed reliance begins only when information is placed in the appropriate governed platform/container and satisfies the decision and information-status conditions applicable to its declared use."},
     {"id":"S3-REQ-003","authority":"shall","statement":"Software versions are project-governed through the BEP; enterprise standards govern tool roles and authority boundaries rather than fixed releases."},
-    {"id":"S3-REQ-004","authority":"shall_not","statement":"Monitoring tools, scripts, and automation do not create authority, grant approval, or confer legal reliance."},
-    {"id":"S3-REQ-005","authority":"shall_not","statement":"Informal collaboration, chat, markup, and visibility do not constitute approval or acceptance."},
-    {"id":"S3-REQ-006","authority":"shall","statement":"Working outputs and formally issued deliverables shall remain distinct; formal exchange must bind to S2 information requirements and permitted-use constraints."},
-    {"id":"S3-REQ-007","authority":"shall","statement":"S1 overrules S3 on organizational authority, S2 overrules S3 on information requirements, and CDE procedural execution is delegated to governed implementation workflows."},
+    {"id":"S3-REQ-004","authority":"shall_not","statement":"Monitoring tools, scripts, automation, platform permissions, or CDE workflow actions do not create authority, grant approval, confer acceptance, or authorize reliance."},
+    {"id":"S3-REQ-005","authority":"shall_not","statement":"Informal collaboration, chat, markup, visibility, or CDE location do not constitute approval for sharing, authorization, acceptance, milestone approval, or handover acceptance."},
+    {"id":"S3-REQ-006","authority":"shall","statement":"Working outputs and formally issued deliverables shall remain distinct; formal exchange must bind to S2 information requirements, S7 decision semantics, and permitted-use constraints."},
+    {"id":"S3-REQ-007","authority":"shall","statement":"S1 overrules S3 on organizational authority, S2 overrules S3 on information requirements, S7 governs formal exchange and acceptance semantics, and CDE procedural execution is delegated to governed implementation workflows."},
     {"id":"S3-REQ-008","authority":"shall_not","statement":"S3 governs the internal production ecosystem and shall not assert authority over external consultant systems, client environments, or contractual liabilities beyond project-defined interfaces."},
-    {"id":"S3-REQ-009","authority":"shall_not","statement":"The existence, availability, or visual completeness of a production output shall not by itself make that output a deliverable or authorize reliance on it."},
+    {"id":"S3-REQ-009","authority":"shall_not","statement":"The existence, availability, visual completeness, CDE state, or publication status of a production output shall not by itself make that output an accepted deliverable or authorize reliance on it."},
     {"id":"S3-REQ-010","authority":"shall","statement":"Production outputs intended for governed use shall have an explicitly declared maturity or information state appropriate to their purpose; apparent detail shall not substitute for that declaration."},
-    {"id":"S3-REQ-011","authority":"shall_not","statement":"The communication channel used for collaboration shall not alter the governance status, authority, or permitted use of the information communicated."},
-    {"id":"S3-REQ-012","authority":"shall_not","statement":"Uploading, downloading, synchronizing, linking, attaching, or otherwise moving information within or between production systems shall not by itself constitute formal delivery or transfer authority."}
+    {"id":"S3-REQ-011","authority":"shall_not","statement":"The communication channel used for collaboration shall not alter the governance status, authority, decision state, or permitted use of the information communicated."},
+    {"id":"S3-REQ-012","authority":"shall_not","statement":"Uploading, downloading, synchronizing, linking, attaching, publishing, archiving, or otherwise moving information within or between production systems shall not by itself constitute formal delivery, approval, authorization, acceptance, or transfer authority."},
+    {"id":"S3-REQ-013","authority":"shall","statement":"CDE information states shall describe the governed availability and intended information-management condition of an information container; they shall not be treated as substitutes for decision records or authority evidence."},
+    {"id":"S3-REQ-014","authority":"shall","statement":"Where the project uses WIP, Shared, Published, and Archived states, each state and permitted transition shall be defined by the applicable CDE governance and project instruments, including the purpose for which information in that state may be used."},
+    {"id":"S3-REQ-015","authority":"shall_not","statement":"Transition to Shared shall not by itself constitute coordination sign-off, authorization for formal exchange, receiving-party acceptance, milestone approval, or authorization for reliance beyond the use permitted for that state."},
+    {"id":"S3-REQ-016","authority":"shall_not","statement":"Transition to Published shall not by itself constitute acceptance for every declared use, contractual approval, milestone approval, handover acceptance, or unrestricted reliance."},
+    {"id":"S3-REQ-017","authority":"shall","statement":"A CDE state transition associated with a governed decision shall be traceable to the decision type, authority basis, authorized role or party, decision outcome, affected information scope, and evidence required by the applicable governance."},
+    {"id":"S3-REQ-018","authority":"shall","statement":"Archived information shall preserve the traceable record of prior information states and governed decision evidence required by the applicable project, contractual, regulatory, and retention requirements; archiving shall not alter the historical meaning or authority of those decisions."}
   ],
   "relationships": {
     "governed_by": ["ISO-19650"],
     "upstream": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001", "REG-ROLE-001"],
     "downstream": ["TIVERIT-BIM-STD-S5-COORDINATION-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
-    "semantic_dependency": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"]
+    "semantic_dependency": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "architecture": ["INFORMATION-DECISION-AUTHORITY-TAXONOMY"]
   },
+  "implementation_gaps": [
+    "CDE implementation artifacts shall be checked to ensure WIP, Shared, Published and Archived transitions do not encode generic acceptance or authority semantics inconsistent with the Information Decision & Authority Taxonomy.",
+    "Conformance coverage shall verify traceability between decision-bearing CDE transitions and the applicable decision record and authority basis."
+  ],
+  "governance_notes": [
+    "Information state and decision state are related but distinct dimensions: a CDE state describes the governed information-management condition of a container, while a decision record establishes the outcome and authority of a particular governed decision.",
+    "Project-specific state codes, status codes, transition permissions, review workflows and platform configuration remain project/CDE declarations unless separately governed as enterprise defaults.",
+    "ISO 19650 source evidence informs this curator reconciliation only through the External Standards Gateway; external-standard alignment does not by itself establish project applicability or transfer external role authority into TIVERIT."
+  ],
   "provenance": {
     "source_system": "confluence",
     "space": "BST",
     "source_pages": ["2425298","2621496","3964929","3899424","2425347","2457722","2457714","3735560","2818203","4292609"],
-    "migration_note": "Canonical S3 parent assembled from the source production-environment doctrine and enriched with explicit collaboration, output-maturity, and transmission boundaries. Raw source-page titles and URLs were not retained where retired naming appeared; neutral page IDs preserve provenance."
+    "migration_note": "Canonical S3 parent assembled from the source production-environment doctrine and enriched with explicit collaboration, output-maturity, and transmission boundaries. ISO-IMP-005 curator reconciliation further separates CDE information state from decision state and authority evidence, preserving WIP/Shared/Published/Archived as information-management states rather than generic approval or acceptance states. Raw source-page titles and URLs were not retained where retired naming appeared; neutral page IDs preserve provenance."
   }
 }
