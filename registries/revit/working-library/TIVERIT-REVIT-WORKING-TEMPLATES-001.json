@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-TEMPLATES-001",
+  "type": "registry",
+  "title": "Revit Working Library - Project Templates",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S3", "S4", "S8"],
+  "entries": [
+    {"id":"TPL-REF-BASE","name":"Base Office Template","knowledge_status":"reference_example","authority_status":"non_authoritative","intended_use":"general project starting point","candidate_contents":["project information","titleblocks","default view templates","annotation styles","object styles","baseline sheets","filters","materials","phases","worksets where applicable","project parameters"],"unresolved":["approved template identity","approved titleblocks","approved view-template IDs","default phases","required shared parameters","repository location"]},
+    {"id":"TPL-REF-ARCH","name":"Architecture Template","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_contents":["floor plans","RCPs","elevations","sections","details","schedules","coordination 3D views","architectural view templates","detail-item libraries","dimension/annotation styles","sheet sets","phase/category filters"],"unresolved":["required families","schedule templates","keynote strategy","approved template identity"]},
+    {"id":"TPL-REF-STRUCT","name":"Structural Template","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_contents":["framing plans","foundation plans","rebar views","details","general notes sheets","framing/foundation schedules","structural view templates","framing/rebar object styles","analytical visibility settings","annotation styles"],"unresolved":["rebar shape families","tag families","analytical defaults","approved template identity"]},
+    {"id":"TPL-REF-MEP","name":"MEP Template","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_contents":["system plans","coordination views","equipment/circuit/duct/pipe schedules","legends","system families","connectors","system filters","color schemes","annotation/tag standards","panel schedules where applicable"],"unresolved":["panel schedule templates","device families","discipline legends","approved template identity"]},
+    {"id":"TPL-REF-SCENIC","name":"Scenic / Show Template","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_contents":["assembly views","exploded 3D coordination views","shop-drawing sheets","bill-of-material schedules","legends","custom categories/filters","material standards","fabrication-package tags","shop-drawing titleblocks"],"unresolved":["fabrication annotation conventions","schedule keys","approved template identity"]},
+    {"id":"TPL-REF-CONTROLS","name":"Controls Template","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_contents":["device plans","drafting-view wiring/IO diagrams","panel layouts","IO/device schedules","device families with connectors","annotation/tagging standards","signal/system filters","symbol legends"],"unresolved":["symbol legends","device parameter schema","shared parameters for controls tagging","approved template identity"]}
+  ],
+  "versioning_reference": {"major":"structural or schema-level change that may require migration planning","minor":"incremental improvement intended to remain backward compatible"},
+  "working_rules": ["Use one approved template source when available.", "Project-specific edits belong in the project model, not silently back into the template.", "Template release should include version metadata, release notes, validation, adoption and retirement state.", "The source filename patterns are examples only and were not copied because they included organization identifiers."],
+  "provenance": {"source_system":"legacy_confluence_reference","page_id":"7503875","source_version":1,"migration_note":"Template contents and lifecycle guidance retained as non-authoritative working data; branded filename examples removed."}
+}

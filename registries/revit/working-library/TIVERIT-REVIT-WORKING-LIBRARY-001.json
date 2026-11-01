@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-LIBRARY-001",
+  "type": "registry",
+  "title": "Revit AI Working Library",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"],
+  "entries": [
+    {"id":"WL-REVIT-VIEWS-001","name":"View template and view-purpose working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-VIEWS-001.json"},
+    {"id":"WL-REVIT-ANNOTATION-001","name":"Annotation working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-ANNOTATION-001.json"},
+    {"id":"WL-REVIT-GRAPHICS-001","name":"Graphics working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-GRAPHICS-001.json"},
+    {"id":"WL-REVIT-MATERIALS-001","name":"Materials and appearance working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-MATERIALS-001.json"},
+    {"id":"WL-REVIT-FAMILIES-001","name":"Family and type working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-FAMILIES-001.json"},
+    {"id":"WL-REVIT-PARAMETERS-001","name":"Parameter working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-PARAMETERS-001.json"},
+    {"id":"WL-REVIT-SHARED-PARAMETERS-001","name":"GUID-bearing shared-parameter candidates","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-SHARED-PARAMETERS-001.json"},
+    {"id":"WL-REVIT-TEMPLATES-001","name":"Project-template contents and lifecycle working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-TEMPLATES-001.json"},
+    {"id":"WL-REVIT-SHEETS-001","name":"Sheet and titleblock working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-SHEETS-001.json"},
+    {"id":"WL-REVIT-DATUMS-001","name":"Levels, grids, scope boxes and reference-plane working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-DATUMS-001.json"},
+    {"id":"WL-REVIT-MODELING-001","name":"Modeling decisions and LOD/LOI working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-MODELING-001.json"},
+    {"id":"WL-REVIT-MODEL-PROGRESSION-001","name":"Stage-based model progression working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-MODEL-PROGRESSION-001.json"},
+    {"id":"WL-REVIT-WORKSHARING-LINKS-001","name":"Worksharing, workset and link working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-WORKSHARING-LINKS-001.json"},
+    {"id":"WL-REVIT-EXPORT-001","name":"PDF, NWC, IFC and RVT export working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-EXPORT-001.json"},
+    {"id":"WL-REVIT-INVENTOR-EXCHANGE-001","name":"Inventor-to-Revit exchange working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-INVENTOR-REVIT-EXCHANGE-001.json"},
+    {"id":"WL-REVIT-DATA-ANALYTICS-001","name":"Schedule extraction and analytics working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-DATA-EXPORT-ANALYTICS-001.json"},
+    {"id":"WL-REVIT-LIGHTING-MOUNTS-001","name":"Lighting-mount categorization working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-LIGHTING-MOUNTS-001.json"},
+    {"id":"WL-REVIT-QA-001","name":"QA and pre-issue review working data","path":"registries/revit/working-library/TIVERIT-REVIT-WORKING-QA-001.json"}
+  ],
+  "retrieval_policy": {
+    "purpose": "Provide practical Revit knowledge for AI retrieval without granting Standards authority to examples, candidate values, or unresolved source material.",
+    "authority_order": ["applicable_project_or_bep_configuration", "approved_repository_standard_or_configuration", "enterprise_candidate", "working_reference_example", "external_or_historical_evidence"],
+    "required_behavior": [
+      "Always expose knowledge_status and authority_status when returning working-library values.",
+      "Never present reference_example or candidate values as approved enterprise defaults.",
+      "Preserve unresolved fields rather than inventing values.",
+      "Prefer a governed Standards object when it answers the same question.",
+      "Project-specific configuration overrides working-library examples when the project authority is established.",
+      "A working-library QA finding is evidence only and does not create acceptance authority.",
+      "Tool/export presets remain configuration unless separately governed as reusable authority.",
+      "Actual source values may be retained when useful, but their source status and promotion readiness must remain explicit."
+    ]
+  },
+  "sanitization": {
+    "organization_identifiers_removed": true,
+    "client_identifiers_removed": true,
+    "project_identifiers_removed": true,
+    "source_traceability_method": "neutral source page identifiers only",
+    "rule": "Do not store source-organization, client or project names in working-library record titles, IDs, examples, provenance labels or values. Repository-owned technical identifiers and public classification/product terms may remain where required for meaning."
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference_and_current_repository",
+    "source_page_ids": ["7241762", "5799975", "6193190", "7700481", "6651935", "6422556", "6684703", "7340051", "7438366", "6422564", "7241788", "7503875", "6357066", "10846209", "7733249", "6357042", "6848529", "10551299", "7405577"],
+    "migration_note": "Working-library records preserve useful source examples and candidate values as non-authoritative AI retrieval data. Source-organization, client and project identifiers are intentionally removed."
+  }
+}

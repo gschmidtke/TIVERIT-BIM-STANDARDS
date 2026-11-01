@@ -1,0 +1,118 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-MATERIALS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Materials and Appearance",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S4", "S8"],
+  "entries": [
+    {
+      "id": "MAT-REF-CERAMIC-TILE-WHITE-GLOSS",
+      "name": "Ceramic Tile - White Gloss",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_material_name": "A-Floor-CeramicTile-White-Gloss",
+      "primary_classification": "Architectural",
+      "secondary_classification": "Floor / Finish",
+      "documentation_graphics": {
+        "projection_pattern": "dense hatch",
+        "projection_color": "Grey 60%",
+        "cut_pattern": "solid fill",
+        "cut_color": "Black",
+        "candidate_transparency": "0-10%"
+      },
+      "render_appearance": {
+        "candidate_asset_name": "CeramicTile_WhiteGloss_PBR_v1",
+        "candidate_real_world_size": "300 x 300 mm tile with 3 mm grout",
+        "working_guidance": ["align normal and roughness maps", "avoid excessive specular response"]
+      },
+      "unresolved": ["approved naming tokens", "approved graphics", "approved asset source", "approved texture scale"]
+    },
+    {
+      "id": "MAT-REF-STEEL-GALVANIZED",
+      "name": "Structural Steel - Galvanized",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_material_name": "S-Frame-Steel-A992-Galv",
+      "primary_classification": "Structural",
+      "secondary_classification": "Framing / Structure",
+      "documentation_graphics": {
+        "working_guidance": "cut graphics should prioritize structural clarity"
+      },
+      "render_appearance": {
+        "candidate_asset_name": "Steel_Galv_Brush_PBR_v2",
+        "candidate_scale_basis": "texture scale 1.0 = 500 mm",
+        "working_guidance": ["avoid obvious tiling", "use physically plausible roughness"]
+      },
+      "unresolved": ["approved steel grade token", "approved finish token", "approved graphics", "approved asset source"]
+    },
+    {
+      "id": "MAT-REF-CONCRETE",
+      "name": "Concrete - Generic",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_material_name": "S-Concrete-Generic",
+      "primary_classification": "Structural",
+      "secondary_classification": "Structure / Concrete",
+      "documentation_graphics": {
+        "projection_pattern": "fine speckle",
+        "projection_color": "Grey 40%",
+        "cut_pattern": "diagonal hatch",
+        "cut_color": "Black",
+        "candidate_transparency": "0%"
+      },
+      "unresolved": ["approved material identity", "approved hatch identity", "approved color values", "approved line/graphics relationship"]
+    },
+    {
+      "id": "MAT-REF-SCENIC-PAINT-FLAT-DEEP-BLUE",
+      "name": "Scenic Paint - Flat Deep Blue",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_material_name": "SH-Scenic-Paint-Flat-DeepBlue",
+      "primary_classification": "Scenic / Show",
+      "secondary_classification": "Coatings / Finish",
+      "render_appearance": {
+        "candidate_asset_name": "Paint_Flat_DeepBlue_v1",
+        "candidate_color_reference": "#1E3A8A",
+        "working_guidance": "color-only material example; palette authority remains unresolved"
+      },
+      "unresolved": ["approved palette reference", "approved naming tokens", "approved asset identity"]
+    },
+    {
+      "id": "MAT-REF-GLASS-TRANSPARENT",
+      "name": "Glass - Transparent",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_material_name": "Glass-Transparent",
+      "documentation_graphics": {
+        "projection_pattern": "None",
+        "candidate_projection_color": "Cyan",
+        "cut_pattern": "None",
+        "candidate_transparency": "60-75%"
+      },
+      "working_guidance": "high transparency may aid glazing or guard readability in selected views; use governed filters/templates rather than element overrides",
+      "unresolved": ["approved color", "approved transparency", "approved category applicability"]
+    }
+  ],
+  "working_rules": [
+    "Material names should be neutral, reusable, human-readable, and machine-parseable.",
+    "Do not include client names or project numbers in material names.",
+    "Avoid duplicate synonyms for the same material concept.",
+    "Encode only attributes that materially drive documentation, visualization, specifications, analysis, or exchange.",
+    "Treat documentation graphics and render appearance as related but separate governed concerns.",
+    "Prefer shared render assets with real-world scale and controlled quality tiers over duplicated project-local assets.",
+    "Example texture-resolution guidance from the source is roughly 1-4K for high-visibility materials and 512-1K for background surfaces; this remains reference guidance, not an approved requirement."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-MATERIALS-001"],
+    "registries": ["TIVERIT-S4-REVIT-MATERIAL-DEFINITION-FIELDS-001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "7700481",
+    "source_version": 1,
+    "migration_note": "Useful material, graphics, naming, and render-appearance examples retained as non-authoritative working data. Organization/client/project identifiers removed."
+  }
+}

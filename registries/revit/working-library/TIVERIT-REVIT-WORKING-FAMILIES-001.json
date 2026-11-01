@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-FAMILIES-001",
+  "type": "registry",
+  "title": "Revit Working Library - Families",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S4", "S8"],
+  "entries": [
+    {
+      "id": "FAM-REF-LIGHTING-LINEAR",
+      "name": "Lighting Fixture - Ceiling Linear",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "category": "Lighting Fixtures",
+      "candidate_family_pattern": "E-Lighting-Fixture-<Mounting>-<Form>-<Series>",
+      "example_family_name": "E-Lighting-Fixture-Ceiling-Linear-SeriesA",
+      "type_pattern": "<Length> <CCT>/<CRI> <Output> <Optics>",
+      "example_types": ["4ft 3500K/90 1500lm Wide", "2ft 3000K/80 900lm Narrow"],
+      "working_guidance": [
+        "family names should identify category, mounting/condition and form without repeating type-level data",
+        "type names should encode selection-driving values such as size, output, performance and option code",
+        "avoid ambiguous labels such as Misc, Other or Test"
+      ],
+      "unresolved": ["approved discipline code", "approved series vocabulary", "approved unit conventions"]
+    },
+    {
+      "id": "FAM-REF-STRUCTURAL-FRAMING",
+      "name": "Structural Framing Family",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "category": "Structural Framing",
+      "candidate_family_pattern": "S-Framing-<Profile>-<Material>-<System>",
+      "example_family_name": "S-Framing-WideFlange-Steel-Primary",
+      "type_pattern": "W<Depth>x<WeightPerLength>",
+      "example_types": ["W18x35", "W21x44"],
+      "working_guidance": [
+        "align profile naming with type naming to avoid duplication",
+        "use consistent units across related types",
+        "keep narrative notes out of type names and place them in parameters"
+      ],
+      "unresolved": ["approved family identity", "approved structural naming vocabulary", "project unit policy"]
+    },
+    {
+      "id": "FAM-REF-GENERIC-ANNOTATION",
+      "name": "Generic Annotation Family",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "category": "Generic Annotations",
+      "candidate_family_pattern": "G-Annotation-<Purpose>-<ScaleRange>",
+      "example_family_names": ["G-Annotation-DetailTag-Fine", "G-Annotation-NoteLeader-All"],
+      "working_guidance": [
+        "annotation families should reference governed text and line styles",
+        "reuse approved families rather than creating near-duplicates",
+        "persistent family content should carry stable identity and change-control trace"
+      ],
+      "unresolved": ["approved annotation family catalogue", "approved scale vocabulary"]
+    }
+  ],
+  "working_rules": [
+    "Prefer reusable loadable family content over one-off modeled substitutes when the content is expected to recur.",
+    "Do not infer approval from the presence of a family example in this library.",
+    "Family and type naming should remain human-readable and machine-parseable.",
+    "Do not embed organization, client or project names in reusable family identities.",
+    "Parameter and material dependencies should be explicit where they affect scheduling, tagging, graphics or exchange."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-NAMING-001", "TIVERIT-BIM-INS-REVIT-MODELING-001"],
+    "registries": ["TIVERIT-S4-REVIT-FAMILY-CONTENT-FIELDS-001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "6651935",
+    "source_version": 1,
+    "migration_note": "Family and type examples retained as non-authoritative working data. Organization, client and project identifiers removed."
+  }
+}

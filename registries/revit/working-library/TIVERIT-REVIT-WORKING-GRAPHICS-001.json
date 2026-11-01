@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-GRAPHICS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Graphics",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S4"],
+  "entries": [
+    {
+      "id": "GFX-REF-CAT-STRUCTURAL-FRAMING",
+      "name": "Structural Framing Graphics",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "category": "Structural Framing",
+      "projection_line_weight": 3,
+      "cut_line_weight": 5,
+      "line_pattern": "Solid",
+      "color": "Black",
+      "working_guidance": "primary framing should read more strongly in cut than in projection",
+      "unresolved": ["approved numeric line weights", "plot-scale validation"]
+    },
+    {
+      "id": "GFX-REF-CAT-WALLS",
+      "name": "Wall Graphics",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "category": "Walls",
+      "projection_line_weight": 2,
+      "cut_line_weight": 5,
+      "line_pattern": "Solid",
+      "color": "Black",
+      "working_guidance": "cut fill or poche should coordinate with material graphics",
+      "unresolved": ["approved numeric line weights", "approved cut-fill behavior", "plot-scale validation"]
+    },
+    {
+      "id": "GFX-REF-CAT-DOORS",
+      "name": "Door Graphics",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "category": "Doors",
+      "projection_line_weight": 2,
+      "cut_line_weight": 3,
+      "line_pattern": "Solid",
+      "color": "Black",
+      "working_guidance": "coordinate plan representation with family swing and cut behavior",
+      "unresolved": ["approved numeric line weights", "family-specific cut behavior"]
+    },
+    {
+      "id": "GFX-REF-CAT-FLOORS",
+      "name": "Floor Graphics",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "category": "Floors",
+      "projection_line_weight": 2,
+      "cut_line_weight": 4,
+      "projection_pattern": "None",
+      "cut_pattern_guidance": "material-driven poche or fill",
+      "unresolved": ["approved numeric line weights", "approved material/fill mapping"]
+    },
+    {
+      "id": "GFX-REF-SUBCAT-DET-BOUNDARY",
+      "name": "DET_BOUNDARY",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "family_context": "General Details",
+      "intended_use": "main outline of detail components",
+      "projection_line_weight": 3,
+      "line_pattern": "Solid",
+      "color": "Black",
+      "unresolved": ["approved subcategory identity", "plot-scale validation"]
+    },
+    {
+      "id": "GFX-REF-SUBCAT-DET-HATCH",
+      "name": "DET_HATCH",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "family_context": "General Details",
+      "intended_use": "hatching or poche inside detail components",
+      "projection_line_weight": 1,
+      "line_pattern": "Solid",
+      "color": "50% Grey",
+      "unresolved": ["approved subcategory identity", "material-graphics relationship"]
+    },
+    {
+      "id": "GFX-REF-SUBCAT-DET-CENTERLINE",
+      "name": "DET_CENTERLINE",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "family_context": "General Details",
+      "intended_use": "equipment or assembly axes and centerlines",
+      "projection_line_weight": 1,
+      "line_pattern": "Center",
+      "color": "Black",
+      "working_guidance": "preserve centerline semantics rather than converting to a hidden-line convention",
+      "unresolved": ["approved subcategory identity"]
+    },
+    {
+      "id": "GFX-REF-SUBCAT-DET-PIPING",
+      "name": "DET_PIPING",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "family_context": "Building Services Details",
+      "intended_use": "piping detail items",
+      "projection_line_weight": 2,
+      "line_pattern": "Solid",
+      "color": "Black",
+      "unresolved": ["approved subcategory identity", "discipline graphics coordination"]
+    },
+    {
+      "id": "GFX-REF-PATTERN-CONCRETE-POCHE",
+      "name": "CONC-POCHE",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "pattern_type": "Drafting",
+      "typical_use": "concrete poche in details",
+      "candidate_scale": "1:1",
+      "unresolved": ["approved pattern identity", "density at intended print scales"]
+    },
+    {
+      "id": "GFX-REF-PATTERN-METAL-HATCH",
+      "name": "METAL-HATCH",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "pattern_type": "Drafting",
+      "typical_use": "metal infill or detail hatching",
+      "candidate_scale": "1:1",
+      "unresolved": ["approved pattern identity", "detail-library coordination"]
+    }
+  ],
+  "working_rules": [
+    "Object Styles should provide the stable category/subcategory baseline where applicable.",
+    "View Templates should carry repeatable view-purpose presentation behavior.",
+    "Filters should carry condition-based semantic overrides such as system, phase, or rating.",
+    "Direct per-view and per-element graphic overrides should remain exceptional and traceable.",
+    "Cut graphics normally read stronger than projection graphics when that hierarchy improves documentation legibility.",
+    "Numeric line weights, colors, and patterns in this library are reference values until verified and promoted."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-GRAPHICS-001"],
+    "registries": ["TIVERIT-S4-REVIT-GRAPHICS-CONTROL-FIELDS-001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "6193190",
+    "source_version": 1,
+    "migration_note": "Useful category, subcategory, pattern, and cut/projection examples retained as non-authoritative working data. Organization/client/project identifiers removed."
+  }
+}
