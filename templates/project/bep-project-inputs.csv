@@ -30,11 +30,26 @@ proposed_software_versions,,TBC,pre-appointment BEP/IT schedule,
 proposed_hardware,,TBC,pre-appointment BEP/IT schedule,
 proposed_it_infrastructure,,TBC,pre-appointment BEP/IT schedule,
 security_approach,,TBC,security applicability/project requirements,
-task_team_capability_assessments,,TBC,task-team pre-appointment assessment evidence,separate source assessment for each task team
-information_management_capability,,TBC,task-team assessment,experience staffing education and training
-information_production_capability,,TBC,task-team assessment,experience staffing education and training
-it_capability_capacity,,TBC,task-team assessment,software hardware infrastructure capacity utilization support and service arrangements
-delivery_team_capability_capacity_summary,,TBC,prospective lead appointed party,aggregation of task-team assessments
+task_team_capability_assessments,,TBC,ISO 19650-2:2018 5.3.3/separate task-team evidence,one assessment per task team; do not replace with delivery-team aggregate
+capability_assessment_basis_eir,,TBC,appointing-party EIR,assessment must address ability to deliver against applicable exchange information requirements
+capability_assessment_basis_preappointment_bep,,TBC,delivery-team proposed pre-appointment BEP,assessment must address ability to deliver against proposed BEP
+information_management_experience,,TBC,task-team assessment,relevant experience of task-team members managing information in accordance with proposed information delivery strategy
+information_management_staffing,,TBC,task-team assessment,number of task-team members with relevant information-management experience
+information_management_education_training,,TBC,task-team assessment,relevant education and training available to task-team members
+information_production_experience,,TBC,task-team assessment,relevant experience of task-team members producing information in accordance with project production methods and procedures
+information_production_staffing,,TBC,task-team assessment,number of task-team members with relevant information-production experience
+information_production_education_training,,TBC,task-team assessment,relevant education and training available to task-team members
+it_proposed_schedule_alignment,,TBC,task-team assessment,availability of IT against proposed IT schedule
+it_hardware_specification_quantity,,TBC,task-team assessment,specification and quantity of task-team hardware
+it_infrastructure_architecture,,TBC,task-team assessment,architecture of task-team IT infrastructure
+it_infrastructure_maximum_capacity,,TBC,task-team assessment,maximum capacity of task-team IT infrastructure
+it_infrastructure_current_utilization,,TBC,task-team assessment,current utilization of task-team IT infrastructure
+it_support_service_levels,,TBC,task-team assessment,associated support and service-level arrangements
+information_management_capability,,TBC,task-team assessment,derived assessment outcome supported by information-management experience staffing education and training
+information_production_capability,,TBC,task-team assessment,derived assessment outcome supported by information-production experience staffing education and training
+it_capability_capacity,,TBC,task-team assessment,derived assessment outcome supported by IT schedule hardware infrastructure capacity utilization and support evidence
+task_team_capability_capacity_outcome,,TBC,task-team assessment,overall task-team assessment outcome against EIR and proposed pre-appointment BEP
+delivery_team_capability_capacity_summary,,TBC,prospective lead appointed party,ISO 19650-2:2018 5.3.4 aggregation of separate task-team assessments
 mobilization_plan,,TBC,pre-appointment tender response,approach timescales and responsibilities
 mobilization_testing_production_methods,,TBC,mobilization plan,
 mobilization_testing_task_team_exchanges,,TBC,mobilization plan,
