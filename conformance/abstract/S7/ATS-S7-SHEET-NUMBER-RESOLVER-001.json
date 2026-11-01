@@ -35,132 +35,147 @@
     },
     {
       "id": "TS-SHEET-002",
-      "name": "Client A / Project AAA enlarged floor plan with unresolved governed-CDE identity grammar",
+      "name": "Project AAA evidenced enlarged floor plan",
       "input": {
         "profile": "PROFILE-CLIENT-PROJECT-001",
-        "project_stage": "stage_4",
-        "lod": "300",
-        "project_phase": "phase_a",
-        "work_condition": "proposed",
-        "zone_or_area": "Zone A",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
         "discipline": "architecture",
-        "information_form": "drawing",
+        "discipline_code": "A",
         "content_class": "large_scale_view",
         "content_subtype": "enlarged_floor_plan",
-        "level_or_location": "project_defined",
-        "title": "Zone A - Enlarged Floor Plan"
+        "sequence": "0001"
       },
       "expected": {
-        "identity": null,
-        "gate": "unresolved",
-        "blocking": true,
-        "reason": "The semantic classification is resolvable, but the test intentionally withholds the governed project document-number grammar. The resolver must not fabricate it."
+        "authoring_sheet_identity": "AAA-A40001",
+        "content_series": "4",
+        "authoring_identity_gate": "pass",
+        "submission_identity_gate": "unresolved",
+        "reason": "The active project evidence resolves enlarged/large-scale views to series 4 and the authoring sheet grammar, but the exact post-export submission identity transformation is not supplied."
       }
     },
     {
       "id": "TS-SHEET-003",
-      "name": "Client A / Project AAA reflected ceiling plan does not become a project phase",
+      "name": "Project AAA evidenced reflected ceiling plan",
       "input": {
         "profile": "PROFILE-CLIENT-PROJECT-001",
-        "project_stage": "stage_5",
-        "lod": "350_or_400",
-        "project_phase": "phase_b",
-        "work_condition": "proposed",
-        "zone_or_area": "Building A",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
         "discipline": "architecture",
-        "information_form": "drawing",
+        "discipline_code": "A",
         "content_class": "plan",
         "content_subtype": "reflected_ceiling_plan",
-        "title": "Building A - Reflected Ceiling Plan"
+        "sequence": "0001",
+        "project_phase": "phase_b",
+        "project_stage": "stage_5",
+        "work_condition": "proposed"
       },
       "expected": {
-        "identity": null,
-        "gate": "unresolved",
-        "blocking": true,
+        "authoring_sheet_identity": "AAA-A60001",
+        "content_series": "6",
+        "authoring_identity_gate": "pass",
+        "submission_identity_gate": "unresolved",
         "assertions": [
-          "reflected_ceiling_plan remains a content subtype",
+          "reflected_ceiling_plan resolves to the evidenced series 6 only because the active project profile adopts that mapping",
           "project phase remains distinct from project stage",
-          "work_condition proposed remains distinct from both phase and stage"
+          "work_condition remains distinct from both phase and stage"
         ]
       }
     },
     {
       "id": "TS-SHEET-004",
-      "name": "Client A / Project AAA door schedule",
+      "name": "Project AAA evidenced schedule",
       "input": {
         "profile": "PROFILE-CLIENT-PROJECT-001",
-        "project_stage": "stage_5",
-        "project_phase": "phase_a",
-        "work_condition": "proposed",
-        "zone_or_area": "Building A",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
         "discipline": "architecture",
-        "information_form": "drawing",
+        "discipline_code": "A",
         "content_class": "schedule",
         "content_subtype": "door_schedule",
-        "title": "Building A - Door Schedule"
+        "sequence": "0001"
       },
       "expected": {
-        "identity": null,
-        "gate": "unresolved",
-        "blocking": true,
-        "reason": "Schedule semantics are known, but no unevidenced client/project sheet-series or governed-CDE identity range may be invented."
+        "authoring_sheet_identity": "AAA-A80001",
+        "content_series": "8",
+        "authoring_identity_gate": "pass",
+        "submission_identity_gate": "unresolved"
       }
     },
     {
       "id": "TS-SHEET-005",
-      "name": "Client A / Project AAA demolition plan",
+      "name": "Project AAA evidenced plan",
       "input": {
         "profile": "PROFILE-CLIENT-PROJECT-001",
-        "project_stage": "stage_5",
-        "project_phase": "project_defined",
-        "work_condition": "demolition",
-        "zone_or_area": "project_defined",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
         "discipline": "architecture",
-        "information_form": "drawing",
+        "discipline_code": "A",
         "content_class": "plan",
         "content_subtype": "floor_plan",
-        "title": "Demolition Floor Plan"
+        "sequence": "0001",
+        "work_condition": "demolition",
+        "project_stage": "stage_5"
       },
       "expected": {
-        "identity": null,
-        "gate": "unresolved",
-        "blocking": true,
+        "authoring_sheet_identity": "AAA-A10001",
+        "content_series": "1",
+        "authoring_identity_gate": "pass",
         "assertions": [
-          "demolition is work_condition, not project_stage",
-          "project stage remains project_stage",
-          "missing project identity grammar blocks CDE registration"
+          "demolition remains work_condition and does not change the evidenced plan series unless the governing project rule explicitly requires a separate identity treatment",
+          "project stage remains separate metadata unless the project grammar explicitly encodes it"
         ]
       }
     },
     {
       "id": "TS-SHEET-006",
-      "name": "Client A / Project AAA perspective",
+      "name": "Project AAA evidenced diagram or single-line sheet",
       "input": {
         "profile": "PROFILE-CLIENT-PROJECT-001",
-        "project_stage": "stage_4",
-        "project_phase": "phase_a",
-        "work_condition": "proposed",
-        "zone_or_area": "Zone B",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
         "discipline": "architecture",
-        "information_form": "drawing",
-        "content_class": "three_dimensional_representation",
-        "content_subtype": "perspective",
-        "title": "Zone B - Perspective"
+        "discipline_code": "A",
+        "content_class": "diagram",
+        "content_subtype": "single_line",
+        "sequence": "0001"
       },
       "expected": {
-        "identity": null,
-        "gate": "unresolved",
-        "blocking": true,
-        "reason": "Perspective is semantically classifiable; no unsupported client/project numeric series is assigned."
+        "authoring_sheet_identity": "AAA-A90001",
+        "content_series": "9",
+        "authoring_identity_gate": "pass",
+        "submission_identity_gate": "unresolved"
       }
     },
     {
       "id": "TS-SHEET-007",
-      "name": "Simplified fallback cannot activate while higher-precedence project authority is unresolved",
+      "name": "Submission information-form designation is a transformation, not sheet classification",
       "input": {
-        "known_project_context": "governed_cde",
-        "client": "Client A",
-        "cde": "governed_document_platform",
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "authoring_sheet_identity": "AAA-A40001",
+        "submission_information_form": "dwg",
+        "post_export_automation": true,
+        "submission_identity_grammar": null
+      },
+      "expected": {
+        "authoring_sheet_identity": "AAA-A40001",
+        "submission_identity": null,
+        "gate": "unresolved",
+        "blocking": true,
+        "assertions": [
+          "dwg is an information-form/deliverable designation and does not change enlarged_floor_plan classification",
+          "post-export automation may apply a governed transformation but does not define the grammar or authority",
+          "the exact submission identity shall not be invented"
+        ]
+      }
+    },
+    {
+      "id": "TS-SHEET-008",
+      "name": "Simplified fallback cannot override an evidenced project profile",
+      "input": {
+        "known_project_context": "governed_project_profile",
+        "active_profile": "PROFILE-CLIENT-PROJECT-001",
         "requested_profile": "PROFILE-SIMPLIFIED-001",
         "content_subtype": "enlarged_floor_plan"
       },
@@ -168,7 +183,7 @@
         "identity": null,
         "gate": "fail",
         "blocking": true,
-        "reason": "A known governed-CDE/client context exists. The simplified TIVERIT fallback cannot bypass unresolved higher-precedence requirements."
+        "reason": "An evidenced higher-precedence project convention exists. The simplified TIVERIT fallback cannot replace it."
       }
     }
   ]
