@@ -24,6 +24,28 @@ The curator must:
 8. Run schema/reference validation, executable conformance checks where applicable, and human-readable rendering before considering the curation pass complete.
 9. Keep project-specific or client-specific facts out of reusable canonical rules unless deliberately modeled as configurable/project-instance data.
 10. Escalate new normative or architectural choices to the repository owner when they are not already established by source authority or an accepted curator decision.
+11. Apply the Repository Freshness Gate before asserting that governed content is missing, contradictory, duplicated, or incomplete.
+
+## Repository Freshness Gate
+
+A repository gap or conflict claim is not curator-ready until the evaluator has checked the current canonical repository state during the current analysis session.
+
+For every repository gap analysis, the evaluator must:
+
+1. Resolve the canonical repository and its current default/canonical branch rather than relying on a previously used working branch, cached webpage, prior search result, or remembered repository state.
+2. Fetch and record the current canonical branch HEAD commit SHA used as the comparison baseline.
+3. Search the current baseline for the candidate concept and for plausible successor identities, including renamed objects, `legacy_ids`, supersession relationships, migration dispositions, forward declarations, merged/normalized objects, and project/configuration boundaries.
+4. Distinguish at minimum: `missing`, `migrated_or_renamed`, `superseded`, `partially_migrated`, `forward_declared`, `project_or_configuration_data`, and `unresolved`.
+5. Treat a comparison made only against a non-canonical or stale branch as source evidence, not as proof of a current repository gap.
+6. Re-run the repository check when canonical HEAD changes materially during a long-running audit before promoting findings into curator decisions.
+
+Every promoted repository-gap record must therefore include an evidence field equivalent to:
+
+```text
+evaluated_against: <repository>/<canonical-branch>@<commit-sha>
+```
+
+If the canonical repository, branch, or HEAD cannot be established, the result is `indeterminate_stale_or_unresolved_baseline`; the evaluator must not assert that the content is missing.
 
 ## Public contribution boundary
 
@@ -59,7 +81,9 @@ INBOX / SOURCE / OWNER REQUEST
         ↓
 TRIAGE
         ↓
-CONTEXT + DUPLICATE CHECK
+FRESHNESS GATE + CURRENT CANONICAL HEAD
+        ↓
+CONTEXT + DUPLICATE / LEGACY / MIGRATION CHECK
         ↓
 CLASSIFY GOVERNED MEANING
         ↓

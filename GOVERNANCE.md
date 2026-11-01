@@ -6,6 +6,19 @@ During migration, Confluence remains the source authority. GitHub contains migra
 
 After cutover, the canonical GitHub corpus becomes the governing source of truth.
 
+Formal cutover and repository release are related but separate governed acts. Release/version semantics are defined in `constitution/architecture/RELEASE-VERSION-GOVERNANCE.md`. A tag or release shall not silently perform source-authority cutover.
+
+## Release and version boundary
+
+Repository release versions, individual object versions, and object migration/status states are separate dimensions.
+
+- Governed repository releases use immutable `vMAJOR.MINOR.PATCH` tags and corresponding published release records.
+- Individual canonical objects retain stable IDs and may carry their own governed `version` and `effective_date` values.
+- Object states such as `migration_candidate`, `draft`, and `active` describe lifecycle/authority state rather than repository release version.
+- Before the first governed release, exact branch and commit SHA may identify an evidence snapshot but do not constitute a released standards version.
+
+See `constitution/architecture/RELEASE-VERSION-GOVERNANCE.md` and `CHANGELOG.md`.
+
 ## Public contribution model
 
 This repository separates public contribution from canonical authority.

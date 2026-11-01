@@ -1,0 +1,32 @@
+{
+  "id": "TIVERIT-CONFORMANCE-COVERAGE-001",
+  "type": "conformance_coverage_inventory",
+  "status": "generated_observation",
+  "authority": "informational",
+  "purpose": "Expose current ATS/ETS coverage without converting incomplete executable coverage into a conformance failure.",
+  "semantics": {
+    "instruction_direct_ats": "Counts only ATS objects whose governing_object_id is the instruction ID; semantic similarity is never inferred.",
+    "ats_ets": "Counts only ETS objects whose ats_id names the ATS.",
+    "no_direct_ats": "A visibility state, not a defect by itself.",
+    "no_ets": "A visibility state, not a defect by itself; human verification may remain legitimate where the ATS permits it.",
+    "coverage_is_not_authority": "The inventory reports repository relationships only and creates no requirement or implementation obligation."
+  },
+  "summary": {
+    "instruction_count": 17,
+    "instructions_with_direct_ats": 8,
+    "instructions_without_direct_ats": 9,
+    "ats_count": 33,
+    "ats_with_ets": 8,
+    "ats_without_ets": 25,
+    "ets_count": 8,
+    "ets_implementation_states": {
+      "specified_not_implemented": 7,
+      "verified": 1
+    },
+    "ets_with_callable_reference": 1
+  },
+  "generation": {
+    "script": "scripts/generate_conformance_coverage.py",
+    "method": "Repository-local relationship scan using governing_object_id and ats_id; no inferred semantic links."
+  }
+}

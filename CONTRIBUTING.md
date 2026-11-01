@@ -41,6 +41,14 @@ Useful submissions include:
 - proposed conformance tests;
 - examples that expose a gap in the current governance model.
 
+## Contribution rights
+
+By intentionally submitting material through the public Inbox contribution process, you represent that you have the right to submit it and grant TIVERIT permission to review, store, reproduce, normalize, modify, combine, validate, publish, redistribute, and incorporate it into the repository under the license applicable to the destination material, as described in `LICENSE.md`.
+
+Do not submit copyrighted, licensed, proprietary, client, or other third-party material unless you have the rights necessary for that submission and intended use. A citation or observation about an external source is preferable to copying protected source text into the public Inbox.
+
+Submission creates no standards authority and does not guarantee acceptance or promotion.
+
 ## Authority boundary
 
 Inbox material is not authoritative merely because it has been submitted or merged.
@@ -48,6 +56,8 @@ Inbox material is not authoritative merely because it has been submitted or merg
 The public Inbox is an intake channel. Promotion into standards, workflows, instructions, registries, configurations, schemas, conformance assets, guides, or other canonical areas is performed only through curator review.
 
 Canonical changes remain subject to repository governance, provenance, schema/reference validation, and curator approval.
+
+Repository licensing grants reuse rights where stated; it does not grant canonical write, promotion, approval, certification, or governance authority.
 
 ## Safety and privacy
 

@@ -45,6 +45,17 @@
       "content_boundary": "identity_status_abstract_preview_only"
     },
     {
+      "source_id": "ISO-19650-5-2020",
+      "publisher": "ISO",
+      "reference": "ISO 19650-5:2020",
+      "edition": 1,
+      "publication_year": 2020,
+      "lifecycle_status": "published_current_confirmed_2025",
+      "normative_use": "eligible_only_when_applicable_governing_instrument_incorporates_this_edition",
+      "public_locator": "https://www.iso.org/standard/74206.html",
+      "content_boundary": "identity_status_abstract_preview_only"
+    },
+    {
       "source_id": "ISO-DIS-19650-1-ED2",
       "publisher": "ISO",
       "reference": "ISO/DIS 19650-1",
@@ -80,8 +91,8 @@
   ],
   "provenance": {
     "source_system": "repository_curator",
-    "derived_from": "STAR-T-GATE-INBOX#11",
+    "derived_from": "STAR-T-GATE-INBOX#11; ISO 19650-5 identity added while resolving STAR-T-GATE-INBOX#13 FIND-SEC-004",
     "verification_date": "2026-11-01",
-    "verification_basis": "Official ISO public metadata checked during curation; no protected clause text imported."
+    "verification_basis": "Official ISO public metadata checked during curation; no protected clause text imported. ISO 19650-5:2020 Edition 1 was confirmed current in 2025."
   }
 }

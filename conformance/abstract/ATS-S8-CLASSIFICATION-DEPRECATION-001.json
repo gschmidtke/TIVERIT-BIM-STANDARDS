@@ -6,6 +6,7 @@
   "status": "migration_candidate",
   "system_role": "conformance",
   "modules": ["S8"],
+  "governing_object_id": "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
   "requirement_id": "REQ-S8-011",
   "governing_clause": "S8.4 Classification Systems / S8.6 Data Consistency & Integrity",
   "test_intent": "Verify that active project information does not rely on deprecated or superseded classification systems, code sets, codes, mappings, or carriers unless a governed transition/deviation explicitly permits that use.",

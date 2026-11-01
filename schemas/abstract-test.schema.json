@@ -4,18 +4,9 @@
   "title": "TIVERIT Abstract Test Specification",
   "type": "object",
   "required": [
-    "id",
-    "type",
-    "title",
-    "status",
-    "system_role",
-    "modules",
-    "test_intent",
-    "applicability",
-    "required_evidence",
-    "result_logic",
-    "permitted_implementation_classes",
-    "provenance"
+    "id", "type", "title", "status", "system_role", "modules",
+    "governing_object_id", "test_intent", "applicability", "required_evidence",
+    "result_logic", "permitted_implementation_classes", "provenance"
   ],
   "properties": {
     "$schema": {"type": "string", "minLength": 1},
@@ -32,8 +23,8 @@
       "minItems": 1,
       "uniqueItems": true
     },
-    "requirement_id": {"type": "string", "minLength": 1},
     "governing_object_id": {"type": "string", "minLength": 1},
+    "requirement_id": {"type": "string", "minLength": 1},
     "governing_clause": {"type": "string", "minLength": 1},
     "test_intent": {"type": "string", "minLength": 1},
     "applicability": {
@@ -79,11 +70,11 @@
       "additionalProperties": true
     }
   },
-  "oneOf": [
-    {"required": ["requirement_id"], "not": {"required": ["governing_object_id"]}},
-    {"required": ["governing_object_id"], "not": {"required": ["requirement_id"]}}
-  ],
   "allOf": [
+    {
+      "if": {"required": ["requirement_id"]},
+      "then": {"required": ["governing_object_id"]}
+    },
     {
       "if": {"properties": {"status": {"const": "active"}}, "required": ["status"]},
       "then": {
