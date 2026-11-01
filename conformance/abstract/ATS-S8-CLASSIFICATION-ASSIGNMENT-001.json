@@ -6,6 +6,7 @@
   "status": "migration_candidate",
   "system_role": "conformance",
   "modules": ["S8"],
+  "governing_object_id": "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001",
   "requirement_id": "REQ-S8-007",
   "governing_clause": "S8.4 Classification Systems",
   "test_intent": "Verify that classification values required for a declared information use resolve through a governed classification system/code set and are carried through the governed parameter or data-carrier mapping.",
