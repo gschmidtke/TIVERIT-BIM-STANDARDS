@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-ANNOTATION-001",
+  "type": "registry",
+  "title": "Revit Working Library - Annotation",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S4", "S8"],
+  "entries": [
+    {
+      "id": "ANN-REF-TEXT-GENERAL-NOTES",
+      "name": "Text - General Notes",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "intended_use": ["general notes", "keynote text", "legends"],
+      "alignment": "left",
+      "case": "Sentence",
+      "line_spacing_guidance": "about 1.15-1.2 times font size for paragraphs; single spacing for short notes",
+      "working_guidance": [
+        "use bullets or numbering for multi-line notes",
+        "avoid manual indentation and manual blank-line spacing",
+        "avoid decorative or platform-fragile fonts"
+      ],
+      "unresolved": ["approved font family", "paper text size", "approved annotation color"]
+    },
+    {
+      "id": "ANN-REF-TEXT-DIM-LEADER",
+      "name": "Text - Dimensions and Leaders",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "intended_use": ["dimension text", "leader notes", "spot elevations"],
+      "line_spacing_guidance": "single for dimension strings; about 1.0-1.1 for leaders",
+      "working_guidance": [
+        "maintain clearance from dimension lines",
+        "avoid overlap with tags and symbols"
+      ],
+      "unresolved": ["approved font family", "paper text size", "case convention", "approved annotation color"]
+    },
+    {
+      "id": "ANN-REF-TEXT-TITLES",
+      "name": "Text - Titles and Subtitles",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "intended_use": ["view titles", "detail titles", "section titles", "elevation titles"],
+      "case_guidance": "UPPER for titles; Sentence for subtitles",
+      "working_guidance": ["use a larger paper size than general notes", "avoid manual kerning"],
+      "unresolved": ["approved font family", "paper title size", "approved title color"]
+    },
+    {
+      "id": "ANN-REF-DIM-PLAN-OVERALL",
+      "name": "Dimension Style - Plan Overall",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "intended_use": "overall building or zone dimensions",
+      "rounding_guidance": "nearest whole or governed increment",
+      "tolerance_guidance": "nominal only unless a contract or project requirement governs tolerances",
+      "working_guidance": ["prefer baseline strings for repeated features", "avoid over-dimensioning"],
+      "unresolved": ["units", "precision", "tick or arrow style", "paper text size"]
+    },
+    {
+      "id": "ANN-REF-DIM-DETAIL-TIGHT",
+      "name": "Dimension Style - Detail Tight",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "intended_use": "detail callouts and sections where higher precision may be required",
+      "rounding_guidance": "round to the governed precision without biasing fit",
+      "tolerance_guidance": "show only where contractually or technically required",
+      "unresolved": ["units", "precision", "arrowhead type", "tolerance format"]
+    },
+    {
+      "id": "ANN-REF-TAG-DOOR",
+      "name": "Door Tag",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "appearance_guidance": "fixed paper-size text with frame; optional leader",
+      "candidate_parameters": ["Mark", "Type Mark"],
+      "working_guidance": ["coordinate with schedules", "avoid manual suffix text"],
+      "unresolved": ["approved family identity", "approved frame geometry", "approved parameter set"]
+    },
+    {
+      "id": "ANN-REF-TAG-EQUIPMENT",
+      "name": "Equipment Tag",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "appearance_guidance": "multi-line text; optional frame; leader allowed; fixed paper size",
+      "candidate_parameters": ["Mark or Asset ID", "Type", "Duty", "Voltage"],
+      "unresolved": ["discipline-specific parameter set", "approved family identity", "appearance rules"]
+    },
+    {
+      "id": "ANN-REF-TAG-GRID",
+      "name": "Grid Head",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "appearance_guidance": "circular fixed-size bubble with grid identity",
+      "candidate_parameters": ["Grid Name or Number"],
+      "unresolved": ["approved family identity", "bubble size", "text size"]
+    },
+    {
+      "id": "ANN-REF-TAG-LEVEL",
+      "name": "Level Head",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_parameters": ["Level Name", "Elevation Value"],
+      "working_guidance": ["coordinate displayed elevation basis with the governed project datum", "use consistent rounding and precision"],
+      "unresolved": ["approved family identity", "displayed elevation basis", "precision"]
+    },
+    {
+      "id": "ANN-REF-KEYNOTE-SPEC",
+      "name": "Spec-linked Keynote Pattern",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "pattern": "specification-linked code source",
+      "working_guidance": ["maintain one controlled master source", "prefer associative element or material keynoting over independent text"],
+      "unresolved": ["governing classification system", "master source location", "edit authority", "review cadence", "graphic style"]
+    },
+    {
+      "id": "ANN-REF-CODE-INTERNAL",
+      "name": "Controlled Internal Annotation Code Pattern",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "pattern": "compact controlled codes for repetitive notes or project-defined callouts",
+      "unresolved": ["approved code list", "owner", "storage location", "edit authority", "versioning policy"]
+    }
+  ],
+  "working_rules": [
+    "Use controlled text, dimension, tag, and symbol types rather than ad-hoc local variants.",
+    "Tolerance values remain project/BEP/contract dependent unless separately governed.",
+    "Tags should align with governed parameter identities and schedules.",
+    "New tag or annotation families remain candidates until their identity, parameter set, appearance, and approval path are established."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-ANNOTATION-001"],
+    "registries": ["TIVERIT-S4-REVIT-ANNOTATION-TYPE-FIELDS-001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "5799975",
+    "source_version": 1,
+    "migration_note": "Useful annotation examples retained as non-authoritative working data. Organization/client/project identifiers removed."
+  }
+}
