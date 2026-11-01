@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S7-SHEET-SEMANTIC-CLASSIFICATION-001",
+  "type": "registry",
+  "title": "Sheet and Drawing Semantic Classification",
+  "status": "curator_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S4", "S7", "S8"],
+  "purpose": "Classify sheet and drawing meaning independently from the identifier syntax used by an authority, client, CDE, or project.",
+  "principles": [
+    "Document identity is not the sole carrier of document meaning.",
+    "Project stage, work condition, spatial scope, discipline, information form, content class, content subtype, sequence, status/suitability, revision, and title are independent governed dimensions unless a higher authority explicitly combines them.",
+    "A lower-precedence profile may fill a missing definition but shall not silently override a higher-precedence requirement.",
+    "Project stage shall not be inferred from work condition, revision, status/suitability, or sheet title.",
+    "Work condition such as existing, demolition, proposed, future, or temporary shall not be treated as project stage.",
+    "Classification shall be resolved before first formal CDE registration where the document number becomes a governed project identity."
+  ],
+  "dimensions": [
+    {"id":"project","required":"project_profile"},
+    {"id":"originator","required":"project_profile"},
+    {"id":"project_stage","required":"project_profile","examples":["concept","preliminary","detailed_design","tender","contract_or_construction","as_built"]},
+    {"id":"work_condition","required":"when_applicable","examples":["existing","demolition","proposed","future","temporary","not_applicable"]},
+    {"id":"building_or_volume","required":"project_profile"},
+    {"id":"zone_or_area","required":"project_profile"},
+    {"id":"level_or_location","required":"project_profile"},
+    {"id":"discipline","required":"yes"},
+    {"id":"information_form","required":"yes","examples":["drawing","model","schedule_or_data","report"]},
+    {"id":"content_class","required":"drawing_only","examples":["general","plan","elevation","section","large_scale_view","detail","schedule","diagram","three_dimensional_representation"]},
+    {"id":"content_subtype","required":"when_governed","examples":["floor_plan","partial_floor_plan","enlarged_floor_plan","reflected_ceiling_plan","roof_plan","wall_section","enlarged_section","door_schedule","window_schedule","finish_schedule","equipment_schedule","perspective","isometric"]},
+    {"id":"sequence","required":"profile_defined"},
+    {"id":"status_or_suitability","required":"project_profile"},
+    {"id":"revision","required":"project_profile"},
+    {"id":"title","required":"yes"}
+  ],
+  "classification_rules": [
+    {"id":"SCR-001","rule":"Overall floor plans classify as plan unless a higher authority defines another class."},
+    {"id":"SCR-002","rule":"A partial floor plan created by splitting an overall plan for sheet size remains a plan unless a higher authority defines another class."},
+    {"id":"SCR-003","rule":"An enlarged room, unit, or local-area plan is distinct from a construction detail and shall be classified separately at subtype level even where a project maps both into the same numbering range."},
+    {"id":"SCR-004","rule":"Reflected ceiling plans remain plan content with a reflected_ceiling_plan subtype unless a governing profile explicitly assigns a separate class."},
+    {"id":"SCR-005","rule":"Door, window, finish, and equipment schedules classify as schedule content unless a governing profile explicitly assigns another class."},
+    {"id":"SCR-006","rule":"Perspectives and isometrics classify as three_dimensional_representation unless a governing profile explicitly assigns another class."},
+    {"id":"SCR-007","rule":"A project-specific numbering range does not redefine the semantic content class; the mapping is stored in the applicable numbering profile."}
+  ],
+  "open_research": [
+    "Confirm international and regional authority treatment for ambiguous drawing-content subtypes before promoting fallback numeric ranges.",
+    "Confirm Miral/UAE client-specific content classification and Aconex mappings from governing project evidence before creating a Miral profile."
+  ]
+}
