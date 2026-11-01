@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-MODEL-FILE-NAMING-001",
+  "type": "abstract_test",
+  "title": "Revit model file naming resolution",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-NAMING-001",
+  "governing_clause": "NAME-01 and NAME-02",
+  "test_intent": "Determine whether a Revit model filename can be constructed or validated from the canonical S4 container syntax plus governed or project-approved token values without inventing abbreviations, token order, delimiters, mutable identity dimensions or placeholders.",
+  "applicability": {
+    "applies_when": "A native Revit model file is being named, renamed, created, registered or validated as an information container.",
+    "not_applicable_when": "The tested item is not a Revit model file/information container."
+  },
+  "required_evidence": [
+    "SYNTAX-ISO19650-CONTAINER-001",
+    "TIVERIT-S4-REVIT-MODEL-FILE-NAMING-FIELDS-001 token/source record",
+    "applicable controlled vocabularies or project-approved code sets",
+    "project source for project code, originator, volume/system, level/location and sequence values",
+    "approved exception or platform mapping where applicable"
+  ],
+  "result_logic": {
+    "pass": "The filename conforms to the canonical seven-token root identity and every token value is traceable to a governed vocabulary or project-approved source; any platform-specific label preserves the canonical identity mapping.",
+    "fail": "The filename violates the available canonical syntax, uses an unauthorized token order/delimiter, embeds mutable status/revision as root identity, or uses invented/unapproved token values where governed values are available.",
+    "not_applicable": "The tested item is not a Revit model file/information container.",
+    "indeterminate": "The canonical syntax is known but one or more required project token values or applicable controlled vocabularies are unavailable or unresolved."
+  },
+  "permitted_implementation_classes": ["registry_checker", "file_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "STAR-T-GATE Inbox #10, TIVERIT-S4-NAMING-SYNTAXES-001 and TIVERIT-S4-REVIT-MODEL-FILE-NAMING-FIELDS-001",
+    "migration_note": "Closes the Revit model-file routing/conformance gap while preserving project-instance code authority. Missing project codes remain indeterminate rather than being invented."
+  }
+}
