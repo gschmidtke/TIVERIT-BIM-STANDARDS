@@ -1,0 +1,48 @@
+{
+  "id": "TIVERIT-ISO19650-ALIGNMENT-MAP-001",
+  "type": "external_standard_alignment_map",
+  "status": "migration_candidate",
+  "authority": "informational_alignment",
+  "external_registry_id": "TIVERIT-EXTERNAL-STANDARDS-REGISTRY-001",
+  "governance_contract": "constitution/architecture/EXTERNAL-STANDARDS-GOVERNANCE.md",
+  "evaluated_against": "gschmidtke/TIVERIT-BIM-STANDARDS/main@63dfc33b742de8031c70fa8c9bf643966f946442",
+  "relationship_types": [
+    "implements",
+    "supports",
+    "aligned_with",
+    "partially_aligned_with",
+    "depends_on",
+    "more_restrictive_than",
+    "project_specific_extension_of",
+    "potential_conflict_with",
+    "superseded_when_external_requirement_applies",
+    "not_yet_verified"
+  ],
+  "required_mapping_fields": [
+    "tiverit_object_id",
+    "tiverit_requirement_id",
+    "external_source_id",
+    "external_edition",
+    "external_clause_reference_if_lawfully_known",
+    "relationship_type",
+    "applicability_condition",
+    "alignment_basis",
+    "verification_source",
+    "verification_date",
+    "confidence",
+    "copyright_exposure",
+    "curator_status"
+  ],
+  "mappings": [],
+  "rules": {
+    "empty_map_semantics": "No TIVERIT-to-ISO alignment claims have yet been verified under this gateway. Empty does not mean conflict or nonconformance.",
+    "no_inference": "Do not infer a mapping from terminology similarity or from the existence of an ISO reference.",
+    "applicability_required": "A mapping does not make the external standard applicable to a project. Applicability must be established independently by a governing instrument.",
+    "exact_clause_boundary": "If an exact protected clause must be verified and authorized access is unavailable, record not_yet_verified rather than inventing or reconstructing the clause."
+  },
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "STAR-T-GATE-INBOX#11",
+    "migration_note": "Creates the alignment mechanism without asserting any unverified ISO-to-TIVERIT equivalence."
+  }
+}
