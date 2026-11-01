@@ -14,8 +14,8 @@
     },
     {
       "finding_id": "FIND-ATS-LINK-002",
-      "disposition": "confirmed_schema_normalization_gap",
-      "notes": "ATS objects must expose a machine-resolvable governing link consistently. Normalize linkage without changing the underlying normative requirement."
+      "disposition": "normalized_in_branch_pending_ci",
+      "notes": "The audit correctly identified two ATS linkage conventions. The schema now requires governing_object_id on every ATS. The ten requirement-only ATS retain requirement_id as their bounded secondary locator and now also identify their canonical parent governing object. A dedicated CI validator resolves every ATS governing_object_id and any requirement_id against the canonical ID graph. This changes conformance linkage only and does not alter the underlying normative requirements."
     },
     {
       "finding_id": "FIND-CONF-COV-003",
