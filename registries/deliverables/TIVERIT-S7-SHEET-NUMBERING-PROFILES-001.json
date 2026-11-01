@@ -54,13 +54,33 @@
     {
       "id": "PROFILE-MIRAL-UAE-001",
       "name": "UAE / Miral Project Numbering",
-      "status": "evidence_required_not_active",
+      "status": "partial_project_evidence_not_numbering_active",
       "parent": "PROFILE-GOVERNED-CDE-001",
-      "selection": "Do not activate from country or client name alone. Requires governing Miral/project document-control, EIR/project-information-standard, BEP, or Aconex configuration evidence.",
+      "authority_type": "client_and_project_specific",
+      "selection": "Do not activate a document-number grammar from country or client name alone. Activate only when the governing Miral/project document-control, EIR/project-information-standard, approved BEP, or contractual Aconex configuration defines the required identity fields and codes.",
+      "evidence_boundary": {
+        "confirmed": [
+          "For the Warner Bros. World Abu Dhabi Expansion project reviewed in 2026, Aconex is the contractual CDE while BIM 360/ACC is used for collaboration/markups; the detailed interface was recorded as still to be concluded with the GC after award.",
+          "The project BEP describes the Harry Potter Expansion as phases 2A and 2B; project phase is therefore a real project classification dimension and shall not be inferred from document status or work condition.",
+          "The Miral LOIN framework uses RIBA Stage 2 through Stage 6 with LOD progression; stage/LOD is governed project information but is not evidence that stage belongs inside the document number.",
+          "The project has granular zone/sub-zone naming and discipline structures; these may supply semantic classification only where the governing project source explicitly defines them.",
+          "Some naming matters remained disputed/open in the BEP comments process, so a tracker status of closed is insufficient evidence by itself for canonical numbering rules."
+        ],
+        "not_yet_confirmed": [
+          "A canonical Miral enterprise sheet/drawing number field order.",
+          "A canonical WBX Aconex document-number grammar for drawings.",
+          "Whether project phase 2A/2B or RIBA stage is encoded in the document number versus metadata only.",
+          "Canonical sheet-content numeric ranges for plans, enlarged plans, RCPs, details, schedules, perspectives, or other drawing subtypes.",
+          "A stable project-wide code set for every WBX zone/sub-zone and discipline suitable for publication as a reusable Miral profile."
+        ]
+      },
       "rules": [
         "Do not generalize a project-specific Miral convention into a UAE national convention.",
-        "Do not infer field order, codes, content ranges, project stage encoding, or Aconex metadata from memory or job title.",
-        "Once evidence is curated, map it to the common semantic classification rather than redefining semantic classes."
+        "Do not infer field order, codes, content ranges, project stage encoding, or Aconex metadata from memory, historical project practice, or job title.",
+        "Treat Aconex as the contractual CDE implementation for the evidenced WBX project, not as the upstream authority that defines Miral's requirements.",
+        "Preserve project phase/stage, work condition, zone/sub-zone, discipline, content class/subtype, status/suitability, revision, and title as separate semantic dimensions until governing evidence explicitly maps them into identity fields.",
+        "If the document-number grammar remains unresolved, the pre-registration gate returns unresolved and blocks generation of a supposedly compliant Miral/Aconex number.",
+        "Once additional governing evidence is curated, map it to the common semantic classification rather than redefining semantic classes."
       ]
     },
     {
