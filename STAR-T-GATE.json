@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "id": "STAR-T-GATE-NODE-STANDARDS-001",
   "type": "star_t_gate_repository_node",
   "status": "integration_draft",
@@ -28,14 +28,7 @@
     "execution_success_as_authority"
   ],
   "ecosystem": {
-    "routing_order": [
-      "USG",
-      "STANDARDS",
-      "ARPL",
-      "API_CAPABILITY",
-      "EXECUTION",
-      "VALIDATION"
-    ],
+    "routing_order": ["USG", "STANDARDS", "ARPL", "API_CAPABILITY", "EXECUTION", "VALIDATION"],
     "nodes": {
       "USG": "https://github.com/gschmidtke/USG",
       "STANDARDS": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS",
@@ -59,7 +52,18 @@
     "direct_public_write_to_governed_repository": false,
     "fallback_if_http_post_unavailable": "Return a complete STAR-T-GATE Inbox-compatible JSON payload to the user; do not invent an alternate direct-write route.",
     "authority": "uncurated_evidence",
-    "rule": "The Worker transports and records evidence; it does not decide truth, authority, promotion, or governance. Submission does not create governing knowledge."
+    "rule": "The Worker transports and records evidence; it does not decide truth, authority, promotion, priority, or governance. Submission does not create governing knowledge."
+  },
+  "candidate_triage": {
+    "schema": "schemas/candidate-record.schema.json",
+    "registry": "registries/curation/TIVERIT-CANDIDATE-TRIAGE-001.json",
+    "workflow": "workflows/governance/TIVERIT-WF-CANDIDATE-PROMOTION-001.json",
+    "template": "templates/candidate-record.template.json",
+    "core_rule": "Classify and route before scoring. Priority determines investigation order; promotion readiness determines whether promotion is permitted; authority/class determines where the item belongs.",
+    "priority_order": ["P0", "P1", "P2", "P3", "P4"],
+    "routing_targets": ["STANDARDS", "BEP", "PROJECT_CONFIGURATION", "TOOL_CONFIGURATION", "ARPL", "USG", "EVIDENCE_LEDGER", "HOLD"],
+    "vagueness_rule": "Missing material authority, evidence, references, scope, RACI, project values, or configuration remains explicit and unresolved. Do not infer defaults solely to complete a candidate record.",
+    "example_boundary": "A newly applicable ISO/EN requirement may be P0/P1 Standards work but still evidence_required. A Navisworks export setting is normally BEP/project/tool configuration and does not compete as an equivalent Standards candidate unless a durable governing requirement is separately established."
   },
   "curation_handoff": {
     "source_queue": "https://github.com/gschmidtke/STAR-T-GATE-INBOX/issues",
@@ -72,13 +76,17 @@
       "READ_INBOX_ITEM",
       "ESTABLISH_PROVENANCE",
       "CHECK_CURRENT_GOVERNED_STATE",
-      "CLASSIFY",
+      "CREATE_OR_UPDATE_CANDIDATE_RECORD",
+      "CLASSIFY_CANDIDATE",
+      "ROUTE_CANDIDATE",
+      "RATE_IMPORTANCE",
+      "ASSESS_PROMOTION_READINESS",
       "CHECK_DUPLICATE",
-      "SELECT_TARGET_REPOSITORY",
       "LOAD_TARGET_CURATOR_CONTRACT",
+      "GATHER_REQUIRED_EVIDENCE",
       "EVALUATE",
       "NORMALIZE",
-      "CREATE_TARGET_REPOSITORY_CHANGE",
+      "CREATE_TARGET_REPOSITORY_CHANGE_IF_READY",
       "VALIDATE",
       "RECORD_CURATION",
       "LINK_BACK_TO_INBOX_ITEM",
@@ -87,22 +95,30 @@
     "dispositions": [
       "promoted",
       "partially_promoted",
+      "project_configuration",
+      "tool_configuration",
       "evidence_retained",
       "resolved_by_current_state",
       "duplicate",
+      "superseded",
       "rejected",
       "held_unresolved"
     ],
     "close_rule": "Closing an Inbox issue records curator disposition; it does not erase or retroactively authorize the submitted evidence.",
     "target_contracts": [
       "CURATION.md",
-      "constitution/architecture/CONTENT-CLASSIFICATION-DOCTRINE.md"
+      "constitution/architecture/CONTENT-CLASSIFICATION-DOCTRINE.md",
+      "registries/curation/TIVERIT-CANDIDATE-TRIAGE-001.json",
+      "workflows/governance/TIVERIT-WF-CANDIDATE-PROMOTION-001.json"
     ],
     "rules": [
       "Inbox evidence is not authority.",
       "Preserve provenance.",
-      "Do not silently resolve conflicts.",
+      "Do not silently resolve conflicts or vagueness.",
       "A submitted target is a routing hint, not authority.",
+      "Classify and route before scoring candidate importance.",
+      "Priority is not promotion readiness.",
+      "Project and tool configuration do not become Standards merely because they are useful or repeated.",
       "Standards classification and curation rules govern promotion into Standards.",
       "Canonical change requires repository validation and required owner/professional decisions."
     ]
