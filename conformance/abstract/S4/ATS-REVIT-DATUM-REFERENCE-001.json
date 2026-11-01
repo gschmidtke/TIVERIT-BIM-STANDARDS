@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-DATUM-REFERENCE-001",
+  "type": "abstract_test",
+  "title": "Revit governed levels, grids, scope boxes, and reference elements",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S6"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-LEVELS-GRIDS-001",
+  "governing_clause": "DATUM-01, DATUM-02, DATUM-03 and DATUM-04",
+  "test_intent": "Determine whether applicable Revit levels, grids, scope boxes, and reference planes resolve to governed project datum/reference sources, naming and purpose rules, and controlled graphics without unexplained duplicates, offsets, temporary residue, or local drift.",
+  "applicability": {
+    "applies_when": "The tested Revit model contains levels, grids, scope boxes, reference planes, or equivalent governed datum/reference objects.",
+    "not_applicable_when": "No governed datum/reference object is present in the tested scope."
+  },
+  "required_evidence": [
+    "applicable project datum, level, grid, survey/control, or coordination source",
+    "inventory of levels, grids, scope boxes, and reference planes in the tested scope",
+    "applicable governed naming or project configuration for persistent datum/reference objects",
+    "cross-model comparison evidence where shared datum/grid alignment is required",
+    "applicable graphics/view-template state for datum representation",
+    "approved exception or temporary-object records where applicable"
+  ],
+  "result_logic": {
+    "pass": "Applicable datum/reference objects match the available authoritative project source and governed naming/purpose rules; required cross-model alignment is maintained; persistent objects have justified purpose; temporary objects are resolved for the applicable issue state; and datum graphics use governed controls or approved exceptions.",
+    "fail": "A positive violation is found, including a level or grid that conflicts with an available authoritative source, unexplained duplicate or near-duplicate datum, unapproved local offset or competing grid system, persistent unnamed/unjustified reference object, unresolved temporary datum at an applicable issue gate, or unexplained graphics override against an available governed rule.",
+    "not_applicable": "No governed datum/reference object is within the tested scope.",
+    "indeterminate": "The authoritative project datum/grid source, applicable naming configuration, expected scope-box/reference purpose, or other evidence required to determine conformance is unavailable or incomplete."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-LEVELS-GRIDS-001; TIVERIT-S4-REVIT-DATUM-REFERENCE-FIELDS-001",
+    "migration_note": "Appendix E ATS for Revit datum/reference conformance. Source example level names, grid schemes, scope-box names, reference-plane names, spacing values, and graphics remain noncanonical; missing project configuration produces an indeterminate result rather than invented authority."
+  }
+}
