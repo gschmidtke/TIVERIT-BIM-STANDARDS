@@ -12,30 +12,45 @@
   "automation_readiness": "ASSISTED",
   "entry_conditions": [
     "The project collaboration environment is being provisioned.",
-    "Applicable folder, permission, and baseline-publication requirements are known or explicitly unresolved."
+    "Applicable folder, permission, information-state, and baseline-publication requirements are known or explicitly unresolved.",
+    "Where baseline information is to enter a decision-bearing Shared or Published state, the governing decision type, authority basis, authorized role or party, and required evidence are known or explicitly unresolved."
   ],
   "steps": [
     {"id":"I1.2.001","action":"Create the governed folder structure required for the project."},
-    {"id":"I1.2.002","action":"Assign permissions and role-based access."},
-    {"id":"I1.2.003","action":"Publish baseline files and the associated transmittal note."},
-    {"id":"I1.2.004","action":"Verify access and the resulting audit trail."}
+    {"id":"I1.2.002","action":"Assign permissions and role-based access. Platform capability shall not by itself be treated as decision authority."},
+    {"id":"I1.2.003","action":"Configure the applicable CDE information-state mappings and keep them distinct from coordination, review, authorization, acceptance, milestone, contractual, statutory, construction, handover, or operational decision states."},
+    {"id":"I1.2.004","action":"Stage baseline files and the associated transmittal information in the governed CDE without inferring authorization or acceptance from folder location, status label, platform permission, or upload action."},
+    {"id":"I1.2.005","action":"Where the baseline is to be promoted into a decision-bearing Shared or Published state, verify the applicable decision type, authority basis, authorized role or party, and required evidence before executing the transition. If any required authority element is unresolved, hold the transition as unresolved rather than inferring authority."},
+    {"id":"I1.2.006","action":"Execute the permitted CDE transition and preserve traceability from the resulting information state to the governing decision, authority basis, authorized actor, decision evidence, and transmittal or release record."},
+    {"id":"I1.2.007","action":"Verify access, resulting information state, decision evidence, and audit trail."}
   ],
   "outputs": [
     "Provisioned project CDE structure",
     "Applied role-based access",
-    "Published baseline information",
-    "Access and audit evidence"
+    "Configured information-state mappings",
+    "Staged baseline information",
+    "Governed baseline transition or explicitly unresolved transition",
+    "Decision, authority, transmittal, access, and audit evidence"
   ],
   "governance_notes": [
     "The source identifies the CDE Structure Standard and a future Permission Matrix as supporting governance.",
-    "This object does not supersede the existing S3 ACC onboarding workflow; reconciliation between generic W1.2 source logic and platform-specific onboarding remains a migration task."
+    "W1.2 provisions and initializes the CDE; it does not create project authority to approve, authorize, accept, sign off, or release information.",
+    "CDE information state and decision state are separate dimensions. A Shared or Published state shall not by itself prove coordination sign-off, formal authorization, appointing-party acceptance, milestone approval, contractual acceptance, statutory approval, construction release, handover acceptance, or operational acceptance.",
+    "The applicable decision authority is instantiated from the governing appointment, contract, appointing-party requirements, BEP, RACI, or other authorized project governance. Missing authority remains unresolved and shall not be defaulted to the Project BIM Manager, CDE Manager, Information Manager, or a platform administrator.",
+    "Technical permission to move, upload, publish, transmit, or change status in the platform is not equivalent to professional, contractual, statutory, or project decision authority.",
+    "This object does not supersede the existing S3 ACC onboarding workflow; generic W1.2 logic and platform-specific onboarding shall preserve the same separation between platform capability, information state, decision state, and decision authority."
   ],
+  "relationships": {
+    "registries": ["TIVERIT-S3-CDE-STATES-001", "TIVERIT-S3-PLATFORM-PERMISSIONS-001"],
+    "workflows": ["TIVERIT-S3-ACC-ONBOARDING-001"],
+    "standards": ["TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001"]
+  },
   "provenance": {
     "source_system": "confluence",
     "space": "BST",
     "page_id": "6127632",
     "source_version": 1,
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632",
-    "migration_note": "Source workflow W1.2 migrated from the workflow catalogue. Future Permission Matrix remains unresolved."
+    "migration_note": "Source workflow W1.2 migrated from the workflow catalogue. Curator reconciliation separates CDE provisioning and technical transition capability from decision authority; Future Permission Matrix remains unresolved."
   }
 }
