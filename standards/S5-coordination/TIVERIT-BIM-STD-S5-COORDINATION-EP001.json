@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S5-COORDINATION-EP001",
+  "type": "standard",
+  "title": "Coordination, Review & Sign-Off",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S5"],
+  "requirements": [
+    {"id":"S5-REQ-001","authority":"shall","statement":"Coordination activities shall be organized around distinct coordination stages or gates aligned to delivery milestones defined under S2.","verification_class":"machine_assisted"},
+    {"id":"S5-REQ-002","authority":"shall","statement":"All models subject to coordination shall be federated in a common, verified coordinate system before coordination checks are performed.","verification_class":"machine_checkable"},
+    {"id":"S5-REQ-003","authority":"shall","statement":"Coordination checks shall use defined check types, priorities, and tolerances documented in the project ruleset.","verification_class":"machine_checkable"},
+    {"id":"S5-REQ-004","authority":"shall","statement":"Coordination issues shall be uniquely identified, classified by priority and type, assigned to an identifiable responsible party, and tracked through a governed status progression.","verification_class":"machine_checkable"},
+    {"id":"S5-REQ-005","authority":"shall","statement":"A coordination sign-off shall be recorded at each governed coordination gate.","verification_class":"machine_checkable"},
+    {"id":"S5-REQ-006","authority":"shall","statement":"The Project BIM Manager, or delegated role per project RACI, shall hold approval authority for coordination sign-off.","verification_class":"human_verifiable"},
+    {"id":"S5-REQ-007","authority":"shall","statement":"Coordination check results, issue logs, and sign-off records shall be maintained as auditable evidence.","verification_class":"machine_checkable"},
+    {"id":"S5-REQ-008","authority":"shall","statement":"Unresolved coordination issues that cannot be resolved within the coordination cycle shall follow a defined escalation route.","verification_class":"human_verifiable"},
+    {"id":"S5-REQ-009","authority":"shall","statement":"A finding shall be treated as a governed coordination or compliance issue only when the applicable scope, governing expectation, due or milestone context, and authorized issue origin are explicitly identifiable.","verification_class":"machine_assisted"},
+    {"id":"S5-REQ-010","authority":"shall_not","statement":"Findings that do not satisfy issue-admissibility conditions shall not be reported as overdue obligations, compliance failures, or performance metrics; they shall remain observations or review feedback until governed conditions are met.","verification_class":"machine_assisted"},
+    {"id":"S5-REQ-011","authority":"shall","statement":"QA/QC evaluation shall first establish that the information is valid for evaluation in its current declared context, phase, and purpose before testing it against compliance expectations.","verification_class":"human_verifiable"},
+    {"id":"S5-REQ-012","authority":"shall","statement":"Continuous monitoring, expectation-based QA/QC, and milestone QA/QC shall be distinguished by purpose and consequence: continuous monitoring produces readiness signals, expectation-based QA/QC tests declared expectations, and milestone QA/QC supports governed issue, sign-off, or release decisions at declared gates.","verification_class":"human_verifiable"},
+    {"id":"S5-REQ-013","authority":"shall","statement":"QA/QC findings shall have consequence only within the reviewer's governed role, review scope, information state, and declared authority; findings outside those bounds shall remain observations pending appropriate governance action.","verification_class":"human_verifiable"},
+    {"id":"S5-REQ-014","authority":"shall_not","statement":"Dashboards, metrics, reports, or coordination views shall not create approval authority or redefine the governing status of underlying information; they are derived evidence and visibility mechanisms only.","verification_class":"machine_assisted"}
+  ],
+  "stage_model": [
+    "Input Federation & Coordinate Verification",
+    "Clash Detection & Issue Identification",
+    "Review, Prioritization & Decision-Making",
+    "Authoring Remediation & Pre-Publish QA",
+    "Validation, Closure & Coordination Sign-Off"
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001","TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S5-MILESTONE-VS-EXCHANGE-EP001"],
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001","ROLE-DISCIPLINE-LEAD-001","ROLE-BIM-DETAILER-001","ROLE-DESIGN-LEAD-001","ROLE-MODEL-AUTHOR-001","ROLE-QAQC-AUTHORITY-001"]
+  },
+  "implementation_boundary": "This L4 standard is tool-agnostic. ACC, Navisworks, folder paths, export presets, numeric project tolerances, and issue-platform mechanics are implementation/project rules and are not elevated into enterprise doctrine.",
+  "provenance": {
+    "source_system":"confluence",
+    "space":"BST",
+    "source_pages":["3014761","4784129","2326562"],
+    "source_version":"1.0",
+    "source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3014761",
+    "migration_note":"Machine-readable core reconciled with active narrative material and enriched from source issue-admissibility and contextual QA/QC doctrine. Source-specific organizational and contractual assertions were generalized; project-level authority remains governed by S1, BEP/RACI, and appointment context."
+  }
+}
