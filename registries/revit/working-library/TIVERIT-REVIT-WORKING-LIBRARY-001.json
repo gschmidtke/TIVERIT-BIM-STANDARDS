@@ -6,7 +6,7 @@
   "status": "migration_candidate",
   "authority": "informational",
   "layer": "L7",
-  "modules": ["S4", "S5", "S8"],
+  "modules": ["S4", "S5", "S6", "S7", "S8"],
   "entries": [
     {
       "id": "WL-REVIT-VIEWS-001",
@@ -27,6 +27,36 @@
       "id": "WL-REVIT-MATERIALS-001",
       "name": "Materials and appearance working data",
       "path": "registries/revit/working-library/TIVERIT-REVIT-WORKING-MATERIALS-001.json"
+    },
+    {
+      "id": "WL-REVIT-FAMILIES-001",
+      "name": "Family and type working data",
+      "path": "registries/revit/working-library/TIVERIT-REVIT-WORKING-FAMILIES-001.json"
+    },
+    {
+      "id": "WL-REVIT-PARAMETERS-001",
+      "name": "Parameter working data",
+      "path": "registries/revit/working-library/TIVERIT-REVIT-WORKING-PARAMETERS-001.json"
+    },
+    {
+      "id": "WL-REVIT-DATUMS-001",
+      "name": "Levels, grids, scope boxes and reference-plane working data",
+      "path": "registries/revit/working-library/TIVERIT-REVIT-WORKING-DATUMS-001.json"
+    },
+    {
+      "id": "WL-REVIT-WORKSHARING-LINKS-001",
+      "name": "Worksharing, workset and link working data",
+      "path": "registries/revit/working-library/TIVERIT-REVIT-WORKING-WORKSHARING-LINKS-001.json"
+    },
+    {
+      "id": "WL-REVIT-EXPORT-001",
+      "name": "PDF, NWC, IFC and RVT export working data",
+      "path": "registries/revit/working-library/TIVERIT-REVIT-WORKING-EXPORT-001.json"
+    },
+    {
+      "id": "WL-REVIT-QA-001",
+      "name": "QA and pre-issue review working data",
+      "path": "registries/revit/working-library/TIVERIT-REVIT-WORKING-QA-001.json"
     }
   ],
   "retrieval_policy": {
@@ -43,17 +73,21 @@
       "Never present reference_example or candidate values as approved enterprise defaults.",
       "Preserve unresolved fields rather than inventing values.",
       "Prefer a governed Standards object when it answers the same question.",
-      "Project-specific configuration overrides working-library examples when the project authority is established."
+      "Project-specific configuration overrides working-library examples when the project authority is established.",
+      "A working-library QA finding is evidence only and does not create acceptance authority.",
+      "Tool/export presets remain configuration unless separately governed as reusable authority."
     ]
   },
   "sanitization": {
     "organization_identifiers_removed": true,
     "client_identifiers_removed": true,
     "project_identifiers_removed": true,
-    "source_traceability_method": "neutral source page identifiers only"
+    "source_traceability_method": "neutral source page identifiers only",
+    "rule": "Do not store legacy organization, client or project names in working-library record titles, IDs, examples, provenance labels or values."
   },
   "provenance": {
-    "source_system": "legacy_confluence_reference",
-    "migration_note": "Working-library records preserve useful source examples and candidate values as non-authoritative AI retrieval data. Organization, client, and project identifiers are intentionally removed."
+    "source_system": "legacy_confluence_reference_and_current_repository",
+    "source_page_ids": ["7241762", "5799975", "6193190", "7700481", "6651935", "6422556", "6684703", "7340051", "7438366", "6422564"],
+    "migration_note": "Working-library records preserve useful source examples and candidate values as non-authoritative AI retrieval data. Organization, client and project identifiers are intentionally removed."
   }
 }
