@@ -4,7 +4,7 @@
   "title": "Sheet Number Authority Resolver and CDE Pre-Registration Gate",
   "status": "curator_candidate",
   "modules": ["S3", "S4", "S7", "S8"],
-  "purpose": "Resolve the applicable sheet/drawing numbering authority, classify document meaning independently from identifier syntax, and prevent ambiguous or unauthorized identities from entering a governed CDE document register.",
+  "purpose": "Resolve the applicable sheet/drawing numbering authority, acquire missing project data through governed AI inquiry, classify document meaning independently from identifier syntax, and prevent ambiguous or unauthorized identities from entering a governed CDE document register.",
   "inputs": [
     "contract_or_appointment_requirements",
     "appointing_party_or_authority_requirements",
@@ -12,23 +12,82 @@
     "project_information_standard_eir_or_equivalent",
     "bep",
     "cde_configuration",
-    "sheet_semantic_record"
+    "sheet_semantic_record",
+    "user_confirmed_project_facts"
   ],
+  "ai_inquiry": {
+    "principle": "The AI shall retrieve or ask for facts; it shall not invent project codes, mappings, or authority.",
+    "source_order": [
+      "already_confirmed_project_context",
+      "contract_or_appointment_requirements",
+      "appointing_party_or_authority_requirements",
+      "project_information_standard_eir_or_equivalent",
+      "approved_bep",
+      "approved_cde_or_document_control_configuration",
+      "user_confirmation_or_user_supplied_project_evidence"
+    ],
+    "question_policy": [
+      "Do not ask the user for a value already resolved by higher-precedence project evidence.",
+      "When evidence contains one unambiguous applicable value, normalize it and echo the value and source back for confirmation where interpretation was required.",
+      "When evidence contains conflicting values, present the conflict and ask the user to identify the governing value or provide the governing source; do not choose silently.",
+      "When evidence is silent, ask one focused question for the missing value and explain why it is needed.",
+      "A user answer may establish a project fact for the current workflow, but shall not be represented as an external-standard, client-enterprise, or contractual requirement unless supported by evidence.",
+      "If the user says a value will be provided, capture it before proceeding rather than converting it to TBC without another prompt.",
+      "Persist confirmed answers in the structured project semantic record so subsequent sheets reuse them and the user is not repeatedly asked."
+    ],
+    "inquiry_groups": [
+      {
+        "id": "INQ-AUTHORITY",
+        "purpose": "Determine which numbering rules govern the project.",
+        "fields": ["project_or_contract", "appointing_party_or_client", "country_or_authority", "governing_information_standard", "bep", "cde_platform", "document_control_standard", "numbering_profile"]
+      },
+      {
+        "id": "INQ-PROJECT",
+        "purpose": "Capture project-wide values normally reused across many sheets.",
+        "fields": ["project_code", "originator_code", "project_phase", "project_stage", "status_or_suitability_scheme", "revision_scheme"]
+      },
+      {
+        "id": "INQ-SPATIAL",
+        "purpose": "Resolve project spatial identity where required by the selected profile.",
+        "fields": ["building_or_volume", "functional_breakdown_or_package", "zone_or_area", "level_or_location"]
+      },
+      {
+        "id": "INQ-SHEET",
+        "purpose": "Classify the individual sheet without conflating meaning with its final number.",
+        "fields": ["discipline", "information_form", "content_class", "content_subtype", "work_condition", "sheet_title", "sequence_or_instance"]
+      },
+      {
+        "id": "INQ-CDE",
+        "purpose": "Resolve values required for formal document registration.",
+        "fields": ["cde_document_number_mapping", "required_metadata", "revision", "status_or_suitability", "registration_state"]
+      }
+    ],
+    "example_dialogue_logic": [
+      "AI: I found a project BEP. I will use it first for project-specific sheet-numbering values and ask only for unresolved fields.",
+      "AI: The BEP identifies the project phase as 2A, but I do not yet have governing evidence for whether 2A belongs inside the Aconex document number. I will keep it as project-phase metadata unless the document-control rule says otherwise.",
+      "AI: This sheet appears to be an enlarged floor plan. Is it an enlargement of a room/area, or merely one part of an overall floor plan split across multiple sheets? This determines the content subtype.",
+      "AI: I cannot establish the required Aconex document-number grammar from the available project evidence. Please provide or identify the document-control/Aconex numbering convention. I will not generate a compliant number until that is resolved."
+    ]
+  },
   "steps": [
-    {"id":"SNR-01","action":"Collect governing evidence and determine whether a governed document-number convention applies.","on_missing":"Do not assume simplified numbering until the authority sweep is complete."},
+    {"id":"SNR-01","action":"Collect governing evidence and determine whether a governed document-number convention applies.","on_missing":"Start the AI inquiry. Do not assume simplified numbering until the authority sweep is complete."},
     {"id":"SNR-02","action":"Resolve numbering profile by precedence: law/regulation; contract/appointment; appointing-party/authority requirements; incorporated external/national standard; project information standard/EIR; BEP/CDE configuration; TIVERIT fallback."},
-    {"id":"SNR-03","action":"Classify the sheet/drawing semantic record: project stage, work condition, building/volume, zone/area, level/location, discipline, information form, content class, content subtype, sequence, status/suitability, revision, and title."},
-    {"id":"SNR-04","action":"Apply the selected profile to generate or validate the required document identity without changing the underlying semantic classification."},
-    {"id":"SNR-05","action":"Run pre-registration validation against the selected authority/profile and CDE-required metadata."},
-    {"id":"SNR-06","action":"If validation passes, permit technical registration in the CDE. Registration execution does not create or alter underlying approval/acceptance authority."},
-    {"id":"SNR-07","action":"After formal registration or issue, route identity changes through governed document-control change/supersede procedure and preserve traceability."}
+    {"id":"SNR-03","action":"Build a missing-field set from the selected profile and available project evidence."},
+    {"id":"SNR-04","action":"Run the AI inquiry for unresolved fields, preferring BEP/project evidence and requesting focused user confirmation only where evidence is silent, ambiguous, or conflicting."},
+    {"id":"SNR-05","action":"Classify the sheet/drawing semantic record: project phase, project stage, work condition, building/volume, zone/area, level/location, discipline, information form, content class, content subtype, sequence, status/suitability, revision, and title."},
+    {"id":"SNR-06","action":"Echo normalized or user-confirmed project facts when interpretation was required and persist them for reuse across subsequent sheets."},
+    {"id":"SNR-07","action":"Apply the selected profile to generate or validate the required document identity without changing the underlying semantic classification."},
+    {"id":"SNR-08","action":"Run pre-registration validation against the selected authority/profile and CDE-required metadata."},
+    {"id":"SNR-09","action":"If validation passes, permit technical registration in the CDE. Registration execution does not create or alter underlying approval/acceptance authority."},
+    {"id":"SNR-10","action":"After formal registration or issue, route identity changes through governed document-control change/supersede procedure and preserve traceability."}
   ],
   "pre_registration_gate": {
     "required_checks": [
       "selected_profile_is_supported_by_governing_evidence_or_valid_fallback",
+      "required_project_facts_are_evidenced_or_user_confirmed",
       "document_number_is_unique_within_governed_project_scope",
-      "project_stage_is_explicit_where_required",
-      "work_condition_is_not_misrepresented_as_project_stage",
+      "project_phase_and_project_stage_are_separately_resolved_where_applicable",
+      "work_condition_is_not_misrepresented_as_project_stage_or_phase",
       "discipline_is_valid_for_selected_profile",
       "information_form_is_valid_for_selected_profile",
       "content_class_and_subtype_are_not_ambiguous",
@@ -42,6 +101,9 @@
     "blocking": ["unresolved","gap","fail"]
   },
   "failure_conditions": [
+    "The AI invents a project code, client code, content range, or Aconex field mapping instead of retrieving or asking for it.",
+    "The AI repeatedly asks for project-wide facts already established by the BEP or prior confirmed answers.",
+    "A user-provided project fact is falsely promoted to external-standard, client-enterprise, or contractual authority.",
     "A TIVERIT fallback number is generated while a higher-precedence project convention is known or unresolved.",
     "Aconex configuration is treated as authority without a governing project basis.",
     "Project stage is inferred from demolition/existing/proposed condition.",
