@@ -1,0 +1,61 @@
+{
+  "id": "CURATION-STAR-T-GATE-INBOX-13-001",
+  "type": "curator_disposition",
+  "title": "STAR-T-GATE Inbox #13 repository self-audit disposition",
+  "status": "curator_reviewed",
+  "authority": "informational",
+  "source_issue": "https://github.com/gschmidtke/STAR-T-GATE-INBOX/issues/13",
+  "baseline": "main at 63dfc33b742de8031c70fa8c9bf643966f946442",
+  "dispositions": [
+    {
+      "finding_id": "FIND-REF-001",
+      "disposition": "partially_confirmed_requires_mechanical_reconciliation",
+      "notes": "Treat as repository-integrity work. The S4 shared-parameter identifier is now preserved as a legacy_id on the canonical S8 registry rather than as an unresolved canonical target. Remaining claimed truncated workflow, placeholder registry and superseded-role references require exact current-main verification before repair or forward declaration. No new authority is created by repairing references."
+    },
+    {
+      "finding_id": "FIND-ATS-LINK-002",
+      "disposition": "confirmed_schema_normalization_gap",
+      "notes": "ATS objects must expose a machine-resolvable governing link consistently. Normalize linkage without changing the underlying normative requirement."
+    },
+    {
+      "finding_id": "FIND-CONF-COV-003",
+      "disposition": "confirmed_visibility_gap_not_blanket_failure",
+      "notes": "Incomplete ATS/ETS coverage is expected during staged maturity, but silent coverage is undesirable. Record a coverage inventory; do not require every instruction to have executable conformance where human verification is legitimate."
+    },
+    {
+      "finding_id": "FIND-SEC-004",
+      "disposition": "held_unresolved_scope_and_authority_gap",
+      "notes": "ISO 19650-5/security-minded governance must not be invented from the Inbox. Route through the external-standard authority model being considered in Inbox #11, then either declare an explicit boundary or create a governed TIVERIT security requirement through normal authority review."
+    },
+    {
+      "finding_id": "FIND-VER-005",
+      "disposition": "confirmed_repository_operation_gap",
+      "notes": "The corpus needs a citable release/version model before formal cutover. This is repository governance, not domain doctrine. Define release semantics separately from per-object migration status."
+    },
+    {
+      "finding_id": "FIND-LIC-006",
+      "disposition": "confirmed_owner_decision_required",
+      "notes": "Absence of explicit licensing/contribution terms is a real publication/adoption risk. Curator must not select a license on behalf of the owner. Record and escalate for owner decision."
+    },
+    {
+      "finding_id": "FIND-OPE-007",
+      "disposition": "held_unresolved_scope_boundary",
+      "notes": "Operational-phase coverage must be declared as in-scope future work or explicit non-goal. Do not infer ISO 19650-3 requirements into the normative corpus until external-standard applicability and TIVERIT scope are governed."
+    },
+    {
+      "finding_id": "FIND-MINOR-008",
+      "disposition": "mechanical_cleanup_candidate",
+      "notes": "Verify the claimed ETS identifier and role-resolution-map classification against current main, then repair or relocate only where repository architecture supports the change."
+    }
+  ],
+  "dependency_order": [
+    "repair_or_classify_reference_integrity",
+    "normalize_ATS_governing_links",
+    "publish_conformance_coverage_inventory",
+    "curate_Inbox_11_external_standard_gateway",
+    "resolve_security_and_operational_scope_boundaries",
+    "define_release_version_model",
+    "obtain_owner_license_decision"
+  ],
+  "curator_rule": "Inbox evidence remains non-authoritative. Mechanical repairs may be promoted when they preserve existing authority; new external-standard, scope, licensing or release authority requires explicit governed decisions."
+}
