@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-INVENTOR-REVIT-EXCHANGE-001",
+  "type": "registry",
+  "title": "Working Library - Inventor to Revit Exchange",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S7", "S9"],
+  "entries": [
+    {"id":"IVR-REF-TARGET-RVT","name":"RVT target","knowledge_status":"reference_example","authority_status":"non_authoritative","use_when":"assembly is primarily needed for coordination, spatial context, linking, or model-package exchange","working_guidance":["simplify before publishing","use a controlled export representation","preserve a stable output location and identity","validate update behavior"]},
+    {"id":"IVR-REF-TARGET-RFA","name":"RFA target","knowledge_status":"reference_example","authority_status":"non_authoritative","use_when":"object should behave as a reusable Revit component with category control and possibly connectors","working_guidance":["assign intended Revit category","add connectors only where system participation requires them","publish from a controlled representation","validate immediately in Revit"]},
+    {"id":"IVR-REF-SIMPLIFICATION","name":"BIM simplification strategy","knowledge_status":"reference_example","authority_status":"non_authoritative","working_guidance":["suppress small manufacturing hardware that adds no BIM value","suppress internal manufacturing detail not needed downstream","prefer outer envelope plus key interfaces","use named model states or equivalent controlled representations"]},
+    {"id":"IVR-REF-RVT-OPTIONS","name":"RVT export option candidates","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_values":{"preset":"No simplification after representation has already been simplified","model_state":"controlled medium/light representation","view":"dedicated Revit export view","output_structure":"each top-level component","enable_updating":"true candidate"},"unresolved":["approved representation names","approved preset","approved output structure","current-version verification"]},
+    {"id":"IVR-REF-VALIDATION","name":"Revit-side validation","knowledge_status":"reference_example","authority_status":"non_authoritative","checks":["opens or loads without errors","correct scale and orientation","reasonable file size and performance","category behaves as intended","update path works where update behavior is required"]}
+  ],
+  "working_rules": ["Do not publish manufacturing-heavy geometry into Revit by default.", "RVT versus RFA is an intent decision, not merely a file-format preference.", "A controlled export representation is preferred over an arbitrary current view/state.", "Export settings remain candidates until verified for the current tool versions and project requirements."],
+  "provenance": {"source_system":"legacy_confluence_reference","page_id":"6357042","source_version":1,"migration_note":"Inventor-to-Revit publishing workflow retained as non-authoritative working knowledge; source organization naming removed."}
+}
