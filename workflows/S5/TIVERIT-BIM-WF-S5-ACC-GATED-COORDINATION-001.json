@@ -7,33 +7,30 @@
   "authority": "normative",
   "layer": "L5",
   "modules": ["S5"],
-  "trigger": "Discipline authoring is complete for the coordination cycle and internal checks have passed.",
+  "trigger": "Discipline authoring has reached the project-defined coordination point and internal checks permit entry into the TIVERIT coordination cycle.",
+  "iso19650_position":"TIVERIT supplementary coordination control within collaborative information production. It may provide evidence supporting review and approval for sharing, but it does not replace the ISO 19650 Decision A or Decision B process.",
   "steps": [
-    {"id":"GATE-A","action":"Validate model intake and pre-coordination QA, then place the coordination copy in the governed information state permitted for coordination use. This technical publication or state transition is not formal-exchange authorization or acceptance for downstream reliance.","actor_role":"ROLE-BIM-DETAILER-001","outputs":["pre-coordination QA evidence","coordination-use information-state record"]},
+    {"id":"GATE-A","action":"Validate model intake and pre-coordination QA, then make the coordination copy available in the project-governed environment permitted for coordination use. If this action also performs the Work in Progress to Shared transition, the applicable Decision A review and approval-for-sharing activity shall already be complete and traceable; the coordination workflow itself does not create that approval.","actor_role":"ROLE-BIM-DETAILER-001","outputs":["pre-coordination QA evidence","coordination-use information-state record"]},
     {"id":"GATE-B","action":"Run automated clash detection, apply governed exclusions, and triage candidate issues.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001","outputs":["triaged clash matrix","candidate issues"]},
-    {"id":"GATE-C","action":"Review, prioritize, assign, and date coordination issues within the governed coordination scope. Issue creation, assignment, review, or closure does not constitute authorization for formal exchange or acceptance for declared use.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001","outputs":["assigned governed issues","review record"]},
-    {"id":"GATE-D","action":"Remediate authoring issues, republish coordination-use models, and independently verify resolutions. Verification establishes coordination evidence only within the declared scope and does not create formal acceptance authority.","actor_role":"ROLE-MODEL-AUTHOR-001","outputs":["updated coordination-use model","verification evidence"]},
-    {"id":"GATE-E","action":"Close or waive verified milestone coordination issues and execute the governed coordination_signoff decision. Record its scope, authorized role or delegation, authority basis, exceptions, and evidence; then declare the package coordination-ready for the separate S7 formal-exchange process. Coordination sign-off shall not itself authorize formal exchange, establish acceptance for declared use, approve a project milestone outside the coordination scope, or establish handover acceptance.","actor_role":"ROLE-PROJECT-BIM-MANAGER-001","outputs":["coordination_signoff decision record","coordination exception or waiver record where applicable","coordination information-state/status update where required","S7 exchange-readiness declaration"]}
+    {"id":"GATE-C","action":"Review, prioritize, assign and date coordination issues within the governed coordination scope.","actor_role":"ROLE-PROJECT-BIM-COORDINATOR-001","outputs":["assigned governed issues","review record"]},
+    {"id":"GATE-D","action":"Remediate authoring issues, update the applicable coordination-use information and independently verify resolutions. Verification provides coordination evidence within the declared scope and may support the applicable ISO 19650 review process.","actor_role":"ROLE-MODEL-AUTHOR-001","outputs":["updated coordination-use information","verification evidence"]},
+    {"id":"GATE-E","action":"Close or waive verified coordination issues and record the TIVERIT coordination sign-off for the declared coordination scope. Preserve exceptions and evidence, then hand the resulting coordination evidence to the applicable ISO 19650 process. Coordination sign-off does not replace approval for sharing, lead-appointed-party authorization, appointing-party acceptance, or the Decision B transition to Published.","actor_role":"ROLE-PROJECT-BIM-MANAGER-001","outputs":["TIVERIT coordination-sign-off record","coordination exception or waiver record where applicable","coordination evidence for the applicable ISO 19650 review or exchange process"]}
   ],
   "decision_boundary": {
-    "workflow_decision_type": "coordination_signoff",
-    "meaning": "Gate E concludes the governed S5 coordination cycle only.",
-    "does_not_establish": [
-      "authorize_for_formal_exchange",
-      "accept_for_declared_use",
-      "milestone_approval outside the explicitly governed coordination scope",
-      "handover_acceptance"
-    ],
-    "handoff": "S7 shall resolve any subsequent formal-exchange authorization, receiving-party acceptance, reliance, milestone, or handover decision under the applicable authority basis."
+    "tiverit_supplementary_decision": "coordination_signoff",
+    "meaning": "Gate E concludes the governed TIVERIT coordination cycle only.",
+    "may_support": ["review before approval for sharing","information-model review before authorization/acceptance","project milestone evidence where separately governed"],
+    "does_not_replace": ["Decision A approval for sharing","lead appointed party authorization","appointing party acceptance","Decision B transition to Published","supplementary handover acceptance where separately required"],
+    "handoff": "The applicable S3/S7 ISO 19650 process governs subsequent or coincident CDE transition and information-model delivery decisions."
   },
   "issue_system_of_record": "ACC Issues",
   "source_status": "draft",
   "governance_notes": [
-    "ACC issue status, issue closure, review completion, folder placement, publication action, transmittal preparation, platform permission, or CDE information-state transition is evidence or execution only and does not create decision authority.",
-    "The actor executing a technical ACC action may differ from the actor authorized to make the underlying governed decision; the decision record shall preserve that distinction.",
-    "Where the project RACI or other governing authority basis delegates coordination_signoff away from the default Project BIM Manager implementation role, the authorized delegation governs and shall be traceable.",
-    "Unresolved authority for a required decision shall remain unresolved and shall not be inferred from ACC permissions, workflow ownership, or role title."
+    "ACC coordination is an implementation of TIVERIT supplementary collaborative-production governance, not an alternative ISO 19650 information-delivery sequence.",
+    "A coordination gate may provide evidence used in an ISO 19650 review, but the responsible ISO 19650 party or project-mapped function remains responsible for the applicable approval, authorization or acceptance activity.",
+    "If Gate A coincides with a Work in Progress-to-Shared transition, Decision A evidence is a prerequisite; if any later ACC action coincides with Shared-to-Published, the complete Decision B process is a prerequisite.",
+    "ACC issue status, closure, review completion, folder placement, publication action or platform permission does not independently create the responsibility or authority for the underlying ISO 19650 decision."
   ],
-  "relationships": {"standards":["TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"architecture":["INFORMATION-DECISION-AUTHORITY-TAXONOMY"]},
-  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7241803","6881343","6881351","7962634","7798804","8093711","7241811"],"migration_note":"Tool-specific ACC implementation retained below the tool-agnostic L4 S5 doctrine. Curator reconciliation separates coordination_signoff from formal-exchange authorization, acceptance for declared use, milestone approval, and handover acceptance; technical ACC actions do not create authority."}
+  "relationships": {"standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"registries":["TIVERIT-S3-CDE-STATES-001"],"architecture":["INFORMATION-DECISION-AUTHORITY-TAXONOMY"]},
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7241803","6881343","6881351","7962634","7798804","8093711","7241811"],"migration_note":"ISO-IMP-005 re-audit places ACC gated coordination explicitly inside/supporting collaborative information production. TIVERIT coordination sign-off is supplementary evidence and does not replace Decision A approval for sharing or Decision B authorization/acceptance."}
 }
