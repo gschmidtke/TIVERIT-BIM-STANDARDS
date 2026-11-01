@@ -9,8 +9,8 @@
   "dispositions": [
     {
       "finding_id": "FIND-REF-001",
-      "disposition": "partially_confirmed_requires_mechanical_reconciliation",
-      "notes": "Treat as repository-integrity work. The S4 shared-parameter identifier is now preserved as a legacy_id on the canonical S8 registry rather than as an unresolved canonical target. Remaining claimed truncated workflow, placeholder registry and superseded-role references require exact current-main verification before repair or forward declaration. No new authority is created by repairing references."
+      "disposition": "partially_confirmed_mechanical_repair_started",
+      "notes": "Fresh-current-main reconciliation changes the original audit materially. The former S4 shared-parameter identifier is intentionally preserved as a legacy_id on the canonical S8 registry. The claimed truncated Inventor/Revit W6 relationship is stale: current S9 exchange standard and instruction both resolve to TIVERIT-BIM-WF-W6.3-INVENTOR-REVIT-EXPORT-001, which exists. ROLE-BIM-COORDINATOR-001 and ROLE-BIM-MANAGER-001 are intentional superseded identifiers mapped by REG-ROLE-RESOLUTION-001 to the current project-scoped roles, not missing role authority. REG-PARAM and REG-TOOL in the BIM Director output were genuine placeholder labels; this branch repairs them to TIVERIT-BIM-STD-S8-SP-REG-001 and REG-S9-TOOL-AUTHORITY-001. Remaining reference-integrity work should be validator-driven rather than copied from the stale audit."
     },
     {
       "finding_id": "FIND-ATS-LINK-002",
