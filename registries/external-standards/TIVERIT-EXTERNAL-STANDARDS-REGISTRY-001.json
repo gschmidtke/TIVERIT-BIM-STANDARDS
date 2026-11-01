@@ -1,0 +1,18 @@
+{
+  "id": "TIVERIT-EXTERNAL-STANDARDS-REGISTRY-001",
+  "type": "external_standards_registry",
+  "status": "migration_candidate",
+  "authority": "informational_reference_registry",
+  "governance_contract": "constitution/architecture/EXTERNAL-STANDARDS-GOVERNANCE.md",
+  "gateway": {"id": "GATE-ISO19650-PUBLIC-001", "authority": "external_public_reference", "rule": "Official public publisher metadata establishes identity and lifecycle status only; it does not import protected normative content into TIVERIT."},
+  "standards": [
+    {"source_id":"ISO-19650-1-2018","publisher":"ISO","reference":"ISO 19650-1:2018","edition":1,"publication_year":2018,"lifecycle_status":"published_current_under_revision","normative_use":"eligible_only_when_applicable_governing_instrument_incorporates_this_edition","public_locator":"https://www.iso.org/standard/68078.html","content_boundary":"identity_status_abstract_preview_only"},
+    {"source_id":"ISO-19650-2-2018","publisher":"ISO","reference":"ISO 19650-2:2018","edition":1,"publication_year":2018,"lifecycle_status":"published_current_under_revision","normative_use":"eligible_only_when_applicable_governing_instrument_incorporates_this_edition","public_locator":"https://www.iso.org/standard/68080.html","content_boundary":"identity_status_abstract_preview_only"},
+    {"source_id":"ISO-19650-3-2020","publisher":"ISO","reference":"ISO 19650-3:2020","edition":1,"publication_year":2020,"lifecycle_status":"published_current_under_revision","normative_use":"eligible_only_when_applicable_governing_instrument_incorporates_this_edition","public_locator":"https://www.iso.org/standard/75109.html","content_boundary":"identity_status_abstract_preview_only"},
+    {"source_id":"ISO-19650-5-2020","publisher":"ISO","reference":"ISO 19650-5:2020","edition":1,"publication_year":2020,"lifecycle_status":"published_current_confirmed_2025","normative_use":"eligible_only_when_applicable_governing_instrument_incorporates_this_edition","public_locator":"https://www.iso.org/standard/74206.html","content_boundary":"identity_status_abstract_preview_only"},
+    {"source_id":"ISO-DIS-19650-1-ED2","publisher":"ISO","reference":"ISO/DIS 19650-1","edition":2,"publication_year":2026,"lifecycle_status":"draft_under_development","normative_use":"change_monitoring_only_unless_explicitly_adopted","public_locator":"https://www.iso.org/standard/89703.html","content_boundary":"public_draft_metadata_and_preview_only"},
+    {"source_id":"ISO-DIS-19650-2-ED2","publisher":"ISO","reference":"ISO/DIS 19650-2","edition":2,"publication_year":2026,"lifecycle_status":"draft_under_development","normative_use":"change_monitoring_only_unless_explicitly_adopted","public_locator":"https://www.iso.org/standard/89704.html","content_boundary":"public_draft_metadata_and_preview_only"},
+    {"source_id":"ISO-DIS-19650-3-ED2","publisher":"ISO","reference":"ISO/DIS 19650-3","edition":2,"publication_year":2026,"lifecycle_status":"draft_under_development","normative_use":"change_monitoring_only_unless_explicitly_adopted","public_locator":"https://www.iso.org/standard/90358.html","content_boundary":"public_draft_metadata_and_preview_only"}
+  ],
+  "provenance": {"source_system":"repository_curator","derived_from":"STAR-T-GATE-INBOX#11 and FIND-SEC-004","verification_date":"2026-11-01","verification_basis":"Official ISO public metadata checked during curation; ISO 19650-5:2020 Edition 1 was confirmed current in 2025; no protected clause text imported."}
+}
