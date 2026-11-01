@@ -1,0 +1,57 @@
+{
+  "id": "TIVERIT-BIM-WF-S7-SHEET-NUMBER-RESOLVER-001",
+  "type": "workflow",
+  "title": "Sheet Number Authority Resolver and CDE Pre-Registration Gate",
+  "status": "curator_candidate",
+  "modules": ["S3", "S4", "S7", "S8"],
+  "purpose": "Resolve the applicable sheet/drawing numbering authority, classify document meaning independently from identifier syntax, and prevent ambiguous or unauthorized identities from entering a governed CDE document register.",
+  "inputs": [
+    "contract_or_appointment_requirements",
+    "appointing_party_or_authority_requirements",
+    "applicable_external_standard_or_national_requirement",
+    "project_information_standard_eir_or_equivalent",
+    "bep",
+    "cde_configuration",
+    "sheet_semantic_record"
+  ],
+  "steps": [
+    {"id":"SNR-01","action":"Collect governing evidence and determine whether a governed document-number convention applies.","on_missing":"Do not assume simplified numbering until the authority sweep is complete."},
+    {"id":"SNR-02","action":"Resolve numbering profile by precedence: law/regulation; contract/appointment; appointing-party/authority requirements; incorporated external/national standard; project information standard/EIR; BEP/CDE configuration; TIVERIT fallback."},
+    {"id":"SNR-03","action":"Classify the sheet/drawing semantic record: project stage, work condition, building/volume, zone/area, level/location, discipline, information form, content class, content subtype, sequence, status/suitability, revision, and title."},
+    {"id":"SNR-04","action":"Apply the selected profile to generate or validate the required document identity without changing the underlying semantic classification."},
+    {"id":"SNR-05","action":"Run pre-registration validation against the selected authority/profile and CDE-required metadata."},
+    {"id":"SNR-06","action":"If validation passes, permit technical registration in the CDE. Registration execution does not create or alter underlying approval/acceptance authority."},
+    {"id":"SNR-07","action":"After formal registration or issue, route identity changes through governed document-control change/supersede procedure and preserve traceability."}
+  ],
+  "pre_registration_gate": {
+    "required_checks": [
+      "selected_profile_is_supported_by_governing_evidence_or_valid_fallback",
+      "document_number_is_unique_within_governed_project_scope",
+      "project_stage_is_explicit_where_required",
+      "work_condition_is_not_misrepresented_as_project_stage",
+      "discipline_is_valid_for_selected_profile",
+      "information_form_is_valid_for_selected_profile",
+      "content_class_and_subtype_are_not_ambiguous",
+      "spatial_fields_required_by_profile_are_present",
+      "sequence_conforms_to_profile",
+      "status_suitability_and_revision_are_separate_from_root_identity_unless_profile_explicitly_says_otherwise",
+      "title_describes_content_and_does_not_substitute_for_missing_classification",
+      "authoring_tool_sheet_number_matches_or_maps_traceably_to_cde_document_number"
+    ],
+    "outcomes": ["pass","unresolved","gap","fail"],
+    "blocking": ["unresolved","gap","fail"]
+  },
+  "failure_conditions": [
+    "A TIVERIT fallback number is generated while a higher-precedence project convention is known or unresolved.",
+    "Aconex configuration is treated as authority without a governing project basis.",
+    "Project stage is inferred from demolition/existing/proposed condition.",
+    "An enlarged floor plan is silently treated as a detail solely because a numbering range uses the same digit.",
+    "A document is first registered with an unresolved classification or number and expected to be casually renamed later.",
+    "A Miral/UAE profile is activated without curated governing evidence."
+  ],
+  "references": [
+    "TIVERIT-S7-SHEET-SEMANTIC-CLASSIFICATION-001",
+    "TIVERIT-S7-SHEET-NUMBERING-PROFILES-001",
+    "TIVERIT-BIM-STD-S7-SHEET-TITLEBLOCK-DOCUMENTATION-001"
+  ]
+}
