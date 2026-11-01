@@ -30,6 +30,9 @@ jobs:
       - name: Validate ATS governing links
         run: python scripts/validate_ats_governing_links.py
 
+      - name: Validate conformance coverage inventory
+        run: python scripts/generate_conformance_coverage.py --check
+
       - name: Run executable conformance fixtures
         run: python scripts/run_conformance_fixtures.py
 
