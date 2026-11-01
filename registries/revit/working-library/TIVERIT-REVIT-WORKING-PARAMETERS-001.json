@@ -1,0 +1,106 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-PARAMETERS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Parameters",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S8"],
+  "entries": [
+    {
+      "id": "PARAM-REF-ASSET-ID",
+      "name": "Asset ID",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_parameter_name": "Asset_ID",
+      "domain": "asset_management",
+      "group_in_revit": "Identity Data",
+      "data_type": "Text",
+      "instance_or_type": "instance_candidate",
+      "purpose": "unique identifier for asset-management and handover workflows",
+      "mapping_examples": ["COBie component identity", "IFC asset identifier mapping"],
+      "unresolved": ["approved GUID", "approved exact parameter spelling", "approved exchange mapping"]
+    },
+    {
+      "id": "PARAM-REF-FIRE-RATING",
+      "name": "Fire Rating",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_parameter_name": "Fire_Rating",
+      "domain": "life_safety",
+      "group_in_revit": "Identity Data",
+      "data_type": "Text or governed duration representation",
+      "instance_or_type": "policy_required",
+      "purpose": "rated assemblies and openings; supports tags, schedules and exchange",
+      "unresolved": ["approved GUID", "type-versus-instance policy by category", "approved unit/value representation"]
+    },
+    {
+      "id": "PARAM-REF-WEIGHT-INSTALLED",
+      "name": "Weight Installed",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_parameter_name": "Weight_Installed",
+      "domain": "loads_and_coordination",
+      "group_in_revit": "Dimensions",
+      "data_type": "Mass",
+      "instance_or_type": "policy_required",
+      "purpose": "installed mass for load calculation and coordination",
+      "unresolved": ["approved GUID", "approved instance/type semantics", "approved unit policy", "approved downstream mapping"]
+    },
+    {
+      "id": "PARAM-REF-MANUFACTURER",
+      "name": "Manufacturer",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_parameter_name": "Manufacturer",
+      "domain": "procurement",
+      "group_in_revit": "Identity Data",
+      "data_type": "Text",
+      "instance_or_type": "type_candidate",
+      "purpose": "supplier or manufacturer metadata for schedules and submittal workflows",
+      "unresolved": ["approved source parameter versus built-in parameter use", "approved exchange mapping"]
+    },
+    {
+      "id": "PARAM-REF-ROOM-FUNCTION-CODE",
+      "name": "Room Function Code",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "domain": "architecture_space_data",
+      "data_type": "Text",
+      "instance_or_type": "instance_candidate",
+      "category_scope": ["Rooms", "Spaces"],
+      "purpose": "room grouping, schedules and color-fill logic",
+      "unresolved": ["approved parameter identity", "approved code list", "project applicability"]
+    },
+    {
+      "id": "PARAM-REF-CIRCUIT-LOAD",
+      "name": "Circuit Load",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "domain": "electrical",
+      "data_type": "Power",
+      "instance_or_type": "instance_candidate",
+      "category_scope": ["Electrical Equipment", "Electrical Devices"],
+      "purpose": "panel schedules and load summaries",
+      "unresolved": ["built-in versus shared parameter basis", "approved unit and precision", "project applicability"]
+    }
+  ],
+  "working_rules": [
+    "Stable shared-parameter GUIDs must not be regenerated once formally published.",
+    "Use type parameters for values intended to remain identical across all occurrences of a type; use instance parameters for placement/context-specific values.",
+    "Do not include organization, client or project names in reusable shared-parameter names.",
+    "Do not encode units in names unless required to disambiguate meaning; store units in the data type and presentation configuration where possible.",
+    "Deprecated parameters should retain traceability to their replacement rather than being silently removed from legacy models."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-PARAMETERS-001"],
+    "registries": ["TIVERIT-S8-REVIT-TAG-PARAMETER-MAPPING-FIELDS-001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "6422556",
+    "source_version": 1,
+    "migration_note": "Parameter examples retained as working reference only. GUIDs and exact bindings remain unresolved until backed by the governed parameter registry. Organization, client and project identifiers removed."
+  }
+}
