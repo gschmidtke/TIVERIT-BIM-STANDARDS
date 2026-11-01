@@ -1,12 +1,34 @@
 {
-  "$schema":"../../schemas/standard.schema.json","id":"TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001","type":"standard","title":"ACC / BIM 360 Deliverable Exchange Standard","status":"migration_candidate","authority":"normative","layer":"L4","modules":["S5","S7"],
-  "requirements":[
-    {"id":"REQ-S7-019","authority":"shall","statement":"Project deliverables shall be exchanged through the governed CDE using governed folders, formal reviews, or transmittals.","verification_class":"machine_checkable"},
-    {"id":"REQ-S7-020","authority":"shall_not","statement":"Ad-hoc sharing links or email attachments shall not be used for deliverables requiring traceability.","verification_class":"human_verifiable"},
-    {"id":"REQ-S7-021","authority":"shall","statement":"The governed transmittal mechanism shall be used for formal issues to external parties when a permanent issue record is required.","verification_class":"machine_checkable"},
-    {"id":"REQ-S7-022","authority":"shall","statement":"Deliverable files shall comply with the governed project naming convention before formal issue.","verification_class":"machine_checkable"}
+  "$schema": "../../schemas/standard.schema.json",
+  "id": "TIVERIT-BIM-STD-S5-ACC-EXCHANGE-001",
+  "type": "standard",
+  "title": "ACC / BIM 360 Deliverable Exchange Standard",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L4",
+  "modules": ["S5", "S7"],
+  "requirements": [
+    {"id":"REQ-S7-019","authority":"shall","statement":"Project deliverables shall be exchanged through the governed CDE using governed folders, formal reviews, or transmittals appropriate to the declared exchange purpose.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-020","authority":"shall_not","statement":"Ad-hoc sharing links or email attachments shall not be used for deliverables requiring governed traceability.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-021","authority":"shall","statement":"Before a formal issue to an external party is executed, the required authorize_for_formal_exchange decision shall be resolved under the applicable authority basis and recorded separately from the technical transmittal or publication action. The governed transmittal mechanism shall then preserve the formal issue record where required.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-022","authority":"shall","statement":"Deliverable files shall comply with the governed project naming convention and applicable exchange prerequisites before formal issue.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-023","authority":"shall_not","statement":"A coordination_signoff, ACC issue closure, review completion, platform permission, folder placement, publication action, transmittal creation, or CDE information-state label shall not by itself establish authorize_for_formal_exchange, accept_for_declared_use, milestone_approval, handover_acceptance, or unrestricted reliance.","verification_class":"machine_assisted"},
+    {"id":"REQ-S7-024","authority":"shall","statement":"Where acceptance for a declared use is required after formal exchange, the accept_for_declared_use decision shall identify its scope, declared purpose or permitted use, authorized receiving role or party, authority basis, and decision evidence independently from the exchange execution record.","verification_class":"human_verifiable"},
+    {"id":"REQ-S7-025","authority":"shall","statement":"ACC issue-state labels such as For Review / Comment, For Construction, or As Built shall be interpreted only through governed project status and permitted-use rules; the label alone shall not be treated as proof that the corresponding authorization, acceptance, milestone, reliance, or handover decision occurred.","verification_class":"machine_assisted"}
   ],
-  "issue_states":["WIP","Shared","For Review / Comment","For Construction","As Built"],
-  "relationships":{"standards":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001"]},
-  "provenance":{"source_system":"confluence","space":"BST","page_id":"8060929","source_version":1,"source_title":"ACC / BIM 360 Deliverable Exchange Standard","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8060929"}
+  "issue_states": [
+    {"label":"WIP","semantic":"information/deliverable state; no formal-exchange or acceptance authority implied"},
+    {"label":"Shared","semantic":"coordination/review availability subject to governed permitted use; no formal acceptance implied"},
+    {"label":"For Review / Comment","semantic":"review context only unless a governed project rule establishes a more specific decision consequence"},
+    {"label":"For Construction","semantic":"project-defined permitted-use label requiring traceable governing authority and decision evidence before construction reliance; label alone is insufficient"},
+    {"label":"As Built","semantic":"project-defined record/handover label; does not itself establish handover acceptance or operational reliance"}
+  ],
+  "relationships": {
+    "standards": ["TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "workflows": ["TIVERIT-BIM-WF-S5-ACC-GATED-COORDINATION-001"],
+    "architecture": ["INFORMATION-DECISION-AUTHORITY-TAXONOMY"],
+    "roles": ["ROLE-PROJECT-BIM-MANAGER-001","ROLE-PROJECT-BIM-COORDINATOR-001"]
+  },
+  "implementation_boundary": "ACC/BIM 360 executes governed exchange and preserves evidence. Platform capabilities, issue states, reviews, transmittals, publication actions, and permissions do not create the authority for the underlying decision.",
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"8060929","source_version":1,"source_title":"ACC / BIM 360 Deliverable Exchange Standard","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/8060929","migration_note":"Curator reconciliation separates ACC execution/status semantics from coordination_signoff, formal-exchange authorization, acceptance for declared use, milestone approval, handover acceptance, and reliance authority."}
 }
