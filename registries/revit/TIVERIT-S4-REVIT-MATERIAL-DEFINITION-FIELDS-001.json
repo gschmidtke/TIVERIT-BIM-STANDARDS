@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-MATERIAL-DEFINITION-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Material Definition Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S8", "S5", "S7"],
+  "entries": [
+    {"id":"MATERIAL_IDENTITY","name":"Material identity","requirement":"Each governed Revit material shall have a stable, human-readable and machine-resolvable identity aligned with the applicable S4 naming authority; project/client identifiers and uncontrolled aliases shall not be embedded as substitutes for governed identity."},
+    {"id":"CLASSIFICATION_CONTEXT","name":"Classification context","requirement":"Each governed material shall identify the applicable classification context needed for search, scheduling, filtering, quantity takeoff, analysis or exchange, using governed S8 identities or mappings where such authority exists."},
+    {"id":"INTENDED_USE","name":"Intended use","requirement":"Each governed material shall declare the documentation, visualization, analysis or exchange purposes for which its definition is controlled, so attributes are not inferred from the material name alone."},
+    {"id":"DOCUMENTATION_GRAPHICS","name":"Documentation graphics reference","requirement":"Where material-driven surface or cut graphics are governed, the material shall reference explicit approved pattern/color configuration or the applicable graphics-control rule; example hatch, color, transparency or numeric values shall not become authority by implication."},
+    {"id":"APPEARANCE_ASSET","name":"Render appearance asset reference","requirement":"Where rendered appearance is governed, the material shall reference an approved appearance asset or controlled library source separately from documentation graphics."},
+    {"id":"APPEARANCE_SCALE","name":"Appearance scale basis","requirement":"Where texture or map scale affects the intended rendered result, the governed definition shall record the approved real-world scale basis or an authoritative configuration reference rather than infer a value from source examples."},
+    {"id":"ASSET_SOURCE","name":"Appearance asset source","requirement":"Controlled render assets shall be traceable to an approved library or source location and shall not depend on uncontrolled local asset paths where a governed source exists."},
+    {"id":"REUSE_DUPLICATION","name":"Reuse and duplicate control","requirement":"A governed material definition shall identify its reuse scope and shall not be duplicated or aliased locally without an approved reason and traceable exception."},
+    {"id":"DEPENDENCY_REFERENCES","name":"Dependency references","requirement":"Where applicable, the material definition shall reference governed graphics, view, template, parameter, family or exchange configuration dependencies rather than redefining those authorities locally."},
+    {"id":"CHANGE_CONTROL","name":"Change-control trace","requirement":"Creation, replacement, rename, repurpose or deprecation of governed material definitions and controlled appearance assets shall be traceable to the applicable standards, template or library release process."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-MATERIALS-001"],
+    "standards": ["TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001", "TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "registries": ["TIVERIT-S4-REVIT-GRAPHICS-CONTROL-FIELDS-001"]
+  },
+  "non_promoted_source_content": [
+    "Example material names, discipline prefixes, abbreviations, grades, finishes, palette identifiers and classification strings from the Appendix E source are not promoted as governed enterprise values.",
+    "Example hatch names, RGB/color values, transparency ranges, texture resolutions, texture scales, tile sizes, grout sizes, roughness/specular guidance and other numerical appearance values remain noncanonical until separately approved.",
+    "The source's example library paths and render asset names are not promoted as approved asset locations or identities.",
+    "No office material catalogue, project material list, PBR asset catalogue, classification code set or export mapping values are invented by this field schema. Those values require a separately governed configuration instance or authoritative registry."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7700481",
+    "source_version": 1,
+    "source_title": "Materials & Appearance Standards - Revit Guide",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7700481",
+    "migration_note": "Curator reconciliation promotes only the minimum durable fields required to govern Revit material identity, classification context, documentation graphics, render appearance, asset provenance, reuse and change control. Source examples and unresolved numeric values remain noncanonical."
+  }
+}
