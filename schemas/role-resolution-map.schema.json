@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gschmidtke/TIVERIT-BIM-STANDARDS/schemas/role-resolution-map.schema.json",
+  "title": "TIVERIT Role Resolution Map",
+  "allOf": [
+    {"$ref": "./base-object.schema.json"},
+    {
+      "type": "object",
+      "required": ["superseded_ids", "distinct_functions", "inheritance", "source_decisions", "deferred_conflicts"],
+      "properties": {
+        "type": {"const": "role_resolution_map"},
+        "superseded_ids": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "reason"],
+            "properties": {
+              "from": {"type": "string", "minLength": 1},
+              "to": {"type": "string", "minLength": 1},
+              "reason": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false
+          }
+        },
+        "distinct_functions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "inheritance": {
+          "type": "object",
+          "required": ["base_role", "specializations"],
+          "properties": {
+            "base_role": {"type": "string"},
+            "abstract": {"type": "boolean"},
+            "specializations": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+          },
+          "additionalProperties": true
+        },
+        "source_decisions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "deferred_conflicts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": true
+    }
+  ]
+}
