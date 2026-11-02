@@ -2,20 +2,21 @@
   "$schema": "../../schemas/standard.schema.json",
   "id": "TIVERIT-BIM-STD-S2-MIDP-001",
   "type": "standard",
-  "title": "Model Information Delivery Plan (MIDP)",
+  "title": "Master Information Delivery Plan (MIDP)",
   "status": "migration_candidate",
   "authority": "normative",
   "layer": "L4",
   "modules": ["S2"],
-  "scope": {"purpose":"Define the governed master schedule of information deliverables, milestones, states, LOD/LOI, permitted use, responsible roles, and review authority."},
+  "scope": {"purpose":"Define the governed master information delivery plan aggregating task-team TIDPs and their information containers, delivery milestones, states, information need, permitted use, responsibilities and review/acceptance dependencies."},
   "requirements": [
-    {"id":"MIDP-REQ-001","authority":"shall_not","statement":"The authoring party shall not serve as sole approver for a MIDP entry.","verification_class":"machine_assisted"},
-    {"id":"MIDP-REQ-002","authority":"shall","statement":"The Project BIM Manager shall maintain and update the master MIDP across all project milestones.","verification_class":"human_verifiable"},
-    {"id":"MIDP-REQ-003","authority":"shall","statement":"Information deliverables shall be scheduled with unique deliverable identifiers matching the CDE container naming standard.","verification_class":"machine_checkable"},
-    {"id":"MIDP-REQ-004","authority":"shall","statement":"Every MIDP line item shall map directly to at least one constituent TIDP task.","verification_class":"machine_checkable"}
+    {"id":"MIDP-REQ-001","authority":"shall_not","statement":"The authoring party shall not serve as sole approver for a MIDP entry where a separate governed review, authorization or acceptance responsibility applies.","verification_class":"machine_assisted"},
+    {"id":"MIDP-REQ-002","authority":"shall","statement":"Where ISO 19650-2 applies, the lead appointed party shall establish and maintain the delivery team's MIDP by aggregating the TIDPs from the task teams. A TIVERIT or project job title may perform this function only where the appointment, BEP, RACI or equivalent governing project instrument assigns that responsibility.","verification_class":"human_verifiable"},
+    {"id":"MIDP-REQ-003","authority":"shall","statement":"Information deliverables shall be scheduled with unique deliverable identifiers matching the governed CDE information-container naming requirements.","verification_class":"machine_checkable"},
+    {"id":"MIDP-REQ-004","authority":"shall","statement":"Every MIDP line item shall trace to at least one constituent TIDP entry and its governed information container or deliverable.","verification_class":"machine_checkable"},
+    {"id":"MIDP-REQ-005","authority":"shall","statement":"Where ISO 19650 applies, MIDP means Master Information Delivery Plan. Information containers such as Revit models are planned within contributing TIDPs and aggregated into the MIDP; the acronym shall not be expanded as Model Information Delivery Plan in ISO-aligned TIVERIT use.","verification_class":"machine_assisted"}
   ],
   "canonical_fields": ["ID","Information Requirement","Purpose / Decision Supported","Model / Information Container","Responsible Role","Delivery Milestone","Delivery State","LOD","LOI","Permitted Use","Review Authority","Approval Status"],
   "relationships": {"standards":["TIVERIT-BIM-STD-S2-INF-REQ-EP001","TIVERIT-BIM-STD-S2-PIR-001","TIVERIT-BIM-STD-S2-TIDP-001","TIVERIT-BIM-STD-S2-LOD-LOI-001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001"]},
-  "runtime_note":"The L4 MIDP standard defines governed rules and fields. Runtime MIDP instances in the BEP delivery engine are implementation data, not a replacement for this standard.",
-  "provenance": {"source_system":"confluence","space":"BST","page_id":"3407873","source_version":1,"source_title":"MIDP — Model Information Delivery Plan","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3407873","migration_note":"Standalone L4 S2 production standard; dynamic BEP/runtime representations are treated as downstream implementations."}
+  "runtime_note":"The L4 MIDP standard defines governed rules and fields. Runtime MIDP instances in the BEP delivery engine are implementation data, not a replacement for this standard. Project BIM Manager remains a TIVERIT role and is not assumed to be the ISO lead appointed party without project-specific authority mapping.",
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"3407873","source_version":1,"source_title":"MIDP — Model Information Delivery Plan","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/3407873","migration_note":"Source-era title used Model Information Delivery Plan. Curator correction aligns the canonical TIVERIT term to ISO 19650-2:2018 clause 5.4.5: Master Information Delivery Plan. Existing container-delivery intent is preserved; task-team TIDPs identify information containers and the lead appointed party aggregates them into the MIDP where ISO 19650-2 applies."}
 }

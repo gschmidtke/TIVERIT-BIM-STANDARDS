@@ -1,0 +1,69 @@
+{
+  "id": "TIVERIT-BIM-WF-BEP-MOBILIZATION-535-001",
+  "type": "workflow",
+  "title": "Delivery-Team Mobilization Plan",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S1", "S2", "S3"],
+  "scope": {
+    "purpose": "Operationalize ISO 19650-2:2018 5.3.5 by establishing a traceable proposed delivery-team mobilization plan for initiation and implementation during mobilization under 5.5.",
+    "boundary": "This workflow plans mobilization. It does not claim that planned activities have already been executed or verified, and it does not assign the prospective lead appointed party function from a TIVERIT job title."
+  },
+  "iso_alignment": {
+    "source": "ISO 19650-2:2018 5.3.5",
+    "responsible_iso_function": "prospective_lead_appointed_party",
+    "implementation_stage_reference": "ISO 19650-2:2018 5.5",
+    "planning_dimensions": ["approach", "timescale", "responsibility"],
+    "rule": "Each applicable mobilization activity shall identify its proposed approach, timescale and responsible project actor/function. Missing project evidence remains unresolved."
+  },
+  "mobilization_activities": [
+    {"id":"535-01","activity":"test_and_document_information_production_methods_and_procedures","question_id":"BEP-Q-033"},
+    {"id":"535-02","activity":"test_information_exchanges_between_task_teams","question_id":"BEP-Q-034"},
+    {"id":"535-03","activity":"test_information_delivery_to_appointing_party","question_id":"BEP-Q-035"},
+    {"id":"535-04","activity":"configure_and_test_project_cde","question_id":"BEP-Q-036"},
+    {"id":"535-05","activity":"configure_and_test_delivery_team_distributed_cde_and_project_cde_connectivity_if_applicable","question_id":"BEP-Q-037"},
+    {"id":"535-06","activity":"procure_implement_configure_and_test_additional_technology","question_id":"BEP-Q-038"},
+    {"id":"535-07","activity":"develop_additional_shared_resources","question_id":"BEP-Q-039"},
+    {"id":"535-08","activity":"develop_and_deliver_education","question_id":"BEP-Q-040"},
+    {"id":"535-09","activity":"develop_and_deliver_training","question_id":"BEP-Q-041"},
+    {"id":"535-10","activity":"recruit_additional_delivery_team_members_for_required_capacity","question_id":"BEP-Q-042"},
+    {"id":"535-11","activity":"support_later_joining_individuals_and_organizations","question_id":"BEP-Q-043"}
+  ],
+  "activity_record_contract": {
+    "required_fields": ["activity_id", "applicability", "approach", "timescale", "responsible_actor_or_function", "evidence_or_source", "status"],
+    "allowed_applicability": ["applicable", "not_applicable_with_rationale", "unresolved"],
+    "status_semantics": {
+      "planned": "A supported mobilization approach, timescale and responsibility have been established.",
+      "unresolved": "One or more required planning dimensions or authority mappings are not supported.",
+      "not_applicable": "The activity is not applicable and the governing rationale is recorded."
+    }
+  },
+  "process": [
+    {"step":1,"action":"resolve_prospective_lead_appointed_party","rule":"Map the prospective lead appointed party function through appointment/BEP/RACI or equivalent project evidence. Do not infer it from a TIVERIT role or platform permission."},
+    {"step":2,"action":"evaluate_each_535_activity","rule":"Evaluate all eleven 5.3.5 activity groups for applicability; do not silently omit an activity."},
+    {"step":3,"action":"capture_approach_timescale_responsibility","rule":"For every applicable activity capture the proposed approach, timescale and responsible project actor/function."},
+    {"step":4,"action":"preserve_dependencies_and_evidence","rule":"Reference relevant 5.3.2 technology/production proposals, 5.3.3 task-team assessments, 5.3.4 delivery-team summary, CDE requirements and project information-management arrangements where they support the mobilization plan."},
+    {"step":5,"action":"assemble_proposed_mobilization_plan","rule":"Assemble the planned activities without representing planning evidence as proof that mobilization has already occurred."},
+    {"step":6,"action":"route_to_55_execution","rule":"Preserve the plan as an input to mobilization under ISO 19650-2:2018 5.5; execution evidence is governed separately from this pre-appointment plan."}
+  ],
+  "conformance_rules": [
+    {"id":"BEP-535-VAL-001","rule":"All eleven 5.3.5 activity groups shall be evaluated as applicable, not applicable with rationale, or unresolved.","result_on_failure":"gap"},
+    {"id":"BEP-535-VAL-002","rule":"Each applicable activity shall identify approach, timescale and responsibility.","result_on_failure":"gap"},
+    {"id":"BEP-535-VAL-003","rule":"A proposed mobilization plan shall not be represented as evidence that mobilization activities have been completed or successfully tested.","result_on_failure":"fail"},
+    {"id":"BEP-535-VAL-004","rule":"Project CDE planning and delivery-team distributed CDE planning shall remain distinct where a distributed CDE is applicable, including connectivity between them.","result_on_failure":"gap"},
+    {"id":"BEP-535-VAL-005","rule":"Education and training shall remain distinguishable as knowledge and skills interventions rather than being collapsed into an unsupported generic competency statement.","result_on_failure":"gap"},
+    {"id":"BEP-535-VAL-006","rule":"Recruitment for capacity and support for parties joining during the appointment shall be addressed separately where applicable.","result_on_failure":"gap"},
+    {"id":"BEP-535-VAL-007","rule":"The actor establishing the plan shall be mapped to the prospective lead appointed party function through project evidence.","result_on_failure":"unresolved"}
+  ],
+  "outputs": {
+    "primary": "delivery_team_proposed_mobilization_plan",
+    "required_traceability": ["prospective_lead_appointed_party_mapping_evidence", "activity_records", "unresolved_items", "dependencies", "planned_timescales", "responsibility_assignments"],
+    "downstream_use": ["ISO 19650-2:2018 5.3.7 tender-response mobilization-plan component", "ISO 19650-2:2018 5.5 mobilization input"]
+  },
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": ["private:gschmidtke/ISO-19650 ISO 19650-2:2018 5.3.5", "ISO-IMP-003"],
+    "migration_note": "ISO-IMP-003 5.3.5 pass. Converts the mobilization-plan requirement into eleven traceable planning activity groups while separating pre-appointment planning from later mobilization execution."
+  }
+}

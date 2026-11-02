@@ -1,0 +1,49 @@
+{
+  "id": "TIVERIT-BIM-WF-BEP-TENDER-RESPONSE-537-001",
+  "type": "workflow",
+  "title": "Delivery-Team Tender Response Assembly",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S1", "S2", "S3"],
+  "scope": {
+    "purpose": "Operationalize ISO 19650-2:2018 5.3.7 by compiling the available pre-appointment information-management components into the delivery team's tender response.",
+    "boundary": "The tender response is an assembly of distinct governed components. The pre-appointment BEP is one component and shall not be represented as the entire ISO 19650-2 5.3 tender response."
+  },
+  "iso_alignment": {
+    "source": "ISO 19650-2:2018 5.3.7",
+    "responsible_iso_function": "prospective_lead_appointed_party",
+    "components": [
+      {"id":"537-a","name":"preappointment_bep","source_clause":"5.3.2"},
+      {"id":"537-b","name":"capability_capacity_assessment_summary","source_clause":"5.3.4","depends_on":"5.3.3 task-team assessments"},
+      {"id":"537-c","name":"mobilization_plan","source_clause":"5.3.5"},
+      {"id":"537-d","name":"information_delivery_risk_assessment","source_clause":"5.3.6"}
+    ],
+    "availability_semantics": "Where a component is not available, record its state and reason rather than inventing or silently omitting content."
+  },
+  "assembly_process": [
+    {"step":1,"action":"resolve_prospective_lead_appointed_party","rule":"Establish project evidence for the ISO function compiling the response."},
+    {"step":2,"action":"check_532_preappointment_bep","rule":"Reference the governed 5.3.2 output and its unresolved/deferred items."},
+    {"step":3,"action":"check_534_capability_capacity_summary","rule":"Reference the 5.3.4 aggregate and preserve traceability to 5.3.3 task-team assessments."},
+    {"step":4,"action":"check_535_mobilization_plan","rule":"Reference the proposed mobilization plan without treating planned activities as executed."},
+    {"step":5,"action":"check_536_information_delivery_risk_assessment","rule":"Reference the information-delivery risk assessment and intended management responses."},
+    {"step":6,"action":"compile_tender_response_manifest","rule":"Record each component as included, unavailable-with-reason, unresolved, or not-applicable-with-governing-rationale where the applicable project arrangements support that result."}
+  ],
+  "conformance_rules": [
+    {"id":"BEP-537-VAL-001","rule":"The tender-response manifest shall evaluate all four 5.3.7 component groups.","result_on_failure":"gap"},
+    {"id":"BEP-537-VAL-002","rule":"The pre-appointment BEP shall not be represented as the complete 5.3 tender response by itself.","result_on_failure":"fail"},
+    {"id":"BEP-537-VAL-003","rule":"The capability/capacity summary shall preserve traceability to the underlying task-team assessments.","result_on_failure":"gap"},
+    {"id":"BEP-537-VAL-004","rule":"Unavailable or unresolved components shall remain visible in the tender-response manifest and shall not be silently synthesized.","result_on_failure":"fail"},
+    {"id":"BEP-537-VAL-005","rule":"The compiler shall be mapped to the prospective lead appointed party function through project evidence.","result_on_failure":"unresolved"}
+  ],
+  "outputs": {
+    "primary": "delivery_team_tender_response_manifest",
+    "component_states": ["included", "unavailable_with_reason", "unresolved", "not_applicable_with_governing_rationale"],
+    "traceability": ["component_id", "source_clause", "artifact_reference", "status", "unresolved_items", "authority_evidence"]
+  },
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": ["private:gschmidtke/ISO-19650 ISO 19650-2:2018 5.3.7", "ISO-IMP-003"],
+    "migration_note": "ISO-IMP-003 5.3.7 pass."
+  }
+}

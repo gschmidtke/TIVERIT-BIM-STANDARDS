@@ -1,0 +1,125 @@
+{
+  "id": "TIVERIT-BIM-WF-BEP-DELIVERY-TEAM-CAPABILITY-534-001",
+  "type": "workflow",
+  "title": "Delivery-Team Capability and Capacity Aggregation",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S1", "S2"],
+  "scope": {
+    "purpose": "Operationalize ISO 19650-2:2018 5.3.4 by aggregating the capability and capacity assessments produced by each task team under 5.3.3 into a traceable delivery-team summary.",
+    "boundary": "This workflow aggregates task-team evidence. It does not perform a substitute task-team assessment, invent missing evidence, or assign the prospective lead appointed party function to a TIVERIT job title."
+  },
+  "iso_alignment": {
+    "source": "ISO 19650-2:2018 5.3.4",
+    "responsible_iso_function": "prospective_lead_appointed_party",
+    "input_source": "ISO 19650-2:2018 5.3.3 task-team capability and capacity assessments",
+    "required_summary_dimensions": [
+      "delivery_team_capability_to_manage_information",
+      "delivery_team_capability_to_produce_information",
+      "delivery_team_capacity_for_timely_information_delivery"
+    ]
+  },
+  "inputs": {
+    "task_team_assessments": {
+      "cardinality": "one_per_identified_task_team",
+      "required_evidence_groups": [
+        "information_management_capability_capacity",
+        "information_production_capability_capacity",
+        "information_technology_availability"
+      ],
+      "rule": "Each source assessment remains separately identifiable and traceable after aggregation."
+    },
+    "prospective_lead_appointed_party_mapping": {
+      "required": true,
+      "authority_basis": ["appointment", "BEP", "RACI", "equivalent_governing_project_evidence"],
+      "rule": "A TIVERIT role or platform permission shall not be assumed to establish this ISO function."
+    }
+  },
+  "process": [
+    {
+      "step": 1,
+      "action": "identify_task_teams",
+      "rule": "Establish the set of task teams represented in the proposed delivery team."
+    },
+    {
+      "step": 2,
+      "action": "verify_533_source_assessments",
+      "rule": "For every identified task team, verify traceable 5.3.3 evidence for information management, information production and IT availability. Missing evidence remains unresolved and shall not be converted into a positive capability statement."
+    },
+    {
+      "step": 3,
+      "action": "aggregate_information_management_capability",
+      "rule": "Summarize delivery-team capability to manage information from the underlying task-team evidence while preserving material limitations and dependencies."
+    },
+    {
+      "step": 4,
+      "action": "aggregate_information_production_capability",
+      "rule": "Summarize delivery-team capability to produce information from the underlying task-team evidence while preserving material limitations and dependencies."
+    },
+    {
+      "step": 5,
+      "action": "aggregate_timely_delivery_capacity",
+      "rule": "Summarize delivery-team capacity for timely delivery using task-team staffing/capacity and IT availability evidence. Do not infer schedule adequacy from headcount or technology alone."
+    },
+    {
+      "step": 6,
+      "action": "record_summary_and_traceability",
+      "rule": "Record the aggregated outcome, unresolved items, limitations, source task-team assessment references and the project evidence establishing the prospective lead appointed party function."
+    }
+  ],
+  "result_model": {
+    "pass": "All identified task teams have sufficient source evidence and the aggregation supports the three required delivery-team summary dimensions.",
+    "unresolved": "Required task-team evidence, task-team identity, or prospective lead appointed party mapping is incomplete.",
+    "gap": "The aggregation omits a required summary dimension or fails to preserve source traceability.",
+    "fail": "The summary contradicts available source evidence or represents unsupported/invented capability or capacity as established."
+  },
+  "conformance_rules": [
+    {
+      "id": "BEP-534-VAL-001",
+      "rule": "A 5.3.4 delivery-team summary shall reference the 5.3.3 assessment for every identified task team.",
+      "result_on_failure": "unresolved"
+    },
+    {
+      "id": "BEP-534-VAL-002",
+      "rule": "The delivery-team summary shall separately address capability to manage information, capability to produce information, and capacity for timely information delivery.",
+      "result_on_failure": "gap"
+    },
+    {
+      "id": "BEP-534-VAL-003",
+      "rule": "Aggregation shall not erase or override material limitations, missing evidence, capacity constraints or IT constraints recorded by a source task team.",
+      "result_on_failure": "fail"
+    },
+    {
+      "id": "BEP-534-VAL-004",
+      "rule": "A delivery-team-level assertion shall not substitute for missing task-team 5.3.3 assessments.",
+      "result_on_failure": "unresolved"
+    },
+    {
+      "id": "BEP-534-VAL-005",
+      "rule": "The actor compiling the 5.3.4 summary shall be mapped to the prospective lead appointed party function through project evidence; TIVERIT job title alone is insufficient.",
+      "result_on_failure": "unresolved"
+    }
+  ],
+  "outputs": {
+    "primary": "delivery_team_capability_capacity_summary",
+    "required_traceability": [
+      "identified_task_teams",
+      "source_533_assessment_references",
+      "information_management_summary",
+      "information_production_summary",
+      "timely_delivery_capacity_summary",
+      "limitations_and_unresolved_items",
+      "prospective_lead_appointed_party_mapping_evidence"
+    ],
+    "downstream_use": "ISO 19650-2:2018 5.3.7 tender-response capability and capacity assessment summary component"
+  },
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": [
+      "private:gschmidtke/ISO-19650 ISO 19650-2:2018 5.3.4",
+      "TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001 task_team_capability_533"
+    ],
+    "migration_note": "ISO-IMP-003 5.3.4 pass. Establishes aggregation as a distinct prospective-lead-appointed-party activity and preserves the 5.3.3 task-team assessments as source evidence."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "ATS-BEP-PREAPPOINTMENT-53-SEQUENCE-001",
+  "type": "abstract_conformance_test",
+  "title": "ISO 19650-2 Pre-Appointment Tender-Response Sequence",
+  "status": "migration_candidate",
+  "authority": "conformance",
+  "applies_when": "ISO 19650-2:2018 is applicable and a delivery-team tender response is being prepared",
+  "source_clauses": ["5.3.2", "5.3.3", "5.3.4", "5.3.5", "5.3.6", "5.3.7"],
+  "required_sequence": [
+    "5.3.2 prospective lead appointed party establishes proposed pre-appointment BEP",
+    "5.3.3 each task team assesses its capability and capacity",
+    "5.3.4 prospective lead appointed party aggregates task-team assessments into delivery-team summary",
+    "5.3.5 prospective lead appointed party establishes proposed mobilization plan",
+    "5.3.6 prospective lead appointed party establishes information-delivery risk assessment/register",
+    "5.3.7 prospective lead appointed party compiles available components into tender response"
+  ],
+  "checks": [
+    {"id":"ATS-BEP-53-01","check":"5.3.2 seven content groups are captured, explicitly unresolved, or governed otherwise without substitution by supplementary TIVERIT topics."},
+    {"id":"ATS-BEP-53-02","check":"Every identified task team has separately traceable 5.3.3 evidence for information management, information production and IT availability."},
+    {"id":"ATS-BEP-53-03","check":"5.3.4 summary aggregates rather than replaces 5.3.3 source assessments and addresses manage, produce and timely-delivery dimensions."},
+    {"id":"ATS-BEP-53-04","check":"5.3.5 mobilization plan evaluates all eleven activity groups and records approach, timescale and responsibility for applicable activities."},
+    {"id":"ATS-BEP-53-05","check":"5.3.6 evaluates all seven information-delivery risk groups and records intended management responses for identified risks."},
+    {"id":"ATS-BEP-53-06","check":"5.3.7 tender-response manifest evaluates the pre-appointment BEP, capability/capacity summary, mobilization plan and information-delivery risk assessment as distinct components."},
+    {"id":"ATS-BEP-53-07","check":"Prospective lead appointed party and task-team ISO functions are supported by project mapping; TIVERIT titles are not used as automatic substitutes."},
+    {"id":"ATS-BEP-53-08","check":"Missing project facts/evidence remain unresolved or unavailable-with-reason and are not invented."}
+  ],
+  "failure_conditions": [
+    "preappointment_bep_claimed_as_complete_tender_response",
+    "delivery_team_summary_substitutes_for_missing_task_team_assessments",
+    "mobilization_plan_claimed_as_execution_evidence",
+    "generic_risk_register_used_without_traceable_information_delivery_risks",
+    "iso_function_inferred_from_tiverit_job_title",
+    "missing_evidence_silently_synthesized"
+  ],
+  "result_model": {
+    "pass":"Applicable sequence and evidence are complete and traceable.",
+    "unresolved":"Required project mapping, source evidence or component availability is unresolved.",
+    "gap":"Required structure or traceability is incomplete without established contradiction.",
+    "fail":"Evidence shows substitution, invented facts, false completion or contradiction of the governed sequence."
+  },
+  "provenance": {
+    "source_system":"repository_curator",
+    "derived_from":["ISO-IMP-003","TIVERIT-BIM-WF-BEP-INTERVIEW-ASSEMBLY-001","TIVERIT-BIM-WF-BEP-DELIVERY-TEAM-CAPABILITY-534-001","TIVERIT-BIM-WF-BEP-MOBILIZATION-535-001","TIVERIT-BIM-WF-BEP-RISK-REGISTER-536-001","TIVERIT-BIM-WF-BEP-TENDER-RESPONSE-537-001"],
+    "note":"Conformance coverage for ISO-IMP-003 Round 001; does not assert automatic ISO applicability or certification."
+  }
+}

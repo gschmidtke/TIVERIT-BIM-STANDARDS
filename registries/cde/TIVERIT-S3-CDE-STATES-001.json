@@ -8,15 +8,33 @@
   "layer": "L7",
   "modules": ["S3"],
   "entries": [
-    {"id":"CDE-WIP","name":"Work in Progress","code":"WIP","system":"iso19650_information_state","meaning":"Active authoring and internal QA/QC; no cross-discipline reliance.","acc_mapping":"/02_Design_and_Coordination/10_WIP/<Discipline>"},
-    {"id":"CDE-SHARED","name":"Shared","code":"S","system":"iso19650_information_state","meaning":"Verified for interdisciplinary coordination and consultation.","acc_mapping":"/02_Design_and_Coordination/20_Shared"},
-    {"id":"CDE-PUBLISHED","name":"Published","code":"P","system":"iso19650_information_state","meaning":"Authorized information package suitable for the permitted use stated by S2/S7.","acc_mapping":"/02_Design_and_Coordination/30_Published"},
-    {"id":"CDE-ARCHIVED","name":"Archived","code":"A","system":"iso19650_information_state","meaning":"Frozen write-locked record snapshot.","acc_mapping":"/04_Records_and_Archive"},
-    {"id":"DELIV-WIP","name":"Work in Progress","code":"WIP","system":"deliverable_issue_state","permitted_use":"Internal discipline drafting only."},
-    {"id":"DELIV-REVIEW","name":"Shared / For Review","code":"S_REV","system":"deliverable_issue_state","permitted_use":"Coordination/review only; not construction reliance."},
-    {"id":"DELIV-FORMAL","name":"For Construction / Formal Submission","code":"FC_SUB","system":"deliverable_issue_state","permitted_use":"Contractual/statutory/construction reliance per transmittal terms."},
-    {"id":"DELIV-ASBUILT","name":"As Built","code":"AB","system":"deliverable_issue_state","permitted_use":"FM, handover, and operations reliance."}
+    {"id":"CDE-WIP","name":"Work in Progress","code":"WIP","system":"iso19650_information_state","meaning":"Active authoring and internal quality activity within the originating task-team context. Information remains in Work in Progress until the applicable review and approval-for-sharing activity is completed.","acc_mapping":"/02_Design_and_Coordination/10_WIP/<Discipline>"},
+    {"id":"CDE-SHARED","name":"Shared","code":"S","system":"iso19650_information_state","meaning":"Information made available for the permitted shared purpose after the applicable review and approval-for-sharing activity. TIVERIT maps the Work in Progress to Shared transition to ISO 19650-4 Decision A. Shared information is not yet Published and remains subject to the applicable information-model review, authorization, submission and acceptance process before transition to Published where ISO 19650-2 delivery provisions apply.","acc_mapping":"/02_Design_and_Coordination/20_Shared"},
+    {"id":"CDE-PUBLISHED","name":"Published","code":"P","system":"iso19650_information_state","meaning":"Information transitioned from Shared after completion of the applicable authorization and acceptance process. TIVERIT maps the Shared to Published transition to ISO 19650-4 Decision B; where ISO 19650-2 delivery provisions apply, lead appointed party authorization precedes appointing party acceptance. Published records the resulting information state and shall remain traceable to the underlying decision evidence, status and permitted use.","acc_mapping":"/02_Design_and_Coordination/30_Published"},
+    {"id":"CDE-ARCHIVED","name":"Archived","code":"A","system":"iso19650_information_state","meaning":"Controlled historical record of information-container transactions, revisions, statuses and decision evidence. Archiving preserves the record and is not a substitute for approval, authorization, acceptance or handover decisions.","acc_mapping":"/04_Records_and_Archive"},
+    {"id":"DELIV-WIP","name":"Work in Progress","code":"WIP","system":"deliverable_issue_state","permitted_use":"Internal task-team production and checking within the declared scope; transition to Shared requires the applicable approval-for-sharing activity."},
+    {"id":"DELIV-REVIEW","name":"Shared / For Review","code":"S_REV","system":"deliverable_issue_state","permitted_use":"Shared-state coordination/review for the declared purpose after approval for sharing; this context does not replace the subsequent authorization and acceptance process required for transition to Published."},
+    {"id":"DELIV-FORMAL","name":"Formal Submission / Issued for Declared Use","code":"FORMAL_SUB","system":"deliverable_issue_state","permitted_use":"Formal issue context governed by the applicable ISO 19650-2 information-model delivery sequence and project information requirements. Permitted use and status shall remain explicit and traceable."},
+    {"id":"DELIV-ASBUILT","name":"Record / As-Built Submission","code":"AB_SUB","system":"deliverable_issue_state","permitted_use":"Project-defined record or handover submission context. The label does not itself establish a supplementary TIVERIT handover-acceptance decision or operational reliance unless the applicable project governance requires and records it."}
   ],
-  "relationships": {"standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001"]},
-  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7700514","8060929","6848571","4423696"],"migration_note":"State systems remain distinct. ACC issue lifecycle is governed separately under S5 and is not merged into CDE container-state semantics."}
+  "iso19650_transition_model": {
+    "decision_a":{"from":"Work in Progress","to":"Shared","meaning":"Review and approval for sharing before information is made available in Shared.","iso_mapping":"ISO 19650-4 Decision A; supported by ISO 19650-2 collaborative production and approval-for-sharing activity."},
+    "decision_b":{"from":"Shared","to":"Published","meaning":"Applicable authorization and acceptance process before information is made available in Published.","iso_mapping":"ISO 19650-4 Decision B; where ISO 19650-2 delivery provisions apply, lead appointed party authorization is followed by appointing party acceptance."},
+    "archive":{"from":"applicable prior state","to":"Archived","meaning":"Historical record preservation of information-container transactions and evidence; not an additional approval or acceptance decision."}
+  },
+  "state_semantics": {
+    "information_state":"Describes the managed lifecycle position of an information container in the CDE and, for Shared and Published, records the outcome of the applicable ISO 19650 transition process.",
+    "deliverable_issue_state":"Describes the declared issue context, status or intended use of a deliverable package and shall be interpreted with the applicable information requirements and exchange process.",
+    "decision_relationship":"For ISO 19650-governed exchanges, information state and transition decision are coupled: Decision A controls Work in Progress to Shared and Decision B controls Shared to Published. The resulting state is not a substitute for the underlying audit evidence.",
+    "authority_rule":"Platform permission, folder location, workflow ownership or technical transition capability does not independently assign the ISO 19650 party responsibility for approval, authorization or acceptance."
+  },
+  "transition_evidence": {
+    "rule":"Decision-bearing transitions shall remain traceable to the applicable review activity, decision outcome, responsible ISO 19650 party or project-mapped function, affected information scope, status/permitted use, evidence reference, and transition actor where applicable.",
+    "execution_boundary":"The person or system executing the technical CDE transition may differ from the party responsible for the underlying review or decision; technical execution capability shall not be treated as assignment of that responsibility."
+  },
+  "relationships": {
+    "standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
+    "architecture":["INFORMATION-DECISION-AUTHORITY-TAXONOMY"]
+  },
+  "provenance": {"source_system":"confluence","space":"BST","source_pages":["7700514","8060929","6848571","4423696"],"migration_note":"ISO-IMP-005 re-audit aligns the implementation registry to the ISO 19650 exchange backbone: Work in Progress to Shared follows approval for sharing (Decision A mapping); Shared to Published follows the applicable authorization and acceptance process (Decision B mapping); Archived preserves the historical record. ACC issue lifecycle remains separately governed under S5."}
 }

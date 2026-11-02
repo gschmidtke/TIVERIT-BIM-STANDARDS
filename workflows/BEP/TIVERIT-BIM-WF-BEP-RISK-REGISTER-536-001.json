@@ -1,0 +1,55 @@
+{
+  "id": "TIVERIT-BIM-WF-BEP-RISK-REGISTER-536-001",
+  "type": "workflow",
+  "title": "Delivery-Team Information Delivery Risk Register",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S1", "S2", "S3"],
+  "scope": {
+    "purpose": "Operationalize ISO 19650-2:2018 5.3.6 by establishing the delivery team's risks to timely information delivery and the intended management response.",
+    "boundary": "This workflow governs information-delivery risk for the tender response. It may reference a wider project risk register but does not treat generic project risk capture as sufficient unless the required information-delivery risks and responses are traceable."
+  },
+  "iso_alignment": {
+    "source": "ISO 19650-2:2018 5.3.6",
+    "responsible_iso_function": "prospective_lead_appointed_party",
+    "governing_basis": "appointing_party_exchange_information_requirements",
+    "required_outcome": "risks_to_timely_information_delivery_and_intended_management_response"
+  },
+  "risk_groups": [
+    {"id":"536-01","topic":"eir_assumptions","description":"Assumptions made by the delivery team in relation to the appointing party's exchange information requirements."},
+    {"id":"536-02","topic":"information_delivery_milestones","description":"Risks to meeting the appointing party's project information delivery milestones."},
+    {"id":"536-03","topic":"information_protocol","description":"Risks arising from the contents or application of the project's information protocol."},
+    {"id":"536-04","topic":"information_delivery_strategy","description":"Risks to achieving the proposed information delivery strategy."},
+    {"id":"536-05","topic":"information_standard_and_production_methods","description":"Risks in adopting the project's information standard and information production methods and procedures."},
+    {"id":"536-06","topic":"proposed_information_standard_amendments","description":"Risks associated with inclusion or non-inclusion of proposed amendments to the project's information standard."},
+    {"id":"536-07","topic":"mobilization_capability_capacity","description":"Risks in mobilizing the delivery team to achieve required capability and capacity."}
+  ],
+  "risk_record_contract": {
+    "required_fields": ["risk_id", "risk_group", "risk_statement", "source_or_assumption", "impact_on_timely_information_delivery", "management_response", "responsible_actor_or_function", "status", "evidence_reference"],
+    "rule": "A risk group with no identified risk shall record the assessment basis; silence is not evidence that the group was considered."
+  },
+  "process": [
+    {"step":1,"action":"resolve_prospective_lead_appointed_party","rule":"Resolve the ISO function through project evidence; do not infer it from a TIVERIT title."},
+    {"step":2,"action":"evaluate_seven_risk_groups","rule":"Evaluate every 5.3.6 risk group and preserve assumptions and dependencies."},
+    {"step":3,"action":"record_information_delivery_effect","rule":"For each identified risk record how it can affect timely delivery in accordance with the EIR."},
+    {"step":4,"action":"record_management_response","rule":"Record how the delivery team intends to manage each identified risk, including responsibility and evidence/dependency references."},
+    {"step":5,"action":"link_or_embed_in_project_risk_register","rule":"The information-delivery risk register may be incorporated into another project risk register only if these records remain identifiable and traceable."}
+  ],
+  "conformance_rules": [
+    {"id":"BEP-536-VAL-001","rule":"All seven 5.3.6 risk groups shall be demonstrably evaluated.","result_on_failure":"gap"},
+    {"id":"BEP-536-VAL-002","rule":"Every identified information-delivery risk shall include an intended management response.","result_on_failure":"gap"},
+    {"id":"BEP-536-VAL-003","rule":"A generic project risk register shall not satisfy 5.3.6 unless the information-delivery risks are identifiable and traceable to the required risk groups.","result_on_failure":"gap"},
+    {"id":"BEP-536-VAL-004","rule":"Unresolved EIR assumptions shall not be silently normalized into confirmed project facts.","result_on_failure":"fail"},
+    {"id":"BEP-536-VAL-005","rule":"The actor establishing the register shall be mapped to the prospective lead appointed party through project evidence.","result_on_failure":"unresolved"}
+  ],
+  "outputs": {
+    "primary": "delivery_team_information_delivery_risk_assessment",
+    "downstream_use": "ISO 19650-2:2018 5.3.7 tender-response information-delivery-risk component"
+  },
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": ["private:gschmidtke/ISO-19650 ISO 19650-2:2018 5.3.6", "ISO-IMP-003"],
+    "migration_note": "ISO-IMP-003 5.3.6 pass."
+  }
+}
