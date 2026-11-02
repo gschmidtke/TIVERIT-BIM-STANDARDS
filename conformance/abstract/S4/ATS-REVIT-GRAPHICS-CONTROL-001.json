@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-GRAPHICS-CONTROL-001",
+  "type": "abstract_test",
+  "title": "Revit governed graphics control and override state",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S4", "S5"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-GRAPHICS-001",
+  "governing_clause": "GFX-01, GFX-02 and GFX-03",
+  "test_intent": "Determine whether applicable Revit category and subcategory graphics resolve through the governed graphics-control hierarchy and whether recurring display behavior, subcategory use, and exceptions remain free of unexplained local drift.",
+  "applicability": {
+    "applies_when": "The tested Revit model, template, family, or documentation scope contains category/subcategory graphics governed through Object Styles, view templates, rule-based filters, materials, or approved subcategory definitions.",
+    "not_applicable_when": "The tested scope contains no Revit category/subcategory graphics subject to a governed graphics-control rule."
+  },
+  "required_evidence": [
+    "applicable governed graphics-control configuration or registry entries",
+    "observed Object Styles and applicable category/subcategory graphics state",
+    "applicable view-template and rule-based filter graphics state",
+    "inventory of recurring local view or element overrides within the tested scope",
+    "inventory of applicable family/detail subcategories and their governed identities",
+    "record of approved graphics exceptions where applicable"
+  ],
+  "result_logic": {
+    "pass": "Every applicable graphics condition resolves through the approved control layer or an approved traceable exception; recurring display logic is reproducible through governed Object Styles, templates, filters, materials, or approved subcategories; and no unexplained local drift or unapproved subcategory proliferation is present.",
+    "fail": "An applicable graphics condition conflicts with an available governed rule, depends on an unexplained recurring local override, introduces an unapproved duplicate or near-duplicate subcategory, or bypasses an available governed control layer without an approved traceable exception.",
+    "not_applicable": "No graphics condition in the tested scope is subject to a governed graphics-control rule.",
+    "indeterminate": "The applicable governed graphics configuration, expected category/subcategory definition, display context, or exception record is unavailable or incomplete, so conformance cannot be determined without inventing expected values."
+  },
+  "permitted_implementation_classes": ["api_checker", "model_checker", "registry_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-GRAPHICS-001; TIVERIT-S4-REVIT-GRAPHICS-CONTROL-FIELDS-001",
+    "migration_note": "Appendix E ATS for governed Revit graphics-control conformance. Source example line weights, colors, hatch names, subcategory names, and other unconfirmed numeric or office-specific values remain noncanonical; absence of governed expected values produces an indeterminate result rather than invented authority."
+  }
+}
