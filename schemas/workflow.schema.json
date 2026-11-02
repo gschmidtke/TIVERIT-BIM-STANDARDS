@@ -6,7 +6,6 @@
     {"$ref": "./base-object.schema.json"},
     {
       "type": "object",
-      "required": ["steps"],
       "properties": {
         "type": {"const": "workflow"},
         "trigger": {"type": ["string", "object"]},
@@ -25,8 +24,39 @@
             },
             "additionalProperties": true
           }
+        },
+        "process": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["action"],
+            "properties": {
+              "step": {"type": ["integer", "string"]},
+              "action": {"type": "string", "minLength": 1},
+              "rule": {"type": "string"}
+            },
+            "additionalProperties": true
+          }
+        },
+        "assembly_process": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["action"],
+            "properties": {
+              "step": {"type": ["integer", "string"]},
+              "action": {"type": "string", "minLength": 1},
+              "rule": {"type": "string"}
+            },
+            "additionalProperties": true
+          }
         }
       },
+      "anyOf": [
+        {"required": ["steps"]},
+        {"required": ["process"]},
+        {"required": ["assembly_process"]}
+      ],
       "additionalProperties": true
     }
   ]
