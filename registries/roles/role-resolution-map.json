@@ -1,8 +1,10 @@
 {
+  "$schema": "../../schemas/role-resolution-map.schema.json",
   "id": "REG-ROLE-RESOLUTION-001",
+  "type": "role_resolution_map",
   "title": "Role Resolution and Inheritance Map",
   "status": "migration_candidate",
-  "authority": "curator_decision",
+  "authority": "informational",
   "layer": "L4",
   "modules": ["S1"],
   "accepted_on": "2026-10-28",
@@ -44,5 +46,9 @@
   "unresolved_role_names": ["Technical PM","Production Manager","AVLC Lead","FM Lead","IT / Network Lead"],
   "source_decisions": ["CONF-ROLE-001","CONF-ROLE-002","CONF-ROLE-005","CONF-ROLE-006","CONF-ROLE-007","CONF-ROLE-008","CONF-ROLE-009"],
   "deferred_conflicts": ["CONF-ROLE-003","CONF-ROLE-004","CONF-ROLE-010"],
-  "curator_note": "ISO-IMP-005 role-mapping pass: ISO 19650 functions are not replaced by enterprise job titles. Project-specific mapping is required and missing mapping remains unresolved."
+  "curator_note": "ISO-IMP-005 role-mapping pass: ISO 19650 functions are not replaced by enterprise job titles. Project-specific mapping is required and missing mapping remains unresolved.",
+  "provenance": {
+    "source_system": "repository_curator",
+    "migration_note": "Role-resolution decisions normalized from migrated Confluence decision records. CONF-ROLE references remain source-decision identities pending migration or explicit retirement; this map does not create project appointment authority."
+  }
 }
