@@ -1,0 +1,135 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S7-SHEET-NUMBERING-PROFILES-001",
+  "type": "registry",
+  "title": "Sheet and Drawing Numbering Profiles",
+  "status": "curator_candidate",
+  "authority": "configuration",
+  "layer": "L7",
+  "modules": ["S3", "S4", "S7", "S8"],
+  "precedence": [
+    "law_or_regulation",
+    "contract_or_appointment",
+    "appointing_party_or_authority_information_requirements",
+    "explicitly_incorporated_external_standard_or_national_requirement",
+    "project_information_standard_eir_or_equivalent",
+    "bep_and_project_cde_configuration",
+    "tiverit_fallback"
+  ],
+  "resolver_rule": "Select the highest-precedence applicable numbering profile. Lower-precedence profiles may supply only unresolved definitions permitted by the higher authority; they shall not silently replace or contradict it.",
+  "profiles": [
+    {
+      "id": "PROFILE-GOVERNED-CDE-001",
+      "name": "Governed CDE / Document-Control Numbering",
+      "status": "canonical_architecture_candidate",
+      "selection": "Use when the project has an authority-, client-, contract-, EIR-, project-information-standard-, or CDE-governed document numbering convention.",
+      "requirements": [
+        "Resolve the governing document-number grammar before first formal registration.",
+        "Preserve semantic classification separately from the generated document number.",
+        "Treat CDE platform configuration as implementation evidence, not as authority unless the governing project arrangement explicitly makes it authoritative.",
+        "Validate project stage, work condition, spatial metadata, discipline, information form, content classification, sequence, status/suitability, revision, and title as required by the selected profile.",
+        "After first formal registration or issue, identity changes require governed document-control change rather than casual authoring-tool renumbering."
+      ]
+    },
+    {
+      "id": "PROFILE-ASHGHAL-QA-001",
+      "name": "Qatar / Ashghal Drawing Identity",
+      "status": "external_authority_reference_candidate",
+      "parent": "PROFILE-GOVERNED-CDE-001",
+      "authority_type": "government_or_appointing_party",
+      "identity_fields": ["project_or_contract_number","originator","functional_breakdown_package_or_volume","spatial_breakdown_location_or_level","form","discipline","number"],
+      "delimiter": "-",
+      "stage_metadata": ["concept","preliminary","detailed_design","tender","contract","as_built"],
+      "rules": [
+        "The drawing identity follows the applicable Ashghal/project requirement; TIVERIT shall not substitute a simplified sheet-number syntax.",
+        "Project stage is governed metadata and is not assumed to be an identity field unless the applicable project requirement says so.",
+        "The final number/sequence shall follow the applicable Ashghal/project rule; TIVERIT shall not invent content-series meanings where the authority material is silent.",
+        "Where implemented in Aconex or another CDE, the authority requirement remains upstream of platform configuration."
+      ],
+      "public_evidence_locators": [
+        "https://www.ashghal.gov.qa/en/Services/GIS%20and%20CAD%20Manuals/ASHGHAL%20CAD%20STANDARD/PWA%20BUILDINGS%20CAD%20STANDARDS%20MANUAL%20Ver%204.0.pdf",
+        "https://www.ashghal.gov.qa/en/Services/GIS%20and%20CAD%20Manuals/ASHGHAL%20BIM%20STANDARD/D0201_File%20Naming%20Convention%20for%20BIM%20%26%20CAD_V1.pdf"
+      ]
+    },
+    {
+      "id": "PROFILE-CLIENT-PROJECT-001",
+      "name": "Client / Project-Specific Governed Numbering",
+      "status": "project_evidence_profile_candidate",
+      "parent": "PROFILE-GOVERNED-CDE-001",
+      "authority_type": "client_and_project_specific",
+      "selection": "Activate only when governing project evidence establishes a project-specific numbering convention. Public TIVERIT examples shall use neutral placeholders such as AAA, WWW, ZZZ, Project A, Zone A, or Client A rather than real client or project identifiers.",
+      "evidence_boundary": {
+        "confirmed": [
+          "A large project sheet register can provide strong evidence of a consistently implemented project numbering convention when the pattern is systematic and was used for formal submission.",
+          "Project phase and project stage are separate semantic dimensions and shall not be inferred from document status or work condition.",
+          "Project zone/sub-zone and discipline structures may supply semantic classification where governing project evidence defines them.",
+          "The authoring-tool sheet identity and the submitted information-container identity may differ where an export or document-control process adds information-form or deliverable designations after sheet production."
+        ],
+        "not_yet_confirmed": [
+          "Whether an evidenced project convention is an enterprise-wide client standard unless governing client evidence or multiple governed projects establish that applicability.",
+          "Whether project phase or project stage is encoded in the document number versus metadata unless the governing project convention explicitly defines it.",
+          "Any field order, code, content range, or CDE mapping not supported by curated project evidence."
+        ]
+      },
+      "anonymized_project_evidence_pattern": {
+        "status": "confirmed_project_pattern_not_tiverit_default",
+        "evidence_scale": "more_than_10000_sheets_used_for_submission",
+        "authoring_sheet_identity": {
+          "grammar": "{spatial_code}-{discipline_code}{content_series}{sequence}",
+          "example": "AAA-A40001",
+          "example_only": true,
+          "fields": {
+            "spatial_code": "AAA",
+            "discipline_code": "A",
+            "content_series": "4",
+            "sequence": "0001"
+          }
+        },
+        "evidenced_content_series": [
+          {"series":"1","semantic":"plan","example_identity":"AAA-A10001"},
+          {"series":"2","semantic":"elevation","example_identity":"AAA-A20001"},
+          {"series":"3","semantic":"section","example_identity":"AAA-A30001"},
+          {"series":"4","semantic":"large_scale_or_enlarged_view","example_identity":"AAA-A40001"},
+          {"series":"5","semantic":"detail","example_identity":"AAA-A50001"},
+          {"series":"6","semantic":"reflected_ceiling_plan","example_identity":"AAA-A60001"},
+          {"series":"8","semantic":"schedule","example_identity":"AAA-A80001"},
+          {"series":"9","semantic":"diagram_or_single_line","example_identity":"AAA-A90001"}
+        ],
+        "submission_identity_transform": {
+          "status": "transformation_confirmed_exact_grammar_unresolved",
+          "rule": "The submission process may add an information-form or deliverable designation after authoring-tool sheet output. The added designation is part of the governed submission/container identity and shall not be reinterpreted as sheet content classification.",
+          "known_examples_of_form_semantics": ["dwg","model"],
+          "implementation_note": "A post-export automation may perform the transformation, but the tool does not create authority and the exact submission filename/document-number grammar must come from project evidence."
+        }
+      },
+      "rules": [
+        "Do not publish real confidential or project-specific names, codes, zones, sheet numbers, or identifiers as TIVERIT defaults or examples; substitute neutral placeholders while preserving the tested structure.",
+        "Do not generalize a project-specific convention into a national or enterprise client convention without governing evidence.",
+        "Treat CDE platform configuration as implementation evidence rather than upstream authority unless the project arrangement explicitly makes it authoritative.",
+        "Preserve project phase/stage, work condition, zone/sub-zone, discipline, content class/subtype, status/suitability, revision, title, and information form as separate semantic dimensions until governing evidence maps them into identity fields.",
+        "Where a submission workflow adds a deliverable or information-form designation after authoring-tool output, model that as a governed identity transformation rather than changing the semantic sheet classification.",
+        "A project-evidenced content-series mapping may resolve sheet classification only when the active project profile explicitly adopts that mapping; it is not a TIVERIT universal default.",
+        "If the submission identity grammar remains unresolved, the authoring sheet number may be resolved while the submission pre-registration gate remains unresolved.",
+        "Once additional governing evidence is curated, map it to the common semantic classification rather than redefining semantic classes."
+      ]
+    },
+    {
+      "id": "PROFILE-SIMPLIFIED-001",
+      "name": "Simplified Non-CDE Sheet Numbering",
+      "status": "fallback_architecture_candidate",
+      "selection": "Use only where no higher-precedence authority, client, project, or governed CDE numbering requirement applies.",
+      "rules": [
+        "Use the common semantic classification registry.",
+        "A compact TIVERIT numbering syntax may be selected only after higher-precedence requirements have been checked and found silent or inapplicable.",
+        "Legacy D-18/D-19 style discipline/series/sequence concepts may be considered for this fallback profile only after the content taxonomy research is complete; they are not universal defaults."
+      ]
+    }
+  ],
+  "suspended_decisions": [
+    {
+      "id": "D-18-D-19-UNIVERSAL-DEFAULT",
+      "status": "suspended_as_universal_default",
+      "reason": "Research established that international, authority, client, project-information-standard, BEP, and CDE requirements must resolve first. A TIVERIT discipline/series/sequence convention may survive only as a lower-precedence simplified fallback profile."
+    }
+  ]
+}

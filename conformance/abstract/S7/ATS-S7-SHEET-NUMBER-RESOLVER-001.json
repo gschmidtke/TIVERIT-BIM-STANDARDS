@@ -1,0 +1,190 @@
+{
+  "id": "ATS-S7-SHEET-NUMBER-RESOLVER-001",
+  "type": "abstract_test_suite",
+  "title": "Sheet Number Resolver — Authority, Phase and Content Classification",
+  "status": "curator_candidate",
+  "subject": "TIVERIT-BIM-WF-S7-SHEET-NUMBER-RESOLVER-001",
+  "purpose": "Exercise the resolver against representative sheets without publishing or inventing real client/project identifiers.",
+  "anonymization_rule": "Project-derived tests shall preserve semantic and structural behavior while replacing real project, client, attraction, zone, and document identifiers with neutral placeholders such as AAA, WWW, ZZZ, Project A, Client A, Building A, Zone A, and Area A.",
+  "cases": [
+    {
+      "id": "TS-SHEET-001",
+      "name": "Ashghal detailed-design architectural floor plan",
+      "input": {
+        "profile": "PROFILE-ASHGHAL-QA-001",
+        "project_stage": "detailed_design",
+        "work_condition": "proposed",
+        "discipline": "architecture",
+        "information_form": "drawing",
+        "content_class": "plan",
+        "content_subtype": "floor_plan",
+        "level_or_location": "01",
+        "project_or_contract_number": "C2018120",
+        "originator": "PWA",
+        "functional_breakdown_package_or_volume": "AB",
+        "form": "DR",
+        "discipline_code": "AR",
+        "sequence": "0001"
+      },
+      "expected": {
+        "identity": "C2018120-PWA-AB-01-DR-AR-0001",
+        "project_stage_location": "metadata_unless_project_rule_says_otherwise",
+        "gate": "pass",
+        "reason": "All identity fields required by the public authority reference profile are supplied; stage remains a separate governed dimension."
+      }
+    },
+    {
+      "id": "TS-SHEET-002",
+      "name": "Project AAA evidenced enlarged floor plan",
+      "input": {
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
+        "discipline": "architecture",
+        "discipline_code": "A",
+        "content_class": "large_scale_view",
+        "content_subtype": "enlarged_floor_plan",
+        "sequence": "0001"
+      },
+      "expected": {
+        "authoring_sheet_identity": "AAA-A40001",
+        "content_series": "4",
+        "authoring_identity_gate": "pass",
+        "submission_identity_gate": "unresolved",
+        "reason": "The active project evidence resolves enlarged/large-scale views to series 4 and the authoring sheet grammar, but the exact post-export submission identity transformation is not supplied."
+      }
+    },
+    {
+      "id": "TS-SHEET-003",
+      "name": "Project AAA evidenced reflected ceiling plan",
+      "input": {
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
+        "discipline": "architecture",
+        "discipline_code": "A",
+        "content_class": "plan",
+        "content_subtype": "reflected_ceiling_plan",
+        "sequence": "0001",
+        "project_phase": "phase_b",
+        "project_stage": "stage_5",
+        "work_condition": "proposed"
+      },
+      "expected": {
+        "authoring_sheet_identity": "AAA-A60001",
+        "content_series": "6",
+        "authoring_identity_gate": "pass",
+        "submission_identity_gate": "unresolved",
+        "assertions": [
+          "reflected_ceiling_plan resolves to the evidenced series 6 only because the active project profile adopts that mapping",
+          "project phase remains distinct from project stage",
+          "work_condition remains distinct from both phase and stage"
+        ]
+      }
+    },
+    {
+      "id": "TS-SHEET-004",
+      "name": "Project AAA evidenced schedule",
+      "input": {
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
+        "discipline": "architecture",
+        "discipline_code": "A",
+        "content_class": "schedule",
+        "content_subtype": "door_schedule",
+        "sequence": "0001"
+      },
+      "expected": {
+        "authoring_sheet_identity": "AAA-A80001",
+        "content_series": "8",
+        "authoring_identity_gate": "pass",
+        "submission_identity_gate": "unresolved"
+      }
+    },
+    {
+      "id": "TS-SHEET-005",
+      "name": "Project AAA evidenced plan",
+      "input": {
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
+        "discipline": "architecture",
+        "discipline_code": "A",
+        "content_class": "plan",
+        "content_subtype": "floor_plan",
+        "sequence": "0001",
+        "work_condition": "demolition",
+        "project_stage": "stage_5"
+      },
+      "expected": {
+        "authoring_sheet_identity": "AAA-A10001",
+        "content_series": "1",
+        "authoring_identity_gate": "pass",
+        "assertions": [
+          "demolition remains work_condition and does not change the evidenced plan series unless the governing project rule explicitly requires a separate identity treatment",
+          "project stage remains separate metadata unless the project grammar explicitly encodes it"
+        ]
+      }
+    },
+    {
+      "id": "TS-SHEET-006",
+      "name": "Project AAA evidenced diagram or single-line sheet",
+      "input": {
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "spatial_code": "AAA",
+        "discipline": "architecture",
+        "discipline_code": "A",
+        "content_class": "diagram",
+        "content_subtype": "single_line",
+        "sequence": "0001"
+      },
+      "expected": {
+        "authoring_sheet_identity": "AAA-A90001",
+        "content_series": "9",
+        "authoring_identity_gate": "pass",
+        "submission_identity_gate": "unresolved"
+      }
+    },
+    {
+      "id": "TS-SHEET-007",
+      "name": "Submission information-form designation is a transformation, not sheet classification",
+      "input": {
+        "profile": "PROFILE-CLIENT-PROJECT-001",
+        "project_pattern": "anonymized_project_evidence_pattern",
+        "authoring_sheet_identity": "AAA-A40001",
+        "submission_information_form": "dwg",
+        "post_export_automation": true,
+        "submission_identity_grammar": null
+      },
+      "expected": {
+        "authoring_sheet_identity": "AAA-A40001",
+        "submission_identity": null,
+        "gate": "unresolved",
+        "blocking": true,
+        "assertions": [
+          "dwg is an information-form/deliverable designation and does not change enlarged_floor_plan classification",
+          "post-export automation may apply a governed transformation but does not define the grammar or authority",
+          "the exact submission identity shall not be invented"
+        ]
+      }
+    },
+    {
+      "id": "TS-SHEET-008",
+      "name": "Simplified fallback cannot override an evidenced project profile",
+      "input": {
+        "known_project_context": "governed_project_profile",
+        "active_profile": "PROFILE-CLIENT-PROJECT-001",
+        "requested_profile": "PROFILE-SIMPLIFIED-001",
+        "content_subtype": "enlarged_floor_plan"
+      },
+      "expected": {
+        "identity": null,
+        "gate": "fail",
+        "blocking": true,
+        "reason": "An evidenced higher-precedence project convention exists. The simplified TIVERIT fallback cannot replace it."
+      }
+    }
+  ]
+}
