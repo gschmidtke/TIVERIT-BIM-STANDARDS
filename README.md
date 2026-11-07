@@ -1,5 +1,7 @@
 # TIVERIT BIM Standards
 
+**New to TIVERIT Standards?** Read the [Framework at a Glance](FRAMEWORK-AT-A-GLANCE.md) — a concise guide to our machine-readable classification system, how private company standards fit the open framework, and a prompt your AI can use to explore it.
+
 TIVERIT BIM Standards is a governed, machine-readable BIM standards repository for human use, automation, validation, AI-assisted workflows, Revit, Autodesk Construction Cloud, and related BIM systems.
 
 ## Start here — AI / project front door
