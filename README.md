@@ -11,6 +11,7 @@ Do not begin by reverse-engineering S1–S9. First classify the question and rou
 3. **How has this been done successfully in Revit, what failed, and how was it verified?** → **ARPL** — https://github.com/gschmidtke/ARPL
 4. **Can the current API actually perform the required operation?** → authoritative API documentation / capability lookup. Autodesk Platform Services `dll2llm` / API Navigator may be useful: https://github.com/autodesk-platform-services/dll2llm
 5. **Is the task ready for bounded execution?** → authorized Revit Bridge / executor
+   - Informative implementation example: [RevitBridge Reference v0.5.0](https://github.com/gschmidtke/REVIT-BRIDGE-REFERENCE/releases/tag/v0.5.0) ([repository](https://github.com/gschmidtke/REVIT-BRIDGE-REFERENCE), source-only Apache-2.0). This reference is not a normative requirement, project authorization, or evidence of compliance. Use only within applicable project and tool-authority boundaries.
 6. **Is governed automation, repair, verification, or evidence required in a supported workflow?** → ZEN
 
 This is a **navigation route, not a requirement to invoke every layer**. Start at the highest materially unresolved question and continue downstream only as far as the task requires.
