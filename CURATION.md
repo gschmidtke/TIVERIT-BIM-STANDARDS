@@ -8,6 +8,8 @@ TIVERIT BIM Standards is publicly readable and accepts external learning through
 
 Nothing in `inbox/` is authoritative merely because it exists there or because an Inbox pull request has been merged.
 
+The repository is a continuous absorption system, not a finished standards book. New sources, external standards, project lessons, tool changes, and evidence may continuously produce candidates. Capture is not promotion, importance is not readiness, and technical implementation is not automatically Standards authority.
+
 ## Curator mode
 
 Canonical repository areas are edited only in curator sessions. The curator may be a human or an AI acting under the repository owner's direction.
@@ -25,6 +27,39 @@ The curator must:
 9. Keep project-specific or client-specific facts out of reusable canonical rules unless deliberately modeled as configurable/project-instance data.
 10. Escalate new normative or architectural choices to the repository owner when they are not already established by source authority or an accepted curator decision.
 11. Apply the Repository Freshness Gate before asserting that governed content is missing, contradictory, duplicated, or incomplete.
+12. Classify and route a candidate before rating its priority.
+13. Rate candidate importance independently from promotion readiness.
+14. Keep material vagueness explicit; do not fill missing authority, references, roles, scope, or configuration with guessed defaults.
+
+## Candidate Intake and Triage
+
+Candidate handling is governed by:
+
+- `schemas/candidate-record.schema.json`
+- `registries/curation/TIVERIT-CANDIDATE-TRIAGE-001.json`
+- `workflows/governance/TIVERIT-WF-CANDIDATE-PROMOTION-001.json`
+- `templates/candidate-record.template.json`
+
+Every material candidate should answer four separate questions:
+
+1. **What is it?** — external normative, enterprise governance, project/BEP configuration, tool implementation/configuration, or observation/evidence.
+2. **How important is it?** — based on authority potential, scope, impact, dependency reach, and urgency.
+3. **How ready is it?** — based on evidence, authority verification, reference mapping, scope clarity, conflicts, and unresolved facts.
+4. **Where does it belong?** — Standards, BEP/project configuration, tool configuration, ARPL, USG, evidence ledger, or hold.
+
+The governing separation is:
+
+```text
+PRIORITY = what deserves investigation first
+READINESS = whether it can be promoted
+AUTHORITY / CLASS = where it belongs
+```
+
+A high-priority candidate may remain blocked for months if evidence is insufficient. A low-priority candidate may be fully evidenced but still remain project/tool configuration rather than a Standard.
+
+A new or revised applicable ISO/EN requirement will normally receive much greater investigation priority than a tool-local setting. A Navisworks export setting, for example, is normally a BEP/project or tool configuration value unless a separate durable organizational requirement behind it has been established.
+
+Candidate state is not a quality judgment. `evidence_required`, `held_unresolved`, `project_configuration`, and `tool_configuration` are legitimate governed outcomes. They preserve useful material without granting false normative authority.
 
 ## Repository Freshness Gate
 
@@ -79,11 +114,17 @@ Everything else is curator-managed, including:
 ```text
 INBOX / SOURCE / OWNER REQUEST
         ↓
-TRIAGE
+CAPTURE CANDIDATE + PROVENANCE
         ↓
 FRESHNESS GATE + CURRENT CANONICAL HEAD
         ↓
-CONTEXT + DUPLICATE / LEGACY / MIGRATION CHECK
+CLASSIFY + ROUTE
+        ↓
+RATE IMPORTANCE (P0-P4)
+        ↓
+ASSESS EVIDENCE + PROMOTION READINESS
+        ↓
+GATHER NEEDED REFERENCES / DATA / AUTHORITY
         ↓
 CLASSIFY GOVERNED MEANING
         ↓
@@ -93,12 +134,12 @@ VALIDATE / TEST
         ↓
 CURATOR OR OWNER DECISION
         ↓
-CANONICAL CHANGE OR HOLD / REJECT
+PROMOTE / CONFIGURE / RETAIN EVIDENCE / HOLD / REJECT / SUPERSEDE
 ```
 
 ## Authority boundary
 
-The curator manages canonical representation but does not invent missing project facts, contractual authority, professional approvals, or source evidence.
+The curator manages canonical representation but does not invent missing project facts, contractual authority, professional approvals, source evidence, or configuration values.
 
 During migration, Confluence remains source authority until formal cutover. GitHub objects marked `migration_candidate` are normalized migration candidates, not yet formally cut-over authority.
 

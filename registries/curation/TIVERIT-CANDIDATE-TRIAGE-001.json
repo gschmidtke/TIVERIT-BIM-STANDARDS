@@ -1,0 +1,100 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-CANDIDATE-TRIAGE-001",
+  "type": "registry",
+  "title": "Standards Candidate Classification, Importance and Promotion Triage",
+  "status": "migration_candidate",
+  "authority": "architectural",
+  "layer": "L2",
+  "modules": ["S1"],
+  "entries": [
+    {
+      "id": "CLASS-A-EXTERNAL-NORMATIVE",
+      "name": "External normative candidate",
+      "candidate_class": "external_normative",
+      "authority_examples": ["ISO/EN/international standard", "national or governmental requirement", "applicable statutory requirement", "appointing-party/client mandated standard"],
+      "default_priority_band": "P0-P1",
+      "routing": "STANDARDS",
+      "rule": "High authority potential does not equal promotion readiness. Verify applicability, source authority, lawful reference basis, clause impact, conflicts and repository mapping before promotion."
+    },
+    {
+      "id": "CLASS-B-ENTERPRISE-GOVERNANCE",
+      "name": "Enterprise governance candidate",
+      "candidate_class": "enterprise_governance",
+      "authority_examples": ["repeated cross-project organizational rule", "approved enterprise governance decision", "durable internal control requirement"],
+      "default_priority_band": "P1-P3",
+      "routing": "STANDARDS",
+      "rule": "Demonstrate reusable scope and governing need; project habit or repeated implementation alone does not create enterprise authority."
+    },
+    {
+      "id": "CLASS-C-PROJECT-GOVERNANCE-CONFIG",
+      "name": "Project governance or configuration",
+      "candidate_class": "project_governance_configuration",
+      "authority_examples": ["BEP decision", "project information standard", "project RACI", "project exchange requirement", "client project configuration"],
+      "default_priority_band": "P1-P4",
+      "routing": "BEP",
+      "rule": "Keep project facts and project authority in project/BEP configuration unless separate evidence establishes a reusable enterprise rule."
+    },
+    {
+      "id": "CLASS-D-TOOL-CONFIG",
+      "name": "Tool implementation or configuration",
+      "candidate_class": "tool_implementation_configuration",
+      "authority_examples": ["Navisworks export option", "Revit preset", "ACC setting", "script parameter", "tool-specific profile"],
+      "default_priority_band": "P2-P4",
+      "routing": "TOOL_CONFIGURATION",
+      "rule": "A tool setting is normally implementation/configuration. Promote only the durable governing requirement behind it, if one exists."
+    },
+    {
+      "id": "CLASS-E-OBSERVATION",
+      "name": "Observation or evidence",
+      "candidate_class": "observation_evidence",
+      "authority_examples": ["lesson learned", "successful precedent", "failure report", "user suggestion", "unverified external reference"],
+      "default_priority_band": "P2-P4",
+      "routing": "EVIDENCE_LEDGER",
+      "rule": "Evidence may trigger investigation but is not normative merely because it is repeated, successful, or technically possible."
+    },
+    {
+      "id": "PRIORITY-P0",
+      "name": "P0 — immediate systemic authority/compliance review",
+      "criteria": "Potentially changes or conflicts with high-order external authority, legal/contractual compliance, repository-wide governance, or a current critical decision.",
+      "service_rule": "Review before lower-priority curation where materially applicable. P0 does not bypass evidence or approval gates."
+    },
+    {
+      "id": "PRIORITY-P1",
+      "name": "P1 — high impact or broad dependency",
+      "criteria": "Broad enterprise/multi-project effect, major governance dependency, or active project obligation with significant consequences if unresolved."
+    },
+    {
+      "id": "PRIORITY-P2",
+      "name": "P2 — material bounded governance need",
+      "criteria": "Important but bounded rule, workflow, or configuration dependency with identifiable users/projects and no immediate systemic conflict."
+    },
+    {
+      "id": "PRIORITY-P3",
+      "name": "P3 — operational/local improvement",
+      "criteria": "Local, tool, discipline, or project improvement that does not materially alter broader authority or compliance."
+    },
+    {
+      "id": "PRIORITY-P4",
+      "name": "P4 — deferred observation or low-impact candidate",
+      "criteria": "Useful evidence or possible future improvement with low current consequence or insufficient reason to investigate immediately."
+    },
+    {
+      "id": "PROMOTION-SEPARATION",
+      "name": "Priority is independent from promotion readiness",
+      "rule": "Priority determines investigation order; promotion readiness determines whether the candidate may advance; authority classification determines where it belongs. A P0 candidate may remain evidence_required, while a P3 candidate may be ready for a bounded configuration decision."
+    },
+    {
+      "id": "VAGUENESS-RULE",
+      "name": "Unresolved information remains explicit",
+      "rule": "Missing authority, scope, references, project values, role assignment, conflict resolution, or configuration data shall remain flagged in unresolved[] and shall block promotion when material. Do not normalize vagueness into a guessed default."
+    }
+  ],
+  "relationships": {
+    "workflows": ["TIVERIT-WF-CANDIDATE-PROMOTION-001"]
+  },
+  "provenance": {
+    "source_system": "repository_owner_curator_decision",
+    "migration_note": "Introduces continuous candidate absorption and triage so incoming evidence is ranked by authority/importance, routed before promotion, and kept separate from promotion readiness."
+  }
+}

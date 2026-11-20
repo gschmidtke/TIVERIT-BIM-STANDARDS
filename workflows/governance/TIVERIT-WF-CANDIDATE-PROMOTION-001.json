@@ -1,0 +1,92 @@
+{
+  "$schema": "../../schemas/workflow.schema.json",
+  "id": "TIVERIT-WF-CANDIDATE-PROMOTION-001",
+  "type": "workflow",
+  "title": "Candidate Intake, Triage, Evidence and Promotion Workflow",
+  "status": "migration_candidate",
+  "authority": "procedural",
+  "layer": "L5",
+  "modules": ["S1"],
+  "trigger": "A new source, proposal, external requirement, project rule, tool setting, lesson learned, gap, or owner request is proposed for absorption into the Standards ecosystem.",
+  "steps": [
+    {
+      "id": "CAND-01",
+      "action": "Capture the candidate without granting authority.",
+      "actor_role": "Curator",
+      "inputs": ["source/proposal", "source reference", "initial provenance"],
+      "outputs": ["candidate record in captured state"],
+      "verification": {"rule": "Source and provenance are retained; capture alone does not create governing knowledge."}
+    },
+    {
+      "id": "CAND-02",
+      "action": "Apply the Repository Freshness Gate and compare against current canonical state.",
+      "actor_role": "Curator",
+      "inputs": ["candidate record", "current canonical HEAD"],
+      "outputs": ["evaluated_against baseline", "duplicate/supersession/current-state assessment"],
+      "verification": {"rule": "Do not classify a repository gap from stale or noncanonical state."}
+    },
+    {
+      "id": "CAND-03",
+      "action": "Classify the candidate before scoring it.",
+      "actor_role": "Curator",
+      "inputs": ["candidate meaning", "content classification doctrine", "candidate triage registry"],
+      "outputs": ["candidate_class", "standards_eligibility", "routing target"],
+      "verification": {"rule": "Determine whether this is truly a Standards candidate or belongs to BEP/project/tool/evidence handling first."}
+    },
+    {
+      "id": "CAND-04",
+      "action": "Rate importance independently from promotion readiness.",
+      "actor_role": "Curator",
+      "inputs": ["authority potential", "scope", "impact", "dependency reach", "urgency"],
+      "outputs": ["priority P0-P4", "importance rationale"],
+      "verification": {"rule": "Priority controls investigation order only; it never bypasses evidence, authority, or approval requirements."}
+    },
+    {
+      "id": "CAND-05",
+      "action": "Assess evidence and promotion readiness.",
+      "actor_role": "Curator",
+      "inputs": ["source evidence", "authority verification", "references", "scope", "conflicts", "required project/configuration data"],
+      "outputs": ["promotion_readiness", "unresolved questions", "evidence needs"],
+      "verification": {"rule": "Material vagueness remains explicit and blocks promotion; do not guess missing values or authority."}
+    },
+    {
+      "id": "CAND-06",
+      "action": "Route the candidate to the correct governed destination.",
+      "actor_role": "Curator",
+      "inputs": ["classification", "priority", "readiness"],
+      "outputs": ["STANDARDS, BEP, PROJECT_CONFIGURATION, TOOL_CONFIGURATION, ARPL, USG, EVIDENCE_LEDGER, or HOLD route"],
+      "verification": {"rule": "Project/tool configuration does not compete with external normative candidates in the Standards promotion queue unless a reusable governing rule has been separately established."}
+    },
+    {
+      "id": "CAND-07",
+      "action": "Gather or request missing evidence for candidates worth pursuing.",
+      "actor_role": "Curator",
+      "inputs": ["unresolved questions", "priority", "route"],
+      "outputs": ["new evidence", "updated readiness", "retained unresolved items"],
+      "verification": {"rule": "Evidence gathering is proportional to candidate importance and need; low-value configuration gaps may remain unresolved until demanded by a project."}
+    },
+    {
+      "id": "CAND-08",
+      "action": "Make the curator/owner promotion decision.",
+      "actor_role": "Repository Owner or delegated Curator",
+      "inputs": ["candidate record", "complete evidence package", "fresh canonical comparison"],
+      "outputs": ["promote, partially promote, route_configuration, retain_evidence, hold, reject, or supersede"],
+      "verification": {"rule": "Only adequately evidenced reusable governed meaning is promoted into canonical Standards objects."}
+    },
+    {
+      "id": "CAND-09",
+      "action": "Validate the resulting governed change and preserve the candidate disposition.",
+      "actor_role": "Curator",
+      "inputs": ["target repository change", "candidate decision"],
+      "outputs": ["validated canonical change or retained noncanonical disposition", "traceable source-to-decision link"],
+      "verification": {"rule": "Promotion must remain traceable to evidence and decision; rejected/held/configuration-routed candidates remain discoverable rather than being silently erased."}
+    }
+  ],
+  "relationships": {
+    "registries": ["TIVERIT-CANDIDATE-TRIAGE-001"]
+  },
+  "provenance": {
+    "source_system": "repository_owner_curator_decision",
+    "migration_note": "Formalizes the continuous absorption mechanism for Standards candidates while separating classification, importance, evidence maturity, routing, and promotion authority."
+  }
+}
