@@ -38,8 +38,8 @@
   ],
   "outputs": ["Project initialized or aligned to an approved Revit project template", "Traceable template version/release context"],
   "evidence": ["Template filename or release identifier", "Template validation checklist or automated inventory", "Recorded deviations or remediation items"],
-  "future_dependencies": ["Concrete governed Revit Template Catalogue", "Template Release Pipeline", "Template Validation Ruleset"],
-  "governance_notes": ["Source template filename patterns and placeholder catalogue entries remain examples/TODOs and are not promoted.", "Template content implements governing standards; the template itself does not redefine those standards."],
+  "future_dependencies": ["Approved office/project template catalogue instances populated against TIVERIT-S3-REVIT-TEMPLATE-CONTENT-FIELDS-001"],
+  "governance_notes": ["Source template filename patterns and placeholder catalogue entries remain examples/TODOs and are not promoted.", "Template content implements governing standards; the template itself does not redefine those standards.", "Template release lifecycle is governed by TIVERIT-S3-REVIT-TEMPLATE-RELEASE-001; generic validation structure is provided by the content-manifest fields and ATS-REVIT-TEMPLATE-CONTENT-001 rather than a separate duplicate validation ruleset."],
   "provenance": {
     "source_system": "confluence",
     "space": "BST",
@@ -47,6 +47,6 @@
     "source_version": 1,
     "source_title": "Revit Project Templates – Instructions, Definitions, Workflows",
     "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7503875",
-    "migration_note": "Normalized as L6 implementation guidance. Source placeholders and incomplete template-name/catalogue values are intentionally not canonicalized."
+    "migration_note": "Normalized as L6 implementation guidance. Source placeholders and incomplete template-name/catalogue values are intentionally not canonicalized; fresh Appendix E reconciliation records the release workflow separately and treats catalogue rows as configuration instances."
   }
 }

@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/workflow.schema.json",
+  "id": "TIVERIT-S3-REVIT-TEMPLATE-RELEASE-001",
+  "type": "workflow",
+  "title": "Revit Project Template Change, Release and Retirement",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L5",
+  "modules": ["S3", "S4", "S8"],
+  "trigger": "A governed Revit project template requires creation, modification, release, replacement, or retirement.",
+  "steps": [
+    {
+      "id": "TR-01",
+      "action": "Record the proposed template change with rationale, affected template scope, intended impact, and supporting evidence.",
+      "inputs": ["change rationale", "affected template identity or intended scope", "supporting sample or evidence"],
+      "outputs": ["traceable template change proposal"]
+    },
+    {
+      "id": "TR-02",
+      "action": "Prepare the candidate template in a controlled non-production context and update its governed content manifest for the proposed release.",
+      "inputs": ["approved proposal for evaluation", "TIVERIT-S3-REVIT-TEMPLATE-CONTENT-FIELDS-001"],
+      "outputs": ["candidate Revit template", "candidate template-content manifest"]
+    },
+    {
+      "id": "TR-03",
+      "action": "Validate the candidate template against the applicable governed standards, content manifest, and conformance tests; record missing content, regressions, compatibility impacts, and unresolved exceptions.",
+      "inputs": ["candidate Revit template", "candidate template-content manifest", "ATS-REVIT-TEMPLATE-CONTENT-001", "applicable governed Revit standards and registries"],
+      "outputs": ["template validation evidence", "recorded exceptions or remediation findings"]
+    },
+    {
+      "id": "TR-04",
+      "action": "Route the validated candidate to the applicable standards-governance authority for release authorization. This workflow does not assign or infer the approving role.",
+      "inputs": ["template validation evidence", "release-impact assessment", "applicable authority or governance assignment"],
+      "outputs": ["release authorization, rejection, or required remediation"]
+    },
+    {
+      "id": "TR-05",
+      "action": "For an authorized release, assign the governed template release identifier, publish the approved template and manifest to the controlled source, and issue release notes including material changes, compatibility or migration impacts, and known limitations.",
+      "inputs": ["authorized candidate", "governed release/version decision", "controlled template source"],
+      "outputs": ["published governed template release", "published template-content manifest", "release notes"]
+    },
+    {
+      "id": "TR-06",
+      "action": "Communicate adoption of the new release and mark superseded releases as deprecated or retired according to the applicable retention or sunset policy, without deleting traceability to prior project baselines.",
+      "inputs": ["published governed template release", "superseded releases where applicable", "applicable retention or sunset policy"],
+      "outputs": ["adoption record", "updated deprecation or retirement state", "preserved release history"]
+    }
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "source_pages": ["7503875"],
+    "migration_note": "Promotes the durable Appendix E proposal-to-adoption lifecycle while leaving approver identities, repository paths, release values, communication channels, and sunset periods unresolved until governed elsewhere."
+  }
+}
