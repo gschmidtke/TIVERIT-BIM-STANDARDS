@@ -13,11 +13,11 @@
   },
   "summary": {
     "instruction_count": 17,
-    "instructions_with_direct_ats": 9,
-    "instructions_without_direct_ats": 8,
-    "ats_count": 34,
+    "instructions_with_direct_ats": 10,
+    "instructions_without_direct_ats": 7,
+    "ats_count": 35,
     "ats_with_ets": 8,
-    "ats_without_ets": 26,
+    "ats_without_ets": 27,
     "ets_count": 8,
     "ets_implementation_states": {
       "specified_not_implemented": 7,

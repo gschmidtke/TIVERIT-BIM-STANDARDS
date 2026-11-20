@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S4-REVIT-DATUM-REFERENCE-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Datum and Reference Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S4", "S6"],
+  "entries": [
+    {"id":"REFERENCE_CLASS","name":"Datum/reference class","requirement":"Each governed datum or reference object shall identify whether it is a level, grid, scope box, reference plane, or another approved datum/reference class."},
+    {"id":"STABLE_IDENTITY","name":"Stable identity","requirement":"Each persistent governed datum/reference object shall have a stable identity sufficient to distinguish it from duplicates, temporary constructs, or ad-hoc local substitutes."},
+    {"id":"AUTHORITATIVE_SOURCE","name":"Authoritative source","requirement":"Each governed level or grid, and any reference object whose position is authoritative, shall identify the applicable project datum, grid, survey/control, coordination, or other governed source from which its position or identity is derived."},
+    {"id":"NAMING_BASIS","name":"Naming basis","requirement":"Persistent datum/reference objects shall follow the applicable governed naming syntax or project-specific naming configuration. Source example abbreviations and patterns are not canonical unless separately approved."},
+    {"id":"POSITION_ELEVATION_BASIS","name":"Position or elevation basis","requirement":"Where position or elevation is material, the datum/reference definition shall identify the governed position/elevation basis and shall not rely on unexplained local offsets or near-duplicate values."},
+    {"id":"CROSS_MODEL_ALIGNMENT","name":"Cross-model alignment","requirement":"Where the datum/reference object is shared across disciplines or linked models, its identity and position shall remain aligned to the applicable authoritative project source or an approved recorded exception."},
+    {"id":"PURPOSE_SCOPE","name":"Purpose and scope","requirement":"Scope boxes and reference planes, and other non-primary datum objects, shall declare a continuing modeling, documentation, coordination, or crop/extents purpose sufficient to justify their persistence."},
+    {"id":"TEMPORARY_STATUS","name":"Temporary or persistent status","requirement":"Temporary datum/reference objects shall be distinguishable from persistent governed objects and shall be removed, retired, or otherwise resolved before the applicable issue/release gate unless an approved reason exists."},
+    {"id":"GRAPHICS_REFERENCE","name":"Graphics and annotation reference","requirement":"Where graphical representation is governed, datum/reference graphics shall resolve through the applicable graphics, annotation, and view-template standards rather than local ad-hoc overrides."},
+    {"id":"CHANGE_CONTROL","name":"Change control","requirement":"Material changes to governed levels, grids, scope boxes, or reference planes that affect coordination or documentation shall be traceable through the applicable project or standards change-control process."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-LEVELS-GRIDS-001"],
+    "standards": ["TIVERIT-BIM-STD-S6-COORDINATES-EP001"],
+    "registries": ["TIVERIT-S4-NAMING-SYNTAXES-001", "TIVERIT-S4-CONTROLLED-VOCABULARIES-001", "TIVERIT-S4-REVIT-GRAPHICS-CONTROL-FIELDS-001", "TIVERIT-S4-REVIT-ANNOTATION-TYPE-FIELDS-001"]
+  },
+  "non_promoted_source_content": [
+    "No source example level abbreviations, capitalization rules, level names, minimum vertical spacing, grid-axis orientation, skipped-letter set, infill rule, scope-box names, reference-plane types, or graphics values are promoted as enterprise defaults.",
+    "Project Level Matrix rows, survey/control values, authoritative grid coordinates, scope-box inventories, and reference-plane inventories remain project/configuration data."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "6684703",
+    "source_version": 1,
+    "source_title": "Levels, Grids & Reference Standards - Revit Guidelines",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6684703",
+    "migration_note": "Promotes the durable machine-readable fields needed to govern levels, grids, scope boxes, and reference planes while preserving S6 spatial authority and leaving source examples/TODO values as configuration rather than canonical defaults."
+  }
+}
