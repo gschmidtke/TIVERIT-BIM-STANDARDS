@@ -10,32 +10,25 @@
   "modules": ["S1", "S3"],
   "trigger": "Project kickoff or CDE provisioning",
   "automation_readiness": "ASSISTED",
-  "entry_conditions": [
-    "The project collaboration environment is being provisioned.",
-    "Applicable folder, permission, and baseline-publication requirements are known or explicitly unresolved."
-  ],
+  "entry_conditions": ["The project collaboration environment is being provisioned.","Applicable folder, permission, information-state and baseline-publication requirements are known or explicitly unresolved.","Where baseline information is to enter Shared or Published, the applicable ISO 19650 transition process and responsible project parties/functions are known or explicitly unresolved."],
   "steps": [
     {"id":"I1.2.001","action":"Create the governed folder structure required for the project."},
-    {"id":"I1.2.002","action":"Assign permissions and role-based access."},
-    {"id":"I1.2.003","action":"Publish baseline files and the associated transmittal note."},
-    {"id":"I1.2.004","action":"Verify access and the resulting audit trail."}
+    {"id":"I1.2.002","action":"Assign permissions and role-based access. Platform capability shall not independently assign responsibility for ISO 19650 review, approval, authorization or acceptance activities."},
+    {"id":"I1.2.003","action":"Configure Work in Progress, Shared, Published and Archived mappings in accordance with the S3 CDE state registry. Configure Work in Progress to Shared as the Decision A approval-for-sharing transition and Shared to Published as the Decision B authorization-and-acceptance transition."},
+    {"id":"I1.2.004","action":"Stage baseline information in Work in Progress or the other applicable starting state together with the required metadata and transmittal information."},
+    {"id":"I1.2.005","action":"Before transition from Work in Progress to Shared, verify completion and traceability of the applicable review and approval-for-sharing activity. Before transition from Shared to Published, verify completion and traceability of the applicable authorization and acceptance process, including separate lead-appointed-party authorization and appointing-party acceptance where the applicable ISO 19650-2 delivery process requires them."},
+    {"id":"I1.2.006","action":"Execute the permitted CDE transition and preserve traceability to the applicable review/decision evidence, responsible ISO 19650 party or project-mapped function, information scope, status/permitted use and exchange record."},
+    {"id":"I1.2.007","action":"Verify access, resulting information state, decision evidence and audit trail. If a required ISO 19650 responsibility or implementation mapping remains unresolved, hold the affected transition unresolved rather than substituting a platform role or supplementary TIVERIT decision."}
   ],
-  "outputs": [
-    "Provisioned project CDE structure",
-    "Applied role-based access",
-    "Published baseline information",
-    "Access and audit evidence"
-  ],
+  "outputs": ["Provisioned project CDE structure","Applied role-based access","Configured ISO 19650 information-state mappings","Staged baseline information","Governed Decision A or Decision B transition, or explicitly unresolved transition","Review, decision, exchange, access and audit evidence"],
   "governance_notes": [
-    "The source identifies the CDE Structure Standard and a future Permission Matrix as supporting governance.",
-    "This object does not supersede the existing S3 ACC onboarding workflow; reconciliation between generic W1.2 source logic and platform-specific onboarding remains a migration task."
+    "W1.2 provisions and initializes the CDE; it implements rather than redefines the ISO 19650 CDE lifecycle.",
+    "For ISO 19650-governed exchanges, Shared is reached through the applicable approval-for-sharing process and Published through the applicable authorization and acceptance process.",
+    "The CDE state records the result of the governed transition but does not replace the review and decision evidence that produced it.",
+    "Technical permission to move, upload, publish, transmit or change status in ACC is not equivalent to the project responsibility for the underlying ISO 19650 review or decision activity.",
+    "TIVERIT coordination sign-off, milestone approval and handover acceptance are supplementary governance decisions where applicable and shall not substitute for Decision A or Decision B.",
+    "This object and the S3 ACC onboarding workflow shall preserve the same ISO 19650 transition semantics."
   ],
-  "provenance": {
-    "source_system": "confluence",
-    "space": "BST",
-    "page_id": "6127632",
-    "source_version": 1,
-    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632",
-    "migration_note": "Source workflow W1.2 migrated from the workflow catalogue. Future Permission Matrix remains unresolved."
-  }
+  "relationships": {"registries":["TIVERIT-S3-CDE-STATES-001","TIVERIT-S3-PLATFORM-PERMISSIONS-001"],"workflows":["TIVERIT-S3-ACC-ONBOARDING-001"],"standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"]},
+  "provenance": {"source_system":"confluence","space":"BST","page_id":"6127632","source_version":1,"source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/6127632","migration_note":"Source workflow W1.2 migrated from the workflow catalogue. ISO-IMP-005 re-audit aligns baseline state transitions to Decision A and Decision B semantics while preserving platform execution as implementation rather than authority."}
 }

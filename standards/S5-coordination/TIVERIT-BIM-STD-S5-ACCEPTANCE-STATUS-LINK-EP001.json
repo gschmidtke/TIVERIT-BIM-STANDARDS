@@ -1,12 +1,24 @@
 {
-  "$schema":"../../schemas/standard.schema.json","id":"TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001","type":"standard","title":"Acceptance and Information Status Link","status":"migration_candidate","authority":"normative","layer":"L4","modules":["S5","S7"],
+  "$schema":"../../schemas/standard.schema.json",
+  "id":"TIVERIT-BIM-STD-S5-ACCEPTANCE-STATUS-LINK-EP001",
+  "type":"standard",
+  "title":"ISO 19650 Decision and CDE Status Link",
+  "status":"migration_candidate",
+  "authority":"normative",
+  "layer":"L4",
+  "modules":["S3","S5","S7"],
   "requirements":[
-    {"id":"REQ-S7-009","authority":"shall","statement":"Every formal acceptance decision shall be associated with a corresponding governed CDE container status change.","verification_class":"machine_checkable"},
-    {"id":"REQ-S7-010","authority":"shall","statement":"When coordination sign-off or milestone approval occurs, the information container status shall be updated in the CDE to reflect the accepted state.","verification_class":"machine_checkable"},
-    {"id":"REQ-S7-011","authority":"shall","statement":"The CDE status of every container shall be traceable to a specific review record, sign-off event, or deviation approval.","verification_class":"machine_checkable"},
-    {"id":"REQ-S7-012","authority":"shall_not","statement":"Acceptance decisions recorded only in informal channels without a governed CDE status update shall not constitute governed acceptance.","verification_class":"machine_checkable"},
-    {"id":"REQ-S7-013","authority":"shall","statement":"If sign-off occurs outside the CDE, the Project BIM Manager or designated CDE lead shall execute the corresponding CDE status transition within 24 hours.","verification_class":"machine_checkable"}
+    {"id":"REQ-S7-009","authority":"shall","statement":"For ISO 19650-governed information, a transition from Work in Progress to Shared shall be linked to the applicable review and approval-for-sharing decision (Decision A mapping) and its evidence.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-010","authority":"shall","statement":"For ISO 19650-governed information, a transition from Shared to Published shall be linked to completion of the applicable authorization and acceptance process (Decision B mapping), including the ISO 19650-2 lead-appointed-party authorization and appointing-party acceptance activities where applicable.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-011","authority":"shall","statement":"Each decision-bearing CDE transition shall be traceable to the information container, review evidence, decision outcome, responsible ISO 19650 party or project-mapped function, status/permitted use and transition record.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-012","authority":"shall_not","statement":"TIVERIT coordination sign-off, milestone approval, issue closure, platform permission, workflow completion or technical status change shall not be represented as ISO 19650 approval for sharing, authorization or acceptance unless the governing project arrangements explicitly combine the relevant decision and assign the required authority.","verification_class":"machine_checkable"},
+    {"id":"REQ-S7-013","authority":"shall","statement":"Where the governed ISO 19650 decision occurs outside the CDE, an assigned CDE operator may execute the corresponding technical state transition after the decision evidence is recorded; execution of the transition shall not transfer or create the underlying decision authority.","verification_class":"machine_checkable"}
   ],
-  "relationships":{"standards":["TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-CDE-MANAGER-001"]},
-  "provenance":{"source_system":"confluence","space":"BST","page_id":"4423696","source_version":1,"source_title":"Acceptance and Information Status Link","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4423696"}
+  "relationships":{"standards":["TIVERIT-BIM-STD-S3-PROD-EP001","TIVERIT-BIM-STD-S5-COORDINATION-EP001","TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],"architecture":["INFORMATION-DECISION-AUTHORITY-TAXONOMY"],"roles":["ROLE-PROJECT-BIM-MANAGER-001","ROLE-CDE-MANAGER-001"]},
+  "governance_notes":[
+    "The former generic accepted-state rule is retired. ISO 19650 couples defined review/decision activities to CDE transitions rather than treating coordination sign-off or milestone approval as generic acceptance.",
+    "Decision A and Decision B are implementation mappings to the ISO 19650-4 exchange process; ISO 19650-2 provides the underlying task-team approval-for-sharing and lead-appointed-party authorization / appointing-party acceptance sequence.",
+    "CDE operators may execute a transition without being the party authorized to make the underlying ISO decision."
+  ],
+  "provenance":{"source_system":"confluence","space":"BST","page_id":"4423696","source_version":1,"source_title":"Acceptance and Information Status Link","source_url":"https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/4423696","migration_note":"ISO-IMP-005 re-audit replaces the generic acceptance/status coupling with explicit ISO 19650 Work in Progress to Shared (Decision A) and Shared to Published (Decision B) mappings, while retaining TIVERIT coordination and milestone decisions as supplementary governance."}
 }

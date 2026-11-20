@@ -7,31 +7,48 @@
   "authority": "normative",
   "layer": "L4",
   "modules": ["S3"],
-  "purpose": "Govern the internal production ecosystem, CDE platform authority, collaboration boundaries, output handling, and procedural interfaces to S2, S5, S7, S8, and the CDE implementation branch.",
+  "purpose": "Govern the internal production ecosystem, CDE platform authority, ISO 19650 information-state transitions, collaboration boundaries, output handling, and procedural interfaces to S2, S5, S7, S8, and the CDE implementation branch.",
   "requirements": [
     {"id":"S3-REQ-001","authority":"shall","statement":"ACC Docs shall serve as the primary governed internal cloud environment for TIVERIT project collaboration and information-container management, subject to project contractual precedence."},
-    {"id":"S3-REQ-002","authority":"shall","statement":"Authoring tools are authoritative only within their declared scope; governed reliance begins only when information is placed in the appropriate governed platform/container."},
+    {"id":"S3-REQ-002","authority":"shall","statement":"Authoring tools are authoritative only within their declared scope; governed reliance begins only when information is placed in the appropriate governed platform/container and satisfies the decision and information-status conditions applicable to its declared use."},
     {"id":"S3-REQ-003","authority":"shall","statement":"Software versions are project-governed through the BEP; enterprise standards govern tool roles and authority boundaries rather than fixed releases."},
-    {"id":"S3-REQ-004","authority":"shall_not","statement":"Monitoring tools, scripts, and automation do not create authority, grant approval, or confer legal reliance."},
-    {"id":"S3-REQ-005","authority":"shall_not","statement":"Informal collaboration, chat, markup, and visibility do not constitute approval or acceptance."},
-    {"id":"S3-REQ-006","authority":"shall","statement":"Working outputs and formally issued deliverables shall remain distinct; formal exchange must bind to S2 information requirements and permitted-use constraints."},
-    {"id":"S3-REQ-007","authority":"shall","statement":"S1 overrules S3 on organizational authority, S2 overrules S3 on information requirements, and CDE procedural execution is delegated to governed implementation workflows."},
+    {"id":"S3-REQ-004","authority":"shall_not","statement":"Monitoring tools, scripts, automation, platform permissions, or CDE workflow actions do not independently create authority; where an ISO 19650 decision is required for a state transition, the applicable decision shall be made by the party or function assigned by the governing appointment and project information-management arrangements."},
+    {"id":"S3-REQ-005","authority":"shall_not","statement":"Informal collaboration, chat, markup, visibility, or CDE location shall not substitute for the review, approval, authorization, or acceptance activity required for an applicable ISO 19650 information-state transition."},
+    {"id":"S3-REQ-006","authority":"shall","statement":"Working outputs and formally issued deliverables shall remain distinct; formal exchange shall bind to S2 information requirements, S7 delivery-process semantics, and permitted-use constraints."},
+    {"id":"S3-REQ-007","authority":"shall","statement":"S1 governs organizational authority, S2 governs information requirements, S7 governs the ISO 19650 information-model delivery sequence and supplementary TIVERIT exchange/handover controls, and CDE procedural execution is delegated to governed implementation workflows."},
     {"id":"S3-REQ-008","authority":"shall_not","statement":"S3 governs the internal production ecosystem and shall not assert authority over external consultant systems, client environments, or contractual liabilities beyond project-defined interfaces."},
-    {"id":"S3-REQ-009","authority":"shall_not","statement":"The existence, availability, or visual completeness of a production output shall not by itself make that output a deliverable or authorize reliance on it."},
-    {"id":"S3-REQ-010","authority":"shall","statement":"Production outputs intended for governed use shall have an explicitly declared maturity or information state appropriate to their purpose; apparent detail shall not substitute for that declaration."},
-    {"id":"S3-REQ-011","authority":"shall_not","statement":"The communication channel used for collaboration shall not alter the governance status, authority, or permitted use of the information communicated."},
-    {"id":"S3-REQ-012","authority":"shall_not","statement":"Uploading, downloading, synchronizing, linking, attaching, or otherwise moving information within or between production systems shall not by itself constitute formal delivery or transfer authority."}
+    {"id":"S3-REQ-009","authority":"shall_not","statement":"The existence, availability, visual completeness, CDE location, or technical publication action of a production output shall not substitute for the ISO 19650 decision process associated with the applicable state transition."},
+    {"id":"S3-REQ-010","authority":"shall","statement":"Production outputs intended for governed use shall have an explicitly declared information state and status appropriate to their purpose; apparent detail shall not substitute for that declaration."},
+    {"id":"S3-REQ-011","authority":"shall_not","statement":"The communication channel used for collaboration shall not alter the governance status, authority, decision state, or permitted use of the information communicated."},
+    {"id":"S3-REQ-012","authority":"shall_not","statement":"Uploading, downloading, synchronizing, linking, attaching, or otherwise moving information within or between production systems shall not substitute for the governed review and decision required for transition between ISO 19650 CDE states."},
+    {"id":"S3-REQ-013","authority":"shall","statement":"For ISO 19650-governed information management, the CDE lifecycle shall distinguish Work in Progress, Shared, Published, and Archived states, with state transitions controlled by the applicable review and decision activities."},
+    {"id":"S3-REQ-014","authority":"shall","statement":"Transition from Work in Progress to Shared shall follow the applicable review and approval-for-sharing activity. TIVERIT identifies this ISO 19650 exchange decision as Decision A for implementation and conformance mapping."},
+    {"id":"S3-REQ-015","authority":"shall","statement":"Information in Shared shall be available only for the permitted shared-state purposes and shall proceed through the applicable information-model review, authorization, submission, and acceptance activities before transition to Published where ISO 19650-2 delivery provisions apply."},
+    {"id":"S3-REQ-016","authority":"shall","statement":"Transition from Shared to Published shall occur only after the applicable authorization and acceptance process has been completed. TIVERIT identifies this ISO 19650 exchange decision as Decision B for implementation and conformance mapping; where the process is separated, authorization by the lead appointed party precedes acceptance by the appointing party in accordance with the applicable ISO 19650-2 delivery sequence."},
+    {"id":"S3-REQ-017","authority":"shall","statement":"A decision-bearing CDE transition shall preserve traceability to the applicable review, decision outcome, responsible ISO 19650 party or project-mapped function, affected information scope, status/permitted use, and supporting evidence. The resulting CDE state records the completed transition but shall not replace that evidence."},
+    {"id":"S3-REQ-018","authority":"shall","statement":"Archived information shall preserve the historical record of information-container states, revisions, status and decision evidence required by the applicable project, contractual, regulatory and retention requirements; movement to Archived is a record-preservation transition and shall not be used as a substitute for acceptance or handover decisions."}
   ],
   "relationships": {
     "governed_by": ["ISO-19650"],
     "upstream": ["TIVERIT-BIM-STD-S2-INF-REQ-EP001", "REG-ROLE-001"],
     "downstream": ["TIVERIT-BIM-STD-S5-COORDINATION-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001"],
-    "semantic_dependency": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"]
+    "semantic_dependency": ["TIVERIT-BIM-STD-S8-INFO-STRUCTURE-PARAMS-CLASSIFICATION-EP001"],
+    "architecture": ["INFORMATION-DECISION-AUTHORITY-TAXONOMY"]
   },
+  "implementation_gaps": [
+    "CDE implementation artifacts shall be checked to ensure Work in Progress to Shared implements Decision A approval-for-sharing semantics and Shared to Published implements Decision B authorization/acceptance semantics without substituting platform permissions for the required ISO 19650 party decisions.",
+    "Conformance coverage shall verify traceability between decision-bearing CDE transitions and the applicable review/decision evidence, information status, permitted use and responsible party."
+  ],
+  "governance_notes": [
+    "For ISO 19650-governed exchanges, information state and decision are coupled through the defined transition process: Decision A governs Work in Progress to Shared and Decision B governs Shared to Published. The CDE state records the outcome of that process but is not a substitute for its audit evidence.",
+    "Decision A and Decision B are used as implementation labels from ISO 19650-4 exchange-process semantics. ISO 19650-2 provides the underlying delivery activities, including task-team approval for sharing and the lead-appointed-party authorization / appointing-party acceptance sequence.",
+    "Project-specific status codes, transition permissions, review workflows and platform configuration remain project/CDE declarations where ISO 19650 does not prescribe the implementation mechanism.",
+    "ISO source evidence informs this curator reconciliation through the External Standards Gateway; applicability and contractual precedence remain governed by project instruments."
+  ],
   "provenance": {
     "source_system": "confluence",
     "space": "BST",
     "source_pages": ["2425298","2621496","3964929","3899424","2425347","2457722","2457714","3735560","2818203","4292609"],
-    "migration_note": "Canonical S3 parent assembled from the source production-environment doctrine and enriched with explicit collaboration, output-maturity, and transmission boundaries. Raw source-page titles and URLs were not retained where retired naming appeared; neutral page IDs preserve provenance."
+    "migration_note": "Canonical S3 parent assembled from source production-environment doctrine. ISO-IMP-005 re-audit aligns the CDE lifecycle to ISO 19650: Work in Progress to Shared is controlled by approval for sharing (Decision A mapping), and Shared to Published by the applicable authorization and acceptance process (Decision B mapping). Archived remains the historical record state."
   }
 }
