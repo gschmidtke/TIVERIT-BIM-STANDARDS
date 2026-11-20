@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-MODELING-001",
+  "type": "registry",
+  "title": "Revit Working Library - Modeling",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S2", "S4", "S5", "S6"],
+  "entries": [
+    {"id":"MODEL-REF-PROGRESSION-CONCEPT","name":"Concept modeling intent","knowledge_status":"reference_example","authority_status":"non_authoritative","geometry":"low to medium; massing and key system placeholders","information":"minimal identity parameters and preliminary classification where known","authorized_uses":["feasibility","space planning","early coordination screening","client review visuals"]},
+    {"id":"MODEL-REF-PROGRESSION-DD","name":"Design development modeling intent","knowledge_status":"reference_example","authority_status":"non_authoritative","geometry":"medium-high; constructible intent without fabrication minutiae","information":"parameters needed for issued drawings and schedules plus pre-spec identifiers/classification","authorized_uses":["detailed coordination","interface resolution","design-intent documentation"]},
+    {"id":"MODEL-REF-PROGRESSION-IFC","name":"Construction / issue modeling intent","knowledge_status":"reference_example","authority_status":"non_authoritative","geometry":"high; production-ready design intent","information":"complete schedule/tag information and selected product/manufacturer data where required","authorized_uses":["issue for construction","coordination sign-off","procurement support"]},
+    {"id":"MODEL-REF-INPLACE","name":"In-place family decision","knowledge_status":"reference_example","authority_status":"non_authoritative","allowed_examples":["unique non-repeating contextual geometry","complex site-tied geometry","temporary construction or visualization content not intended for scheduling/reuse"],"discouraged":["repeatable equipment","copied in-place content used as pseudo-library","permanent schedulable generic-model content"],"unresolved":["exception parameters","approval route"]},
+    {"id":"MODEL-REF-GROUPS","name":"Groups versus assemblies","knowledge_status":"reference_example","authority_status":"non_authoritative","groups_for":["repeating room layouts","repeated multi-element patterns"],"assemblies_for":["built-up elements needing dedicated views/details/schedules"],"anti_patterns":["entire-floor groups","deep group nesting","unmanaged drifting instances"]},
+    {"id":"MODEL-REF-PARTITION","name":"Linked versus workshared model decision","knowledge_status":"reference_example","authority_status":"non_authoritative","worksharing_when":["simultaneous authoring within one governed model scope"],"linking_when":["discipline separation","zone/system partitioning","external authoritative models"],"anti_patterns":["large mixed-discipline monoliths","circular links","unmanaged nested links"]}
+  ],
+  "working_rules": ["Model only what is required for the declared use.", "Avoid fabrication-level detail unless explicitly required.", "Prefer reusable governed content over ad-hoc substitutes.", "Project-specific LOD/LOI matrices and model breakdowns remain BEP configuration."],
+  "provenance": {"source_system":"legacy_confluence_reference","page_id":"7733249","source_version":1,"migration_note":"Practical modeling and LOD/LOI guidance retained as non-authoritative working knowledge; source organization names removed."}
+}

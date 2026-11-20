@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-MODEL-PROGRESSION-001",
+  "type": "registry",
+  "title": "Working Library - Model Progression",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S2", "S5", "S7"],
+  "entries": [
+    {"id":"PROG-REF-CONCEPT","name":"Concept stage","knowledge_status":"reference_example","authority_status":"non_authoritative","primary_purpose":"design intent, massing, key systems/options and feasibility","authorized_uses":["optioneering","spatial validation","rough clash screening","narrative estimates"],"minimum_information":["approximate geometry","critical clearances","principal system locations","high-level performance/capacity parameters"]},
+    {"id":"PROG-REF-DD","name":"Design Development stage","knowledge_status":"reference_example","authority_status":"non_authoritative","primary_purpose":"refine systems, define interfaces and establish coordination-ready intent","authorized_uses":["coordinated layouts","preliminary quantities","discipline interface review","risk identification"],"minimum_information":["defined geometry with key connections","system metadata sufficient for clash rules","major tolerances and clearances"]},
+    {"id":"PROG-REF-COORDINATION","name":"Coordination stage","knowledge_status":"reference_example","authority_status":"non_authoritative","primary_purpose":"resolve inter-discipline conflicts to a declared confidence level","authorized_uses":["clash-resolution review","layout locking","issue closure","model-based quantities with declared tolerance"],"minimum_information":["precise interface geometry","installation envelopes","support strategy where relevant","agreed datum/control points","issue-resolution status"]},
+    {"id":"PROG-REF-FABRICATION","name":"Fabrication stage","knowledge_status":"reference_example","authority_status":"non_authoritative","primary_purpose":"enable shop drawing, CAM/CNC, procurement and offsite assembly where applicable","authorized_uses":["component detailing","fabrication tickets","spool sheets","purchasing quantities","installation planning"],"minimum_information":["resolved part geometry","connections and fasteners","fabrication tolerances","material specifications","identifying metadata","lot/phase assignment where used"]},
+    {"id":"PROG-REF-ASBUILT","name":"As-built / record stage","knowledge_status":"reference_example","authority_status":"non_authoritative","primary_purpose":"capture installed conditions and approved deviations for record and operations","authorized_uses":["handover","O&M integration","facilities planning","future-work planning","asset registration"],"minimum_information":["installation-verified geometry","asset/tag identifiers","commissioning attributes","deviation records","approved change references"]}
+  ],
+  "working_rules": ["Do not use a model beyond its declared progression stage and authorized uses without an explicit risk/authority decision.", "Information milestones should test the declared stage criteria before release.", "Exact stage names, responsibilities and element requirements may be refined by the project BEP.", "This record is working guidance, not a substitute for an applicable contractual LOD/LOI requirement."],
+  "provenance": {"source_system":"legacy_confluence_reference","page_id":"10551299","source_version":1,"migration_note":"Stage-based model progression guidance retained as non-authoritative working knowledge; source organization names and role assignments generalized."}
+}

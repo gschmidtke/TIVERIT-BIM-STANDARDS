@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-SHEETS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Sheets",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S7"],
+  "entries": [
+    {"id":"SHEET-REF-NUMBERING","name":"Sheet numbering","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_pattern":"{DisciplineCode}{Series}-{Sequence}","unresolved":["governing drawing standard","discipline code set","series code set","sequence width"]},
+    {"id":"SHEET-REF-NAMING","name":"Sheet naming","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_pattern":"{Level/Area} - {Content/Scope}","unresolved":["approved abbreviation list","capitalization rule"]},
+    {"id":"SHEET-REF-COMPOSITION","name":"Sheet composition","knowledge_status":"reference_example","authority_status":"non_authoritative","working_guidance":["keep a cohesive information set on each sheet","avoid overcrowding","group related views logically","use repeatable legends for repeatable information","use governed view templates for placed model views"],"unresolved":["numeric margins","view-count guidance","discipline-specific exceptions"]},
+    {"id":"SHEET-REF-ISSUE-QA","name":"Pre-issue sheet check","knowledge_status":"reference_example","authority_status":"non_authoritative","checks":["controlled titleblock family in use","sheet number is unique","sheet name is readable","required metadata is populated","revision data is system-driven","sample output is legible"],"unresolved":["titleblock catalogue","metadata field list","sampling policy","acceptance authority"]}
+  ],
+  "working_rules": ["Source numbering examples are references only.", "Project-specific numbering may override only through the applicable project authority.", "A QA finding is evidence and does not create formal acceptance authority."],
+  "provenance": {"source_system":"legacy_confluence_reference","page_ids":["6357066","10846209"],"migration_note":"Sheet and titleblock practices retained as non-authoritative working knowledge. Source organization and project identifiers removed."}
+}

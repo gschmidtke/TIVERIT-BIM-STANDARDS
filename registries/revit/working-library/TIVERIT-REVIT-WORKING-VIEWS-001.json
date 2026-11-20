@@ -1,0 +1,131 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-VIEWS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Views",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S4"],
+  "entries": [
+    {
+      "id": "VIEW-REF-PLAN-COORDINATION",
+      "name": "Floor Plan - Coordination",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "view_type": "floor_plan",
+      "purpose": "interdisciplinary coordination and clash review",
+      "candidate_template_name": "PLN-Coordination",
+      "detail_level": "Medium",
+      "visual_style": "not_fixed",
+      "graphics_guidance": [
+        "existing context may be halftoned while new work remains visually dominant",
+        "linked models visible by discipline where required",
+        "rule-based filters may identify coordination or clearance zones"
+      ],
+      "unresolved": [
+        "approved template identity",
+        "approved discipline visibility matrix",
+        "approved phase/filter mapping"
+      ]
+    },
+    {
+      "id": "VIEW-REF-PLAN-DOCUMENTATION",
+      "name": "Floor Plan - Documentation",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "view_type": "floor_plan",
+      "purpose": "sheet-ready documentation",
+      "candidate_template_name": "PLN-Documentation",
+      "detail_level": "Medium",
+      "visual_style": "Hidden Line",
+      "graphics_guidance": [
+        "controlled annotation and tags",
+        "fine detail may be required for components whose documentation depends on it",
+        "phase appearance should be controlled through the template rather than ad-hoc overrides"
+      ],
+      "unresolved": [
+        "approved template identity",
+        "approved annotation scale rules",
+        "approved phase/filter mapping"
+      ]
+    },
+    {
+      "id": "VIEW-REF-RCP-DOCUMENTATION",
+      "name": "Reflected Ceiling Plan - Documentation",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "view_type": "reflected_ceiling_plan",
+      "purpose": "ceiling-based documentation and tagging",
+      "candidate_template_name": "RCP-Documentation",
+      "detail_level": "Medium",
+      "visual_style": "Hidden Line",
+      "graphics_guidance": [
+        "cut plane optimized for ceiling documentation",
+        "lighting and building-services categories may be emphasized through governed filters"
+      ],
+      "unresolved": [
+        "approved template identity",
+        "approved discipline filter set",
+        "approved cut-plane conventions"
+      ]
+    },
+    {
+      "id": "VIEW-REF-SECTION-DOCUMENTATION",
+      "name": "Section - Documentation",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "view_type": "section",
+      "purpose": "sheet-ready building and assembly sections",
+      "candidate_template_name": "SEC-Documentation",
+      "detail_level": "Fine",
+      "visual_style": "Hidden Line",
+      "graphics_guidance": [
+        "line-weight hierarchy should communicate depth",
+        "cut elements may use poche or material cut patterns",
+        "medium detail may be acceptable where fine geometry adds no documentation value"
+      ],
+      "unresolved": [
+        "approved template identity",
+        "approved cut/projection graphics configuration"
+      ]
+    },
+    {
+      "id": "VIEW-REF-3D-COORDINATION",
+      "name": "3D - Coordination",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "view_type": "three_dimensional",
+      "purpose": "clash review and model federation",
+      "candidate_template_name": "3D-Coordination",
+      "detail_level": "Medium",
+      "visual_style": "Shaded with Edges",
+      "graphics_guidance": [
+        "category color coding may be driven by filters",
+        "linked models visible where required",
+        "section box may be enabled for bounded coordination review"
+      ],
+      "unresolved": [
+        "approved template identity",
+        "approved color/filter rules"
+      ]
+    }
+  ],
+  "working_rules": [
+    "Use view templates to centralize repeatable graphics and visibility behavior.",
+    "Prefer category visibility and rule-based filters over element-level overrides.",
+    "Treat manual element overrides as temporary or exceptional unless separately governed.",
+    "Working and published views should be distinguishable by governed purpose or status rather than informal naming alone.",
+    "Phasing, design options, and workset visibility remain project/configuration-dependent where no approved enterprise value exists."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-VIEWS-001"],
+    "registries": ["TIVERIT-S4-REVIT-VIEW-PURPOSE-FIELDS-001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "7241762",
+    "source_version": 1,
+    "migration_note": "Useful view-purpose and template examples retained as non-authoritative working data. Organization/client/project identifiers removed."
+  }
+}

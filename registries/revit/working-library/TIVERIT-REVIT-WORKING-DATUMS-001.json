@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-DATUMS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Levels, Grids and References",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S4", "S6"],
+  "entries": [
+    {
+      "id": "DATUM-REF-LEVEL-NAMING",
+      "name": "Level naming pattern",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_patterns": ["{Level Code} - {Descriptor}", "{Storey Number}{Suffix} - {Area/Use}"],
+      "example_names": ["L00 - SUB-BASEMENT", "L01 - MAIN FLOOR", "RL+10.000 - CATWALK"],
+      "working_guidance": [
+        "use one canonical level set across discipline models",
+        "avoid ambiguous or informal level names unless governed in the project glossary",
+        "avoid near-duplicate elevations caused by rounding or accidental offsets"
+      ],
+      "unresolved": ["approved level abbreviation set", "approved use of RL in names", "approved elevation precision and rounding", "authoritative Level Matrix"]
+    },
+    {
+      "id": "DATUM-REF-GRID-SCHEME",
+      "name": "Grid naming scheme",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_scheme": {
+        "axis_1": "numeric sequence",
+        "axis_2": "alphabetic sequence",
+        "extension": "double-letter sequence where needed"
+      },
+      "example_values": ["1", "2", "3", "A", "B", "C", "AA", "AB"],
+      "working_guidance": [
+        "do not duplicate grid identifiers within a model",
+        "coordinate grid positions across linked discipline models",
+        "if confusing letters are skipped, document the skip rule explicitly"
+      ],
+      "unresolved": ["approved axis orientation", "approved skipped-letter policy", "approved sequencing direction", "authoritative grid source"]
+    },
+    {
+      "id": "DATUM-REF-SCOPE-BOX",
+      "name": "Scope box naming pattern",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_pattern": "{Zone/Area Code} - {Direction/Block}",
+      "example_names": ["Z1 - STAGE", "Z2 - AUDIENCE"],
+      "working_guidance": ["reuse standard scope boxes where practical", "avoid per-user ad-hoc scope boxes", "limit count to clear project needs"],
+      "unresolved": ["approved zone codes", "approved scope-box catalogue", "ownership rules"]
+    },
+    {
+      "id": "DATUM-REF-REFERENCE-PLANE",
+      "name": "Reference plane naming pattern",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_pattern": "{Function} - {Location}",
+      "example_names": ["CENTERLINE - STAGE", "DATUM - PROSCENIUM"],
+      "working_guidance": [
+        "persistent reference planes should have meaningful names",
+        "retain only references with continuing datum, alignment or symmetry purpose",
+        "clean temporary reference planes before major deliverables"
+      ],
+      "unresolved": ["approved reference-plane vocabulary", "approved persistent-reference catalogue"]
+    }
+  ],
+  "working_rules": [
+    "A common agreed level and grid source should govern cross-model coordination.",
+    "Level and grid graphics should be controlled through governed Object Styles, view templates and annotation families rather than ad-hoc per-view edits.",
+    "Temporary datums and references should be explicitly identifiable and removed when their purpose ends.",
+    "Project-specific coordinates, elevations and zone identities remain project configuration, not enterprise defaults."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-LEVELS-GRIDS-001"],
+    "standards": ["TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference",
+    "page_id": "6684703",
+    "source_version": 1,
+    "migration_note": "Level, grid, scope-box and reference-plane examples retained as non-authoritative working data. Organization, client and project identifiers removed."
+  }
+}

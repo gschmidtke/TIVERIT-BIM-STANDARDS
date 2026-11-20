@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-WORKSHARING-LINKS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Worksharing and Links",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S6"],
+  "entries": [
+    {
+      "id": "WORKSET-REF-SHARED-DATUMS",
+      "name": "Shared Levels and Grids",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_workset_name": "Shared Levels and Grids",
+      "intended_contents": ["levels", "grids", "agreed reference elements"],
+      "prohibited_contents": ["general modeled geometry"],
+      "default_open_state": "typically_open",
+      "unresolved": ["approved enterprise workset name", "project-specific reference-element scope"]
+    },
+    {
+      "id": "WORKSET-REF-LINKS",
+      "name": "Links",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "candidate_workset_name": "Links",
+      "intended_contents": ["Revit links", "CAD links", "point-cloud links", "other governed external references"],
+      "working_guidance": [
+        "segment by discipline or scope only when it materially improves visibility, ownership or performance",
+        "do not mix ordinary modeled geometry into link-control worksets",
+        "use governed view/template visibility for fine-grained display rather than worksets alone"
+      ],
+      "unresolved": ["approved workset segmentation", "approved link-type placement rules", "project link authority matrix"]
+    },
+    {
+      "id": "WORKSET-REF-TEMPORARY",
+      "name": "Temporary and troubleshooting worksets",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "example_names": ["Imports_Working", "Temp_Troubleshoot", "Review_Issues"],
+      "default_open_state": "closed_in_production_views_candidate",
+      "working_guidance": [
+        "temporary worksets should be visibly temporary",
+        "clean them regularly and before formal issue",
+        "do not create personal or user-named worksets"
+      ],
+      "unresolved": ["approved temporary-workset naming pattern", "cleanup cadence", "production-view open-state policy"]
+    },
+    {
+      "id": "LINK-REF-PLACEMENT",
+      "name": "Linked model placement and coordination",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "working_guidance": [
+        "linked discipline models should use the governed project coordinate basis",
+        "link visibility should be controlled intentionally through governed views/templates and high-level workset strategy",
+        "link grouping should support unload, isolation, coordination and export workflows",
+        "link presence does not itself make the linked source authoritative"
+      ],
+      "unresolved": ["project coordinate basis", "link attachment versus overlay policy", "approved per-link workset mapping", "room-bounding policy", "link authority/source-of-truth mapping"]
+    },
+    {
+      "id": "WORKSHARING-REF-SESSION",
+      "name": "Authoring session behavior",
+      "knowledge_status": "reference_example",
+      "authority_status": "non_authoritative",
+      "working_guidance": [
+        "borrow only the scope required for the current task",
+        "synchronize regularly and release ownership frequently",
+        "do not directly edit an authoritative central/shared source in a way that bypasses the governed collaboration method",
+        "upgrade and recovery actions require backups, validation and explicit responsibility"
+      ],
+      "unresolved": ["current platform-specific local/central mechanics", "sync cadence", "maintenance cadence", "upgrade approval mapping", "recovery procedure and support route"]
+    }
+  ],
+  "working_rules": [
+    "Worksets support ownership, containment and coarse visibility; they are not a substitute for view-template graphics governance.",
+    "No personal/user names in reusable workset identities.",
+    "Project-specific collaboration mechanics, link authority and coordinate decisions belong in project/BEP configuration when not universally governed.",
+    "A linked or federated model may be a reference carrier without becoming the authoritative source for its information."
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-WORKSHARING-001"],
+    "registries": ["TIVERIT-S6-REVIT-WORKSET-PURPOSE-FIELDS-001", "TIVERIT-S6-REVIT-WORKSHARING-SESSION-FIELDS-001"],
+    "standards": ["TIVERIT-BIM-STD-S6-COLLAB-LINK-COORDS-EP001"]
+  },
+  "provenance": {
+    "source_system": "legacy_confluence_reference_and_current_repository",
+    "page_id": "7340051",
+    "source_version": 1,
+    "migration_note": "Workset and collaboration examples retained as non-authoritative working data and aligned to current S6 authority boundaries. Organization, client and project identifiers removed."
+  }
+}

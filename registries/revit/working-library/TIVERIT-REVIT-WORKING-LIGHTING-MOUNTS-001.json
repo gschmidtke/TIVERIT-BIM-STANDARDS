@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../schemas/registry.schema.json",
+  "id": "TIVERIT-REVIT-WORKING-LIGHTING-MOUNTS-001",
+  "type": "registry",
+  "title": "Revit Working Library - Lighting Fixture Mounts",
+  "status": "migration_candidate",
+  "authority": "informational",
+  "layer": "L7",
+  "modules": ["S4", "S8", "S9"],
+  "entries": [
+    {"id":"MOUNT-REF-LIGHTING-FIXTURE","name":"Fixture-integrated mount","knowledge_status":"reference_example","authority_status":"non_authoritative","revit_category":"Lighting Fixtures","use_when":["mount is inseparable from the luminaire","not independently engineered","not independently scheduled or dimensioned","not reused as a separate project-specific hardware item"]},
+    {"id":"MOUNT-REF-STRUCTURAL","name":"Engineered lighting mount","knowledge_status":"reference_example","authority_status":"non_authoritative","revit_category":"Structural Framing","use_when":["mount carries significant fixture/projector loads","must be dimensioned or sized","participates in a defined load path","requires engineering review, calculation or sign-off"],"example_objects":["mounting beam","support frame","engineered bracket"]},
+    {"id":"MOUNT-REF-AUXILIARY","name":"Auxiliary mount or adapter","knowledge_status":"reference_example","authority_status":"non_authoritative","revit_category":"Generic Models","use_when":["hardware is separate from luminaire assembly","not primary structural framing","needs distinct coordination, visibility or scheduling"]},
+    {"id":"MOUNT-REF-PARAMETERS","name":"Mount relationship parameter candidates","knowledge_status":"reference_example","authority_status":"non_authoritative","candidate_parameters":["Supported_Fixture_Count","Mount_Load_Assigned","Mount_Type","Supported_By_Mount_ID"],"unresolved":["approved parameter names","GUIDs","units","binding/category scope","relationship semantics"]}
+  ],
+  "working_rules": ["Engineered, dimensioned or primary load-bearing mounts should not be hidden inside a Lighting Fixtures family.", "Fixture-integrated non-engineered mounts may remain part of the Lighting Fixtures family.", "Auxiliary hardware may use a separate non-structural category where distinct coordination/scheduling is needed.", "Structural responsibility and Revit categorization should remain visible to coordination and review workflows."],
+  "provenance": {"source_system":"legacy_confluence_reference","page_id":"7405577","source_version":1,"migration_note":"Specialist lighting-mount categorization and parameter ideas retained as non-authoritative working knowledge; source organization/project branding removed."}
+}
