@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../schemas/abstract-test.schema.json",
+  "id": "ATS-REVIT-DOC-EXPORT-001",
+  "type": "abstract_test",
+  "title": "Revit governed documentation and export preparation",
+  "status": "migration_candidate",
+  "system_role": "conformance",
+  "modules": ["S3", "S4", "S7", "S9"],
+  "governing_object_id": "TIVERIT-BIM-INS-REVIT-DOC-EXPORT-001",
+  "governing_clause": "RVT-EXP-01 through RVT-EXP-05",
+  "test_intent": "Determine whether applicable Revit PDF, NWC, IFC, or RVT outputs use a governed source scope, approved or project-governed export configuration, governed naming/destination, required spatial/data mappings, and traceable validation evidence without relying on draft example defaults.",
+  "applicability": {
+    "applies_when": "A Revit documentation, coordination, submission, handover, or other governed output is being prepared or reviewed.",
+    "not_applicable_when": "No Revit-derived output or governed export event is within the tested scope."
+  },
+  "required_evidence": [
+    "declared output purpose, format, discipline/scope, and issue or lifecycle context",
+    "governed source view, sheet set, or model/container scope",
+    "applicable export configuration or explicitly governed project configuration basis",
+    "applicable S3/S4/S7 naming and destination authority",
+    "coordinate/spatial basis where required",
+    "property, parameter, or schema mapping where required",
+    "exporter/application version and output validation evidence"
+  ],
+  "result_logic": {
+    "pass": "The output is produced from the governed source scope using an available approved or explicitly governed project configuration; identity and destination resolve through current S3/S4/S7 authority; required spatial and information mappings are preserved; and the output has the required traceable validation evidence.",
+    "fail": "A positive violation is found, including export from an arbitrary working view, use of an unapproved local configuration where an approved configuration exists, conflict with governed naming/destination rules, incorrect coordinate or property behavior against an available requirement, or missing required validation/evidence.",
+    "not_applicable": "No governed Revit-derived output is within the tested scope.",
+    "indeterminate": "The applicable output requirement, export configuration, naming/destination authority, coordinate basis, data mapping, or validation expectation is unavailable or incomplete, so conformance cannot be determined without inventing expected values."
+  },
+  "permitted_implementation_classes": ["api_checker", "file_checker", "registry_checker", "human_verification", "hybrid"],
+  "provenance": {
+    "source_system": "repository_curator",
+    "derived_from": "TIVERIT-BIM-INS-REVIT-DOC-EXPORT-001; TIVERIT-S7-REVIT-EXPORT-CONFIG-FIELDS-001",
+    "migration_note": "Appendix E ATS for Revit documentation/export conformance. Draft source filename patterns, folder paths, PDF settings, NWC options, IFC defaults, and view names remain noncanonical; missing approved configuration yields indeterminate rather than invented authority."
+  }
+}

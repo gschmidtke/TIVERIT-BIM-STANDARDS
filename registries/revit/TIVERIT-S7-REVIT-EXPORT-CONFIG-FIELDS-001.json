@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schemas/registry.schema.json",
+  "id": "TIVERIT-S7-REVIT-EXPORT-CONFIG-FIELDS-001",
+  "type": "registry",
+  "title": "Revit Export Configuration Governed Fields",
+  "status": "migration_candidate",
+  "authority": "normative",
+  "layer": "L7",
+  "modules": ["S3", "S4", "S7", "S9"],
+  "entries": [
+    {"id":"OUTPUT_FORMAT","name":"Output format","requirement":"Each governed export configuration shall identify the output format or exchange class, such as PDF, NWC, IFC, RVT deliverable, or another approved output type."},
+    {"id":"OUTPUT_PURPOSE","name":"Output purpose","requirement":"Each configuration shall identify the intended coordination, documentation, submission, handover, or other governed use to prevent reuse of settings outside their declared purpose."},
+    {"id":"CONFIG_IDENTITY","name":"Configuration identity","requirement":"Each approved export preset or manually governed configuration basis shall have a stable identity sufficient for traceability and reproduction."},
+    {"id":"APPLICATION_EXPORTER_VERSION","name":"Application and exporter version","requirement":"Where output behavior depends on Revit, an exporter, add-in, or driver version, the applicable version or compatibility basis shall be declared or recorded."},
+    {"id":"SOURCE_SCOPE","name":"Source view, sheet set, or model scope","requirement":"The configuration shall identify or reference the governed source scope used for export, such as a dedicated export view, governed sheet set, or approved model/container scope."},
+    {"id":"DISPLAY_SELECTION_BASIS","name":"Display and selection basis","requirement":"Where categories, filters, links, phases, design options, detail level, or other view-controlled state affects the output, the governing view/template or selection basis shall be identified."},
+    {"id":"SPATIAL_BASIS","name":"Coordinate and spatial basis","requirement":"Where spatial alignment is material, the export configuration shall identify the governed coordinate/origin basis and applicable units rather than relying on an undocumented local setting."},
+    {"id":"DATA_MAPPING","name":"Property, parameter, or schema mapping","requirement":"Where non-geometric information is exported, the configuration shall identify the applicable governed property-set, parameter, classification, or schema mapping required by the exchange purpose."},
+    {"id":"FORMAT_OPTIONS","name":"Format-specific option set","requirement":"Format-specific options that materially affect geometry, graphics, precision, compression, linked content, or exchange semantics shall be recorded or referenced from an approved configuration source."},
+    {"id":"NAMING_DESTINATION_REFERENCE","name":"Naming and destination reference","requirement":"Output naming and destination shall resolve through the applicable governed S3/S4/S7 identity and lifecycle rules rather than being independently invented by the export preset."},
+    {"id":"VALIDATION_REQUIREMENT","name":"Validation requirement","requirement":"Each governed export configuration shall identify the applicable validation or smoke-check expectation, including representative legibility, test-open, geometry/property presence, or spatial alignment checks as relevant."},
+    {"id":"CHANGE_CONTROL","name":"Change and release control","requirement":"Creation, modification, replacement, or retirement of an approved export configuration shall be traceable through the applicable standards, project, or template release process."}
+  ],
+  "relationships": {
+    "instructions": ["TIVERIT-BIM-INS-REVIT-DOC-EXPORT-001", "TIVERIT-BIM-INS-REVIT-NAVIS-EXPORT-001"],
+    "standards": ["TIVERIT-BIM-STD-S3-PROD-EP001", "TIVERIT-BIM-STD-S4-IDENTITY-NAMING-EP001", "TIVERIT-BIM-STD-S7-SUBMISSION-DELIVERABLES-HANDOVER-EP001", "TIVERIT-BIM-STD-S9-TOOLS-AUTHORITY-EP001"],
+    "registries": ["TIVERIT-S7-EXCHANGE-DELIVERABLE-FIELDS-001"]
+  },
+  "non_promoted_source_content": [
+    "No source PDF filename pattern, folder scaffold, DPI value or range, compression setting, printer profile, NWC option value, faceting tolerance, IFC version/MVD, export-view name, phase/design-option default, property-set list, or example filename is promoted as a universal enterprise default.",
+    "Concrete preset rows remain organization/project configuration and shall be added only from an approved configuration source."
+  ],
+  "provenance": {
+    "source_system": "confluence",
+    "space": "BST",
+    "page_id": "7438366",
+    "source_version": 1,
+    "source_title": "Revit Style Guide - Appendix E",
+    "source_url": "https://tiveritllc.atlassian.net/wiki/spaces/BST/pages/7438366",
+    "migration_note": "Promotes the durable machine-readable fields needed to govern Revit output configurations across PDF, NWC, IFC, and RVT without promoting draft/TODO source values. Concrete approved preset values remain configuration rather than Standards defaults."
+  }
+}
